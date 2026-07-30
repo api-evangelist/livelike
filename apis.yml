@@ -1,25 +1,132 @@
 aid: livelike
 name: LiveLike
-description: LiveLike is a company surfaced as a portfolio company of techstars and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  LiveLike is an AI-powered fan engagement platform used by sports teams,
+  leagues, media companies, and venues to drive registration, retention, and
+  monetization through interactive experiences. Its developer platform exposes a
+  REST API, GraphQL, webhooks, and native SDKs (iOS, Android, Web, React Native)
+  for building live interactive widgets (polls, quizzes, predictions, alerts),
+  real-time chat and community features, gamification (leaderboards, badges,
+  quests, streaks, rewards), user profiles, and analytics that can be
+  synchronized to live and on-demand video. LiveLike also publishes an official
+  Model Context Protocol (MCP) server so AI assistants can manage programs and
+  widgets.
 url: https://raw.githubusercontent.com/api-evangelist/livelike/refs/heads/main/apis.yml
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 14
+  pass: local-v1
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - techstars
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://www.livelike.com/favicon.ico
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
-apis: []
+- Fan Engagement
+- Live Streaming
+- Interactive Video
+- Chat
+- Gamification
+- Widgets
+- Sports
+- Media
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- name: LiveLike REST API
+  description: >-
+    REST API for managing LiveLike applications, user profiles, programs,
+    interactive widgets (polls, quizzes, predictions, alerts), chat rooms,
+    gamification, and rewards. OAuth 2.0 Bearer authentication; page-based
+    pagination; JSON.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Fan Engagement
+  - Widgets
+  - Chat
+  - Gamification
+  properties:
+  - type: Authentication
+    url: authentication/livelike-authentication.yml
+  - type: ErrorCatalog
+    url: errors/livelike-problem-types.yml
+  - type: Conventions
+    url: conventions/livelike-conventions.yml
+  - type: DataModel
+    url: data-model/livelike-data-model.yml
 common:
+- type: TrustCenter
+  url: security/livelike-trust-center.yml
+- type: Compliance
+  url: security/livelike-trust-center.yml
+- type: DomainSecurity
+  url: security/livelike-domain-security.yml
 - type: Website
-  url: https://livelikevr.com/
+  url: https://www.livelike.com/
+- type: DeveloperPortal
+  url: https://docs.livelike.com/docs/getting-started
+- type: Documentation
+  url: https://docs.livelike.com/
+- type: APIReference
+  url: https://docs.livelike.com/reference
+- type: GettingStarted
+  url: https://docs.livelike.com/docs/rest-api-getting-started
+- type: Authentication
+  url: https://docs.livelike.com/reference/authentication
+- type: Blog
+  url: https://www.livelike.com/blog
+- type: PrivacyPolicy
+  url: https://www.livelike.com/privacy
+- type: Support
+  url: https://www.livelike.com/contact
+- type: GitHubOrganization
+  url: https://github.com/livelike
+- type: Login
+  url: https://cf-blast.livelikecdn.com/
+- type: ChangeLog
+  url: https://docs.livelike.com/changelog
+- type: LLMsTxt
+  url: llms/livelike-llms.txt
+- type: Packages
+  url: packages/livelike-packages.yml
+- type: SDKs
+  url: packages/livelike-packages.yml
+- type: MCPServer
+  url: mcp/livelike-mcp.yml
+- type: Webhooks
+  url: asyncapi/livelike-webhooks.yml
+- type: Conventions
+  url: conventions/livelike-conventions.yml
+- type: ErrorCatalog
+  url: errors/livelike-problem-types.yml
+- type: Authentication
+  url: authentication/livelike-authentication.yml
+- type: Lifecycle
+  url: lifecycle/livelike-lifecycle.yml
+- type: ChangeLog
+  url: changelog/livelike-changelog.yml
+- type: AgentSkill
+  url: skills/_index.yml
