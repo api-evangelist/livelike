@@ -1,0 +1,71 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.livelike.com/reference + https://docs.livelike.com/docs/concepts
+notes: >-
+  Entity graph derived from the LiveLike REST API reference and Core Concepts
+  documentation. Relationships reflect documented containment and reference
+  semantics; not derived from a captured OpenAPI file.
+entities:
+- name: Application
+  description: Top-level container (Client ID) that owns programs, profiles, and widgets.
+  identified_by: client_id
+- name: Profile
+  description: A LiveLike user profile; supports Custom Profile IDs.
+  supports_custom_id: true
+  relationships:
+  - belongs_to: Application
+  - has_many: ProfileRelationship
+  - has_many: ChatMessage
+- name: ProfileGroup
+  description: An addressable group of profiles (static or dynamic rules).
+  relationships:
+  - has_many: Profile (members)
+- name: RelationshipType
+  description: A named type of connection between two profiles.
+- name: ProfileRelationship
+  description: A connection instance between two profiles.
+  relationships:
+  - belongs_to: RelationshipType
+  - references: Profile (from, to)
+- name: Program
+  description: Represents a piece of content; container for widgets. Supports Custom Program IDs.
+  supports_custom_id: true
+  relationships:
+  - belongs_to: Application
+  - has_many: Widget
+- name: Widget
+  description: Interactive engagement unit (poll, quiz, prediction, alert, emoji slider).
+  kinds: [text_poll, image_poll, text_quiz, image_quiz, text_prediction, image_prediction, image_number_prediction, alert, emoji_slider, text_ask]
+  relationships:
+  - belongs_to: Program
+- name: ChatRoom
+  description: A chat room for real-time community messaging.
+  relationships:
+  - belongs_to: Application
+  - has_many: ChatMessage
+- name: ChatMessage
+  description: A message posted in a chat room (supports threads, mentions, reactions).
+  relationships:
+  - belongs_to: ChatRoom
+  - belongs_to: Profile (author)
+- name: Badge
+  description: A gamification badge awarded to profiles.
+- name: Quest
+  description: A gamification quest composed of tasks.
+  relationships:
+  - has_many: QuestTask
+- name: RewardTable
+  description: Defines reward items and actions used to reward profiles.
+  relationships:
+  - has_many: RewardItem
+- name: Leaderboard
+  description: Ranks profiles by score/points.
+- name: Comment
+  description: A comment (with replies, mentions) on content.
+  relationships:
+  - belongs_to: Profile (author)
+  - has_many: Comment (replies)
+- name: Flair
+  description: A cosmetic/status marker that can be assigned to profiles.
+  relationships:
+  - has_many: FlairAssignment

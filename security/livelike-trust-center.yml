@@ -1,0 +1,13 @@
+generated: '2026-07-20'
+method: searched
+probe: true
+source: https://www.livelike.com/loyalty-and-rewards
+url: https://www.livelike.com/loyalty-and-rewards
+certifications:
+- SOC 2
+- GDPR
+evidence:
+- source: https://www.livelike.com/loyalty-and-rewards
+  keywords:
+  - soc2
+  - gdpr

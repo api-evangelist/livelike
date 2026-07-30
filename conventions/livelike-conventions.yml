@@ -1,0 +1,43 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.livelike.com/reference
+docs:
+  authentication: https://docs.livelike.com/reference/authentication
+  errors: https://docs.livelike.com/reference/errors
+  pagination: https://docs.livelike.com/reference/pagination
+  localization: https://docs.livelike.com/reference/localization
+authentication:
+  style: OAuth 2.0 Bearer via Authorization header (also `Token` for Personal API Tokens)
+  ref: authentication/livelike-authentication.yml
+versioning:
+  scheme: uri-path
+  current: v1
+  base_path: /api/v1/
+pagination:
+  style: page-number
+  request_param: page
+  response_envelope:
+    fields: [count, next, previous, results]
+    notes: >-
+      Collection resources are wrapped in an envelope. `count` is the total
+      across all pages; `next`/`previous` are absolute page URLs (null when
+      unavailable); `results` holds the page items.
+error_envelope:
+  style: http-status + descriptive message
+  ref: errors/livelike-problem-types.yml
+idempotency:
+  supported: false
+  notes: No idempotency-key header or idempotency contract is documented.
+localization:
+  supported: true
+  notes: LiveLike serves localized content based on client language preferences.
+  ref: https://docs.livelike.com/reference/localization
+webhooks:
+  supported: true
+  signature: HMAC-SHA1 over compact JSON, X-Webhook-Signature header
+  ref: asyncapi/livelike-webhooks.yml
+custom_ids:
+  supported: true
+  notes: >-
+    Profiles and programs support caller-supplied Custom IDs so LiveLike
+    resources can be addressed by your own system's identifiers.

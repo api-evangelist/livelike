@@ -1,0 +1,755 @@
+# LiveLike Documentation
+
+> Documentation for LiveLike
+
+## Guides
+- [Introduction](https://docs.livelike.com/docs/getting-started.md)
+- [Core Concepts](https://docs.livelike.com/docs/concepts.md)
+- [Profiles](https://docs.livelike.com/docs/user-profiles.md): Extending your user data with LiveLike profiles
+- [Integrating with Logins](https://docs.livelike.com/docs/using-profiles-with-logins.md): Connect and extend your existing user accounts and logins with Profiles
+- [Custom Profile IDs](https://docs.livelike.com/docs/custom-profile-ids.md)
+- [Client-generated Access Tokens](https://docs.livelike.com/docs/client-generated-access-tokens.md): Generate LiveLike Profile Access Tokens with User IDs from your own system
+- [Roles and Permissions](https://docs.livelike.com/docs/roles-and-permissions.md): Use roles and permissions to define what actions users can take
+- [Blocking Profiles](https://docs.livelike.com/docs/blocking-profiles.md)
+- [Profile Groups](https://docs.livelike.com/docs/profile-groups.md): Organize profiles into addressable groups
+- [Dynamic Profile Group Rule Structure](https://docs.livelike.com/docs/dynamic-profile-group-rule-structure.md): An overview of the rule creation flow for Dynamic Profile Groups via APIs.
+- [Programs](https://docs.livelike.com/docs/programs.md): Representing your content inside of LiveLike
+- [Custom Program IDs](https://docs.livelike.com/docs/custom-program-ids.md): How to use Custom IDs with programs
+- [IDs and Attributes](https://docs.livelike.com/docs/data-integration-patterns.md)
+- [Sponsorship](https://docs.livelike.com/docs/sponsorship.md)
+- [Widgets Sponsors](https://docs.livelike.com/docs/widgets-sponsors.md)
+- [Widgets](https://docs.livelike.com/docs/widgets.md)
+- [Creating and Scheduling Widgets](https://docs.livelike.com/docs/creating-and-scheduling-widgets.md)
+- [Generating Widgets](https://docs.livelike.com/docs/creating-widgets.md): How to create widgets using the REST APIs
+- [Creating Alerts](https://docs.livelike.com/docs/rest-api-creating-alerts.md): How to create alert widgets with the REST API
+- [Creating Polls](https://docs.livelike.com/docs/creating-polls.md): How to create poll widgets with the REST API
+- [Creating Quizzes](https://docs.livelike.com/docs/rest-api-creating-quizzes.md): How to create quiz widgets with the REST API
+- [Creating Predictions](https://docs.livelike.com/docs/rest-api-creating-predictions.md): How to create prediction widgets with the REST API
+- [Interacting with Widgets](https://docs.livelike.com/docs/developing-custom-widget-ui.md): Build your own Widget UI using our REST and Pubnub APIs
+- [Voting on Polls](https://docs.livelike.com/docs/voting-on-polls.md): How to vote on text polls and image polls with the REST API
+- [Answering Quizzes](https://docs.livelike.com/docs/answering-quizzes.md): How to answer text quizzes and image quizzes with the REST API
+- [Live Widgets Updates](https://docs.livelike.com/docs/live-widgets-updates.md): How to subscribe to data channels to receive live widget updates
+- [Voting on Prediction](https://docs.livelike.com/docs/voting-on-prediction.md): How to vote on text prediction, image prediction and number prediction with the REST API
+- [Listing Application Widgets - Integration Guide](https://docs.livelike.com/docs/listing-application-widgets-integration-guide.md): Fetch text-poll and image-poll data across an application, including cross-program engagement metrics, pagination, and daily incremental sync guidance.
+- [Building Custom Widget UI](https://docs.livelike.com/docs/custom-widget-ui.md)
+- [Attaching Custom Data to Widgets](https://docs.livelike.com/docs/attaching-custom-data-to-widgets.md)
+- [VOD Widgets](https://docs.livelike.com/docs/vod-widgets.md)
+- [Update and Delete Published Rich Posts](https://docs.livelike.com/docs/edit-and-delete-published-rich-posts.md): Guide how to Update and delete end-user published Rich Posts with the REST API.
+- [Live Action Automations](https://docs.livelike.com/docs/live-action-automations.md): Create automation partners that publish widgets automatically from live sports event data.
+- [Chat](https://docs.livelike.com/docs/chat.md)
+- [Threads in Chat](https://docs.livelike.com/docs/threads-in-chat.md): Replying to messages in chat using threads
+- [Private Chat](https://docs.livelike.com/docs/private-chat.md): How to let users create and join their own chats
+- [Chat Membership](https://docs.livelike.com/docs/chat-room-membership.md): Tracking and counting members of chat rooms
+- [Chat Invitations](https://docs.livelike.com/docs/chat-room-invitations.md)
+- [Counting Unread Messages](https://docs.livelike.com/docs/building-an-unread-message-count-feature.md): In a scenario where you might choose to have many chat rooms, an Unread Message Count feature provides functionality that can be used to determine the amount of unread or unseen messages by your user.
+- [Chat Mentions](https://docs.livelike.com/docs/chat-message-mentions.md): Allow users to tag specific profiles in messages
+- [Chat Avatars](https://docs.livelike.com/docs/chat-avatar.md): Chat avatar image is an image that appears next to a chat message.
+- [Customizing Chat Input](https://docs.livelike.com/docs/custom-chat-input.md): How to customize a chat room message input
+- [Chat Message Links](https://docs.livelike.com/docs/chat-message-links.md): Controlling whether or not links are clickable in chat messages
+- [Sending Custom Chat Messages](https://docs.livelike.com/docs/sending-custom-chat-messages.md): How to integrate methods to enable users to send messages that contain custom data
+- [Pinning Chat Messages](https://docs.livelike.com/docs/pin-message.md)
+- [Quote Message](https://docs.livelike.com/docs/quote-message.md)
+- [Token Gating Chat](https://docs.livelike.com/docs/token-gating-chat.md)
+- [Toggle Filtered Messages](https://docs.livelike.com/docs/toggle-filtered-messages.md): Filtered Messages are the messages having banned words in them
+- [Message Metadata](https://docs.livelike.com/docs/message-metadata.md): Attach custom metadata to individual chat messages to customize behavior or display for each message
+- [High latency Chat](https://docs.livelike.com/docs/high-latency-chat.md)
+- [Chat Messages Throttling](https://docs.livelike.com/docs/chat-messages-throttling.md): Control how frequently fans can send messages in chat rooms
+- [Stickers](https://docs.livelike.com/docs/stickers.md)
+- [Comments](https://docs.livelike.com/docs/comment-boards.md)
+- [Pinned Comments](https://docs.livelike.com/docs/pinned-comments.md)
+- [Comment Mentions](https://docs.livelike.com/docs/comment-mentions.md): Use mentions to allow fans to tag others in comments
+- [Trending Comments](https://docs.livelike.com/docs/trending-comments.md)
+- [Comments and Social Graph](https://docs.livelike.com/docs/comments-and-social-graph.md)
+- [Quality Comments](https://docs.livelike.com/docs/quality-comments.md)
+- [Reactions](https://docs.livelike.com/docs/reactions.md): Reactions as a service allows users to add reactions to any content
+- [Reactions and Social Graph](https://docs.livelike.com/docs/reactions-and-social-graph.md)
+- [Presence](https://docs.livelike.com/docs/presence.md)
+- [Social Graph](https://docs.livelike.com/docs/social-graph-service.md): Define relationships between users and use them to personalize their experience
+- [Flairs](https://docs.livelike.com/docs/flairs.md): A universal and reusable label system that adds identity, status, and context to users, content, and experiences across the platform.
+- [Rewards](https://docs.livelike.com/docs/rewards.md)
+- [Utilizing Reward Items](https://docs.livelike.com/docs/utilizing-reward-items.md)
+- [Reward Actions](https://docs.livelike.com/docs/reward-actions.md)
+- [Rewards Table Capping](https://docs.livelike.com/docs/rewards-table-capping.md)
+- [Prizeout](https://docs.livelike.com/docs/prizeout-for-rewards.md)
+- [Reward Store](https://docs.livelike.com/docs/reward-store.md)
+- [Reward Multiplier](https://docs.livelike.com/docs/reward-multiplier.md): Reward boost for users
+- [Leaderboards](https://docs.livelike.com/docs/leaderboards.md)
+- [Badges](https://docs.livelike.com/docs/badges.md)
+- [Quests](https://docs.livelike.com/docs/quests.md): Complete multi-step challenges to earn one-time rewards
+- [Quests CMS Guide](https://docs.livelike.com/docs/complete-quests-guide-cms-sdk.md): Quests allow users to complete multi-step challenges to earn one-time rewards. This guide explains how to create, manage, and track quests in the CMS, including Save as Draft and A/B Testing features.
+- [Time Bound Quests](https://docs.livelike.com/docs/time-bound-quests.md)
+- [How to Create a Quest in CMS](https://docs.livelike.com/docs/how-to-create-a-quest-in-cms.md): Follow these steps to create and configure a new Quest in the CMS.
+- [How to Create A/B Quest in CMS](https://docs.livelike.com/docs/how-to-create-ab-quest-in-cms.md): Follow these steps to create and configure a new A/B Quest in the CMS.
+- [Streaks](https://docs.livelike.com/docs/streaks.md): Reward users for consistent participation
+- [Periodic Streak CMS Guide](https://docs.livelike.com/docs/how-to-create-streaks-in-cms.md): Follow these steps to create and configure a new Periodic Streak in the CMS.
+- [Consecutive Action Streak CMS Guide](https://docs.livelike.com/docs/consecutive-streak-cms-guide.md): Follow these steps to create and configure a new Consecutive Action Streak in the CMS.
+- [Status Tiers](https://docs.livelike.com/docs/status-tier.md): Allow users to unlock benefits as they progress through status tiers
+- [Redemption Keys](https://docs.livelike.com/docs/redemption-keys.md)
+- [NFTs](https://docs.livelike.com/docs/nft-non-fungible-token.md)
+- [Custom Themes](https://docs.livelike.com/docs/custom-themes.md): How to apply custom theming to features
+- [Spoiler Prevention](https://docs.livelike.com/docs/spoiler-free-sync.md)
+- [Stream Requirements for Preventing CMS Spoilers](https://docs.livelike.com/docs/stream-requirements.md)
+- [Stream Requirements for Preventing Chat Spoilers](https://docs.livelike.com/docs/user-user-stream-requirements-for-spoiler-prevention.md): Stream requirements for preventing users from spoiling each other
+- [Analytics](https://docs.livelike.com/docs/analytics-overview.md): Understand your integration performance and user behaviors
+- [Analytics Dashboard](https://docs.livelike.com/docs/analytics-dashboard.md)
+- [Analytics Dictionary](https://docs.livelike.com/docs/livelike-events-dictionary.md): This dictionary defines the key metrics used across both the Standard Analytics and Visual Analytics dashboards. Entries are grouped by feature area and include guidance on how to interpret each metric in context.
+- [Analytics Event Glossary](https://docs.livelike.com/docs/analytics-event-glossary.md)
+- [Prizeout](https://docs.livelike.com/docs/prizeout-integration.md)
+- [Segment](https://docs.livelike.com/docs/segment.md)
+- [Sync Segment Audiences to User Groups](https://docs.livelike.com/docs/sync-segment-audiences-with-livelike-user-groups.md)
+- [mParticle](https://docs.livelike.com/docs/mparticle.md)
+- [Support](https://docs.livelike.com/docs/support.md)
+- [Best Practices](https://docs.livelike.com/docs/best-practices.md): How to get the most out of your integration
+- [Frequently Asked Questions](https://docs.livelike.com/docs/frequently-asked-questions.md)
+- [Supported Platforms](https://docs.livelike.com/docs/supported-platforms.md): Which mobile OS and browser versions are supported by the SDKs
+- [Supported Video Players](https://docs.livelike.com/docs/supported-video-players.md)
+- [Widget Asset Guidelines](https://docs.livelike.com/docs/widget-asset-guidelines.md)
+- [Chat Asset Guidelines](https://docs.livelike.com/docs/chat-sticker-guidelines.md)
+- [Lottie Animation Guidelines](https://docs.livelike.com/docs/lottie-animation-guidelines.md)
+- [Layout Best Practices](https://docs.livelike.com/docs/design-best-practices.md)
+- [Getting Started](https://docs.livelike.com/docs/ps-getting-started.md)
+- [Retrieving Important Keys](https://docs.livelike.com/docs/retrieving-important-keys.md)
+- [Quick Links Reference](https://docs.livelike.com/docs/cms-quick-links-reference.md)
+- [Organizations](https://docs.livelike.com/docs/organizations.md): Collaborate with team members on integrations
+- [Inviting Your Team](https://docs.livelike.com/docs/inviting-organization-members.md)
+- [Organization-level Timezone](https://docs.livelike.com/docs/organization-level-timezone.md): Setting a default timezone for new members in an organization
+- [Moderation](https://docs.livelike.com/docs/moderation.md): Moderating chat, comments, and widgets inside of the CMS
+- [Chat Moderation](https://docs.livelike.com/docs/cms-chat-moderation.md): Moderating chat inside the CMS
+- [Comments Moderation](https://docs.livelike.com/docs/cms-comments-moderation.md)
+- [Widgets Moderation](https://docs.livelike.com/docs/widget-moderation.md): Using CMS to moderate widgets created by end users
+- [Comments](https://docs.livelike.com/docs/cms-comments.md): Managing comments using CMS
+- [Game Preparation](https://docs.livelike.com/docs/game-preparation.md)
+- [Editorial Strategy](https://docs.livelike.com/docs/editorial-strategy.md)
+- [Additional Resources](https://docs.livelike.com/docs/additional-resources.md)
+- [iOS SDK](https://docs.livelike.com/docs/ios.md): Get a basic integration up and running with the iOS SDK
+- [User Client](https://docs.livelike.com/docs/user-client.md)
+- [Widget Configuration](https://docs.livelike.com/docs/ios-widget-configuration.md)
+- [Building Your Own Widget Experiences](https://docs.livelike.com/docs/building-your-own-widget-experiences.md): A guide on how to use the EngagementSDK to build your own Widget experiences.
+- [Building a Cheer Meter Widget](https://docs.livelike.com/docs/building-a-cheer-meter-widget-2.md)
+- [Building an Alert Widget](https://docs.livelike.com/docs/building-an-alert-widget.md)
+- [Using Custom Widget UI with the WidgetPopupViewController](https://docs.livelike.com/docs/using-custom-widget-ui-with-the-widgetviewcontroller.md)
+- [Accessing Widget Models](https://docs.livelike.com/docs/accessing-widget-data.md)
+- [Popup Widgets](https://docs.livelike.com/docs/widget-view-controller.md): iOS guide to Popup Widgets
+- [[Deprecated] Widget Timeline View Controller](https://docs.livelike.com/docs/widget-timeline-view-controller.md)
+- [Timeline Widgets](https://docs.livelike.com/docs/interactive-widget-timeline-view-controller.md): iOS guide to Timeline Widgets
+- [Widget Interactions](https://docs.livelike.com/docs/ios-widget-interactions.md)
+- [Chat](https://docs.livelike.com/docs/ios-chat.md): An overview on Chat systems of the EngagementSDK
+- [Chat Session](https://docs.livelike.com/docs/ios-chat-session.md)
+- [Chat Rooms](https://docs.livelike.com/docs/chat-rooms-1.md)
+- [ChatViewController](https://docs.livelike.com/docs/chat-configuration.md)
+- [Chat Room Membership (iOS)](https://docs.livelike.com/docs/ios-chat-room-membership.md)
+- [Chat Client](https://docs.livelike.com/docs/chat-client.md)
+- [Stock Chat UI Customization](https://docs.livelike.com/docs/ios-stock-chat-ui-customization.md)
+- [Spoiler Prevention (iOS)](https://docs.livelike.com/docs/ios-spoiler-free-sync.md): Preventing spoilers on iOS
+- [Analytics](https://docs.livelike.com/docs/ios-analytics.md)
+- [Role-Based Access Control (iOS)](https://docs.livelike.com/docs/role-based-access-control-ios.md)
+- [Custom Theming](https://docs.livelike.com/docs/ios-custom-theming.md)
+- [Overriding Default Animations](https://docs.livelike.com/docs/ios-overriding-default-lottie-animations.md): A guide on how to override the various Lottie animations used for Widgets
+- [Troubleshooting](https://docs.livelike.com/docs/ios-troubleshooting.md)
+- [Android SDK](https://docs.livelike.com/docs/android.md): Get a basic integration up and running with the Android SDK
+- [Session Management](https://docs.livelike.com/docs/android-sessions.md)
+- [Widget Configuration](https://docs.livelike.com/docs/android-widget-config.md)
+- [LiveLikeWidgetViewFactory](https://docs.livelike.com/docs/livelikewidgetviewfactory.md)
+- [Building a Cheer Meter Widget](https://docs.livelike.com/docs/building-a-cheer-meter-widget-1.md)
+- [Building a Quiz Widget](https://docs.livelike.com/docs/building-a-quiz-widget-1.md)
+- [Building a Alert Widget](https://docs.livelike.com/docs/building-a-alert-widget.md)
+- [Building a Poll Widget](https://docs.livelike.com/docs/building-a-poll-widget-1.md)
+- [Building a Prediction and followup widget](https://docs.livelike.com/docs/building-a-prediction-and-followup-widget.md)
+- [Building a Image Slider](https://docs.livelike.com/docs/building-a-image-slider.md)
+- [Building a Text Ask Widget](https://docs.livelike.com/docs/building-a-text-ask-widget.md)
+- [Building a Number Prediction and followup widget](https://docs.livelike.com/docs/building-a-number-prediction-and-followup-widget.md)
+- [Timeline Widgets](https://docs.livelike.com/docs/widget-timeline.md): Android guide to Timeline Widgets
+- [Popup Widgets](https://docs.livelike.com/docs/widget-pop-up-view.md): Android guide to Popup Widgets
+- [Widget Interactions](https://docs.livelike.com/docs/android-widget-interactions.md)
+- [Building a Social Embed Widget](https://docs.livelike.com/docs/building-a-social-embed-widget.md)
+- [Widget Apis](https://docs.livelike.com/docs/widget-framework-apis.md)
+- [Chat](https://docs.livelike.com/docs/android-chat.md)
+- [Chat Rooms](https://docs.livelike.com/docs/private-group-chat.md)
+- [ChatRoom Membership (Android)](https://docs.livelike.com/docs/chatroom-membership-android.md)
+- [Chat Session](https://docs.livelike.com/docs/android-chat-session.md)
+- [Chat Configuration](https://docs.livelike.com/docs/android-chat-config.md)
+- [Custom View in Chat](https://docs.livelike.com/docs/android-custom-view-in-chat.md)
+- [Chat Client](https://docs.livelike.com/docs/chat-client-1.md)
+- [Stock Chat UI Customization](https://docs.livelike.com/docs/stock-chat-ui-customization.md)
+- [Chat Message Image Picker (Android)](https://docs.livelike.com/docs/chat-image-picker-android.md)
+- [Threading in Chat](https://docs.livelike.com/docs/threading-in-chat.md)
+- [Spoiler Prevention (Android)](https://docs.livelike.com/docs/android-spoiler-free.md): Preventing spoilers on Android
+- [Comments Stock UI (Android)](https://docs.livelike.com/docs/comments-stock-ui-android.md): Comment UI is available from version 2.87
+- [Custom Theming](https://docs.livelike.com/docs/android-customization.md)
+- [Localization](https://docs.livelike.com/docs/android-localization.md): This doc helps out how to achieve  localization for all the resources used by Android SDK
+- [Analytics](https://docs.livelike.com/docs/android-analytics.md)
+- [Network Utils](https://docs.livelike.com/docs/network-utils-android.md)
+- [Troubleshooting](https://docs.livelike.com/docs/android-troubleshooting.md)
+- [Role Based Access Control](https://docs.livelike.com/docs/role-based-access-control-2.md)
+- [LiveLikeRBACClient](https://docs.livelike.com/docs/livelikerbacclient.md): LiveLikeRBACClient is an interface that manages user roles and permissions.
+- [Web SDK](https://docs.livelike.com/docs/web.md): How to get started with the Web SDK
+- [Widgets](https://docs.livelike.com/docs/web-widgets.md)
+- [Creating Widgets](https://docs.livelike.com/docs/web-creating-widgets.md)
+- [Widget Modes](https://docs.livelike.com/docs/web-widget-modes.md): Different ways of displaying and interacting with widgets
+- [Vote Persistence](https://docs.livelike.com/docs/vote-persistence.md)
+- [Widget API Methods](https://docs.livelike.com/docs/widget-api-methods.md)
+- [Widgets Web UI](https://docs.livelike.com/docs/widget-configuration.md)
+- [Custom Widget Creation](https://docs.livelike.com/docs/custom-widget-creation.md)
+- [Custom Widget Examples](https://docs.livelike.com/docs/custom-widget-examples.md)
+- [Chat](https://docs.livelike.com/docs/web-chat.md)
+- [Chat Room Memberships (Web)](https://docs.livelike.com/docs/web-chat-room-memberships.md)
+- [Chat Message List States](https://docs.livelike.com/docs/web-customizing-empty-chat.md): Customizing chat message list states such as empty and loading on the web
+- [Chat Message Timestamps](https://docs.livelike.com/docs/web-chat-message-timestamps.md): Customizing chat message timestamps on web
+- [Chat Message Image Picker (Web)](https://docs.livelike.com/docs/chat-message-image-picker-web.md): Displaying Image Picker for sending images as chat messages
+- [Chat User Muting](https://docs.livelike.com/docs/chat-user-muting.md)
+- [Chat Methods](https://docs.livelike.com/docs/chat-api-methods.md)
+- [Web Custom Chat Message](https://docs.livelike.com/docs/web-custom-chat-message.md)
+- [Deleting chat messages on Web](https://docs.livelike.com/docs/web-delete-chat-message.md)
+- [Chat Message Urls](https://docs.livelike.com/docs/chat-message-urls.md)
+- [Comments](https://docs.livelike.com/docs/web-comments.md)
+- [Web Embeds](https://docs.livelike.com/docs/web-embeds.md): Embedding LiveLike features on your web pages
+- [Web Localization](https://docs.livelike.com/docs/web-chat-localization.md)
+- [Video Player Integration](https://docs.livelike.com/docs/web-video-player-integration.md): Integrating the Web SDK with video players
+- [Spoiler Prevention (Web)](https://docs.livelike.com/docs/web-spoiler-free-sync.md): Preventing spoilers on the web
+- [Web UI Analytics](https://docs.livelike.com/docs/web-custom-analytics.md)
+- [User Profile Integration on Web](https://docs.livelike.com/docs/web-user-profile-integration.md)
+- [Live Blog Tutorial](https://docs.livelike.com/docs/live-blog-tutorial.md): Using Timeline Mode to implement a live blog
+- [Widget Animations Tutorial](https://docs.livelike.com/docs/web-widget-animations-tutorial.md)
+- [Web Styling Cookbook](https://docs.livelike.com/docs/web-theming.md)
+- [Chat Room Switching Tutorial](https://docs.livelike.com/docs/web-chat-room-switching-tutorial.md): How to build a multi-room chat experience with LiveLike and Bootstrap
+- [YouTube Live Integration](https://docs.livelike.com/docs/youtube-live-integration-web-tutorial.md): How to use LiveLike with an embedded YouTube Live player on your page
+- [Pick'ems & In Play Prediction games](https://docs.livelike.com/docs/pickems-in-play-prediction-games.md)
+- [Web SDK - Token Gated Chat Room Tutorial](https://docs.livelike.com/docs/token-gated-chat-room-tutorial.md)
+- [Web API Requests](https://docs.livelike.com/docs/web-request.md)
+- [Custom Storage](https://docs.livelike.com/docs/web-custom-storage.md)
+- [Web SDK in Webviews](https://docs.livelike.com/docs/web-native-mobile-webviews.md): Using the Web SDK inside of native mobile WebViews
+- [API Reference](https://docs.livelike.com/docs/web-api-reference.md)
+- [Swift SDK](https://docs.livelike.com/docs/swift.md)
+- [Kotlin SDK](https://docs.livelike.com/docs/kotlin.md)
+- [DataStoreDelegate for local storage](https://docs.livelike.com/docs/datastoredelegate-for-storing.md)
+- [Getting Started with Chat](https://docs.livelike.com/docs/chat-kotlin.md)
+- [Getting Started with Widgets](https://docs.livelike.com/docs/widgets-kotlin.md)
+- [Javascript SDK](https://docs.livelike.com/docs/javascript.md): How to get started with the Javascript SDK
+- [User Profile](https://docs.livelike.com/docs/javascript-user-profile.md): Extending your user data with LiveLike profiles
+- [User Profile Integration](https://docs.livelike.com/docs/javascript-user-profile-integration.md)
+- [Program](https://docs.livelike.com/docs/javascript-program.md)
+- [Widgets](https://docs.livelike.com/docs/javascript-widgets.md)
+- [Chat](https://docs.livelike.com/docs/javascript-chat.md)
+- [Chat Rooms](https://docs.livelike.com/docs/javascript-chat-rooms.md)
+- [Chat Room Memberships (JavaScript)](https://docs.livelike.com/docs/javascript-chat-room-memberships.md)
+- [Chat Room Invitations](https://docs.livelike.com/docs/javascript-chat-invitations.md)
+- [Chat Messages](https://docs.livelike.com/docs/javascript-chat-messages.md)
+- [Pin Messages](https://docs.livelike.com/docs/javascript-pin-messages.md)
+- [Stickers](https://docs.livelike.com/docs/javascript-stickers.md): Stickers are images or animations that can be used inside of chat messages. They can be customized to match an app's look and feel.
+- [Comments](https://docs.livelike.com/docs/javascript-comment.md)
+- [Board](https://docs.livelike.com/docs/javascript-comment-board.md)
+- [Comment](https://docs.livelike.com/docs/javascript-comment-1.md)
+- [Replies](https://docs.livelike.com/docs/javascript-comment-replies.md)
+- [Comment Board Ban](https://docs.livelike.com/docs/javascript-comment-board-ban.md): A tool for the moderators to ban users on a board.
+- [Comment Report](https://docs.livelike.com/docs/javascript-comment-report.md): A resource that represents a report submitted for comment. Users can report offensive comments to moderators.
+- [Reactions](https://docs.livelike.com/docs/javascript-reactions.md)
+- [Reaction Pack](https://docs.livelike.com/docs/javascript-reaction-pack.md)
+- [Reaction Space](https://docs.livelike.com/docs/javascript-reaction-space.md)
+- [User Reaction](https://docs.livelike.com/docs/javascript-user-reaction.md)
+- [Rewards](https://docs.livelike.com/docs/javascript-rewards.md)
+- [Reward Items](https://docs.livelike.com/docs/javascript-reward-items.md)
+- [Reward Actions](https://docs.livelike.com/docs/javascript-reward-actions.md)
+- [Badges](https://docs.livelike.com/docs/javascript-badges.md)
+- [Quest](https://docs.livelike.com/docs/javascript-quest.md)
+- [Social Graph](https://docs.livelike.com/docs/javascript-social-graph.md): Define relationships between users and use them to personalize their experience
+- [User Presence](https://docs.livelike.com/docs/javascript-user-presence.md)
+- [Sponsors](https://docs.livelike.com/docs/javascript-sponsors.md)
+- [React Native SDK](https://docs.livelike.com/docs/react-native.md)
+- [Core Concepts](https://docs.livelike.com/docs/react-native-core-concepts.md)
+- [Package structure](https://docs.livelike.com/docs/react-native-package-structure.md)
+- [Customisation](https://docs.livelike.com/docs/react-native-customisation.md)
+- [Custom hooks](https://docs.livelike.com/docs/react-native-custom-hooks.md)
+- [Widget Anatomy](https://docs.livelike.com/docs/react-native-widget-anatomy.md)
+- [Widget UI Lifecycle](https://docs.livelike.com/docs/react-native-widget-ui-lifecycle.md)
+- [Components](https://docs.livelike.com/docs/react-native-components.md)
+- [Widget](https://docs.livelike.com/docs/react-native-widget.md)
+- [LLChat](https://docs.livelike.com/docs/react-native-llchat.md)
+- [LLChatMessageList](https://docs.livelike.com/docs/react-native-llchatmessagelist.md)
+- [LLChatMessageComposer](https://docs.livelike.com/docs/react-native-llchatmessagecomposer.md)
+- [LLWidgets](https://docs.livelike.com/docs/react-native-llwidgets.md)
+- [LLPollWidget](https://docs.livelike.com/docs/react-native-llpollwidget.md)
+- [LLQuizWidget](https://docs.livelike.com/docs/react-native-llquizwidget.md)
+- [LLPredictionWidget](https://docs.livelike.com/docs/react-native-llpredictionwidget.md)
+- [LLPredictionFollowUpWidget](https://docs.livelike.com/docs/react-native-llpredictionfollowupwidget.md)
+- [LLNumberPredictionWidget](https://docs.livelike.com/docs/react-native-llnumberpredictionwidget.md)
+- [LLNumberPredictionFollowUpWidget](https://docs.livelike.com/docs/react-native-llnumberpredictionfollowupwidget.md)
+- [LLEmojiSliderWidget](https://docs.livelike.com/docs/react-native-llemojisliderwidget.md)
+- [LLCheerMeterWidget](https://docs.livelike.com/docs/react-native-llcheermeterwidget.md)
+- [LLAlertWidget](https://docs.livelike.com/docs/react-native-llalertwidget.md)
+- [LLTextAskWidget](https://docs.livelike.com/docs/react-native-lltextaskwidget.md)
+- [LLCoreWidget](https://docs.livelike.com/docs/react-native-llcorewidget.md)
+- [LLWidgetHeader](https://docs.livelike.com/docs/react-native-llwidgetheader.md)
+- [LLWidgetFooter](https://docs.livelike.com/docs/react-native-llwidgetfooter.md)
+- [LLWidgetVoteOption](https://docs.livelike.com/docs/react-native-llwidgetvoteoption.md)
+- [LLChatHeader](https://docs.livelike.com/docs/react-native-llchatheader.md)
+- [LLChatBanner](https://docs.livelike.com/docs/react-native-llchatbanner.md)
+- [LLChatMessageMenu](https://docs.livelike.com/docs/react-native-llchatmessagemenu.md)
+- [LLUserReactionCounts](https://docs.livelike.com/docs/react-native-lluserreactioncounts.md)
+- [LLGifPicker](https://docs.livelike.com/docs/react-native-llgifpicker.md)
+- [LLStickerPicker](https://docs.livelike.com/docs/react-native-llstickerpicker.md)
+- [LLThemeSwitch](https://docs.livelike.com/docs/llthemeswitch.md)
+- [Hooks](https://docs.livelike.com/docs/react-native-hooks.md)
+- [useInit](https://docs.livelike.com/docs/react-native-useinit.md)
+- [useChatRoom](https://docs.livelike.com/docs/react-native-usechatroom.md)
+- [useChatMessages](https://docs.livelike.com/docs/react-native-usechatmessages.md)
+- [useChatMessageActions](https://docs.livelike.com/docs/react-native-usechatmessageactions.md)
+- [Reaction Hooks](https://docs.livelike.com/docs/react-native-reaction-hooks.md)
+- [useChatMessagesEffect](https://docs.livelike.com/docs/react-native-usechatmessageseffect.md)
+- [useMessageItemPopover](https://docs.livelike.com/docs/react-native-usemessageitempopover.md)
+- [useStickerPacks](https://docs.livelike.com/docs/react-native-usestickerpacks.md)
+- [useLoadStickerPacksEffect](https://docs.livelike.com/docs/react-native-useloadstickerpackseffect.md)
+- [useStickerPicker](https://docs.livelike.com/docs/react-native-usestickerpicker.md)
+- [useGifPicker](https://docs.livelike.com/docs/react-native-usegifpicker.md)
+- [useBanner](https://docs.livelike.com/docs/react-native-usebanner.md)
+- [useBannerActions](https://docs.livelike.com/docs/react-native-usebanneractions.md)
+- [useAutoHideBannerEffect](https://docs.livelike.com/docs/react-native-useautohidebannereffect.md)
+- [useAutoScroll](https://docs.livelike.com/docs/react-native-useautoscroll.md)
+- [useApi](https://docs.livelike.com/docs/react-native-useapi.md)
+- [useTheme](https://docs.livelike.com/docs/react-native-usetheme.md)
+- [useStyles](https://docs.livelike.com/docs/react-native-usestyles.md)
+- [useWidgetInteractiveTimeout](https://docs.livelike.com/docs/react-native-usewidgetinteractivetimeout.md)
+- [useWidgetExpiryEffect](https://docs.livelike.com/docs/react-native-usewidgetexpiryeffect.md)
+- [usePredictionClaimRewardEffect](https://docs.livelike.com/docs/usepredictionclaimrewardeffect.md)
+- [useAnalytics](https://docs.livelike.com/docs/react-native-useanalytics.md)
+- [useChatMessageMenuItemActions](https://docs.livelike.com/docs/react-native-usechatmessagemenuitemactions.md)
+- [useDebounce](https://docs.livelike.com/docs/react-native-usedebounce.md)
+- [useTrackKeyboardEffect](https://docs.livelike.com/docs/react-native-usetrackkeyboardeffect.md)
+- [useWidgetInteractedAnalytics](https://docs.livelike.com/docs/react-native-usewidgetinteractedanalytics.md)
+- [useWidgetSubmitAction](https://docs.livelike.com/docs/react-native-usewidgetsubmitaction.md)
+- [API reference](https://docs.livelike.com/docs/react-native-api-reference.md)
+- [Analytics](https://docs.livelike.com/docs/react-native-analytics.md)
+- [REST API](https://docs.livelike.com/docs/rest-api-getting-started.md)
+- [GraphQL](https://docs.livelike.com/docs/graphql.md)
+- [Using Widgets (GraphQL)](https://docs.livelike.com/docs/using-widgets-graphql.md)
+- [Webhooks](https://docs.livelike.com/docs/webhooks.md)
+- [Webhook Events Payload](https://docs.livelike.com/docs/webhook-events-payload.md)
+- [MCP Server](https://docs.livelike.com/docs/mcp-server.md)
+- [Technical Integration Guide](https://docs.livelike.com/docs/arcade.md): This guide outlines the steps for integrating the Arcade Games onto your website using the LiveLike Web SDK and Arcade Javascript SDK.
+- [Native Share & Download Interface Integration (iOS, Android, React Native)](https://docs.livelike.com/docs/native-share-and-download-interface-integration-ios-android-react-native.md): This document explains how to integrate native share and download functionality for the Arcade games when running in a webview (iOS/Android).
+- [MiniGames CMS Guide](https://docs.livelike.com/docs/minigames-cms-guide.md)
+- [Guess The Word CMS Guide](https://docs.livelike.com/docs/guess-the-word.md)
+- [Guess The Image CMS Guide](https://docs.livelike.com/docs/guess-the-image-cms-guide.md)
+- [Trivia CMS Guide](https://docs.livelike.com/docs/trivia.md)
+- [Pick Your Team CMS Guide](https://docs.livelike.com/docs/pick-your-team-cms-setup.md)
+- [Play Predictor CMS Guide](https://docs.livelike.com/docs/play-predictor-cms-guide.md)
+- [Guess What CMS Guide](https://docs.livelike.com/docs/guess-what-cms-guide.md)
+- [Spin The Wheel CMS Guide](https://docs.livelike.com/docs/spin-the-wheel-cms-guide.md)
+- [Sweepstakes CMS Guide](https://docs.livelike.com/docs/sweepstakes.md)
+- [Arcade Analytics](https://docs.livelike.com/docs/arcade-analytics.md)
+- [Play Predictor Events](https://docs.livelike.com/docs/play-predictor-events.md)
+- [Pick Your Team Events](https://docs.livelike.com/docs/pick-your-team.md)
+- [Guess What Events](https://docs.livelike.com/docs/guess-what-events.md)
+- [Guess The Word Events](https://docs.livelike.com/docs/guess-the-word-events.md)
+- [Spin The Wheel Events](https://docs.livelike.com/docs/spin-the-wheel-events.md)
+- [Guess The Image Events](https://docs.livelike.com/docs/guess-the-image-events.md)
+- [Sweepstakes Events](https://docs.livelike.com/docs/sweepstakes-events.md)
+- [ Trivia Events](https://docs.livelike.com/docs/trivia-events.md)
+- [Localization Guide](https://docs.livelike.com/docs/localization.md): Localization in Arcade CMS allows you to manage and deliver content in multiple languages for your games and experiences. This feature ensures that users from different regions can interact with your product in their preferred language, improving accessibility and engagement.
+- [Supported Languages & Codes](https://docs.livelike.com/docs/supported-languages-codes.md): Arcade CMS supports a wide range of languages using standard language codes. These codes are used to identify and configure each locale in the system.
+- [CDP Integration Guide](https://docs.livelike.com/docs/cdp-integration-guide.md)
+- [Getting Started](https://docs.livelike.com/docs/overview.md)
+
+## API Reference
+- [Introduction](https://docs.livelike.com/reference/getting-started-with-your-api.md)
+- [Errors](https://docs.livelike.com/reference/errors.md)
+- [Authentication](https://docs.livelike.com/reference/authentication.md): Authenticating with LiveLike credentials
+- [Pagination](https://docs.livelike.com/reference/pagination.md)
+- [Localization](https://docs.livelike.com/reference/localization.md): This document outlines how LiveLike handles language preferences and serves localized content to clients.
+- [Using Profiles](https://docs.livelike.com/reference/using-profiles-api.md)
+- [Create User Profile](https://docs.livelike.com/reference/create-user-profile.md)
+- [Create Profile by Custom ID](https://docs.livelike.com/reference/create-profile-by-custom-id.md): Create a new user profile with a custom ID
+- [Get User Profile](https://docs.livelike.com/reference/get-user-profile.md)
+- [Get Profile by Custom ID](https://docs.livelike.com/reference/get-profile-by-custom-id.md): Get a user profile by its custom ID
+- [Update User Profile](https://docs.livelike.com/reference/update-user-profile.md)
+- [Prizeout User Session](https://docs.livelike.com/reference/prizeout-user-session.md)
+- [Delete User Profile](https://docs.livelike.com/reference/delete-user-profile.md)
+- [Profile Relationships](https://docs.livelike.com/reference/profile-relationships.md): Create and query connections between LiveLike user profiles
+- [List Relationship Types](https://docs.livelike.com/reference/list-relationship-types.md)
+- [Create a Relationship Type](https://docs.livelike.com/reference/create-a-relationship-type.md)
+- [Create a Profile Relationship](https://docs.livelike.com/reference/create-a-profile-relationship.md)
+- [Delete a Profile Relationship](https://docs.livelike.com/reference/delete-a-profile-relationship.md)
+- [List Profile Relationships](https://docs.livelike.com/reference/list-profile-relationships.md)
+- [Profile Groups](https://docs.livelike.com/reference/profile-group.md)
+- [Create a Profile Group](https://docs.livelike.com/reference/create-a-group.md)
+- [Get Profile Group Detail](https://docs.livelike.com/reference/get-profile-group-detail.md)
+- [Delete Profile Group](https://docs.livelike.com/reference/delete-profile-group.md)
+- [Update Profile Group](https://docs.livelike.com/reference/update-profile-group.md)
+- [Add Members to Group](https://docs.livelike.com/reference/add-members-to-group.md)
+- [List Profile Group Members](https://docs.livelike.com/reference/get-profile-group-detail-copy.md)
+- [Remove Members from Group](https://docs.livelike.com/reference/remove-members-from-group.md)
+- [Using Programs](https://docs.livelike.com/reference/using-programs-api.md)
+- [Get Program](https://docs.livelike.com/reference/get-program.md)
+- [Get Program by Custom ID](https://docs.livelike.com/reference/get-program-by-custom-id.md)
+- [Create Program](https://docs.livelike.com/reference/create-program.md): Creating a new program inside an app
+- [List Programs](https://docs.livelike.com/reference/list-programs.md): List all programs for an app
+- [Update Program](https://docs.livelike.com/reference/update-program.md)
+- [Using Chat Rooms](https://docs.livelike.com/reference/using-chat-rooms.md)
+- [Get a Chat Room](https://docs.livelike.com/reference/get-chat-room.md)
+- [Get List of Chat Room](https://docs.livelike.com/reference/get-list-of-chat-rooms.md)
+- [Create a Chat Room](https://docs.livelike.com/reference/create-chat-room.md): Create a new chat room
+- [Update a Chat Room](https://docs.livelike.com/reference/update-a-chat-room.md)
+- [Delete a Chat Room](https://docs.livelike.com/reference/delete-a-chat-room.md)
+- [Delete A Chat Room Message](https://docs.livelike.com/reference/delete-a-chat-room-message.md)
+- [Link a chat room with a program](https://docs.livelike.com/reference/link-a-chat-room-with-a-program.md)
+- [Unlink a chat room from a program](https://docs.livelike.com/reference/unlink-a-chat-room-from-a-program.md)
+- [Send a Chat Message](https://docs.livelike.com/reference/send-chat-message.md)
+- [Send a Custom Chat Message](https://docs.livelike.com/reference/send-a-custom-chat-message.md): Send a custom message to a chat room.  This can be used to send rich data as a chat message that can be interpreted by the SDK to perform some action or display additional content.
+- [List Chat Messages](https://docs.livelike.com/reference/get-chatroom-messages.md)
+- [Get Chat Message Count](https://docs.livelike.com/reference/get-chatroom-message-count.md)
+- [Get Reported Chat Messages](https://docs.livelike.com/reference/get-reported-chat-messages.md): This API will give all the reports in a chatroom, irrespective whether the same message is reported by different users
+- [Using Message Threads](https://docs.livelike.com/reference/message-threads.md)
+- [Create a pin message](https://docs.livelike.com/reference/create-a-pin-message.md)
+- [Get Pinned Message Info](https://docs.livelike.com/reference/get-pinned-message-info.md)
+- [Unpin Message](https://docs.livelike.com/reference/unpin-message.md)
+- [List Chat Room Memberships](https://docs.livelike.com/reference/list-chat-room-memberships.md)
+- [List a User's Chat Room Memberships](https://docs.livelike.com/reference/list-a-users-chat-room-memberships.md)
+- [Create a Chat Room Membership](https://docs.livelike.com/reference/create-a-chat-room-membership.md)
+- [Delete a Chat Room Membership](https://docs.livelike.com/reference/delete-a-chat-room-membership.md)
+- [List Chat Room Invitations](https://docs.livelike.com/reference/list-chat-room-invitations.md)
+- [Create a Chat Room Invitation](https://docs.livelike.com/reference/create-a-chat-room-invitation.md): Inviting a user in a chatroom
+- [Update a Chat Room Invitation](https://docs.livelike.com/reference/update-a-chat-room-invitation.md): For accepting/rejecting invitation sent by user
+- [Delete a Chat Room Invitation](https://docs.livelike.com/reference/delete-a-chat-room-invitation.md)
+- [Create an access rule for mute/globally mute](https://docs.livelike.com/reference/create-an-access-rule-for-muteglobally-mute.md): Muting a profile in a chatroom
+- [Remove a chatroom access rule](https://docs.livelike.com/reference/remove-a-chatroom-access-rule.md)
+- [Create a Sticker](https://docs.livelike.com/reference/create-a-sticker.md)
+- [Create a Sticker Pack](https://docs.livelike.com/reference/create-a-sticker-pack.md)
+- [List Profile Exclusive Sticker Packs](https://docs.livelike.com/reference/list-profile-exclusive-sticker-packs.md)
+- [Revoke Profile Sticker Pack](https://docs.livelike.com/reference/revoke-profile-sticker-pack.md)
+- [Assign Exclusive Sticker Pack to Profile](https://docs.livelike.com/reference/assign-exclusive-sticker-pack-to-profile.md)
+- [Create A Flair](https://docs.livelike.com/reference/create-a-flair.md): Name or image or image_url must be defined and valid. Images supported are the svg and png, regardless they are coming from url or file. If image is provided with image_url body can be sent as application/json instead of form-data.
+- [List Flairs](https://docs.livelike.com/reference/list-flairs.md)
+- [Flair Detail](https://docs.livelike.com/reference/flair-detail.md)
+- [Update A Flair](https://docs.livelike.com/reference/update-a-flair.md): Name or image or image_url must be defined and valid. Images supported are the svg and png, regardless they are coming from url or file. If image is provided with image_url body can be sent as application/json instead of form-data.
+- [Delete A Flair](https://docs.livelike.com/reference/delete-a-flair.md): Soft delete will be applied to the flair.
+- [Create a Flair Scope](https://docs.livelike.com/reference/create-a-flair-scope.md)
+- [List Flair Scopes](https://docs.livelike.com/reference/list-flairs-1.md)
+- [Flair Scope Detail](https://docs.livelike.com/reference/flair-detail-1.md)
+- [Update A Flair Scope](https://docs.livelike.com/reference/update-a-flair-1.md)
+- [Create A Flair Assignment](https://docs.livelike.com/reference/create-a-flair-assignment.md): If scope id and resource kind are not defined flair is assigned globally to the profile.
+- [List Flair Assignments](https://docs.livelike.com/reference/list-flair-assignments.md)
+- [Flair Assignment Detail](https://docs.livelike.com/reference/flair-assignment-detail.md)
+- [Update a Flair Assignment](https://docs.livelike.com/reference/update-a-flair-assignment.md)
+- [Delete A Flair Assignment](https://docs.livelike.com/reference/delete-a-flair-assignment.md): Hard delete is applied
+- [Using Widgets](https://docs.livelike.com/reference/widgets-basics.md)
+- [Listing Widgets](https://docs.livelike.com/reference/listing-widgets.md)
+- [Widget Analytics](https://docs.livelike.com/reference/widget-analytics.md)
+- [Get Widget Interactions](https://docs.livelike.com/reference/get-widget-interactions.md)
+- [Get Unclaimed Widget Interactions](https://docs.livelike.com/reference/get-unclaimed-widget-interactions.md)
+- [Widget Impressions](https://docs.livelike.com/reference/widget-impressions.md): Track widget viewers
+- [Publish Widget](https://docs.livelike.com/reference/publish-widget.md)
+- [Delete Widget](https://docs.livelike.com/reference/delete-widget.md)
+- [Report a widget](https://docs.livelike.com/reference/report-a-widget.md)
+- [Moderate a widget report](https://docs.livelike.com/reference/moderate-a-widget-report.md)
+- [List widget reports](https://docs.livelike.com/reference/list-widget-reports.md)
+- [Listing Applications Widgets](https://docs.livelike.com/reference/listing-applications-widgets.md)
+- [Get an Alert](https://docs.livelike.com/reference/get-an-alert-1.md)
+- [Create an Alert](https://docs.livelike.com/reference/create-an-alert.md)
+- [Get a Video Alert](https://docs.livelike.com/reference/get-a-video-alert.md)
+- [Create a Video Alert](https://docs.livelike.com/reference/create-a-video-alert.md)
+- [Update a Video Alert](https://docs.livelike.com/reference/update-a-video-alert.md)
+- [Delete a Video Alert](https://docs.livelike.com/reference/delete-a-video-alert.md)
+- [Get a Text Poll](https://docs.livelike.com/reference/get-a-text-poll.md)
+- [Create Text Poll](https://docs.livelike.com/reference/create-text-poll.md)
+- [Get an Image Poll](https://docs.livelike.com/reference/get-an-image-poll.md)
+- [Create Image Poll](https://docs.livelike.com/reference/create-image-poll.md)
+- [Create a Poll Vote](https://docs.livelike.com/reference/create-poll-vote.md)
+- [Create an Emoji Slider](https://docs.livelike.com/reference/create-an-image-slider.md)
+- [Get an Emoji Slider](https://docs.livelike.com/reference/get-an-emoji-slider.md)
+- [Create a Cheer Meter](https://docs.livelike.com/reference/create-a-cheer-meter.md)
+- [Create a Text Quiz](https://docs.livelike.com/reference/create-a-text-quiz.md)
+- [Create an Image Quiz](https://docs.livelike.com/reference/create-an-image-quiz.md)
+- [Get a Text Quiz](https://docs.livelike.com/reference/get-a-text-quiz.md)
+- [Get an Image Quiz](https://docs.livelike.com/reference/get-an-image-quiz.md)
+- [Using Predictions](https://docs.livelike.com/reference/using-image-predictions.md)
+- [Get Image Prediction](https://docs.livelike.com/reference/get-image-prediction.md)
+- [Create Image Prediction](https://docs.livelike.com/reference/create-image-prediction.md)
+- [Create Image Prediction Follow-up](https://docs.livelike.com/reference/create-image-prediction-follow-up.md)
+- [Update Text Prediction Option](https://docs.livelike.com/reference/update-text-prediction-option.md)
+- [Update Image Prediction Option](https://docs.livelike.com/reference/update-image-prediction-option.md)
+- [Create Image Prediction Option](https://docs.livelike.com/reference/create-image-prediction-option.md)
+- [Create Text Prediction](https://docs.livelike.com/reference/create-text-prediction.md)
+- [Get Text Prediction](https://docs.livelike.com/reference/get-text-prediction.md)
+- [Update Text Prediction](https://docs.livelike.com/reference/update-text-prediction.md)
+- [Create Text Prediction Follow-up](https://docs.livelike.com/reference/create-text-prediction-follow-up.md)
+- [Create Text Prediction Option](https://docs.livelike.com/reference/create-text-prediction-option.md)
+- [Create an Image Number Prediction](https://docs.livelike.com/reference/create-an-image-number-prediction.md)
+- [Update Image Number Prediction Option](https://docs.livelike.com/reference/update-image-number-prediction-option.md)
+- [Create Image Number Prediction Follow-up](https://docs.livelike.com/reference/create-image-number-prediction-follow-up.md)
+- [Update Image Number Prediction](https://docs.livelike.com/reference/update-image-number-prediction.md)
+- [Get Image Number Prediction](https://docs.livelike.com/reference/get-image-number-prediction.md)
+- [Create Image Number Prediction Option](https://docs.livelike.com/reference/create-image-number-prediction-option.md)
+- [Create a Text Ask widget](https://docs.livelike.com/reference/create-a-text-ask-widget.md): Ask your audience. Collect their replies, and feature the best ones.
+- [Get a Text Ask Widget](https://docs.livelike.com/reference/get-a-text-ask-widget.md)
+- [Create a Social Embed](https://docs.livelike.com/reference/create-a-social-embed.md)
+- [Get a Social Embed](https://docs.livelike.com/reference/get-a-social-embed.md)
+- [Create a Rich Post](https://docs.livelike.com/reference/create-a-rich-post.md)
+- [Get a Rich Post](https://docs.livelike.com/reference/get-a-rich-post.md)
+- [List Rich Posts](https://docs.livelike.com/reference/list-rich-posts.md)
+- [Update Published Rich Post](https://docs.livelike.com/reference/list-rich-posts-1.md)
+- [Delete a Rich Post](https://docs.livelike.com/reference/list-rich-posts-1-1.md)
+- [Get Leaderboard Details](https://docs.livelike.com/reference/get-leaderboard-details.md): Getting leaderboard details can be achieved by using the request below. Leaderboard details can be useful if you would like to know the name of the leaderboard or the type of reward a user can earn.
+- [Get Leaderboard Details by Custom Id](https://docs.livelike.com/reference/get-leaderboard-by-custom-id.md): Getting leaderboard details by custom-id can be achieved by using the request below. Leaderboard details can be useful if you would like to know the name of the leaderboard or the type of reward a user can earn.
+- [List Leaderboards](https://docs.livelike.com/reference/list-leaderboards.md)
+- [Create Leaderboard](https://docs.livelike.com/reference/create-leaderboard.md)
+- [Update a Leaderboard](https://docs.livelike.com/reference/update-leaderboard.md)
+- [Update a Leaderboard by custom-id](https://docs.livelike.com/reference/update-a-leaderboard-copy.md)
+- [List Leaderboard Entries](https://docs.livelike.com/reference/getting-leaderboard-entries.md): A user that competes is considered a leaderboard entry. Retrieving leaderboard entries returns a paginated list of twenty leaderboard entry objects at maximum.
+- [Get Leaderboard Entry Detail](https://docs.livelike.com/reference/get-leaderboard-entry-detail.md)
+- [Link a Leaderboard with a Program](https://docs.livelike.com/reference/link-a-leaderboard-with-a-program.md)
+- [Unlink a leaderboard from a program](https://docs.livelike.com/reference/unlink-a-leaderboard-from-a-program.md)
+- [Leaderboard Views](https://docs.livelike.com/reference/leaderboard-views.md): Group and query for only a subset of Profile entries on a large Leaderboard.
+- [List Views for a Leaderboard](https://docs.livelike.com/reference/list-views-for-a-leaderboard.md)
+- [Create a Leaderboard View](https://docs.livelike.com/reference/create-a-leaderboard-view.md)
+- [Replace Profiles in a View](https://docs.livelike.com/reference/replace-profiles-in-a-view.md): Existing Profiles not in this set will be removed.
+- [Add Profiles to a Leaderboard View](https://docs.livelike.com/reference/add-profiles-to-a-leaderboard-view.md): Existing Profiles in the view will be preserved.
+- [Delete a Leaderboard View](https://docs.livelike.com/reference/delete-a-leaderboard-view.md)
+- [Delete a Profile from a Leaderboard View](https://docs.livelike.com/reference/delete-a-profile-from-a-leaderboard-view.md): Remove a single Profile from a Leaderboard View
+- [List Profiles for a Leaderboard View](https://docs.livelike.com/reference/list-profiles-for-a-leaderboard-view.md): Existing Profiles not in this set will be removed.
+- [List all leaderboard views in a Leaderboard](https://docs.livelike.com/reference/list-all-leaderboard-views-in-a-leaderboard.md)
+- [Get profile rank in a leaderboard view](https://docs.livelike.com/reference/get-profile-rank-in-a-leaderboard-view.md): Returns profiles rank in a leaderboard view.
+- [List Reward Items](https://docs.livelike.com/reference/list-reward-items.md)
+- [Create Reward Item](https://docs.livelike.com/reference/create-reward-item.md)
+- [Get reward item balance](https://docs.livelike.com/reference/get-reward-item-balance.md): You can see the reward item balance for a given user
+- [List Reward Item Balances](https://docs.livelike.com/reference/list-reward-item-balances.md): List reward item balances by passing reward_item_id
+- [Credit Reward Item](https://docs.livelike.com/reference/credit-reward-item.md): Credit reward item points to a user profile
+- [Debit Reward Item](https://docs.livelike.com/reference/debit-reward-item.md): Debit reward item points from a user profile
+- [Transfer Reward Items](https://docs.livelike.com/reference/reward-item-transfers.md): Transfer reward items from one user to another
+- [List Reward Transactions](https://docs.livelike.com/reference/list-reward-transactions.md): List reward transactions for earned reward items
+- [List Reward Item Transfers](https://docs.livelike.com/reference/list-reward-item-transfers.md): You can see the reward item balance for a given user
+- [Get Reward Table](https://docs.livelike.com/reference/get-reward-table.md)
+- [List Reward Tables](https://docs.livelike.com/reference/list-reward-tables.md)
+- [List Reward Actions](https://docs.livelike.com/reference/list-reward-actions.md): Get list of reward actions for a given application.
+- [Create Reward Table](https://docs.livelike.com/reference/create-reward-table.md)
+- [Delete Reward Table](https://docs.livelike.com/reference/delete-reward-table.md)
+- [Create Reward Table Entry](https://docs.livelike.com/reference/create-reward-table-entry.md)
+- [Get Reward Table Entry](https://docs.livelike.com/reference/get-reward-table-entry.md)
+- [Delete Reward Table Entry](https://docs.livelike.com/reference/delete-reward-table-entry.md)
+- [Link a reward table with a program](https://docs.livelike.com/reference/link-a-reward-table-with-a-program.md)
+- [Unlink a reward table with a program](https://docs.livelike.com/reference/unlink-a-reward-table-with-a-program.md)
+- [Create Reward Action](https://docs.livelike.com/reference/creating-reward-actions.md)
+- [List Invoked Reward Actions](https://docs.livelike.com/reference/list-invoked-reward-actions.md): Invoke actions to trigger the rewards engine for that action
+- [Invoke Reward Action](https://docs.livelike.com/reference/invoking-custom-actions.md): Invoke actions to trigger the rewards engine for that action
+- [Batch Invoke Reward Action](https://docs.livelike.com/reference/batch-invoke-reward-action.md)
+- [List App Badges](https://docs.livelike.com/reference/list-available-badges.md): List all badges available in an application
+- [Create App Badge](https://docs.livelike.com/reference/create-badge-1.md): Create a new badge inside an app that can be awarded to users later
+- [Get an App Badge](https://docs.livelike.com/reference/get-a-badge.md): Get the details of a specific badge
+- [List Earned Badges](https://docs.livelike.com/reference/get-users-badges.md): List badges earned by a user
+- [Award a Badge to a User](https://docs.livelike.com/reference/award-a-badge-to-a-user.md)
+- [List Badge progress](https://docs.livelike.com/reference/list-badge-progress.md)
+- [List Profiles who have earned a specific badge](https://docs.livelike.com/reference/list-profiles-who-have-earned-a-specific-badge.md)
+- [Get List of earned badges](https://docs.livelike.com/reference/get-list-of-earned-badges.md): This API provides a list of badges earned by the requesting user if they are not an application producer. However, if the requesting user is an application producer, the API will return the badges owned by profiles in the entire application.
+- [Revoke Earned Badge](https://docs.livelike.com/reference/revoke-earned-badge.md): This API call can be made to revoke the user’s earned badge.  List of user's who have access to revoke earned badge :- 1. Producer(SuperUser) can revoke the badge. 2. User can revoke the earned badge for himself.
+- [List Application Sponsors](https://docs.livelike.com/reference/list-program-sponsors.md)
+- [List Assets](https://docs.livelike.com/reference/list-assets.md)
+- [Get an Asset](https://docs.livelike.com/reference/get-an-asset.md)
+- [Create Asset](https://docs.livelike.com/reference/get-an-asset-1.md)
+- [Block a Profile](https://docs.livelike.com/reference/create-a-profile-block.md)
+- [Get blocked profiles](https://docs.livelike.com/reference/get-blocked-profiles.md)
+- [Unblock profile by Block Object ID](https://docs.livelike.com/reference/unblock-profile.md)
+- [Get Blocked Profile Ids](https://docs.livelike.com/reference/get-blocked-profile-ids.md)
+- [Unblock profile by Profile ID](https://docs.livelike.com/reference/unblock-profile-by-profile-id.md)
+- [Profile Blocks Bulk Sync](https://docs.livelike.com/reference/profile-blocks-bulk-sync.md)
+- [Unblock profile by Profile Custom ID](https://docs.livelike.com/reference/unblock-profile-by-profile-custom-id.md)
+- [Get an Application](https://docs.livelike.com/reference/get-an-application.md)
+- [Create an Application](https://docs.livelike.com/reference/create-an-application.md): This API will create an Application. It requires using a Personal API Token for authentication.
+- [Update an Application](https://docs.livelike.com/reference/update-an-application.md): This API requires using a Personal API Token.
+- [Delete an application](https://docs.livelike.com/reference/delete-an-application.md): This API requires using a Personal API Token for authentication.
+- [Get a Redemption Key](https://docs.livelike.com/reference/get-a-redemption-key.md)
+- [List Redemption Keys](https://docs.livelike.com/reference/list-redemption-keys.md)
+- [Create a Redemption Key](https://docs.livelike.com/reference/create-a-redemption-key.md)
+- [Update a Redemption Key](https://docs.livelike.com/reference/update-a-redemption-key.md)
+- [Update a Redemption Key by Code](https://docs.livelike.com/reference/update-a-redemption-key-by-code.md): This endpoint can be used by a backend integrator to patch the redemption key resource, or used to redeem a code using a user level access token.
+- [Delete a Redemption Key](https://docs.livelike.com/reference/delete-a-redemption-key.md)
+- [Create a Registered Link](https://docs.livelike.com/reference/create-a-registered-link.md)
+- [List Registered Links](https://docs.livelike.com/reference/list-registered-links.md)
+- [Delete a Registered Link](https://docs.livelike.com/reference/delete-a-registered-link.md)
+- [Create Quest](https://docs.livelike.com/reference/create-quests.md)
+- [Get Quest](https://docs.livelike.com/reference/get-quests.md)
+- [List Quests](https://docs.livelike.com/reference/list-quests.md)
+- [Delete Quest](https://docs.livelike.com/reference/delete-quest.md)
+- [Create Task](https://docs.livelike.com/reference/create-task.md)
+- [Get Task](https://docs.livelike.com/reference/get-task.md)
+- [Delete Task](https://docs.livelike.com/reference/delete-task.md)
+- [List Tasks](https://docs.livelike.com/reference/list-tasks.md)
+- [List User Quests](https://docs.livelike.com/reference/list-user-quests.md)
+- [Create User Quest](https://docs.livelike.com/reference/create-user-quest.md)
+- [Update User Quest Task Progress](https://docs.livelike.com/reference/update-user-quest-task-progress.md)
+- [Delete UserQuest](https://docs.livelike.com/reference/delete-userquest.md)
+- [Update User Quest](https://docs.livelike.com/reference/update-user-quest.md)
+- [Create Quest Rewards](https://docs.livelike.com/reference/create-quest-rewards.md)
+- [Remove a quest reward](https://docs.livelike.com/reference/remove-a-quest-reward.md)
+- [Get list of quest rewards](https://docs.livelike.com/reference/get-list-of-quest-rewards.md)
+- [Get user quest rewards](https://docs.livelike.com/reference/get-user-quest-rewards.md)
+- [Claim user quest rewards](https://docs.livelike.com/reference/claim-user-quest-rewards.md)
+- [Get Quest Badges](https://docs.livelike.com/reference/get-quest-badges.md)
+- [Add Badges to Quest](https://docs.livelike.com/reference/add-quest-badges.md)
+- [Remove Badge from Quest](https://docs.livelike.com/reference/remove-badge-from-quest.md)
+- [Claim User Quest Badge](https://docs.livelike.com/reference/claim-user-quest-badges.md)
+- [Create AB Test Quest](https://docs.livelike.com/reference/create-ab-test-quest.md): Creates an A/B test quest along with its A/B test configuration and associated variant details.
+- [Get AB Test Quest](https://docs.livelike.com/reference/get-ab-test-quest.md): Get AB Test Quest
+- [List AB Test Quests](https://docs.livelike.com/reference/list-ab-test-quests.md)
+- [Assign Quest Variant to Profile](https://docs.livelike.com/reference/assign-quest-variant-to-profile.md): This step is mandatory for A/B test–based quests to progress. For each provided quest_id, the API selects a quest variant based on the quest’s A/B test assignment strategy (e.g., random allocation) and creates an assignment for the given profile. The response returns successfully assigned variants and any quests that were skipped.
+- [Create a Reaction Pack](https://docs.livelike.com/reference/create-a-reaction-pack.md)
+- [Add a Reaction emoji to a pack](https://docs.livelike.com/reference/create-reaction-emoji.md)
+- [Update a Reaction emoji](https://docs.livelike.com/reference/update-reaction-emoji.md)
+- [Delete a Reaction Emoji](https://docs.livelike.com/reference/delete-reaction-emoji.md)
+- [List Reaction Packs](https://docs.livelike.com/reference/list-reaction-packs.md)
+- [Delete a Reaction pack](https://docs.livelike.com/reference/delete-a-reaction-pack.md)
+- [List Profile Exclusive Reaction Packs](https://docs.livelike.com/reference/list-profile-exclusive-reaction-packs.md)
+- [Assign Exclusive Reaction Pack to Profile](https://docs.livelike.com/reference/assign-exclusive-reaction-pack-to-profile.md)
+- [Revoke Profile Reaction Pack](https://docs.livelike.com/reference/revoke-profile-reaction-pack.md)
+- [Get a Reaction Space](https://docs.livelike.com/reference/get-a-reaction-space.md)
+- [Create Reaction Space](https://docs.livelike.com/reference/create-reaction-space.md)
+- [List Reaction Spaces](https://docs.livelike.com/reference/list-reaction-spaces.md)
+- [Update a Reaction Space](https://docs.livelike.com/reference/update-a-reaction-space.md)
+- [Delete a Reaction Space](https://docs.livelike.com/reference/delete-a-reaction-space.md): Target Reaction space which is going to be delete should be created by the same user
+- [Create user reaction](https://docs.livelike.com/reference/create-a-user-reaction.md)
+- [List user reactions](https://docs.livelike.com/reference/list-user-reactions.md)
+- [Delete a user reaction](https://docs.livelike.com/reference/delete-a-user-reaction.md)
+- [Count user reactions per space](https://docs.livelike.com/reference/get-user-reaction-count-per-space.md)
+- [Count user reactions per target](https://docs.livelike.com/reference/get-user-reaction-count.md)
+- [Create a Comment](https://docs.livelike.com/reference/create-a-comment.md)
+- [List comments](https://docs.livelike.com/reference/list-comments.md)
+- [List Comments by Author](https://docs.livelike.com/reference/list-comments-by-author.md)
+- [Update a comment](https://docs.livelike.com/reference/update-a-comment.md)
+- [Delete a comment](https://docs.livelike.com/reference/delete-a-comment.md)
+- [List Replies to Profile's Comments](https://docs.livelike.com/reference/list-replies-to-profiles-comments.md): This API endpoint retrieves all replies made by other users to comments created by a specific profile. For example, if a profile named "ray" has created 10 comments, this API will list all the replies made to those 10 comments by other users.
+- [Get comment counts](https://docs.livelike.com/reference/get-comment-counts.md): Get the count of comments in one or more comment boards
+- [Create comment quality rules](https://docs.livelike.com/reference/create-comment-quality-rules.md)
+- [Update comment quality rules](https://docs.livelike.com/reference/create-comment-quality-rules-1.md)
+- [Delete Comment Quality Rules](https://docs.livelike.com/reference/delete-comment-quality-rules.md)
+- [Create a Comment Board](https://docs.livelike.com/reference/create-a-comment-board.md)
+- [Get the list of comment boards](https://docs.livelike.com/reference/get-the-list-of-comment-boards.md)
+- [Update a comment board](https://docs.livelike.com/reference/update-a-comment-board.md)
+- [Delete Comment Board](https://docs.livelike.com/reference/delete-comment-board.md)
+- [Get comment board by custom_id](https://docs.livelike.com/reference/get-comment-board-by-custom_id.md)
+- [Update Comment Board by custom id](https://docs.livelike.com/reference/update-comment-board-by-custom-id.md)
+- [Delete comment board by custom id](https://docs.livelike.com/reference/delete-comment-board-by-custom-id.md)
+- [Banning Users from Comment Boards](https://docs.livelike.com/reference/ban-profile-for-comment-board.md)
+- [Create a comment board ban](https://docs.livelike.com/reference/create-comments-ban.md)
+- [Get list of comment board bans](https://docs.livelike.com/reference/get-list-of-comment-board-bans.md): 1. As a producer or privileged user I can see all the comment-board-ban-profile from the application 2. As a moderator, I can get a list of all comment-board-ban-profile for the comment boards where I am a moderator 3. As a normal profile, I will get a list of comment-board-ban-profile for myself only.
+- [Remove a ban from a comment board](https://docs.livelike.com/reference/delete-comments-ban.md)
+- [Get comment board ban detail](https://docs.livelike.com/reference/comment-board-ban-detail.md)
+- [Create Comment Report](https://docs.livelike.com/reference/create-comment-report.md)
+- [Get List of comment reports](https://docs.livelike.com/reference/get-list-of-comment-reports.md)
+- [Dismiss a comment report](https://docs.livelike.com/reference/dismiss-a-comment-report.md)
+- [Cancel a comment report](https://docs.livelike.com/reference/cancel-a-comment-report.md)
+- [Dismiss all reports for a reported comment](https://docs.livelike.com/reference/dismiss-all-reports-for-a-reported-comment.md)
+- [Create Live Action](https://docs.livelike.com/reference/create-live-action.md)
+- [Update Live Action](https://docs.livelike.com/reference/update-live-action.md)
+- [Get Live Action](https://docs.livelike.com/reference/get-live-action.md)
+- [Delete Live Action](https://docs.livelike.com/reference/delete-live-action.md)
+- [Create Match Action](https://docs.livelike.com/reference/create-match-action.md)
+- [Update Match Action](https://docs.livelike.com/reference/update-match-action.md)
+- [Get Match Action](https://docs.livelike.com/reference/get-match-action.md)
+- [Delete Match Action](https://docs.livelike.com/reference/delete-match-action.md)
+- [Create Match Insights](https://docs.livelike.com/reference/create-match-insights.md)
+- [Get Match Insights](https://docs.livelike.com/reference/get-match-insights.md)
+- [Delete Match Insights](https://docs.livelike.com/reference/delete-match-insights.md)
+- [Role Based Access Control](https://docs.livelike.com/reference/role-based-access-control.md)
+- [Using RBAC](https://docs.livelike.com/reference/using-rbac.md)
+- [Get List of Resources](https://docs.livelike.com/reference/get-list-of-resources.md)
+- [Get List of Permissions](https://docs.livelike.com/reference/list-permissions.md): List all permissions that ara available to use in role assignments
+- [Get Role Templates](https://docs.livelike.com/reference/get-role-templates.md)
+- [Create a Base Role](https://docs.livelike.com/reference/create-a-base-role.md)
+- [Get List of Base Roles](https://docs.livelike.com/reference/get-list-of-base-roles.md)
+- [Patch Update a Base Role](https://docs.livelike.com/reference/patch-update-a-base-role.md): Used to add permissions, and update the key/name of the base role. Patch Update adds the supplied permissions to existing ones in the supplied base role.
+- [Put Update a Base Role](https://docs.livelike.com/reference/put-update-a-base-role.md): Used to replace existing permissions in a base role to a new set of permissions, and also update name/key of the base role
+- [Delete a Base Role](https://docs.livelike.com/reference/delete-a-base-role.md)
+- [Create a Role](https://docs.livelike.com/reference/create-roles.md)
+- [Get List of Roles](https://docs.livelike.com/reference/get-roles.md)
+- [Patch Update a Role](https://docs.livelike.com/reference/update-a-role.md): Used to add permissions, and update the key/name of the role. Patch Update adds the supplied permissions to existing ones in the supplied role.
+- [Put Update a Role](https://docs.livelike.com/reference/patch-update-a-role-copy.md): Used to replace existing permissions in a role to a new set of permissions, and also update name/key of the role
+- [Delete a Role](https://docs.livelike.com/reference/delete-a-role.md)
+- [Create Role Assignments](https://docs.livelike.com/reference/create-role-assignments.md)
+- [Delete Role Assignment](https://docs.livelike.com/reference/delete-role-assignment.md): Used for deleting a role assignment by using the uuid of the assignment.
+- [Get List of Scopes](https://docs.livelike.com/reference/get-list-of-scopes.md): List all scopes that are available
+- [List Role assignments](https://docs.livelike.com/reference/list-role-assignments.md)
+- [Profile permissions check](https://docs.livelike.com/reference/profile-permissions-check.md): To check if a profile has specific permissions in the given scopes or resources
+- [Role Grants](https://docs.livelike.com/reference/role-grant.md)
+- [Role Grants List](https://docs.livelike.com/reference/role-grants-list.md)
+- [Create Role Grant (Assignment)](https://docs.livelike.com/reference/create-role-grant-assignment.md)
+- [Role Grant Detail](https://docs.livelike.com/reference/role-grant-detail.md)
+- [Delete Role Grant (Unassignment)](https://docs.livelike.com/reference/delete-role-grant-unassignment.md)
+- [Unassignment by Natural Key](https://docs.livelike.com/reference/unassignment-by-natural-key.md)
+- [Create Wildmoka Video Alerts](https://docs.livelike.com/reference/create-wildmoka-video-alerts.md)
+- [Get Wildmoka Video Alerts](https://docs.livelike.com/reference/get-wildmoka-video-alerts.md)
+- [Update Wildmoka Video Alerts](https://docs.livelike.com/reference/update-wildmoka-video-alerts.md)
+- [Delete Wildmoka Video Alerts](https://docs.livelike.com/reference/delete-wildmoka-video-alerts.md)
+- [Program Bans](https://docs.livelike.com/reference/program-bans.md)
+- [Create a Program Ban](https://docs.livelike.com/reference/create-a-program-ban.md)
+- [Get Program Bans](https://docs.livelike.com/reference/get-program-bans.md)
+- [Delete a Program Ban](https://docs.livelike.com/reference/delete-a-program-ban.md)
+- [Pinning a comment](https://docs.livelike.com/reference/create-a-pinned-comment.md)
+- [Unpin a pinned comment](https://docs.livelike.com/reference/unpin-a-pinned-comment.md)
+- [List Pinned Comments](https://docs.livelike.com/reference/list-pinned-comments.md)
+- [Using Status Tiers](https://docs.livelike.com/reference/using-status-tiers.md)
+- [Create Tier Group](https://docs.livelike.com/reference/create-tier-group.md)
+- [List Tier Groups](https://docs.livelike.com/reference/list-tier-groups.md)
+- [Update Tier Group](https://docs.livelike.com/reference/update-tier-group.md)
+- [Delete a Tier Group](https://docs.livelike.com/reference/delete-a-tier-group.md)
+- [Create Tier](https://docs.livelike.com/reference/create-tier.md): To Create tiers within a Tier Group
+- [List Tiers](https://docs.livelike.com/reference/list-tier.md): List Tiers within a Tier Group
+- [Retrieve a Tier](https://docs.livelike.com/reference/retrieve-a-tier.md)
+- [Update Tier](https://docs.livelike.com/reference/update-tier.md)
+- [Delete Tier](https://docs.livelike.com/reference/delete-tier.md)
+- [Create Tier Benefit](https://docs.livelike.com/reference/create-tier-benefit.md)
+- [List Tier Benefits](https://docs.livelike.com/reference/list-tier-benefits.md)
+- [Retrieve Tier Benefit](https://docs.livelike.com/reference/retrieve-tier-benefit.md)
+- [Update Tier Benefit](https://docs.livelike.com/reference/update-tier-benefit.md)
+- [Delete Tier Benefit](https://docs.livelike.com/reference/delete-tier-benefit.md)
+- [Assigning tier to a profile](https://docs.livelike.com/reference/assigning-tier-to-a-profile.md)
+- [List Tier Transactions](https://docs.livelike.com/reference/list-tier-transactions.md)
+- [List User Tiers](https://docs.livelike.com/reference/list-user-tiers.md)
+- [Assign tier to a profile](https://docs.livelike.com/reference/create-a-user-tier.md)
+- [Create a Periodic Streak](https://docs.livelike.com/reference/create-a-periodic-streak.md)
+- [Publish Periodic Streak](https://docs.livelike.com/reference/publish-periodic-streak.md)
+- [List Periodic Streaks](https://docs.livelike.com/reference/list-periodic-streaks.md)
+- [Get periodic streak detail](https://docs.livelike.com/reference/get-periodic-streak-detail.md)
+- [Unarchive a periodic streak](https://docs.livelike.com/reference/unarchive-a-periodic-streak.md)
+- [Archive a periodic streak](https://docs.livelike.com/reference/archive-a-periodic-streak.md)
+- [Update a periodic streak](https://docs.livelike.com/reference/update-a-periodic-streak.md): Periodic streaks can only be updated once the streak is in draft.
+- [Delete Periodic Streak](https://docs.livelike.com/reference/delete-periodic-streak.md)
+- [Get consecutive action streak detail](https://docs.livelike.com/reference/get-periodic-streak-detail-1.md)
+- [List Consecutive Action Streaks](https://docs.livelike.com/reference/list-periodic-streaks-1.md)
+- [Publish Consecutive Action Streak](https://docs.livelike.com/reference/publish-periodic-streak-1.md)
+- [Create a Consecutive Action Streak](https://docs.livelike.com/reference/create-a-periodic-streak-1.md)
+- [Update a consecutive action streak](https://docs.livelike.com/reference/update-a-periodic-streak-1.md): Consecutive action streaks can only be updated once the streak is in draft.
+- [Create Streak Targets](https://docs.livelike.com/reference/create-streak-targets.md)
+- [Update Streak Target](https://docs.livelike.com/reference/update-streak-target.md)
+- [Delete streak target](https://docs.livelike.com/reference/delete-streak-target.md)
+- [List Streak Targets](https://docs.livelike.com/reference/list-streak-targets.md)
+- [Create Streak Target with CSV](https://docs.livelike.com/reference/create-streak-target-with-csv.md)
+- [Archive a consecutive action streak](https://docs.livelike.com/reference/archive-a-consecutive-action-streak.md)
+- [Unarchive a consecutive action streak](https://docs.livelike.com/reference/unarchive-a-consecutive-action-streak.md)
+- [Delete a consecutive action streak](https://docs.livelike.com/reference/delete-a-consecutive-action-streak.md)
+- [List User Streaks](https://docs.livelike.com/reference/list-user-streaks.md)
+- [Create user streak](https://docs.livelike.com/reference/create-user-streak.md): Creates a user streak manually by initializing a streak for a user with a custom starting length. Useful for admin actions, backfills, or correcting user streaks outside the automated flow.
+- [Progress active User Streak](https://docs.livelike.com/reference/progress.md): Progresses an active user streak based on the user’s latest activity. Supports both periodic streaks (using the last_activity timestamp) and consecutive-action streaks (based on the number of completed actions).
+- [List User Streak Milestones](https://docs.livelike.com/reference/list-user-streak-milestones.md)
+- [Reset User Streak](https://docs.livelike.com/reference/reset-user-streak.md): Reset active user streak - only application producer can reset an active user streak
+- [Delete streak milestone ](https://docs.livelike.com/reference/delete-streak-milestone.md)
+- [Update Streak Milestone](https://docs.livelike.com/reference/update-streak-milestone.md)
+- [Create Streak Milestone](https://docs.livelike.com/reference/create-streak-milestone.md)
+- [List Streak Milestones](https://docs.livelike.com/reference/list-streak-milestones.md)
+- [Reward Store API documentation](https://docs.livelike.com/reference/reward-store-api-documentation.md)
+- [List All Collections](https://docs.livelike.com/reference/get_collections.md): Lists all collections your API key has access to. Use the `id` from your collection in the next step to list your reports.  > The root collection has `id: "root"`. Your collection will have an integer ID.
+- [List Collection Items](https://docs.livelike.com/reference/get_collection_items.md): Lists the reports (Cards) and dashboards inside your collection. Use the `id` from any Card to download its data.
+- [Get Card Metadata](https://docs.livelike.com/reference/get_card.md): Returns the details of a report — what columns it returns and whether any filters are needed before downloading.
+- [Download Card Data](https://docs.livelike.com/reference/post_card_query_export.md): Downloads the report data. Choose `csv`, `json`, or `xlsx` depending on what you need.  If the report has no required filters, pass `parameters: []`. If it does, include a `QueryFilterParameter` entry for each required filter.  > This is a `POST` request — filters go in the request body, not the URL.
+- [Get Dashboard](https://docs.livelike.com/reference/get_dashboard.md): Returns the details of a dashboard, including all the reports inside it. You need the `id` (dashcard_id) and `card_id` from each report to download its data via the dashboard download endpoint.
+- [Download Dashboard Card Data](https://docs.livelike.com/reference/post_dashboard_card_query_export.md): Downloads data for a specific report inside a dashboard. Use `GET /api/dashboard/{id}` first to get the `dashcard_id` and `card_id` values you need.
+- [Create Reward Multiplier](https://docs.livelike.com/reference/create-multiplier.md)
+- [List Reward Multipliers](https://docs.livelike.com/reference/list-reward-multipliers.md)
+- [Retrieve Reward Multiplier](https://docs.livelike.com/reference/retrieve-reward-multiplier.md)
+- [Activate User Reward Multiplier](https://docs.livelike.com/reference/activate-user-reward-multiplier.md)
+- [Create Automation Partner](https://docs.livelike.com/reference/create-automation-partner.md)
+- [Update Automation Partner](https://docs.livelike.com/reference/update-automation-partner.md)
+- [List Automation Partners](https://docs.livelike.com/reference/list-automation-partners.md)
+
+## Changelog
+- [iOS SDK 2.115](https://docs.livelike.com/changelog/ios-sdk-2115.md)
+- [Android SDK 3.0.16](https://docs.livelike.com/changelog/android-sdk-3016.md)
+- [Android SDK 3.0.15](https://docs.livelike.com/changelog/android-sdk-3015.md)
+- [iOS SDK 2.114.1](https://docs.livelike.com/changelog/ios-sdk-21141.md)
+- [Android SDK 3.0.14](https://docs.livelike.com/changelog/android-sdk-3013-1.md)

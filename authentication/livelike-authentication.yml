@@ -1,0 +1,39 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.livelike.com/reference/authentication
+docs: https://docs.livelike.com/reference/authentication
+summary:
+  types: [oauth2, http]
+  transport: Authorization HTTP header
+  token_types: [Profile Access Token, Admin Access Token, Personal API Token]
+schemes:
+- name: OAuth2 Bearer
+  type: oauth2
+  scheme: bearer
+  header: Authorization
+  format: "Bearer {access-token}"
+  description: >-
+    All requests are authenticated with OAuth 2.0 Bearer authentication via the
+    Authorization header. Access Tokens are obtained by creating a Profile
+    through the API/SDKs or from the Producer Suite.
+  token_scopes:
+  - name: Profile Access Token
+    scope: profile
+    description: >-
+      Scoped to a single profile. Used to interact with widgets and participate
+      in chat on behalf of an end user.
+  - name: Admin Access Token
+    scope: application
+    description: >-
+      Scoped to an Application and associated with a Producer. Broader
+      permissions; used for server-to-server automations such as creating
+      programs and publishing widgets. Also called API / Producer Access Token.
+- name: Personal API Token
+  type: apiKey
+  in: header
+  parameter_name: Authorization
+  format: "Token {personal-api-token}"
+  description: >-
+    Site-wide / organization-wide administrative token for tasks such as
+    creating and managing applications. Obtained from the My Account page in the
+    LiveLike Producer CMS. Sent as `Authorization: Token {token}`.

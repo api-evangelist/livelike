@@ -1,0 +1,59 @@
+generated: '2026-07-20'
+method: searched
+source: https://www.npmjs.com/org/livelike + https://docs.livelike.com/docs/getting-started
+packages:
+- language: javascript
+  registry: npm
+  name: "@livelike/mcp"
+  version: 0.8.2
+  url: https://www.npmjs.com/package/@livelike/mcp
+  install: npm install @livelike/mcp
+  description: Model Context Protocol (MCP) server for LiveLike programs and widgets.
+  official: true
+- language: javascript
+  registry: npm
+  name: "@livelike/engagementsdk"
+  version: 2.59.1-alpha.0
+  url: https://www.npmjs.com/package/@livelike/engagementsdk
+  install: npm install @livelike/engagementsdk
+  description: LiveLike Engagement SDK (Web).
+  official: true
+- language: javascript
+  registry: npm
+  name: "@livelike/javascript"
+  version: 1.4.1-alpha.0
+  url: https://www.npmjs.com/package/@livelike/javascript
+  install: npm install @livelike/javascript
+  description: LiveLike JavaScript package.
+  official: true
+- language: javascript
+  registry: npm
+  name: "@livelike/react-native"
+  version: 1.0.4-alpha.1
+  url: https://www.npmjs.com/package/@livelike/react-native
+  install: npm install @livelike/react-native
+  description: LiveLike React Native package.
+  official: true
+- language: swift
+  registry: docs
+  name: LiveLike iOS SDK
+  url: https://docs.livelike.com/docs/ios
+  description: Native iOS Engagement SDK (distributed via docs / integration guide).
+  official: true
+- language: kotlin
+  registry: docs
+  name: LiveLike Android SDK
+  url: https://docs.livelike.com/docs/android
+  description: Native Android Engagement SDK (distributed via docs / integration guide).
+  official: true
+- language: javascript
+  registry: docs
+  name: LiveLike Web SDK
+  url: https://docs.livelike.com/docs/web
+  description: Web Engagement SDK.
+  official: true
+notes: >-
+  Registries probed: npm (@livelike org: mcp, engagementsdk, javascript,
+  react-native all present). iOS/Android/Web SDKs are documented and distributed
+  through the developer docs. No PyPI / Maven Central / NuGet / RubyGems /
+  Packagist / crates.io first-party packages found.

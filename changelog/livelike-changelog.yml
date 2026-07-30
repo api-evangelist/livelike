@@ -1,0 +1,28 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.livelike.com/changelog
+url: https://docs.livelike.com/changelog
+scheme: per-SDK semantic versions (dates not published inline on entries)
+scope: recent SDK release notes
+entries:
+- version: iOS SDK 2.115
+  component: ios
+  highlights:
+  - Added `replyLimit` query param when getting comments.
+  - Added attributes to `UserProfile` and `ChatMessages`.
+  url: https://docs.livelike.com/changelog/ios-sdk-2115
+- version: iOS SDK 2.114.1
+  component: ios
+  url: https://docs.livelike.com/changelog/ios-sdk-21141
+- version: Android SDK 3.0.16
+  component: android
+  highlights:
+  - Added optional `repliesLimit` support to comment client APIs.
+  - Comment.replies now distinguishes null (not requested) from [] (none exist).
+  url: https://docs.livelike.com/changelog/android-sdk-3016
+- version: Android SDK 3.0.15
+  component: android
+  url: https://docs.livelike.com/changelog/android-sdk-3015
+- version: Android SDK 3.0.14
+  component: android
+  url: https://docs.livelike.com/changelog/android-sdk-3013-1

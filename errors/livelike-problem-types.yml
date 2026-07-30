@@ -1,0 +1,34 @@
+generated: '2026-07-20'
+method: searched
+format: http-status
+source: https://docs.livelike.com/reference/errors
+docs: https://docs.livelike.com/reference/errors
+envelope: >-
+  The API returns a descriptive error message and a meaningful HTTP status code.
+  4xx indicates a client error that must be fixed before retrying; 5xx indicates
+  a transient LiveLike server error that can be retried unmodified.
+problems:
+- status: 400
+  title: Bad Request
+  meaning: The request was malformed, often due to a missing or invalid field.
+  retryable: false
+- status: 401
+  title: Unauthorized
+  meaning: The request was made without authorization to a resource that requires it.
+  retryable: false
+- status: 403
+  title: Forbidden
+  meaning: The request was authorized but is not permitted to access the resource.
+  retryable: false
+- status: 404
+  title: Not Found
+  meaning: The request was made to a resource that does not exist.
+  retryable: false
+- status: 409
+  title: Conflict
+  meaning: The request conflicts with a previously issued request.
+  retryable: false
+- status: 500
+  title: Internal Server Error
+  meaning: The server experienced a transient issue while handling the request.
+  retryable: true

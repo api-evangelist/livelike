@@ -1,0 +1,65 @@
+generated: '2026-07-20'
+method: searched
+status: published
+source: https://docs.livelike.com/docs/mcp-server
+server:
+  name: livelike
+  transport: stdio
+  package: "@livelike/mcp"
+  command: npx -y @livelike/mcp
+  registry_url: https://www.npmjs.com/package/@livelike/mcp
+  docs: https://docs.livelike.com/docs/mcp-server
+  auth:
+    env:
+    - LIVELIKE_CLIENT_ID
+    - LIVELIKE_ACCESS_TOKEN
+    notes: Requires a LiveLike Client ID and an Admin Access Token.
+tools:
+- name: list_programs
+  description: Retrieve a list of programs with filtering and pagination.
+- name: get_program
+  description: Get details of a specific program.
+- name: create_program
+  description: Create a new program.
+- name: update_program
+  description: Modify an existing program.
+- name: delete_program
+  description: Remove a program.
+- name: program_action
+  description: Mark a program as started or stopped.
+- name: list_widgets
+  description: Retrieve a list of widgets with filtering and pagination.
+- name: get_widget
+  description: Get details of a specific widget.
+- name: delete_widget
+  description: Remove a widget.
+- name: schedule_widget
+  description: Schedule a widget to be published at a specific time.
+- name: create_text_quiz_widget
+  description: Create a new text quiz widget.
+- name: update_text_quiz_widget
+  description: Modify an existing text quiz widget.
+- name: create_text_poll_widget
+  description: Create a new text poll widget.
+- name: update_text_poll_widget
+  description: Modify an existing text poll widget.
+- name: create_image_quiz_widget
+  description: Create a new image quiz widget.
+- name: update_image_quiz_widget
+  description: Modify an existing image quiz widget.
+- name: create_image_poll_widget
+  description: Create a new image poll widget.
+- name: update_image_poll_widget
+  description: Modify an existing image poll widget.
+- name: create_text_prediction_widget
+  description: Create a new text prediction widget.
+- name: update_text_prediction_widget
+  description: Modify an existing text prediction widget.
+- name: publish_text_prediction_followup_widget
+  description: Publish a text prediction followup widget after setting the correct prediction.
+- name: create_image_number_prediction_widget
+  description: Create a new image number prediction widget.
+- name: update_image_number_prediction_widget
+  description: Modify an existing image number prediction widget.
+- name: publish_number_prediction_followup_widget
+  description: Publish a number prediction followup widget after setting the correct prediction.

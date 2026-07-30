@@ -1,0 +1,22 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.livelike.com/reference + https://docs.livelike.com/changelog
+versioning:
+  scheme: uri-path
+  current: v1
+  base_path: /api/v1/
+  docs: https://docs.livelike.com/docs/rest-api-getting-started
+changelog:
+  url: https://docs.livelike.com/changelog
+  scope: SDK release notes (iOS, Android)
+  ref: changelog/livelike-changelog.yml
+deprecation:
+  policy_url: null
+  sunset_header: null
+  notes: No formal deprecation / Sunset-header policy documented.
+status_page:
+  url: null
+  notes: No public status page found (status.livelike.com not reachable).
+sla:
+  url: null
+support: https://www.livelike.com/contact

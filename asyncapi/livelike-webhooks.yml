@@ -1,0 +1,79 @@
+generated: '2026-07-20'
+method: searched
+spec_type: Webhooks
+source: https://docs.livelike.com/docs/webhooks
+docs:
+- https://docs.livelike.com/docs/webhooks
+- https://docs.livelike.com/docs/webhook-events-payload
+transport: http-post
+delivery: >-
+  LiveLike sends an HTTP POST to a subscriber-provided URL when a subscribed
+  event occurs. Delivery is at-least-once (events may be delivered more than
+  once; consumers should de-duplicate on the payload `id`).
+security:
+  signature:
+    header: X-Webhook-Signature
+    algorithm: HMAC-SHA1
+    secret: client secret
+    notes: >-
+      Payload is serialized to a compact JSON string and signed with HMAC-SHA1
+      using the client secret; the base64 signature is sent in the
+      X-Webhook-Signature header for verification.
+subscription:
+  managed_by: LiveLike Admins (self-serve API/CMS configuration planned)
+  requires:
+  - Webhook URL
+  - Events to subscribe to
+envelope:
+  fields:
+  - id
+  - event
+  - data
+  - created_at
+events:
+- name: reward-table-rewards-awarded
+  description: A user was rewarded a reward item from a reward table.
+- name: badge-awarded
+  description: A user was awarded a specific badge.
+- name: user-quest-task-progressed
+  description: A user progressed on a quest task.
+- name: user-quest-task-completed
+  description: A user completed a quest task.
+- name: user-quest-completed
+  description: A user completed a quest.
+- name: user-quest-reward-awarded
+  description: A user was awarded a reward for a quest.
+- name: user-reward-awarded
+  description: A user was awarded a reward.
+- name: comment-created
+  description: A comment was created.
+- name: comment-reply-created
+  description: A reply to a comment was created.
+- name: comment-mention-created
+  description: A profile was mentioned in a comment.
+- name: chat-mention-created
+  description: A profile was mentioned in a chat message.
+- name: chat-message-throttle-updated
+  description: A chat message throttle setting was updated.
+- name: profile-relationship-created
+  description: A relationship between two profiles was created.
+- name: role-assignment-created
+  description: A role was assigned to a profile.
+- name: user-reaction-created
+  description: A user reaction was created.
+- name: user-reaction-deleted
+  description: A user reaction was deleted.
+- name: flair-created
+  description: A flair was created.
+- name: flair-updated
+  description: A flair was updated.
+- name: flair-deactivated
+  description: A flair was deactivated.
+- name: flair-reactivated
+  description: A flair was reactivated.
+- name: flair-assignment-created
+  description: A flair was assigned to a profile.
+- name: flair-assignment-updated
+  description: A flair assignment was updated.
+- name: flair-assignment-deleted
+  description: A flair assignment was removed.

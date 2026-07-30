@@ -1,0 +1,19 @@
+generated: '2026-07-20'
+method: generated
+source: >-
+  Grounded in real, published operations — the LiveLike MCP server tool list
+  (https://docs.livelike.com/docs/mcp-server) and the LiveLike REST API
+  reference (https://docs.livelike.com/reference). No operations were invented.
+skills:
+- file: livelike-publish-poll-widget.md
+  name: Publish an interactive poll widget to a program
+  api: LiveLike REST API / @livelike/mcp
+  operations: [create_program, create_text_poll_widget, schedule_widget]
+- file: livelike-manage-programs.md
+  name: Manage LiveLike programs
+  api: LiveLike REST API / @livelike/mcp
+  operations: [list_programs, get_program, create_program, update_program, program_action]
+- file: livelike-onboard-profile.md
+  name: Create and authenticate a user profile
+  api: LiveLike REST API
+  operations: [create-user-profile, create-profile-by-custom-id, get-user-profile]
