@@ -5,7 +5,7 @@ source: https://docs.livelike.com/docs/mcp-server
 server:
   name: livelike
   transport: stdio
-  package: "@livelike/mcp"
+  package: '@livelike/mcp'
   command: npx -y @livelike/mcp
   registry_url: https://www.npmjs.com/package/@livelike/mcp
   docs: https://docs.livelike.com/docs/mcp-server
@@ -63,3 +63,9 @@ tools:
   description: Modify an existing image number prediction widget.
 - name: publish_number_prediction_followup_widget
   description: Publish a number prediction followup widget after setting the correct prediction.
+deployment:
+  mode: local-stdio
+  verified: searched
+  tools: 24
+  checked: '2026-08-12'
+  source: catalog MCP census
