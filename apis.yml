@@ -12,6 +12,9 @@ description: >-
   Model Context Protocol (MCP) server so AI assistants can manage programs and
   widgets.
 url: https://raw.githubusercontent.com/api-evangelist/livelike/refs/heads/main/apis.yml
+x-docs-platform: readme
+x-docs-platform-confidence: high
+x-docs-platform-checked: 2026-10-03
 x-enrichment:
   date: '2026-07-20'
   status: enriched
