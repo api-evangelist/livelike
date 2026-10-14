@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/livelike/main/json-schema/livelike-collection-schema.json",
+  "title": "Collection",
+  "description": "A collection (folder) containing your reports and dashboards.",
+  "x-generated": "2026-10-14",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/livelike-analytics-api-openapi.yml#/components/schemas/Collection",
+  "type": "object",
+  "properties": {
+    "id": {
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "description": "Collection ID. Use this in `GET /api/collection/{id}/items` to list your reports."
+    },
+    "name": {
+      "type": "string",
+      "description": "Collection name."
+    },
+    "description": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Optional description."
+    }
+  }
+}

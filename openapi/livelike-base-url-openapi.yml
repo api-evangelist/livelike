@@ -1,0 +1,821 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Base URL.
+servers:
+- url: https://cf-blast.livelikecdn.com/api/v1/
+paths:
+  /automation-partners/:
+    post:
+      responses:
+        '200':
+          description: ''
+        '201':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              examples:
+                Created:
+                  summary: Created
+                  value:
+                    id: 6e842ffb-2315-4799-acbd-d6e621c41a95
+                    event_id: 4tcpns1nwyc0jtpucgzj9dp90
+                    event_category: sports
+                    event_subcategory: football
+                    widget_timeout: P0DT00H00M30S
+                    status: false
+                    widget_title: MatchInsights
+                    enabled_by:
+                      id: 117512ea-6aa6-4cb3-b9ff-947729aa7ad4
+                      name: null
+                      image_url: null
+                    match_scheduled_at: '2026-06-11T18:00:00Z'
+                    automation_status: scheduled
+                    automated_actions:
+                    - id: 930e702e-25f7-4f49-9c37-62fd047542c3
+                      action: yellow_card
+                      status: pending
+                      widget_kind: text-poll
+                      publish_delay: 00:00:00
+                      max_widgets: null
+                      cooldown_minutes: null
+                      is_active: true
+                      created_at: '2026-06-15T12:01:09.519456Z'
+                      updated_at: '2026-06-15T12:03:55.537314Z'
+                      widgets:
+                      - widget_kind: text-poll
+                        widget_id: e525bbae-0646-40b8-a8a3-e431402f9904
+                        payload:
+                          pubnub_enabled: true
+                          url: https://cf-blast-iconic.livelikecdn.com/api/v1/text-polls/e525bbae-0646-40b8-a8a3-e431402f9904/
+                          kind: text-poll
+                          program_id: 89edc0ea-71c7-44eb-b687-c8e667e610b9
+                          program_name: PWP 10.15
+                          client_id: 2IB4L67LlSs3pdbzraIFwdIkyTfAPaoq9ANBgZ8Z
+                          created_at: '2026-06-15T12:03:55.559390Z'
+                          updated_at: '2026-06-15T12:03:55.619129Z'
+                          published_at: null
+                          scheduled_at: null
+                          interactive_until: null
+                          question: 'Was the {{cardType}} for {{playerName}} deserved? Reason: {{cardReason}}'
+                          timeout: P0DT00H00M30S
+                          options:
+                          - id: 68368c47-338f-4343-807c-28be148ce4a0
+                            description: 'Yes'
+                            vote_count: 0
+                            vote_url: https://blast-iconic-us-east-1.livelikeblast.com/api/v1/widget-interactions/text-poll/e525bbae-0646-40b8-a8a3-e431402f9904/options/68368c47-338f-4343-807c-28be148ce4a0/votes/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbmNyeXB0ZWQiOiJnQUFBQUFCcUwtb3JlOWY3U0pTUWstTXJ3NUZsMGk2T0ZlR0J1X29JbDZ1SFZ4Yno0bS1sTk1qMTQtU2M1cEI5T1NkN0tWb3czeXZoeFJrd3NMR2J3LXM1TGpJUi15Sk5Tdz09IiwiaXNzIjoiYmxhc3QiLCJpYXQiOjE3ODE1MjUwMzV9.Xy8quF9Akywm2_Qq7n8uK5NkIqFwyAQgyOIYwzfE0R4/
+                            translations: {}
+                            translatable_fields:
+                            - description
+                            filtered_description: null
+                            content_filter: []
+                          - id: 04047dc5-e870-45bc-9d16-8f988912d8fa
+                            description: 'No'
+                            vote_count: 0
+                            vote_url: https://blast-iconic-us-east-1.livelikeblast.com/api/v1/widget-interactions/text-poll/e525bbae-0646-40b8-a8a3-e431402f9904/options/04047dc5-e870-45bc-9d16-8f988912d8fa/votes/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbmNyeXB0ZWQiOiJnQUFBQUFCcUwtb3Jqb2FidUhEd2FoMGpyMmJkUWFjN0xvM2x2cS11azk3aWJxQXNDZnRTb3dlb0owTk1fQm8tSmVkS2t0LTRpOXVTc01xSDVmRlQwci1INzdsTUJLTENuUT09IiwiaXNzIjoiYmxhc3QiLCJpYXQiOjE3ODE1MjUwMzV9.ymttXjkJqW-fvdPdkKpQSpM5rFHl2VcAoaesMVM-0Q0/
+                            translations: {}
+                            translatable_fields:
+                            - description
+                            filtered_description: null
+                            content_filter: []
+                          subscribe_channel: program.widget.89edc0ea-71c7-44eb-b687-c8e667e610b9
+                          program_date_time: null
+                          publish_delay: P0DT00H00M00S
+                          interaction_url: https://cf-blast-iconic.livelikecdn.com/api/v1/text-polls/e525bbae-0646-40b8-a8a3-e431402f9904/interactions/
+                          impression_url: https://blast-iconic-us-east-1.livelikeblast.com/api/v1/widget-impressions/text-poll/e525bbae-0646-40b8-a8a3-e431402f9904/
+                          impression_count: 0
+                          unique_impression_count: 0
+                          engagement_count: 0
+                          engagement_percent: '0.000'
+                          status: pending
+                          created_by:
+                            id: 58afd111-9bf1-47fa-994f-cc7deed0ebac
+                            name: Amol
+                            image_url: null
+                            custom_id: null
+                          schedule_url: https://cf-blast-iconic.livelikecdn.com/api/v1/text-polls/e525bbae-0646-40b8-a8a3-e431402f9904/schedule/
+                          rewards_url: null
+                          translations: {}
+                          translatable_fields:
+                          - question
+                          reactions: []
+                          custom_data: null
+                          widget_interactions_url_template: https://cf-blast-iconic.livelikecdn.com/api/v1/profiles/{profile_id}/widget-interactions/?text_poll_id=e525bbae-0646-40b8-a8a3-e431402f9904
+                          sponsors: []
+                          earnable_rewards: []
+                          widget_attributes: []
+                          playback_time_ms: null
+                          report_counts:
+                            total: 0
+                            pending: 0
+                            accepted: 0
+                            dismissed: 0
+                          filtered_question: null
+                          content_filter: []
+                    - id: 2641e54f-c6c1-49cd-a5ff-c30170dfdfe8
+                      action: match_start
+                      status: pending
+                      widget_kind: alert
+                      publish_delay: 00:00:00
+                      max_widgets: null
+                      cooldown_minutes: null
+                      is_active: true
+                      created_at: '2026-06-15T08:11:23.934567Z'
+                      updated_at: '2026-06-15T12:03:55.433123Z'
+                      widgets:
+                      - widget_kind: alert
+                        widget_id: 985956c2-bef7-4716-a2fe-42b3d2655048
+                        payload:
+                          pubnub_enabled: true
+                          url: https://cf-blast-iconic.livelikecdn.com/api/v1/alerts/985956c2-bef7-4716-a2fe-42b3d2655048/
+                          program_id: 89edc0ea-71c7-44eb-b687-c8e667e610b9
+                          client_id: 2IB4L67LlSs3pdbzraIFwdIkyTfAPaoq9ANBgZ8Z
+                          published_at: null
+                          scheduled_at: null
+                          interactive_until: null
+                          timeout: P0DT00H00M15S
+                          title: Match Start
+                          text: 🏁 Kick off! {{teamDescription}}
+                          image_url: https://example.com/kickoff.png
+                          link_url: https://example.com/match-centre
+                          link_label: View match centre
+                          created_at: '2026-06-15T12:03:55.448213Z'
+                          kind: alert
+                          subscribe_channel: program.widget.89edc0ea-71c7-44eb-b687-c8e667e610b9
+                          program_date_time: null
+                          publish_delay: P0DT00H00M00S
+                          interaction_url: https://cf-blast-iconic.livelikecdn.com/api/v1/alerts/985956c2-bef7-4716-a2fe-42b3d2655048/interactions/
+                          impression_url: https://blast-iconic-us-east-1.livelikeblast.com/api/v1/widget-impressions/alert/985956c2-bef7-4716-a2fe-42b3d2655048/
+                          impression_count: 0
+                          unique_impression_count: 0
+                          engagement_count: null
+                          engagement_percent: null
+                          status: pending
+                          created_by:
+                            id: 58afd111-9bf1-47fa-994f-cc7deed0ebac
+                            name: Amol
+                            image_url: null
+                            custom_id: null
+                          schedule_url: https://cf-blast-iconic.livelikecdn.com/api/v1/alerts/985956c2-bef7-4716-a2fe-42b3d2655048/schedule/
+                          rewards_url: null
+                          translations: {}
+                          translatable_fields:
+                          - title
+                          - text
+                          - link_label
+                          reactions: []
+                          custom_data:
+                            k: v
+                          sponsors: []
+                          earnable_rewards: []
+                          widget_interactions_url_template: https://cf-blast-iconic.livelikecdn.com/api/v1/profiles/{profile_id}/widget-interactions/?alert_id=985956c2-bef7-4716-a2fe-42b3d2655048
+                          widget_attributes: []
+                          playback_time_ms: null
+                          report_counts:
+                            total: 0
+                            pending: 0
+                            accepted: 0
+                            dismissed: 0
+          description: Created
+      parameters: []
+      summary: Create Automation Partner
+      operationId: post_automation-partners
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                event_category:
+                  type: string
+                  default: sports
+                event_subcategory:
+                  type: string
+                  enum:
+                  - football
+                  - rugby
+                event_id:
+                  type: string
+                program_id:
+                  type: string
+                match_scheduled_at:
+                  type: string
+                automated_actions:
+                  type: array
+                  items:
+                    properties:
+                      action_type:
+                        type: string
+                        description: Refer the guide mentioned above for full list of action types supported as per the event_subcategory
+                      is_active:
+                        type: boolean
+                        default: 'false'
+                      widgets:
+                        type: array
+                        items:
+                          properties:
+                            widget_kind:
+                              type: string
+                              enum:
+                              - alert
+                              - text-poll
+                              - emoji-slider
+                            payload:
+                              type: string
+                              description: The payload will contain the object of individual widget kind as referenced in the guide mentioned above.
+                              format: json
+                          type: object
+                    type: object
+                    required:
+                    - widgets
+              required:
+              - event_category
+              - event_subcategory
+              - event_id
+              - program_id
+              - automated_actions
+            examples:
+              New Example:
+                summary: New Example
+                value: "{\n  \"event_category\": \"sports\",\n  \"event_subcategory\": \"football\",\n  \"event_id\": \"4tcpns1nwyc0jtpucgzj9dp90\",\n  \"program_id\": \"89edc0ea-71c7-44eb-b687-c8e667e610b9\",\n  \"match_scheduled_at\": \"2026-06-11T18:00:00Z\",\n  \"automated_actions\": [\n    {\n      \"action_type\": \"match_start\",\n      \"is_active\": true,\n      \"widgets\": [\n        {\n          \"widget_kind\": \"alert\",\n          \"payload\": {\n            \"text\": \"\U0001F3C1 Kick off! {{teamDescription}}\",\n            \"image_url\": \"https://example.com/kickoff.png\"\n          }\n        }\n      ]\n    },\n    {\n      \"action_type\": \"yellow_card\",\n      \"is_active\": true,\n      \"widgets\": [\n        {\n          \"widget_kind\": \"text-poll\",\n          \"payload\": {\n            \"question\": \"Was the {{cardType}} for {{playerName}} deserved? Reason: {{cardReason}}\",\n            \"options\": [\n              {\n                \"description\": \"\
+                  Yes\"\n              },\n              {\n                \"description\": \"No\"\n              }\n            ]\n          }\n        }\n      ]\n    }\n  ]\n}_"
+    get:
+      responses:
+        '200':
+          description: ''
+      parameters:
+      - in: query
+        name: client_id
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: program_id
+        schema:
+          type: string
+      - in: query
+        name: ordering
+        schema:
+          type: string
+          enum:
+          - created_at
+          - -created_at
+          - match_scheduled_at
+          - -match_scheduled_at
+          - status
+          - -status
+          - automation_status
+          - -automation_status
+      operationId: get_automation-partners
+      summary: List Automation Partners
+  /automation-partners/{id}:
+    put:
+      responses:
+        '200':
+          description: ''
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      summary: Update Automation Partner
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                event_category:
+                  type: string
+                  default: sports
+                event_subcategory:
+                  type: string
+                  enum:
+                  - football
+                  - rugby
+                event_id:
+                  type: string
+                program_id:
+                  type: string
+                match_scheduled_at:
+                  type: string
+                automated_actions:
+                  type: array
+                  items:
+                    properties:
+                      action_type:
+                        type: string
+                        description: Refer the guide for full list of action types supported as per the event_subcategory
+                      is_active:
+                        type: boolean
+                        default: 'false'
+                      widgets:
+                        type: array
+                        items:
+                          properties:
+                            widget_kind:
+                              type: string
+                              enum:
+                              - alert
+                              - text-poll
+                              - emoji-slider
+                            payload:
+                              type: object
+                              properties: {}
+                              description: The payload will contain the object of individual widget kind as referenced in guide.
+                            widget_id:
+                              type: string
+                              description: The widget_id of existing widget to update it. If not present, the widget will be created newly. If any existing widget is not sent in the payload, it will be deleted automatically.
+                          type: object
+                    type: object
+                    required:
+                    - widgets
+              required:
+              - event_category
+              - event_subcategory
+              - event_id
+              - program_id
+              - automated_actions
+            examples:
+              New Example:
+                summary: New Example
+                value:
+                  event_category: sports
+                  event_subcategory: football
+                  event_id: 4tcpns1nwyc0jtpucgzj9dp90
+                  program_id: 89edc0ea-71c7-44eb-b687-c8e667e610b9
+                  match_scheduled_at: '2026-06-11T18:00:00Z'
+                  automated_actions:
+                  - action_type: match_start
+                    is_active: true
+                    widgets:
+                    - widget_kind: alert
+                      payload:
+                        text: 🏁 Kick off! {{teamDescription}}
+                        title: Match Start
+                        image_url: https://example.com/kickoff.png
+                        link_url: https://example.com/match-centre
+                        link_label: View match centre
+                        timeout: PT15S
+                        custom_data:
+                          k: v
+                  - action_type: yellow_card
+                    is_active: true
+                    widgets:
+                    - widget_kind: text-poll
+                      payload:
+                        question: 'Was the {{cardType}} for {{playerName}} deserved? Reason: {{cardReason}}'
+                        options:
+                        - description: 'Yes'
+                        - description: 'No'
+      operationId: put_automation-partners-id
+  /templates/:
+    post:
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              examples:
+                Created:
+                  summary: Created
+                  value:
+                    id: b1f6c3de-8b2a-4b0a-9e77-1a2b3c4d5e6f
+                    client_id: abc123
+                    category: widgets
+                    subcategory: text-poll
+                    name: Favorite Color Poll
+                    is_default: false
+                    using_genie: false
+                    created_on: '2026-07-30T12:00:00Z'
+                    updated_on: '2026-07-30T12:00:00Z'
+                    created_by:
+                      id: u-1
+                      name: Jane Producer
+                      image_url: null
+                    updated_by:
+                      id: u-1
+                      name: Jane Producer
+                      image_url: null
+                    template_object:
+                      question: What's your favorite color?
+                      options:
+                      - description: Red
+                        localized_data: {}
+                      - description: Blue
+                        localized_data: {}
+                      localized_data: {}
+                      timeout: PT30S
+                      sponsors: []
+                      widget_attributes: []
+          description: Created
+      parameters:
+      - in: header
+        name: Authorization
+        schema:
+          type: string
+          default: Bearer {token}
+        required: true
+      summary: Create Templates
+      operationId: post_templates
+      description: Create a new template of certain category/subcategory.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                category:
+                  type: string
+                  default: widgets
+                  enum:
+                  - widgets
+                name:
+                  type: string
+                  description: Name should be unique in a category
+                subcategory:
+                  type: string
+                  description: Refer the enum values in Template guide link mentioned above.
+                template_object:
+                  type: object
+                  properties: {}
+                  description: Dynamic object based on the subcategory. Refer the fields required for each subcategory in Template guide mentioned above.
+              required:
+              - category
+              - name
+              - subcategory
+              - template_object
+            examples:
+              New Example:
+                summary: New Example
+                value:
+                  category: widgets
+                  subcategory: text-poll
+                  name: Favorite Color Poll
+                  template_object:
+                    question: What's your favorite color?
+                    options:
+                    - description: Red
+                    - description: Blue
+      x-readme:
+        code-samples:
+        - code: "curl --request POST \\\n     --url https://cf-blast.livelikecdn.com/api/v1/templates/ \\\n     --header 'Authorization: Bearer {token}' \\\n     --header 'accept: application/json' \\\n     --header 'content-type: application/json' \\\n     --data '\n{\n  \"category\": \"widgets\",\n  \"subcategory\": \"text-poll\",\n  \"name\": \"Favorite Color Poll\",\n  \"template_object\": {\n    \"question\": \"What's your favorite color?\",\n    \"options\": [\n      {\n        \"description\": \"Red\"\n      },\n      {\n        \"description\": \"Blue\"\n      }\n    ]\n  }\n}\n'"
+          language: shell
+          name: ''
+        samples-languages:
+        - shell
+    get:
+      responses:
+        '200':
+          description: ''
+      parameters:
+      - in: query
+        name: category
+        schema:
+          type: string
+          enum:
+          - widgets
+      - in: query
+        name: subcategory
+        schema:
+          type: string
+      - in: query
+        name: is_default
+        schema:
+          type: boolean
+      - in: header
+        name: Authorization
+        schema:
+          type: string
+          default: Bearer {token}
+        required: true
+      summary: List Templates
+      operationId: get_templates
+      description: Used to get the list of templates from the token scoped Application
+  /templates/<id>/:
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              examples:
+                OK:
+                  summary: OK
+                  value:
+                    id: b1f6c3de-8b2a-4b0a-9e77-1a2b3c4d5e6f
+                    client_id: abc123
+                    category: widgets
+                    subcategory: text-poll
+                    name: Favorite Color Poll
+                    is_default: false
+                    using_genie: false
+                    created_on: '2026-07-30T12:00:00Z'
+                    updated_on: '2026-07-30T12:00:00Z'
+                    created_by:
+                      id: u-1
+                      name: Jane Producer
+                      image_url: null
+                    updated_by:
+                      id: u-1
+                      name: Jane Producer
+                      image_url: null
+                    template_object:
+                      question: What's your favorite color?
+                      options:
+                      - description: Red
+                        localized_data: {}
+                      - description: Blue
+                        localized_data: {}
+                      localized_data: {}
+                      timeout: PT30S
+                      sponsors: []
+                      widget_attributes: []
+      parameters:
+      - in: header
+        name: Authorization
+        schema:
+          type: string
+          default: Bearer {token}
+        required: true
+      summary: Retrieve Template
+      operationId: get_templates-1
+      description: Use to get the detail of template including the template_object, which is not returned in the list apis
+    patch:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              examples:
+                OK:
+                  summary: OK
+                  value:
+                    id: b1f6c3de-8b2a-4b0a-9e77-1a2b3c4d5e6f
+                    client_id: abc123
+                    category: widgets
+                    subcategory: text-poll
+                    name: Favorite Color Poll
+                    is_default: false
+                    using_genie: false
+                    created_on: '2026-07-30T12:00:00Z'
+                    updated_on: '2026-07-30T12:00:00Z'
+                    created_by:
+                      id: u-1
+                      name: Jane Producer
+                      image_url: null
+                    updated_by:
+                      id: u-1
+                      name: Jane Producer
+                      image_url: null
+                    template_object:
+                      question: What's your favorite color?
+                      options:
+                      - description: Red
+                        localized_data: {}
+                      - description: Blue
+                        localized_data: {}
+                      localized_data: {}
+                      timeout: PT30S
+                      sponsors: []
+                      widget_attributes: []
+      parameters:
+      - in: header
+        name: Authorization
+        schema:
+          type: string
+          default: Bearer {token}
+        required: true
+      summary: Update Template
+      operationId: get_templates-2
+      description: Use to update the template including the template_object
+    delete:
+      responses:
+        '204':
+          description: ''
+      parameters:
+      - in: header
+        name: Authorization
+        schema:
+          type: string
+          default: Bearer {token}
+        required: true
+      operationId: get_templates-3
+      summary: Delete Template
+      description: Used to delete the template.
+  /user-streak/{user-streak-id}/reset/:
+    post:
+      description: ''
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              examples:
+                OK:
+                  summary: OK
+                  value:
+                    id: 77b07b0a-c6f5-4c5e-a365-934f9d22c39b
+                    url: https://cf-blast-game-changers.livelikecdn.com/api/v1/user-streaks/77b07b0a-c6f5-4c5e-a365-934f9d22c39b/
+                    profile_id: 12cc3d8f-8ba9-468d-97eb-45c25ccdca6c
+                    streak_id: 6d2d2c99-767c-489b-b9a8-58de76b0bddc
+                    streak:
+                      id: 6d2d2c99-767c-489b-b9a8-58de76b0bddc
+                      name: Recurring and repeat on reset test 1
+                      period: null
+                      streak_type: consecutive_action
+                    first_activity: '2026-02-16T06:51:07Z'
+                    last_activity: '2026-02-16T06:51:09Z'
+                    reset_at: '2026-02-16T06:51:35.442952Z'
+                    current_streak_length: 1
+                    maximum_streak_length: 8
+                    freeze_start: null
+                    freeze_until: null
+                    freeze_reason: ''
+                    milestone_count: 0
+                    milestones_url: https://cf-blast-game-changers.livelikecdn.com/api/v1/user-streaks/77b07b0a-c6f5-4c5e-a365-934f9d22c39b/milestones/
+                    status: reset
+                    reason: Reset freeze user streak
+      parameters:
+      - in: path
+        name: user-streak-id
+        schema:
+          type: string
+        required: true
+      operationId: post_user-streak-user-streak-id-reset
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+              required:
+              - reason
+  /user-streaks/:
+    post:
+      description: ''
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              examples:
+                Created:
+                  summary: Created
+                  value:
+                    last_activity: '2026-01-02T07:07:00Z'
+                    first_activity: '2026-01-01T07:07:00Z'
+                    track_progress_on:
+                      target_ids:
+                      - ae06e550-21c4-4e1d-8365-f42309dccdb8
+                    reason: Manual correction for missed event
+                    user_streak:
+                      id: 77c8115f-66af-4255-a3e1-f6224e76c46c
+                      url: http://localhost:8888/api/v1/user-streaks/77c8115f-66af-4255-a3e1-f6224e76c46c/
+                      profile_id: 405f4a9f-4612-4eea-a7d2-80dbc624f9e2
+                      streak_id: 49426b34-5c3f-4517-b50f-2be290be472f
+                      streak:
+                        id: 49426b34-5c3f-4517-b50f-2be290be472f
+                        name: Daily Test - 11 JAN
+                        period: daily
+                        streak_type: periodic
+                      first_activity: '2026-01-01T07:07:00Z'
+                      last_activity: '2026-01-02T07:07:00Z'
+                      reset_at: null
+                      current_streak_length: 2
+                      maximum_streak_length: 2
+                      freeze_start: null
+                      freeze_until: null
+                      freeze_reason: null
+                      milestones_url: http://localhost:8888/api/v1/user-streaks/77c8115f-66af-4255-a3e1-f6224e76c46c/milestones/
+                      reason: Manual correction for missed event
+      parameters: []
+      operationId: post_user-streaks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                profile_id:
+                  type: string
+                streak_id:
+                  type: string
+                reason:
+                  type: string
+                first_activity:
+                  type: string
+                last_activity:
+                  type: string
+                track_progress_on:
+                  type: object
+                  properties:
+                    target_ids:
+                      type: array
+                      items:
+                        type: string
+              required:
+              - profile_id
+              - streak_id
+              - first_activity
+              - last_activity
+  /user-streaks/{user-streak-id}/progress/:
+    patch:
+      description: ''
+      responses:
+        '200':
+          description: ''
+        '201':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              examples:
+                Created:
+                  summary: Created
+                  value:
+                    last_activity: '2026-01-06T07:07:00Z'
+                    track_progress_on:
+                      target_ids:
+                      - ae06e550-21c4-4e1d-8365-f42309dccdb8
+                      - 55528958-dcfc-40e0-943f-b4be50b05be8
+                    reason: Manual correction for missed event
+                    user_streak:
+                      id: 77c8115f-66af-4255-a3e1-f6224e76c46c
+                      url: http://localhost:8888/api/v1/user-streaks/77c8115f-66af-4255-a3e1-f6224e76c46c/
+                      profile_id: 405f4a9f-4612-4eea-a7d2-80dbc624f9e2
+                      streak_id: 49426b34-5c3f-4517-b50f-2be290be472f
+                      streak:
+                        id: 49426b34-5c3f-4517-b50f-2be290be472f
+                        name: Daily Test - 11 JAN
+                        period: daily
+                        streak_type: periodic
+                      first_activity: '2026-01-01T07:07:00Z'
+                      last_activity: '2026-01-06T07:07:00Z'
+                      reset_at: null
+                      current_streak_length: 6
+                      maximum_streak_length: 6
+                      freeze_start: null
+                      freeze_until: null
+                      freeze_reason: null
+                      milestone_count: 2
+                      milestones_url: http://localhost:8888/api/v1/user-streaks/77c8115f-66af-4255-a3e1-f6224e76c46c/milestones/
+                      status: pending_reset
+                      reason: Manual correction for missed event
+          description: Created
+      parameters:
+      - in: path
+        name: user-streak-id
+        schema:
+          type: string
+        required: true
+      operationId: patch_user-streaks-user-streak-id-progress
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                last_activity:
+                  type: string
+                reason:
+                  type: string
+                track_progress_on:
+                  type: object
+                  properties:
+                    target_ids:
+                      type: array
+                      items:
+                        type: string
+              required:
+              - last_activity
+x-provenance:
+  method: searched
+  source: https://docs.livelike.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://docs.livelike.com/reference/create-automation-partner.md
+  - https://docs.livelike.com/reference/create-templates.md
+  - https://docs.livelike.com/reference/create-user-streak.md
+  - https://docs.livelike.com/reference/delete-template.md
+  - https://docs.livelike.com/reference/list-automation-partners.md
+  - https://docs.livelike.com/reference/list-templates.md
+  - https://docs.livelike.com/reference/progress.md
+  - https://docs.livelike.com/reference/reset-user-streak.md
+  - https://docs.livelike.com/reference/retrieve-template.md
+  - https://docs.livelike.com/reference/update-automation-partner.md
+  - https://docs.livelike.com/reference/update-template.md
+  merge:
+    pages: 11
+    deduped: 0
+    conflicts_kept_first: 0

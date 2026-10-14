@@ -1,0 +1,63 @@
+generated: '2026-10-14'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 4
+  own: 2
+  other_domain: 1
+  platform: 1
+  roles:
+  - identity
+  - portal
+  - source
+  - website
+hosts:
+- host: cf-blast.livelikecdn.com
+  found_by:
+  - pointer
+  - apis[]
+  types:
+  - Login
+  serves:
+  - api
+  registrable_domain: livelikecdn.com
+  role: identity
+  relation: other-domain
+- host: docs.livelike.com
+  found_by:
+  - pointer
+  - apis[]
+  types:
+  - DeveloperPortal
+  - Documentation
+  - APIReference
+  - GettingStarted
+  - Authentication
+  - ChangeLog
+  serves:
+  - docs
+  registrable_domain: livelike.com
+  role: portal
+  relation: own
+- host: github.com
+  found_by:
+  - pointer
+  types:
+  - GitHubOrganization
+  serves: []
+  registrable_domain: github.com
+  role: source
+  relation: platform
+- host: www.livelike.com
+  found_by:
+  - pointer
+  types:
+  - Website
+  - Blog
+  - PrivacyPolicy
+  - Support
+  serves: []
+  registrable_domain: livelike.com
+  role: website
+  relation: own

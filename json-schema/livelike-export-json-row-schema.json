@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/livelike/main/json-schema/livelike-export-json-row-schema.json",
+  "title": "ExportJsonRow",
+  "description": "One row of data from a JSON download. Keys match the `display_name` values from the report's columns.",
+  "x-generated": "2026-10-14",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/livelike-analytics-api-openapi.yml#/components/schemas/ExportJsonRow",
+  "type": "object",
+  "additionalProperties": true
+}

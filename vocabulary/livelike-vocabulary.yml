@@ -1,0 +1,103 @@
+generated: '2026-10-14'
+method: derived
+generator: derive-vocabulary.py
+source:
+- openapi/livelike-analytics-api-openapi.yml
+- openapi/livelike-applications-openapi.yml
+- openapi/livelike-base-url-openapi.yml
+- openapi/livelike-chat-room-invitations-openapi.yml
+- openapi/livelike-chat-room-memberships-openapi.yml
+vocabulary:
+  name: LiveLike Domain Vocabulary
+  description: 'Terms declared by LiveLike''s own API contract: its resource groups, objects and enumerations, with the contract''s definitions.
+    Derived, not authored.'
+  version: '2026-10-14'
+  terms:
+  - term: Collections
+    definition: Your collection is the folder LiveLike has set up for you. It contains all your reports and dashboards.
+    tags:
+    - Resource Group
+    source: openapi/livelike-analytics-api-openapi.yml
+  - term: Cards
+    definition: A Card is a single report. Use the metadata endpoint to see what data it returns and whether any filters are required, then use
+      the download endpoint to get the data.
+    tags:
+    - Resource Group
+    source: openapi/livelike-analytics-api-openapi.yml
+  - term: Dashboards
+    definition: A Dashboard groups multiple reports together. Use this if you want to download data from a specific report that lives inside a
+      dashboard.
+    tags:
+    - Resource Group
+    source: openapi/livelike-analytics-api-openapi.yml
+  - term: Collection
+    definition: A collection (folder) containing your reports and dashboards.
+    tags:
+    - Object
+    source: openapi/livelike-analytics-api-openapi.yml#/components/schemas/Collection
+  - term: CollectionItem
+    definition: A report (Card) or dashboard inside your collection.
+    tags:
+    - Object
+    source: openapi/livelike-analytics-api-openapi.yml#/components/schemas/CollectionItem
+  - term: CollectionItemsResponse
+    definition: The list of reports and dashboards in your collection.
+    tags:
+    - Object
+    source: openapi/livelike-analytics-api-openapi.yml#/components/schemas/CollectionItemsResponse
+  - term: TemplateTagParameter
+    definition: A filter that can be applied when downloading a report.
+    tags:
+    - Object
+    source: openapi/livelike-analytics-api-openapi.yml#/components/schemas/TemplateTagParameter
+  - term: ResultMetadataColumn
+    definition: A column in the report's output.
+    tags:
+    - Object
+    source: openapi/livelike-analytics-api-openapi.yml#/components/schemas/ResultMetadataColumn
+  - term: CardMetadata
+    definition: Details about a report — its columns and any filters it requires.
+    tags:
+    - Object
+    source: openapi/livelike-analytics-api-openapi.yml#/components/schemas/CardMetadata
+  - term: QueryFilterParameter
+    definition: A filter value to include when downloading report data.
+    tags:
+    - Object
+    source: openapi/livelike-analytics-api-openapi.yml#/components/schemas/QueryFilterParameter
+  - term: QueryRequestBody
+    definition: The request body for download endpoints.
+    tags:
+    - Object
+    source: openapi/livelike-analytics-api-openapi.yml#/components/schemas/QueryRequestBody
+  - term: ExportJsonRow
+    definition: One row of data from a JSON download. Keys match the `display_name` values from the report's columns.
+    tags:
+    - Object
+    source: openapi/livelike-analytics-api-openapi.yml#/components/schemas/ExportJsonRow
+  - term: DashboardParameter
+    definition: A filter on the dashboard that applies to all its reports at once.
+    tags:
+    - Object
+    source: openapi/livelike-analytics-api-openapi.yml#/components/schemas/DashboardParameter
+  - term: ParameterMapping
+    definition: Links a dashboard filter to a specific report.
+    tags:
+    - Object
+    source: openapi/livelike-analytics-api-openapi.yml#/components/schemas/ParameterMapping
+  - term: DashboardCard
+    definition: A report placed inside a dashboard. Has its own `id` (dashcard_id) separate from the report's `card_id` — you need both to download
+      its data.
+    tags:
+    - Object
+    source: openapi/livelike-analytics-api-openapi.yml#/components/schemas/DashboardCard
+  - term: DashboardTab
+    definition: A tab in a tabbed dashboard.
+    tags:
+    - Object
+    source: openapi/livelike-analytics-api-openapi.yml#/components/schemas/DashboardTab
+  - term: Dashboard
+    definition: A dashboard containing multiple reports.
+    tags:
+    - Object
+    source: openapi/livelike-analytics-api-openapi.yml#/components/schemas/Dashboard

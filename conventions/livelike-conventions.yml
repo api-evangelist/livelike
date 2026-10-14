@@ -17,17 +17,24 @@ pagination:
   style: page-number
   request_param: page
   response_envelope:
-    fields: [count, next, previous, results]
-    notes: >-
-      Collection resources are wrapped in an envelope. `count` is the total
-      across all pages; `next`/`previous` are absolute page URLs (null when
-      unavailable); `results` holds the page items.
+    fields:
+    - count
+    - next
+    - previous
+    - results
+    notes: Collection resources are wrapped in an envelope. `count` is the total across all pages; `next`/`previous` are absolute page URLs (null
+      when unavailable); `results` holds the page items.
 error_envelope:
   style: http-status + descriptive message
   ref: errors/livelike-problem-types.yml
 idempotency:
   supported: false
   notes: No idempotency-key header or idempotency contract is documented.
+  coverage: partial
+  header: idempotency_key
+  mechanism: request header / body token declared in the OpenAPI
+  evidence: idempotency_key on 1 of 241 mutating operations
+  verified: derived
 localization:
   supported: true
   notes: LiveLike serves localized content based on client language preferences.
@@ -38,6 +45,4 @@ webhooks:
   ref: asyncapi/livelike-webhooks.yml
 custom_ids:
   supported: true
-  notes: >-
-    Profiles and programs support caller-supplied Custom IDs so LiveLike
-    resources can be addressed by your own system's identifiers.
+  notes: Profiles and programs support caller-supplied Custom IDs so LiveLike resources can be addressed by your own system's identifiers.

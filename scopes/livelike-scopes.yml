@@ -1,0 +1,8 @@
+generated: '2026-10-14'
+method: derived
+source: openapi/livelike-text-ask-openapi.yml
+schemes:
+- name: sec0
+  source: openapi/livelike-text-ask-openapi.yml
+  flows: []
+scopes: []

@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/livelike/main/json-schema/livelike-card-metadata-schema.json",
+  "title": "CardMetadata",
+  "description": "Details about a report — its columns and any filters it requires.",
+  "x-generated": "2026-10-14",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/livelike-analytics-api-openapi.yml#/components/schemas/CardMetadata",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Report ID."
+    },
+    "name": {
+      "type": "string",
+      "description": "Report name."
+    },
+    "description": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "What this report measures."
+    },
+    "parameters": {
+      "type": "array",
+      "description": "Filters for this report. Empty means no filters are needed.",
+      "items": {
+        "$ref": "#/$defs/TemplateTagParameter"
+      }
+    },
+    "result_metadata": {
+      "type": "array",
+      "description": "The columns in this report's output.",
+      "items": {
+        "$ref": "#/$defs/ResultMetadataColumn"
+      }
+    }
+  },
+  "$defs": {
+    "ResultMetadataColumn": {
+      "type": "object",
+      "description": "A column in the report's output.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Column name."
+        },
+        "display_name": {
+          "type": "string",
+          "description": "Column label — this is the key you'll see in JSON downloads."
+        },
+        "base_type": {
+          "type": "string",
+          "description": "Data type, e.g. `\"type/Text\"`, `\"type/Integer\"`, `\"type/DateTime\"`."
+        }
+      }
+    },
+    "TemplateTagParameter": {
+      "type": "object",
+      "description": "A filter that can be applied when downloading a report.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Filter name — use this in the `target` field when downloading."
+        },
+        "display_name": {
+          "type": "string",
+          "description": "Filter label."
+        },
+        "type": {
+          "type": "string",
+          "description": "Filter type: `\"text\"`, `\"number\"`, or `\"date\"`."
+        },
+        "required": {
+          "type": "boolean",
+          "description": "`true` means you must pass a value for this filter when downloading."
+        },
+        "default": {
+          "description": "Default value. If set, the filter is optional."
+        }
+      }
+    }
+  }
+}

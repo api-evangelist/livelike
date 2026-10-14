@@ -1,0 +1,118 @@
+{
+  "@context": {
+    "@vocab": "https://livelike.com/schema#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "livelike": "https://livelike.com/schema#",
+    "Collection": "livelike:Collection",
+    "id": {
+      "@id": "livelike:id"
+    },
+    "name": {
+      "@id": "livelike:name",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "livelike:description",
+      "@type": "xsd:string"
+    },
+    "CollectionItem": "livelike:CollectionItem",
+    "model": {
+      "@id": "livelike:model",
+      "@type": "xsd:string"
+    },
+    "CollectionItemsResponse": "livelike:CollectionItemsResponse",
+    "total": {
+      "@id": "livelike:total",
+      "@type": "xsd:integer"
+    },
+    "data": {
+      "@id": "livelike:data",
+      "@container": "@list"
+    },
+    "TemplateTagParameter": "livelike:TemplateTagParameter",
+    "display_name": {
+      "@id": "livelike:display_name",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "livelike:type",
+      "@type": "xsd:string"
+    },
+    "required": {
+      "@id": "livelike:required",
+      "@type": "xsd:boolean"
+    },
+    "default": {
+      "@id": "livelike:default"
+    },
+    "ResultMetadataColumn": "livelike:ResultMetadataColumn",
+    "base_type": {
+      "@id": "livelike:base_type",
+      "@type": "xsd:string"
+    },
+    "CardMetadata": "livelike:CardMetadata",
+    "parameters": {
+      "@id": "livelike:parameters",
+      "@container": "@list"
+    },
+    "result_metadata": {
+      "@id": "livelike:result_metadata",
+      "@container": "@list"
+    },
+    "QueryFilterParameter": "livelike:QueryFilterParameter",
+    "target": {
+      "@id": "livelike:target",
+      "@container": "@list"
+    },
+    "value": {
+      "@id": "livelike:value",
+      "@type": "xsd:string"
+    },
+    "QueryRequestBody": "livelike:QueryRequestBody",
+    "DashboardParameter": "livelike:DashboardParameter",
+    "slug": {
+      "@id": "livelike:slug",
+      "@type": "xsd:string"
+    },
+    "ParameterMapping": "livelike:ParameterMapping",
+    "parameter_id": {
+      "@id": "livelike:parameter_id",
+      "@type": "xsd:string"
+    },
+    "card_id": {
+      "@id": "livelike:card_id",
+      "@type": "xsd:integer"
+    },
+    "DashboardCard": "livelike:DashboardCard",
+    "card": {
+      "@id": "livelike:card"
+    },
+    "parameter_mappings": {
+      "@id": "livelike:parameter_mappings",
+      "@container": "@list"
+    },
+    "DashboardTab": "livelike:DashboardTab",
+    "Dashboard": "livelike:Dashboard",
+    "tabs": {
+      "@id": "livelike:tabs",
+      "@container": "@list"
+    },
+    "dashcards": {
+      "@id": "livelike:dashcards",
+      "@container": "@list"
+    }
+  },
+  "@type": "schema:Dataset",
+  "schema:name": "LiveLike API JSON-LD context",
+  "schema:description": "A JSON-LD @context for the objects LiveLike's own API contract declares: one class per component schema, one property per declared field, typed from the contract. Derived by script (derive-json-ld.py, 2026-10-14) from openapi/livelike-analytics-api-openapi.yml, openapi/livelike-applications-openapi.yml, openapi/livelike-base-url-openapi.yml.",
+  "dcterms:created": "2026-10-14",
+  "dcterms:source": [
+    "openapi/livelike-analytics-api-openapi.yml",
+    "openapi/livelike-applications-openapi.yml",
+    "openapi/livelike-base-url-openapi.yml",
+    "openapi/livelike-chat-room-invitations-openapi.yml",
+    "openapi/livelike-chat-room-memberships-openapi.yml"
+  ]
+}

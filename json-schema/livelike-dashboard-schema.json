@@ -1,0 +1,215 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/livelike/main/json-schema/livelike-dashboard-schema.json",
+  "title": "Dashboard",
+  "description": "A dashboard containing multiple reports.",
+  "x-generated": "2026-10-14",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/livelike-analytics-api-openapi.yml#/components/schemas/Dashboard",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Dashboard ID."
+    },
+    "name": {
+      "type": "string",
+      "description": "Dashboard name."
+    },
+    "description": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Optional description."
+    },
+    "parameters": {
+      "type": "array",
+      "description": "Filters that apply across all reports in this dashboard.",
+      "items": {
+        "$ref": "#/$defs/DashboardParameter"
+      }
+    },
+    "tabs": {
+      "type": "array",
+      "description": "Tabs if the dashboard is tabbed. Empty means it's a single page.",
+      "items": {
+        "$ref": "#/$defs/DashboardTab"
+      }
+    },
+    "dashcards": {
+      "type": "array",
+      "description": "The reports inside this dashboard.",
+      "items": {
+        "$ref": "#/$defs/DashboardCard"
+      }
+    }
+  },
+  "$defs": {
+    "CardMetadata": {
+      "type": "object",
+      "description": "Details about a report — its columns and any filters it requires.",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "Report ID."
+        },
+        "name": {
+          "type": "string",
+          "description": "Report name."
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "What this report measures."
+        },
+        "parameters": {
+          "type": "array",
+          "description": "Filters for this report. Empty means no filters are needed.",
+          "items": {
+            "$ref": "#/$defs/TemplateTagParameter"
+          }
+        },
+        "result_metadata": {
+          "type": "array",
+          "description": "The columns in this report's output.",
+          "items": {
+            "$ref": "#/$defs/ResultMetadataColumn"
+          }
+        }
+      }
+    },
+    "DashboardCard": {
+      "type": "object",
+      "description": "A report placed inside a dashboard. Has its own `id` (dashcard_id) separate from the report's `card_id` — you need both to download its data.",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "Dashcard ID — pass as `dashcard_id` when downloading."
+        },
+        "card_id": {
+          "type": "integer",
+          "description": "Report ID — pass as `card_id` when downloading."
+        },
+        "card": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/CardMetadata"
+            }
+          ],
+          "description": "Report details."
+        },
+        "parameter_mappings": {
+          "type": "array",
+          "description": "How dashboard filters connect to this report.",
+          "items": {
+            "$ref": "#/$defs/ParameterMapping"
+          }
+        }
+      }
+    },
+    "DashboardParameter": {
+      "type": "object",
+      "description": "A filter on the dashboard that applies to all its reports at once.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Filter UUID."
+        },
+        "name": {
+          "type": "string",
+          "description": "Filter label."
+        },
+        "slug": {
+          "type": "string",
+          "description": "URL-safe identifier."
+        },
+        "type": {
+          "type": "string",
+          "description": "Filter type, e.g. `\"category\"`, `\"date/range\"`."
+        },
+        "default": {
+          "description": "Default value."
+        }
+      }
+    },
+    "DashboardTab": {
+      "type": "object",
+      "description": "A tab in a tabbed dashboard.",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "Tab ID."
+        },
+        "name": {
+          "type": "string",
+          "description": "Tab name."
+        }
+      }
+    },
+    "ParameterMapping": {
+      "type": "object",
+      "description": "Links a dashboard filter to a specific report.",
+      "properties": {
+        "parameter_id": {
+          "type": "string",
+          "description": "Dashboard filter UUID."
+        },
+        "card_id": {
+          "type": "integer",
+          "description": "Card this applies to."
+        },
+        "target": {
+          "type": "array",
+          "description": "Template tag pointer, e.g. `[\"variable\", [\"template-tag\", \"client_id\"]]`."
+        }
+      }
+    },
+    "ResultMetadataColumn": {
+      "type": "object",
+      "description": "A column in the report's output.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Column name."
+        },
+        "display_name": {
+          "type": "string",
+          "description": "Column label — this is the key you'll see in JSON downloads."
+        },
+        "base_type": {
+          "type": "string",
+          "description": "Data type, e.g. `\"type/Text\"`, `\"type/Integer\"`, `\"type/DateTime\"`."
+        }
+      }
+    },
+    "TemplateTagParameter": {
+      "type": "object",
+      "description": "A filter that can be applied when downloading a report.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Filter name — use this in the `target` field when downloading."
+        },
+        "display_name": {
+          "type": "string",
+          "description": "Filter label."
+        },
+        "type": {
+          "type": "string",
+          "description": "Filter type: `\"text\"`, `\"number\"`, or `\"date\"`."
+        },
+        "required": {
+          "type": "boolean",
+          "description": "`true` means you must pass a value for this filter when downloading."
+        },
+        "default": {
+          "description": "Default value. If set, the filter is optional."
+        }
+      }
+    }
+  }
+}
