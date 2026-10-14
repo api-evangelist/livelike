@@ -1,5 +1,5 @@
 generated: '2026-10-14'
-method: none
+method: searched
 source:
 - https://zapier.com/apps/livelike/integrations
 - https://n8n.io/integrations/livelike/
@@ -9,8 +9,39 @@ checked:
 - https://composio.dev/toolkits/livelike
 - https://monid.ai/tools/livelike
 - https://n8n.io/integrations/livelike/
+- https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-livelike-cloud
 - https://zapier.com/apps/livelike/integrations
 summary: null
 marketplace_apps: []
-edges: []
+edges:
+- partner_name: Twilio Segment
+  partner: segment
+  partner_match: aggregator
+  marketplace: coverage
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: connector-coverage
+  evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-livelike-cloud
+  coverage_role:
+  - destination
+  - source
+  cdp_signals:
+    destination:
+      catalog_entries:
+      - actions-livelike-cloud
+      status: PUBLIC_BETA
+      partner_owned: true
+      connection_modes:
+      - cloud:server
+      - cloud:web
+      accepted_methods:
+      - Page
+      - Screen
+      - Track
+    source:
+      catalog_entries:
+      - livelike-source
+  detected_by: sweep-cdp.py
+  first_seen: '2026-10-14'
 templates: []
