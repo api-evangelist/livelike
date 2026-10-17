@@ -1,0 +1,76 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: New Application New Endpoint 2 API
+servers:
+- url: https://cf-blast.livelikecdn.com/api/v1/applications
+tags:
+- name: New Endpoint 2
+paths:
+  /new-endpoint-2:
+    post:
+      description: ''
+      responses:
+        '200':
+          description: ''
+      parameters: []
+      operationId: post_new-endpoint-2
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                streak_id:
+                  type: string
+                targets_csv:
+                  type: object
+                  properties: {}
+                name:
+                  type: string
+              required:
+              - streak_id
+      tags:
+      - New Endpoint 2
+      summary: Post new endpoint 2
+      x-summary-source: derived
+x-provenance:
+  method: searched
+  source: https://docs.livelike.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://docs.livelike.com/reference/archive-a-consecutive-action-streak.md
+  - https://docs.livelike.com/reference/archive-a-periodic-streak.md
+  - https://docs.livelike.com/reference/assign-quest-variant-to-profile.md
+  - https://docs.livelike.com/reference/create-a-periodic-streak-1.md
+  - https://docs.livelike.com/reference/create-a-periodic-streak.md
+  - https://docs.livelike.com/reference/create-ab-test-quest.md
+  - https://docs.livelike.com/reference/create-streak-milestone.md
+  - https://docs.livelike.com/reference/create-streak-target-with-csv.md
+  - https://docs.livelike.com/reference/create-streak-targets.md
+  - https://docs.livelike.com/reference/delete-a-consecutive-action-streak.md
+  - https://docs.livelike.com/reference/delete-periodic-streak.md
+  - https://docs.livelike.com/reference/delete-streak-milestone.md
+  - https://docs.livelike.com/reference/delete-streak-target.md
+  - https://docs.livelike.com/reference/get-ab-test-quest.md
+  - https://docs.livelike.com/reference/get-periodic-streak-detail-1.md
+  - https://docs.livelike.com/reference/get-periodic-streak-detail.md
+  - https://docs.livelike.com/reference/list-ab-test-quests.md
+  - https://docs.livelike.com/reference/list-periodic-streaks-1.md
+  - https://docs.livelike.com/reference/list-periodic-streaks.md
+  - https://docs.livelike.com/reference/list-streak-milestones.md
+  - https://docs.livelike.com/reference/list-streak-targets.md
+  - https://docs.livelike.com/reference/publish-periodic-streak-1.md
+  - https://docs.livelike.com/reference/publish-periodic-streak.md
+  - https://docs.livelike.com/reference/unarchive-a-consecutive-action-streak.md
+  - https://docs.livelike.com/reference/unarchive-a-periodic-streak.md
+  - https://docs.livelike.com/reference/update-a-periodic-streak-1.md
+  - https://docs.livelike.com/reference/update-a-periodic-streak.md
+  - https://docs.livelike.com/reference/update-streak-milestone.md
+  - https://docs.livelike.com/reference/update-streak-target.md
+  merge:
+    pages: 29
+    deduped: 0
+    conflicts_kept_first: 0

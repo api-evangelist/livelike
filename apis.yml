@@ -157,8 +157,10 @@ common:
 
 apis:
 - name: LiveLike REST API
-  description: REST API for managing LiveLike applications, user profiles, programs, interactive widgets (polls, quizzes, predictions, alerts),
-    chat rooms, gamification, and rewards. OAuth 2.0 Bearer authentication; page-based pagination; JSON.
+  description: >-
+    REST API for managing LiveLike applications, user profiles, programs, interactive widgets (polls,
+    quizzes, predictions, alerts), chat rooms, gamification, and rewards. OAuth 2.0 Bearer authentication;
+    page-based pagination; JSON.
   humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
   baseURL: https://cf-blast.livelikecdn.com/api/v1/
   tags:
@@ -176,16 +178,16 @@ apis:
   - type: DataModel
     url: data-model/livelike-data-model.yml
   aid: livelike:livelike-rest-api
-- aid: livelike:livelike-analytics-api
-  name: LiveLike Collections API
-  description: Your collection is the folder LiveLike has set up for you. It contains all your reports and dashboards.
+- aid: livelike:livelike-ab-test-quest-api
+  name: LiveLike Ab Test Quest API
+  description: The Ab Test Quest API from LiveLike — 1 operation(s) for ab test quest.
   humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
   baseURL: https://cf-blast.livelikecdn.com/api/v1/
   tags:
-  - Collections
+  - Ab Test Quest
   properties:
   - type: OpenAPI
-    url: openapi/livelike-analytics-api-openapi.yml
+    url: openapi/livelike-ab-test-quest-api-openapi.yml
   - type: JSONSchema
     url: json-schema/livelike-dashboard-schema.json
   - type: JSONSchema
@@ -198,247 +200,2830 @@ apis:
     url: json-schema/livelike-query-request-body-schema.json
   - type: JSONSchema
     url: json-schema/livelike-export-json-row-schema.json
-- aid: livelike:livelike-applications
-  name: LiveLike Applications Openapi.Yml API
-  description: The Applications Openapi.Yml API from LiveLike — 10 operation(s) for applications openapi.yml.
+- aid: livelike:livelike-ab-test-quests-api
+  name: LiveLike Ab Test Quests API
+  description: The Ab Test Quests API from LiveLike — 1 operation(s) for ab test quests.
   humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
   baseURL: https://cf-blast.livelikecdn.com/api/v1/
   tags:
-  - Applications Openapi.Yml
+  - Ab Test Quests
   properties:
   - type: OpenAPI
-    url: openapi/livelike-applications-openapi.yml
-- aid: livelike:livelike-base-url
-  name: LiveLike Base Url Openapi.Yml API
-  description: The Base Url Openapi.Yml API from LiveLike — 7 operation(s) for base url openapi.yml.
+    url: openapi/livelike-ab-test-quests-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-alerts-api
+  name: LiveLike Alerts API
+  description: The Alerts API from LiveLike — 2 operation(s) for alerts.
   humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
   baseURL: https://cf-blast.livelikecdn.com/api/v1/
   tags:
-  - Base Url Openapi.Yml
+  - Alerts
   properties:
   - type: OpenAPI
-    url: openapi/livelike-base-url-openapi.yml
-- aid: livelike:livelike-chat-room-invitations
-  name: LiveLike Chat Room Invitations Openapi.Yml API
-  description: The Chat Room Invitations Openapi.Yml API from LiveLike — 2 operation(s) for chat room invitations openapi.yml.
+    url: openapi/livelike-alerts-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-applications-api
+  name: LiveLike Applications API
+  description: The Applications API from LiveLike — 14 operation(s) for applications.
   humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
   baseURL: https://cf-blast.livelikecdn.com/api/v1/
   tags:
-  - Chat Room Invitations Openapi.Yml
+  - Applications
   properties:
   - type: OpenAPI
-    url: openapi/livelike-chat-room-invitations-openapi.yml
-- aid: livelike:livelike-chat-room-memberships
-  name: LiveLike Chat Room Memberships Openapi.Yml API
-  description: The Chat Room Memberships Openapi.Yml API from LiveLike — 1 operation(s) for chat room memberships openapi.yml.
+    url: openapi/livelike-applications-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-automation-partners-api
+  name: LiveLike Automation Partners API
+  description: The Automation Partners API from LiveLike — 2 operation(s) for automation partners.
   humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
   baseURL: https://cf-blast.livelikecdn.com/api/v1/
   tags:
-  - Chat Room Memberships Openapi.Yml
+  - Automation Partners
   properties:
   - type: OpenAPI
-    url: openapi/livelike-chat-room-memberships-openapi.yml
-- aid: livelike:livelike-chat-rooms
-  name: LiveLike Chat Rooms Openapi.Yml API
-  description: The Chat Rooms Openapi.Yml API from LiveLike — 6 operation(s) for chat rooms openapi.yml.
+    url: openapi/livelike-automation-partners-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-badge-profiles-api
+  name: LiveLike Badge Profiles API
+  description: The Badge Profiles API from LiveLike — 1 operation(s) for badge profiles.
   humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
   baseURL: https://cf-blast.livelikecdn.com/api/v1/
   tags:
-  - Chat Rooms Openapi.Yml
+  - Badge Profiles
   properties:
   - type: OpenAPI
-    url: openapi/livelike-chat-rooms-openapi.yml
-- aid: livelike:livelike-comment-board-bans
-  name: LiveLike Comment Board Bans Openapi.Yml API
-  description: The Comment Board Bans Openapi.Yml API from LiveLike — 1 operation(s) for comment board bans openapi.yml.
+    url: openapi/livelike-badge-profiles-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-badges-api
+  name: LiveLike Badges API
+  description: The Badges API from LiveLike — 2 operation(s) for badges.
   humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
   baseURL: https://cf-blast.livelikecdn.com/api/v1/
   tags:
-  - Comment Board Bans Openapi.Yml
+  - Badges
   properties:
   - type: OpenAPI
-    url: openapi/livelike-comment-board-bans-openapi.yml
-- aid: livelike:livelike-comment-reports
-  name: LiveLike Comment Reports Openapi.Yml API
-  description: The Comment Reports Openapi.Yml API from LiveLike — 2 operation(s) for comment reports openapi.yml.
+    url: openapi/livelike-badges-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-base-roles-api
+  name: LiveLike Base Roles API
+  description: The Base Roles API from LiveLike — 3 operation(s) for base roles.
   humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
   baseURL: https://cf-blast.livelikecdn.com/api/v1/
   tags:
-  - Comment Reports Openapi.Yml
+  - Base Roles
   properties:
   - type: OpenAPI
-    url: openapi/livelike-comment-reports-openapi.yml
-- aid: livelike:livelike-engagement-suite
-  name: LiveLike Engagement Suite Openapi.Yml API
-  description: The Engagement Suite Openapi.Yml API from LiveLike — 175 operation(s) for engagement suite openapi.yml.
+    url: openapi/livelike-base-roles-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-batch-invoked-actions-api
+  name: LiveLike Batch Invoked Actions API
+  description: The Batch Invoked Actions API from LiveLike — 1 operation(s) for batch invoked actions.
   humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
   baseURL: https://cf-blast.livelikecdn.com/api/v1/
   tags:
-  - Engagement Suite Openapi.Yml
+  - Batch Invoked Actions
   properties:
   - type: OpenAPI
-    url: openapi/livelike-engagement-suite-openapi.yml
-- aid: livelike:livelike-football-live-action
-  name: LiveLike Football Live Action Openapi.Yml API
-  description: The Football Live Action Openapi.Yml API from LiveLike — 2 operation(s) for football live action openapi.yml.
+    url: openapi/livelike-batch-invoked-actions-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-blocked-profile-ids-api
+  name: LiveLike Blocked Profile Ids API
+  description: The Blocked Profile Ids API from LiveLike — 1 operation(s) for blocked profile ids.
   humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
   baseURL: https://cf-blast.livelikecdn.com/api/v1/
   tags:
-  - Football Live Action Openapi.Yml
+  - Blocked Profile Ids
   properties:
   - type: OpenAPI
-    url: openapi/livelike-football-live-action-openapi.yml
-- aid: livelike:livelike-football-live-match-actions
-  name: LiveLike Football Live Match Actions Openapi.Yml API
-  description: The Football Live Match Actions Openapi.Yml API from LiveLike — 2 operation(s) for football live match actions openapi.yml.
+    url: openapi/livelike-blocked-profile-ids-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-cards-api
+  name: LiveLike Cards API
+  description: >-
+    A Card is a single report. Use the metadata endpoint to see what data it returns and whether any filters
+    are required, then use the download endpoint to get the data.
   humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
   baseURL: https://cf-blast.livelikecdn.com/api/v1/
   tags:
-  - Football Live Match Actions Openapi.Yml
+  - Cards
   properties:
   - type: OpenAPI
-    url: openapi/livelike-football-live-match-actions-openapi.yml
-- aid: livelike:livelike-image-predictions
-  name: LiveLike Image Predictions Openapi.Yml API
-  description: The Image Predictions Openapi.Yml API from LiveLike — 2 operation(s) for image predictions openapi.yml.
+    url: openapi/livelike-cards-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-chat-room-access-rules-api
+  name: LiveLike Chat Room Access Rules API
+  description: >-
+    The Chat Room Access Rules API from LiveLike — 2 operation(s) for chat room access rules.
   humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
   baseURL: https://cf-blast.livelikecdn.com/api/v1/
   tags:
-  - Image Predictions Openapi.Yml
+  - Chat Room Access Rules
   properties:
   - type: OpenAPI
-    url: openapi/livelike-image-predictions-openapi.yml
-- aid: livelike:livelike-leaderboard-views
-  name: LiveLike Leaderboard Views Openapi.Yml API
-  description: The Leaderboard Views Openapi.Yml API from LiveLike — 5 operation(s) for leaderboard views openapi.yml.
+    url: openapi/livelike-chat-room-access-rules-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-chat-room-invitations-api
+  name: LiveLike Chat Room Invitations API
+  description: The Chat Room Invitations API from LiveLike — 2 operation(s) for chat room invitations.
   humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
   baseURL: https://cf-blast.livelikecdn.com/api/v1/
   tags:
-  - Leaderboard Views Openapi.Yml
+  - Chat Room Invitations
   properties:
   - type: OpenAPI
-    url: openapi/livelike-leaderboard-views-openapi.yml
-- aid: livelike:livelike-leaderboards
-  name: LiveLike Leaderboards Openapi.Yml API
-  description: The Leaderboards Openapi.Yml API from LiveLike — 6 operation(s) for leaderboards openapi.yml.
+    url: openapi/livelike-chat-room-invitations-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-chat-room-memberships-api
+  name: LiveLike Chat Room Memberships API
+  description: The Chat Room Memberships API from LiveLike — 2 operation(s) for chat room memberships.
   humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
   baseURL: https://cf-blast.livelikecdn.com/api/v1/
   tags:
-  - Leaderboards Openapi.Yml
+  - Chat Room Memberships
   properties:
   - type: OpenAPI
-    url: openapi/livelike-leaderboards-openapi.yml
-- aid: livelike:livelike-list-scopes
-  name: LiveLike List Scopes Openapi.Yml API
-  description: The List Scopes Openapi.Yml API from LiveLike — 1 operation(s) for list scopes openapi.yml.
+    url: openapi/livelike-chat-room-memberships-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-chat-rooms-api
+  name: LiveLike Chat Rooms API
+  description: The Chat Rooms API from LiveLike — 7 operation(s) for chat rooms.
   humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
   baseURL: https://cf-blast.livelikecdn.com/api/v1/
   tags:
-  - List Scopes Openapi.Yml
+  - Chat Rooms
   properties:
   - type: OpenAPI
-    url: openapi/livelike-list-scopes-openapi.yml
-- aid: livelike:livelike-match-insights-alerts
-  name: LiveLike Match Insights Alerts Openapi.Yml API
-  description: The Match Insights Alerts Openapi.Yml API from LiveLike — 2 operation(s) for match insights alerts openapi.yml.
+    url: openapi/livelike-chat-rooms-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-chatroom-messages-api
+  name: LiveLike Chatroom Messages API
+  description: The Chatroom Messages API from LiveLike — 1 operation(s) for chatroom messages.
   humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
   baseURL: https://cf-blast.livelikecdn.com/api/v1/
   tags:
-  - Match Insights Alerts Openapi.Yml
+  - Chatroom Messages
   properties:
   - type: OpenAPI
-    url: openapi/livelike-match-insights-alerts-openapi.yml
-- aid: livelike:livelike-new-application
-  name: LiveLike New Application Openapi.Yml API
-  description: The New Application Openapi.Yml API from LiveLike — 20 operation(s) for new application openapi.yml.
+    url: openapi/livelike-chatroom-messages-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-cheer-meters-api
+  name: LiveLike Cheer Meters API
+  description: The Cheer Meters API from LiveLike — 1 operation(s) for cheer meters.
   humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
   baseURL: https://cf-blast.livelikecdn.com/api/v1/
   tags:
-  - New Application Openapi.Yml
+  - Cheer Meters
   properties:
   - type: OpenAPI
-    url: openapi/livelike-new-application-openapi.yml
-- aid: livelike:livelike-profiles
-  name: LiveLike Profiles Openapi.Yml API
-  description: The Profiles Openapi.Yml API from LiveLike — 15 operation(s) for profiles openapi.yml.
+    url: openapi/livelike-cheer-meters-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-collections-api
+  name: LiveLike Collections API
+  description: >-
+    Your collection is the folder LiveLike has set up for you. It contains all your reports and dashboards.
   humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
   baseURL: https://cf-blast.livelikecdn.com/api/v1/
   tags:
-  - Profiles Openapi.Yml
+  - Collections
   properties:
   - type: OpenAPI
-    url: openapi/livelike-profiles-openapi.yml
-- aid: livelike:livelike-programs
-  name: LiveLike Programs Openapi.Yml API
-  description: The Programs Openapi.Yml API from LiveLike — 6 operation(s) for programs openapi.yml.
+    url: openapi/livelike-collections-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-comment-boadrs-api
+  name: LiveLike Comment Boadrs API
+  description: The Comment Boadrs API from LiveLike — 1 operation(s) for comment boadrs.
   humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
   baseURL: https://cf-blast.livelikecdn.com/api/v1/
   tags:
-  - Programs Openapi.Yml
+  - Comment Boadrs
   properties:
   - type: OpenAPI
-    url: openapi/livelike-programs-openapi.yml
-- aid: livelike:livelike-reaction-packs
-  name: LiveLike Reaction Packs Openapi.Yml API
-  description: The Reaction Packs Openapi.Yml API from LiveLike — 2 operation(s) for reaction packs openapi.yml.
+    url: openapi/livelike-comment-boadrs-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-comment-board-bans-api
+  name: LiveLike Comment Board Bans API
+  description: The Comment Board Bans API from LiveLike — 3 operation(s) for comment board bans.
   humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
   baseURL: https://cf-blast.livelikecdn.com/api/v1/
   tags:
-  - Reaction Packs Openapi.Yml
+  - Comment Board Bans
   properties:
   - type: OpenAPI
-    url: openapi/livelike-reaction-packs-openapi.yml
-- aid: livelike:livelike-reaction-spaces
-  name: LiveLike Reaction Spaces Openapi.Yml API
-  description: The Reaction Spaces Openapi.Yml API from LiveLike — 3 operation(s) for reaction spaces openapi.yml.
+    url: openapi/livelike-comment-board-bans-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-comment-board-by-custom-id-api
+  name: LiveLike Comment Board By Custom Id API
+  description: >-
+    The Comment Board By Custom Id API from LiveLike — 1 operation(s) for comment board by custom id.
   humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
   baseURL: https://cf-blast.livelikecdn.com/api/v1/
   tags:
-  - Reaction Spaces Openapi.Yml
+  - Comment Board By Custom Id
   properties:
   - type: OpenAPI
-    url: openapi/livelike-reaction-spaces-openapi.yml
-- aid: livelike:livelike-sticker-packs
-  name: LiveLike Sticker Packs Openapi.Yml API
-  description: The Sticker Packs Openapi.Yml API from LiveLike — 1 operation(s) for sticker packs openapi.yml.
+    url: openapi/livelike-comment-board-by-custom-id-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-comment-boards-api
+  name: LiveLike Comment Boards API
+  description: The Comment Boards API from LiveLike — 2 operation(s) for comment boards.
   humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
   baseURL: https://cf-blast.livelikecdn.com/api/v1/
   tags:
-  - Sticker Packs Openapi.Yml
+  - Comment Boards
   properties:
   - type: OpenAPI
-    url: openapi/livelike-sticker-packs-openapi.yml
-- aid: livelike:livelike-text-ask
-  name: LiveLike Text Ask Openapi.Yml API
-  description: The Text Ask Openapi.Yml API from LiveLike — 1 operation(s) for text ask openapi.yml.
+    url: openapi/livelike-comment-boards-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-comment-counts-api
+  name: LiveLike Comment Counts API
+  description: The Comment Counts API from LiveLike — 1 operation(s) for comment counts.
   humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
   baseURL: https://cf-blast.livelikecdn.com/api/v1/
   tags:
-  - Text Ask Openapi.Yml
+  - Comment Counts
   properties:
   - type: OpenAPI
-    url: openapi/livelike-text-ask-openapi.yml
-- aid: livelike:livelike-text-prediction
-  name: LiveLike Text Prediction Openapi.Yml API
-  description: The Text Prediction Openapi.Yml API from LiveLike — 2 operation(s) for text prediction openapi.yml.
+    url: openapi/livelike-comment-counts-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-comment-quality-rules-api
+  name: LiveLike Comment Quality Rules API
+  description: The Comment Quality Rules API from LiveLike — 1 operation(s) for comment quality rules.
   humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
   baseURL: https://cf-blast.livelikecdn.com/api/v1/
   tags:
-  - Text Prediction Openapi.Yml
+  - Comment Quality Rules
   properties:
   - type: OpenAPI
-    url: openapi/livelike-text-prediction-openapi.yml
-- aid: livelike:livelike-wildmoka-video-alerts
-  name: LiveLike Wildmoka Video Alerts Openapi.Yml API
-  description: The Wildmoka Video Alerts Openapi.Yml API from LiveLike — 2 operation(s) for wildmoka video alerts openapi.yml.
+    url: openapi/livelike-comment-quality-rules-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-comment-reports-api
+  name: LiveLike Comment Reports API
+  description: The Comment Reports API from LiveLike — 3 operation(s) for comment reports.
   humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
   baseURL: https://cf-blast.livelikecdn.com/api/v1/
   tags:
-  - Wildmoka Video Alerts Openapi.Yml
+  - Comment Reports
   properties:
   - type: OpenAPI
-    url: openapi/livelike-wildmoka-video-alerts-openapi.yml
-
+    url: openapi/livelike-comment-reports-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-comments-api
+  name: LiveLike Comments API
+  description: The Comments API from LiveLike — 3 operation(s) for comments.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Comments
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-comments-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-consecutive-action-streaks-api
+  name: LiveLike Consecutive Action Streaks API
+  description: >-
+    The Consecutive Action Streaks API from LiveLike — 5 operation(s) for consecutive action streaks.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Consecutive Action Streaks
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-consecutive-action-streaks-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-consecutive-actions-api
+  name: LiveLike Consecutive Actions API
+  description: The Consecutive Actions API from LiveLike — 1 operation(s) for consecutive actions.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Consecutive Actions
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-consecutive-actions-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-consecutive-streaks-api
+  name: LiveLike Consecutive Streaks API
+  description: The Consecutive Streaks API from LiveLike — 1 operation(s) for consecutive streaks.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Consecutive Streaks
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-consecutive-streaks-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-custom-messages-api
+  name: LiveLike Custom Messages API
+  description: The Custom Messages API from LiveLike — 1 operation(s) for custom messages.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Custom Messages
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-custom-messages-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-dashboards-api
+  name: LiveLike Dashboards API
+  description: >-
+    A Dashboard groups multiple reports together. Use this if you want to download data from a specific
+    report that lives inside a dashboard.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Dashboards
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-dashboards-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-delete-chat-message-api
+  name: LiveLike Delete Chat Message API
+  description: The Delete Chat Message API from LiveLike — 1 operation(s) for delete chat message.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Delete Chat Message
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-delete-chat-message-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-earned-badges-api
+  name: LiveLike Earned Badges API
+  description: The Earned Badges API from LiveLike — 2 operation(s) for earned badges.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Earned Badges
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-earned-badges-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-emoji-sliders-api
+  name: LiveLike Emoji Sliders API
+  description: The Emoji Sliders API from LiveLike — 2 operation(s) for emoji sliders.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Emoji Sliders
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-emoji-sliders-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-engagement-suite-api
+  name: LiveLike Engagement Suite API
+  description: The Engagement Suite API from LiveLike — 1 operation(s) for engagement suite.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Engagement Suite
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-engagement-suite-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-entries-api
+  name: LiveLike Entries API
+  description: The Entries API from LiveLike — 2 operation(s) for entries.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Entries
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-entries-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-flair-assignments-api
+  name: LiveLike Flair Assignments API
+  description: The Flair Assignments API from LiveLike — 2 operation(s) for flair assignments.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Flair Assignments
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-flair-assignments-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-flair-scopes-api
+  name: LiveLike Flair Scopes API
+  description: The Flair Scopes API from LiveLike — 2 operation(s) for flair scopes.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Flair Scopes
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-flair-scopes-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-flairs-api
+  name: LiveLike Flairs API
+  description: The Flairs API from LiveLike — 3 operation(s) for flairs.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Flairs
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-flairs-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-football-live-action-api
+  name: LiveLike Football Live Action API
+  description: The Football Live Action API from LiveLike — 2 operation(s) for football live action.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Football Live Action
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-football-live-action-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-football-live-match-actions-api
+  name: LiveLike Football Live Match Actions API
+  description: >-
+    The Football Live Match Actions API from LiveLike — 2 operation(s) for football live match actions.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Football Live Match Actions
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-football-live-match-actions-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-image-number-prediction-follow-ups-api
+  name: LiveLike Image Number Prediction Follow Ups API
+  description: >-
+    The Image Number Prediction Follow Ups API from LiveLike — 1 operation(s) for image number prediction
+    follow ups.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Image Number Prediction Follow Ups
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-image-number-prediction-follow-ups-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-image-number-prediction-options-api
+  name: LiveLike Image Number Prediction Options API
+  description: >-
+    The Image Number Prediction Options API from LiveLike — 2 operation(s) for image number prediction
+    options.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Image Number Prediction Options
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-image-number-prediction-options-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-image-number-predictions-api
+  name: LiveLike Image Number Predictions API
+  description: >-
+    The Image Number Predictions API from LiveLike — 3 operation(s) for image number predictions.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Image Number Predictions
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-image-number-predictions-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-image-polls-api
+  name: LiveLike Image Polls API
+  description: The Image Polls API from LiveLike — 2 operation(s) for image polls.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Image Polls
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-image-polls-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-image-prediction-follow-ups-api
+  name: LiveLike Image Prediction Follow Ups API
+  description: >-
+    The Image Prediction Follow Ups API from LiveLike — 1 operation(s) for image prediction follow ups.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Image Prediction Follow Ups
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-image-prediction-follow-ups-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-image-prediction-options-api
+  name: LiveLike Image Prediction Options API
+  description: >-
+    The Image Prediction Options API from LiveLike — 2 operation(s) for image prediction options.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Image Prediction Options
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-image-prediction-options-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-image-predictions-api
+  name: LiveLike Image Predictions API
+  description: The Image Predictions API from LiveLike — 2 operation(s) for image predictions.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Image Predictions
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-image-predictions-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-image-quizzes-api
+  name: LiveLike Image Quizzes API
+  description: The Image Quizzes API from LiveLike — 2 operation(s) for image quizzes.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Image Quizzes
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-image-quizzes-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-invoked-actions-api
+  name: LiveLike Invoked Actions API
+  description: The Invoked Actions API from LiveLike — 1 operation(s) for invoked actions.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Invoked Actions
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-invoked-actions-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-leaderboard-by-custom-id-api
+  name: LiveLike Leaderboard By Custom Id API
+  description: >-
+    The Leaderboard By Custom Id API from LiveLike — 2 operation(s) for leaderboard by custom id.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Leaderboard By Custom Id
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-leaderboard-by-custom-id-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-leaderboard-views-api
+  name: LiveLike Leaderboard Views API
+  description: The Leaderboard Views API from LiveLike — 3 operation(s) for leaderboard views.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Leaderboard Views
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-leaderboard-views-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-leaderboards-api
+  name: LiveLike Leaderboards API
+  description: The Leaderboards API from LiveLike — 3 operation(s) for leaderboards.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Leaderboards
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-leaderboards-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-list-scopes-api
+  name: LiveLike List Scopes API
+  description: The List Scopes API from LiveLike — 1 operation(s) for list scopes.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - List Scopes
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-list-scopes-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-match-insights-alerts-api
+  name: LiveLike Match Insights Alerts API
+  description: The Match Insights Alerts API from LiveLike — 2 operation(s) for match insights alerts.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Match Insights Alerts
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-match-insights-alerts-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-media-api
+  name: LiveLike Media API
+  description: The Media API from LiveLike — 2 operation(s) for media.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Media
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-media-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-memberships-api
+  name: LiveLike Memberships API
+  description: The Memberships API from LiveLike — 1 operation(s) for memberships.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Memberships
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-memberships-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-new-endpoint-2-api
+  name: LiveLike New Endpoint 2 API
+  description: The New Endpoint 2 API from LiveLike — 1 operation(s) for new endpoint 2.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - New Endpoint 2
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-new-endpoint-2-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-periodic-streaks-api
+  name: LiveLike Periodic Streaks API
+  description: The Periodic Streaks API from LiveLike — 5 operation(s) for periodic streaks.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Periodic Streaks
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-periodic-streaks-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-permissions-api
+  name: LiveLike Permissions API
+  description: The Permissions API from LiveLike — 1 operation(s) for permissions.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Permissions
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-permissions-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-pinned-comments-api
+  name: LiveLike Pinned Comments API
+  description: The Pinned Comments API from LiveLike — 2 operation(s) for pinned comments.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Pinned Comments
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-pinned-comments-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-pinned-messages-api
+  name: LiveLike Pinned Messages API
+  description: The Pinned Messages API from LiveLike — 2 operation(s) for pinned messages.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Pinned Messages
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-pinned-messages-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-profile-blocks-api
+  name: LiveLike Profile Blocks API
+  description: The Profile Blocks API from LiveLike — 2 operation(s) for profile blocks.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Profile Blocks
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-profile-blocks-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-profile-by-custom-id-api
+  name: LiveLike Profile By Custom Id API
+  description: The Profile By Custom Id API from LiveLike — 1 operation(s) for profile by custom id.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Profile By Custom Id
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-profile-by-custom-id-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-profile-relationship-types-api
+  name: LiveLike Profile Relationship Types API
+  description: >-
+    The Profile Relationship Types API from LiveLike — 1 operation(s) for profile relationship types.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Profile Relationship Types
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-profile-relationship-types-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-profile-relationships-api
+  name: LiveLike Profile Relationships API
+  description: The Profile Relationships API from LiveLike — 2 operation(s) for profile relationships.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Profile Relationships
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-profile-relationships-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-profiles-api
+  name: LiveLike Profiles API
+  description: The Profiles API from LiveLike — 18 operation(s) for profiles.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Profiles
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-profiles-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-program-bans-api
+  name: LiveLike Program Bans API
+  description: The Program Bans API from LiveLike — 2 operation(s) for program bans.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Program Bans
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-program-bans-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-program-by-custom-id-api
+  name: LiveLike Program By Custom Id API
+  description: The Program By Custom Id API from LiveLike — 1 operation(s) for program by custom id.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Program By Custom Id
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-program-by-custom-id-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-programs-api
+  name: LiveLike Programs API
+  description: The Programs API from LiveLike — 3 operation(s) for programs.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Programs
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-programs-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-quest-rewards-api
+  name: LiveLike Quest Rewards API
+  description: The Quest Rewards API from LiveLike — 2 operation(s) for quest rewards.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Quest Rewards
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-quest-rewards-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-quest-tasks-api
+  name: LiveLike Quest Tasks API
+  description: The Quest Tasks API from LiveLike — 3 operation(s) for quest tasks.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Quest Tasks
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-quest-tasks-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-quests-api
+  name: LiveLike Quests API
+  description: The Quests API from LiveLike — 5 operation(s) for quests.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Quests
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-quests-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-reaction-emojis-api
+  name: LiveLike Reaction Emojis API
+  description: The Reaction Emojis API from LiveLike — 2 operation(s) for reaction emojis.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Reaction Emojis
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-reaction-emojis-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-reaction-packs-api
+  name: LiveLike Reaction Packs API
+  description: The Reaction Packs API from LiveLike — 4 operation(s) for reaction packs.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Reaction Packs
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-reaction-packs-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-reaction-space-by-target-group-id-api
+  name: LiveLike Reaction Space By Target Group Id API
+  description: >-
+    The Reaction Space By Target Group Id API from LiveLike — 3 operation(s) for reaction space by target
+    group id.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Reaction Space By Target Group Id
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-reaction-space-by-target-group-id-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-reaction-spaces-api
+  name: LiveLike Reaction Spaces API
+  description: The Reaction Spaces API from LiveLike — 4 operation(s) for reaction spaces.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Reaction Spaces
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-reaction-spaces-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-redemption-keys-api
+  name: LiveLike Redemption Keys API
+  description: The Redemption Keys API from LiveLike — 2 operation(s) for redemption keys.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Redemption Keys
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-redemption-keys-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-redemption-keys-by-code-api
+  name: LiveLike Redemption Keys By Code API
+  description: >-
+    The Redemption Keys By Code API from LiveLike — 1 operation(s) for redemption keys by code.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Redemption Keys By Code
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-redemption-keys-by-code-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-registered-links-api
+  name: LiveLike Registered Links API
+  description: The Registered Links API from LiveLike — 2 operation(s) for registered links.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Registered Links
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-registered-links-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-reported-chat-room-messages-api
+  name: LiveLike Reported Chat Room Messages API
+  description: >-
+    The Reported Chat Room Messages API from LiveLike — 1 operation(s) for reported chat room messages.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Reported Chat Room Messages
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-reported-chat-room-messages-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-resources-api
+  name: LiveLike Resources API
+  description: The Resources API from LiveLike — 1 operation(s) for resources.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Resources
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-resources-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-reward-actions-api
+  name: LiveLike Reward Actions API
+  description: The Reward Actions API from LiveLike — 1 operation(s) for reward actions.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Reward Actions
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-reward-actions-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-reward-items-api
+  name: LiveLike Reward Items API
+  description: The Reward Items API from LiveLike — 2 operation(s) for reward items.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Reward Items
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-reward-items-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-reward-multipliers-api
+  name: LiveLike Reward Multipliers API
+  description: The Reward Multipliers API from LiveLike — 6 operation(s) for reward multipliers.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Reward Multipliers
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-reward-multipliers-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-reward-tables-api
+  name: LiveLike Reward Tables API
+  description: The Reward Tables API from LiveLike — 6 operation(s) for reward tables.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Reward Tables
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-reward-tables-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-reward-transactions-api
+  name: LiveLike Reward Transactions API
+  description: The Reward Transactions API from LiveLike — 1 operation(s) for reward transactions.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Reward Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-reward-transactions-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-rich-posts-api
+  name: LiveLike Rich Posts API
+  description: The Rich Posts API from LiveLike — 3 operation(s) for rich posts.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Rich Posts
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-rich-posts-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-role-assignments-api
+  name: LiveLike Role Assignments API
+  description: The Role Assignments API from LiveLike — 2 operation(s) for role assignments.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Role Assignments
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-role-assignments-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-role-grants-api
+  name: LiveLike Role Grants API
+  description: The Role Grants API from LiveLike — 2 operation(s) for role grants.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Role Grants
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-role-grants-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-role-templates-api
+  name: LiveLike Role Templates API
+  description: The Role Templates API from LiveLike — 1 operation(s) for role templates.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Role Templates
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-role-templates-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-roles-api
+  name: LiveLike Roles API
+  description: The Roles API from LiveLike — 2 operation(s) for roles.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Roles
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-roles-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-schedule-api
+  name: LiveLike Schedule API
+  description: The Schedule API from LiveLike — 1 operation(s) for schedule.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Schedule
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-schedule-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-social-embeds-api
+  name: LiveLike Social Embeds API
+  description: The Social Embeds API from LiveLike — 2 operation(s) for social embeds.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Social Embeds
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-social-embeds-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-sponsors-api
+  name: LiveLike Sponsors API
+  description: The Sponsors API from LiveLike — 1 operation(s) for sponsors.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Sponsors
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-sponsors-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-sticker-packs-api
+  name: LiveLike Sticker Packs API
+  description: The Sticker Packs API from LiveLike — 4 operation(s) for sticker packs.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Sticker Packs
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-sticker-packs-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-stickers-api
+  name: LiveLike Stickers API
+  description: The Stickers API from LiveLike — 1 operation(s) for stickers.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Stickers
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-stickers-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-streak-milestones-api
+  name: LiveLike Streak Milestones API
+  description: The Streak Milestones API from LiveLike — 2 operation(s) for streak milestones.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Streak Milestones
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-streak-milestones-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-streak-targets-api
+  name: LiveLike Streak Targets API
+  description: The Streak Targets API from LiveLike — 2 operation(s) for streak targets.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Streak Targets
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-streak-targets-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-templates-api
+  name: LiveLike Templates API
+  description: The Templates API from LiveLike — 2 operation(s) for templates.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Templates
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-templates-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-text-ask-api
+  name: LiveLike Text Ask API
+  description: The Text Ask API from LiveLike — 1 operation(s) for text ask.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Text Ask
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-text-ask-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-text-asks-api
+  name: LiveLike Text Asks API
+  description: The Text Asks API from LiveLike — 1 operation(s) for text asks.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Text Asks
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-text-asks-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-text-polls-api
+  name: LiveLike Text Polls API
+  description: The Text Polls API from LiveLike — 2 operation(s) for text polls.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Text Polls
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-text-polls-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-text-prediction-api
+  name: LiveLike Text Prediction API
+  description: The Text Prediction API from LiveLike — 2 operation(s) for text prediction.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Text Prediction
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-text-prediction-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-text-prediction-follow-ups-api
+  name: LiveLike Text Prediction Follow Ups API
+  description: >-
+    The Text Prediction Follow Ups API from LiveLike — 1 operation(s) for text prediction follow ups.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Text Prediction Follow Ups
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-text-prediction-follow-ups-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-text-prediction-options-api
+  name: LiveLike Text Prediction Options API
+  description: >-
+    The Text Prediction Options API from LiveLike — 2 operation(s) for text prediction options.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Text Prediction Options
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-text-prediction-options-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-text-quizzes-api
+  name: LiveLike Text Quizzes API
+  description: The Text Quizzes API from LiveLike — 2 operation(s) for text quizzes.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Text Quizzes
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-text-quizzes-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-tier-benefits-api
+  name: LiveLike Tier Benefits API
+  description: The Tier Benefits API from LiveLike — 2 operation(s) for tier benefits.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Tier Benefits
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-tier-benefits-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-tier-groups-api
+  name: LiveLike Tier Groups API
+  description: The Tier Groups API from LiveLike — 3 operation(s) for tier groups.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Tier Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-tier-groups-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-tier-transactions-api
+  name: LiveLike Tier Transactions API
+  description: The Tier Transactions API from LiveLike — 1 operation(s) for tier transactions.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Tier Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-tier-transactions-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-tiers-api
+  name: LiveLike Tiers API
+  description: The Tiers API from LiveLike — 3 operation(s) for tiers.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Tiers
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-tiers-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-unblock-by-profile-custom-id-api
+  name: LiveLike Unblock By Profile Custom Id API
+  description: >-
+    The Unblock By Profile Custom Id API from LiveLike — 1 operation(s) for unblock by profile custom
+    id.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Unblock By Profile Custom Id
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-unblock-by-profile-custom-id-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-unclaimed-widget-interactions-api
+  name: LiveLike Unclaimed Widget Interactions API
+  description: >-
+    The Unclaimed Widget Interactions API from LiveLike — 1 operation(s) for unclaimed widget interactions.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Unclaimed Widget Interactions
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-unclaimed-widget-interactions-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-user-quest-rewards-api
+  name: LiveLike User Quest Rewards API
+  description: The User Quest Rewards API from LiveLike — 1 operation(s) for user quest rewards.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - User Quest Rewards
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-user-quest-rewards-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-user-quest-task-progress-api
+  name: LiveLike User Quest Task Progress API
+  description: >-
+    The User Quest Task Progress API from LiveLike — 1 operation(s) for user quest task progress.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - User Quest Task Progress
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-user-quest-task-progress-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-user-quests-api
+  name: LiveLike User Quests API
+  description: The User Quests API from LiveLike — 5 operation(s) for user quests.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - User Quests
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-user-quests-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-user-reactions-api
+  name: LiveLike User Reactions API
+  description: The User Reactions API from LiveLike — 2 operation(s) for user reactions.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - User Reactions
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-user-reactions-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-user-reactions-count-api
+  name: LiveLike User Reactions Count API
+  description: The User Reactions Count API from LiveLike — 1 operation(s) for user reactions count.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - User Reactions Count
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-user-reactions-count-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-user-reward-multipliers-api
+  name: LiveLike User Reward Multipliers API
+  description: >-
+    The User Reward Multipliers API from LiveLike — 2 operation(s) for user reward multipliers.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - User Reward Multipliers
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-user-reward-multipliers-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-user-streak-api
+  name: LiveLike User Streak API
+  description: The User Streak API from LiveLike — 1 operation(s) for user streak.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - User Streak
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-user-streak-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-user-streak-milestones-api
+  name: LiveLike User Streak Milestones API
+  description: >-
+    The User Streak Milestones API from LiveLike — 1 operation(s) for user streak milestones.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - User Streak Milestones
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-user-streak-milestones-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-user-streaks-api
+  name: LiveLike User Streaks API
+  description: The User Streaks API from LiveLike — 3 operation(s) for user streaks.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - User Streaks
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-user-streaks-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-video-alerts-api
+  name: LiveLike Video Alerts API
+  description: The Video Alerts API from LiveLike — 2 operation(s) for video alerts.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Video Alerts
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-video-alerts-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-widget-interactions-api
+  name: LiveLike Widget Interactions API
+  description: The Widget Interactions API from LiveLike — 2 operation(s) for widget interactions.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Widget Interactions
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-widget-interactions-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-widget-messages-api
+  name: LiveLike Widget Messages API
+  description: The Widget Messages API from LiveLike — 1 operation(s) for widget messages.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Widget Messages
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-widget-messages-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-widget-reports-api
+  name: LiveLike Widget Reports API
+  description: The Widget Reports API from LiveLike — 2 operation(s) for widget reports.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Widget Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-widget-reports-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-widgets-api
+  name: LiveLike Widgets API
+  description: The Widgets API from LiveLike — 1 operation(s) for widgets.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Widgets
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-widgets-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
+- aid: livelike:livelike-wildmoka-video-alerts-api
+  name: LiveLike Wildmoka Video Alerts API
+  description: The Wildmoka Video Alerts API from LiveLike — 2 operation(s) for wildmoka video alerts.
+  humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
+  baseURL: https://cf-blast.livelikecdn.com/api/v1/
+  tags:
+  - Wildmoka Video Alerts
+  properties:
+  - type: OpenAPI
+    url: openapi/livelike-wildmoka-video-alerts-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/livelike-dashboard-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-card-metadata-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-collection-items-response-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-query-request-body-schema.json
+  - type: JSONSchema
+    url: json-schema/livelike-export-json-row-schema.json
 x-readme-harvest:
   date: '2026-10-14'
   ops: 387

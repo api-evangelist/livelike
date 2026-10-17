@@ -1,0 +1,250 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: New Application Streak Targets API
+servers:
+- url: https://cf-blast.livelikecdn.com/api/v1/applications
+tags:
+- name: Streak Targets
+paths:
+  /{client-id}/streak-targets/:
+    post:
+      description: ''
+      responses:
+        '200':
+          description: ''
+        '201':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              examples:
+                Created:
+                  summary: Created
+                  value:
+                    id: 7c5debdb-c086-4b5d-b91d-53fd078adf8d
+                    url: https://cf-blast.livelikecdn.com/api/v1/applications/4JF1QjhD594ve6IOkZaK5LFvIktqeW1xvFmsQiHY/streak-targets/7c5debdb-c086-4b5d-b91d-53fd078adf8d/
+                    streak_id: fbd5cd7f-0778-4e20-8ee3-6e27b7ae6715
+                    name: Streak-target 1
+                    attributes:
+                    - key: widget_id
+                      value: aadb1366-3145-4b90-a388-c2b88331c023
+                    - key: widget_kind
+                      value: text-poll
+          description: Created
+      parameters:
+      - in: path
+        name: client-id
+        schema:
+          type: string
+        required: true
+      operationId: post_client-id-streak-targets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                streak_id:
+                  type: string
+                name:
+                  type: string
+                  description: Name of the target
+                attributes:
+                  type: array
+                  items:
+                    properties:
+                      key:
+                        type: string
+                        description: attribute key eg. widget_kind
+                      value:
+                        type: string
+                        description: attribute value, eg. text-poll
+                    type: object
+              required:
+              - streak_id
+            examples:
+              New Example:
+                summary: New Example
+                value:
+                  streak_id: <streak-id>
+                  name: Streak-target 1
+                  attributes:
+                  - key: widget_kind
+                    value: text-poll
+                  - key: widget_id
+                    value: aadb1366-3145-4b90-a388-c2b88331c023
+      tags:
+      - Streak Targets
+      summary: Post client id streak targets
+      x-summary-source: derived
+    get:
+      description: ''
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              examples:
+                OK:
+                  summary: OK
+                  value:
+                    count: 1
+                    next: null
+                    previous: null
+                    results:
+                    - id: 46effdeb-b0da-44cb-8e30-74473d0671d4
+                      url: https://cf-blast.livelikecdn.com/api/v1/applications/4JF1QjhD594ve6IOkZaK5LFvIktqeW1xvFmsQiHY/streak-targets/46effdeb-b0da-44cb-8e30-74473d0671d4/
+                      streak_id: bdca27a0-2e94-4a69-8c51-6b4e7df60215
+                      name: null
+                      attributes:
+                      - key: widget_id
+                        value: 6500684f-b853-4c75-9602-6e0c6f48c855
+                      - key: program_id
+                        value: b187d261-cb3b-438b-a4c8-dd7ba3b77ed9
+                      - key: widget_kind
+                        value: image-prediction-follow-up
+      parameters:
+      - in: path
+        name: client-id
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: streak_id
+        schema:
+          type: string
+      operationId: get_client-id-streak-targets
+      tags:
+      - Streak Targets
+      summary: Get client id streak targets
+      x-summary-source: derived
+  /{client-id}/streak-targets/{streak-target-id}/:
+    patch:
+      description: ''
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              examples:
+                OK:
+                  summary: OK
+                  value:
+                    id: 7c5debdb-c086-4b5d-b91d-53fd078adf8d
+                    url: https://cf-blast.livelikecdn.com/api/v1/applications/4JF1QjhD594ve6IOkZaK5LFvIktqeW1xvFmsQiHY/streak-targets/7c5debdb-c086-4b5d-b91d-53fd078adf8d/
+                    streak_id: fbd5cd7f-0778-4e20-8ee3-6e27b7ae6715
+                    name: Streak-target 1
+                    attributes:
+                    - key: widget_id
+                      value: aadb1366-3145-4b90-a388-c2b88331c023
+                    - key: widget_kind
+                      value: text-poll
+      parameters:
+      - in: path
+        name: client-id
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: streak-target-id
+        schema:
+          type: string
+        required: true
+      operationId: patch_client-id-streak-targets-streak-target-id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                attributes:
+                  type: array
+                  items:
+                    properties:
+                      key:
+                        type: string
+                      value:
+                        type: string
+                    type: object
+              required:
+              - name
+      tags:
+      - Streak Targets
+      summary: Patch client id streak targets streak target id
+      x-summary-source: derived
+    delete:
+      description: ''
+      responses:
+        '200':
+          description: ''
+        '204':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              examples:
+                No Content:
+                  summary: No Content
+                  value: ''
+          description: No Content
+      parameters:
+      - in: path
+        name: client-id
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: streak-target-id
+        schema:
+          type: string
+        required: true
+      operationId: delete_client-id-streak-targets-streak-target-id
+      tags:
+      - Streak Targets
+      summary: Delete client id streak targets streak target id
+      x-summary-source: derived
+x-provenance:
+  method: searched
+  source: https://docs.livelike.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://docs.livelike.com/reference/archive-a-consecutive-action-streak.md
+  - https://docs.livelike.com/reference/archive-a-periodic-streak.md
+  - https://docs.livelike.com/reference/assign-quest-variant-to-profile.md
+  - https://docs.livelike.com/reference/create-a-periodic-streak-1.md
+  - https://docs.livelike.com/reference/create-a-periodic-streak.md
+  - https://docs.livelike.com/reference/create-ab-test-quest.md
+  - https://docs.livelike.com/reference/create-streak-milestone.md
+  - https://docs.livelike.com/reference/create-streak-target-with-csv.md
+  - https://docs.livelike.com/reference/create-streak-targets.md
+  - https://docs.livelike.com/reference/delete-a-consecutive-action-streak.md
+  - https://docs.livelike.com/reference/delete-periodic-streak.md
+  - https://docs.livelike.com/reference/delete-streak-milestone.md
+  - https://docs.livelike.com/reference/delete-streak-target.md
+  - https://docs.livelike.com/reference/get-ab-test-quest.md
+  - https://docs.livelike.com/reference/get-periodic-streak-detail-1.md
+  - https://docs.livelike.com/reference/get-periodic-streak-detail.md
+  - https://docs.livelike.com/reference/list-ab-test-quests.md
+  - https://docs.livelike.com/reference/list-periodic-streaks-1.md
+  - https://docs.livelike.com/reference/list-periodic-streaks.md
+  - https://docs.livelike.com/reference/list-streak-milestones.md
+  - https://docs.livelike.com/reference/list-streak-targets.md
+  - https://docs.livelike.com/reference/publish-periodic-streak-1.md
+  - https://docs.livelike.com/reference/publish-periodic-streak.md
+  - https://docs.livelike.com/reference/unarchive-a-consecutive-action-streak.md
+  - https://docs.livelike.com/reference/unarchive-a-periodic-streak.md
+  - https://docs.livelike.com/reference/update-a-periodic-streak-1.md
+  - https://docs.livelike.com/reference/update-a-periodic-streak.md
+  - https://docs.livelike.com/reference/update-streak-milestone.md
+  - https://docs.livelike.com/reference/update-streak-target.md
+  merge:
+    pages: 29
+    deduped: 0
+    conflicts_kept_first: 0

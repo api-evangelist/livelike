@@ -1,0 +1,410 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: New Application Consecutive Action Streaks API
+servers:
+- url: https://cf-blast.livelikecdn.com/api/v1/applications
+tags:
+- name: Consecutive Action Streaks
+paths:
+  /{client-id}/consecutive-action-streaks/:
+    get:
+      description: ''
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              examples:
+                OK:
+                  summary: OK
+                  value:
+                    count: 1
+                    next: null
+                    previous: null
+                    results:
+                    - id: 88a55cd9-ece7-4439-b040-2e5427b48eb0
+                      url: https://cf-blast.livelikecdn.com/api/v1/applications/4JF1QjhD594ve6IOkZaK5LFvIktqeW1xvFmsQiHY/consecutive-action-streaks/88a55cd9-ece7-4439-b040-2e5427b48eb0/
+                      publish_url: https://cf-blast.livelikecdn.com/api/v1/applications/4JF1QjhD594ve6IOkZaK5LFvIktqeW1xvFmsQiHY/consecutive-action-streaks/88a55cd9-ece7-4439-b040-2e5427b48eb0/publish/
+                      name: test streak
+                      description: Test streak
+                      progress_action_key: prediction-correct
+                      created_at: '2025-11-04T14:46:40.948028Z'
+                      streak_type: consecutive_action
+                      client_id: 4JF1QjhD594ve6IOkZaK5LFvIktqeW1xvFmsQiHY
+                      started_at: null
+                      stopped_at: null
+                      freeze_start: null
+                      freeze_until: null
+                      freeze_reason: ''
+                      attributes: []
+                      profile_groups: []
+                      updated_by_id: 7f250963-3c54-44bc-ac54-c52b5b8a728b
+                      status: live
+                      targets_url: https://cf-blast.livelikecdn.com/api/v1/applications/4JF1QjhD594ve6IOkZaK5LFvIktqeW1xvFmsQiHY/streak-targets/
+                      batch_targets_url: https://cf-blast.livelikecdn.com/api/v1/applications/4JF1QjhD594ve6IOkZaK5LFvIktqeW1xvFmsQiHY/batch-streak-targets/
+                      reset_action_key: null
+                      require_targets: true
+      parameters:
+      - in: path
+        name: client-id
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: progress_action_key
+        schema:
+          type: string
+      - in: query
+        name: since
+        schema:
+          type: string
+        description: Filters periodic streak created after this datetime in ISO
+      - in: query
+        name: until
+        schema:
+          type: string
+        description: Filters periodic streak created until this datetime in ISO
+      - in: query
+        name: attributes
+        schema:
+          type: string
+        description: Attributes should be in format of key:value
+      - in: query
+        name: reset_action_key
+        schema:
+          type: string
+      summary: Copy of
+      operationId: get_client-id-consecutive-action-streaks
+      tags:
+      - Consecutive Action Streaks
+    post:
+      description: ''
+      responses:
+        '200':
+          description: ''
+        '201':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              examples:
+                Created:
+                  summary: Created
+                  value:
+                    id: 88a55cd9-ece7-4439-b040-2e5427b48eb0
+                    url: https://cf-blast.livelikecdn.com/api/v1/applications/4JF1QjhD594ve6IOkZaK5LFvIktqeW1xvFmsQiHY/consecutive-action-streaks/88a55cd9-ece7-4439-b040-2e5427b48eb0/
+                    publish_url: https://cf-blast.livelikecdn.com/api/v1/applications/4JF1QjhD594ve6IOkZaK5LFvIktqeW1xvFmsQiHY/consecutive-action-streaks/88a55cd9-ece7-4439-b040-2e5427b48eb0/publish/
+                    name: test streak
+                    description: Test streak
+                    progress_action_key: prediction-correct
+                    created_at: '2025-11-04T14:46:40.948028Z'
+                    streak_type: consecutive_action
+                    client_id: 4JF1QjhD594ve6IOkZaK5LFvIktqeW1xvFmsQiHY
+                    started_at: null
+                    stopped_at: null
+                    freeze_start: null
+                    freeze_until: null
+                    freeze_reason: ''
+                    attributes: []
+                    profile_groups: []
+                    updated_by_id: 7f250963-3c54-44bc-ac54-c52b5b8a728b
+                    status: live
+                    targets_url: https://cf-blast.livelikecdn.com/api/v1/applications/4JF1QjhD594ve6IOkZaK5LFvIktqeW1xvFmsQiHY/streak-targets/
+                    batch_targets_url: https://cf-blast.livelikecdn.com/api/v1/applications/4JF1QjhD594ve6IOkZaK5LFvIktqeW1xvFmsQiHY/batch-streak-targets/
+                    reset_action_key: null
+                    require_targets: true
+          description: Created
+      parameters:
+      - in: path
+        name: client-id
+        schema:
+          type: string
+        required: true
+      operationId: create-a-periodic-streak-1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Name of the streak
+                progress_action_key:
+                  type: string
+                  description: 'The action key '
+                started_at:
+                  type: string
+                  description: ISO Datetime when the streak will start, if null then streak is started from the day of creation
+                stopped_at:
+                  type: string
+                  description: ISO Datetime when the streak will stop being active, if null then streak will never end, unless its archived.
+                freeze_start:
+                  type: string
+                  description: ISO Datetime for starting the freeze period for everyone, so that any action performed by user will not result in streak length or any miss will not reset their streak
+                freeze_until:
+                  type: string
+                  description: ISO Datetime for ending the freeze period for everyone, so that any action performed by user will not result in streak length or any miss will not reset their streak
+                freeze_reason:
+                  type: string
+                  description: Optional reason for freezing the streak, only valid if one of freeze_start or freeze_until is provided
+                attributes:
+                  type: array
+                  items:
+                    properties:
+                      key:
+                        type: string
+                        description: Attribute key, eg. custom_id
+                      value:
+                        type: string
+                        description: Value of the attribute key.
+                    type: object
+                profile_group_ids:
+                  type: array
+                  description: List of Livelike profile group ids to which this streak will be applicable, if not provided, streak will be available for all.
+                  items:
+                    type: string
+                reset_action_key:
+                  type: string
+                  description: User action that will reset the streak.
+              required:
+              - name
+              - progress_action_key
+      summary: Copy of
+      tags:
+      - Consecutive Action Streaks
+  /{client-id}/consecutive-action-streaks/{consecutive-action-id}/unarchive/:
+    post:
+      description: ''
+      responses:
+        '200':
+          description: ''
+      parameters:
+      - in: path
+        name: client-id
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: consecutive-action-id
+        schema:
+          type: string
+        required: true
+      operationId: post_client-id-consecutive-action-streaks-consecutive-action-id-unarchive
+      tags:
+      - Consecutive Action Streaks
+      summary: Post client id consecutive action streaks consecutive action id unarchive
+      x-summary-source: derived
+  /{client-id}/consecutive-action-streaks/{consecutive-action-streak-id}/:
+    get:
+      description: ''
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              examples:
+                OK:
+                  summary: OK
+                  value:
+                    id: 88a55cd9-ece7-4439-b040-2e5427b48eb0
+                    url: https://cf-blast.livelikecdn.com/api/v1/applications/4JF1QjhD594ve6IOkZaK5LFvIktqeW1xvFmsQiHY/consecutive-action-streaks/88a55cd9-ece7-4439-b040-2e5427b48eb0/
+                    publish_url: https://cf-blast.livelikecdn.com/api/v1/applications/4JF1QjhD594ve6IOkZaK5LFvIktqeW1xvFmsQiHY/consecutive-action-streaks/88a55cd9-ece7-4439-b040-2e5427b48eb0/publish/
+                    name: test streak
+                    description: Test streak
+                    progress_action_key: prediction-correct
+                    created_at: '2025-11-04T14:46:40.948028Z'
+                    streak_type: consecutive_action
+                    client_id: 4JF1QjhD594ve6IOkZaK5LFvIktqeW1xvFmsQiHY
+                    started_at: null
+                    stopped_at: null
+                    freeze_start: null
+                    freeze_until: null
+                    freeze_reason: ''
+                    attributes: []
+                    profile_groups: []
+                    updated_by_id: 7f250963-3c54-44bc-ac54-c52b5b8a728b
+                    status: live
+                    targets_url: https://cf-blast.livelikecdn.com/api/v1/applications/4JF1QjhD594ve6IOkZaK5LFvIktqeW1xvFmsQiHY/streak-targets/
+                    batch_targets_url: https://cf-blast.livelikecdn.com/api/v1/applications/4JF1QjhD594ve6IOkZaK5LFvIktqeW1xvFmsQiHY/batch-streak-targets/
+                    reset_action_key: null
+                    require_targets: true
+      parameters:
+      - in: path
+        name: client-id
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: consecutive-action-streak-id
+        schema:
+          type: string
+        required: true
+      summary: Copy of
+      operationId: get_client-id-consecutive-action-streaks-consecutive-action-streak-id
+      tags:
+      - Consecutive Action Streaks
+  /{client-id}/consecutive-action-streaks/{consecutive-streak-id}/:
+    delete:
+      description: ''
+      responses:
+        '200':
+          description: ''
+        '204':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              examples:
+                No Content:
+                  summary: No Content
+                  value: ''
+          description: No Content
+      parameters:
+      - in: path
+        name: client-id
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: consecutive-streak-id
+        schema:
+          type: string
+        required: true
+      operationId: delete_client-id-consecutive-action-streaks-consecutive-streak-id
+      tags:
+      - Consecutive Action Streaks
+      summary: Delete client id consecutive action streaks consecutive streak id
+      x-summary-source: derived
+  /{client-id}/consecutive-action-streaks/{consecutive-streak-id}/-1:
+    patch:
+      description: ''
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              examples:
+                OK:
+                  summary: OK
+                  value:
+                    id: 5a1d0398-3a20-49a9-835c-3436667856d5
+                    url: http://cf-blast.livelikecdn.com/api/v1/applications/FVQI5U57tfCyDV99YjhF3ExdlpiObg5JASvy81Mu/consecutive-action-streaks/5a1d0398-3a20-49a9-835c-3436667856d5/
+                    publish_url: http://cf-blast.livelikecdn.com/api/v1/applications/FVQI5U57tfCyDV99YjhF3ExdlpiObg5JASvy81Mu/consecutive-action-streaks/5a1d0398-3a20-49a9-835c-3436667856d5/publish/
+                    name: Daily Streak test
+                    description: This is the new consecutive streak in here.
+                    progress_action_key: prediction-correct
+                    created_at: '2026-02-19T09:03:13.135111Z'
+                    streak_type: periodic
+                    client_id: FVQI5U57tfCyDV99YjhF3ExdlpiObg5JASvy81Mu
+                    started_at: null
+                    stopped_at: null
+                    freeze_start: null
+                    freeze_until: null
+                    freeze_reason: null
+                    attributes: []
+                    profile_groups: []
+                    created_by_id: 881c9f00-a96f-4c29-ba3d-0c99645aca04
+                    updated_by_id: 881c9f00-a96f-4c29-ba3d-0c99645aca04
+                    status: draft
+                    targets_url: http://cf-blast.livelikecdn.com/api/v1/applications/FVQI5U57tfCyDV99YjhF3ExdlpiObg5JASvy81Mu/streak-targets/
+                    batch_targets_url: http://cf-blast.livelikecdn.com/api/v1/applications/FVQI5U57tfCyDV99YjhF3ExdlpiObg5JASvy81Mu/batch-streak-targets/
+                    reset_action_key: null
+                    require_targets: false
+      parameters:
+      - in: path
+        name: client-id
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: consecutive-streak-id
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                progress_action_key:
+                  type: string
+                started_at:
+                  type: string
+                stopped_at:
+                  type: string
+                freeze_start:
+                  type: string
+                freeze_until:
+                  type: string
+                freeze_reason:
+                  type: string
+                attributes:
+                  type: array
+                  items:
+                    properties:
+                      key:
+                        type: string
+                      value:
+                        type: string
+                    type: object
+                profile_groups:
+                  type: string
+                  description: List of profile group ids whom this streak must be applicable for.
+                reset_action_key:
+                  type: string
+                  description: Action key to reset the streak.
+                require_targets:
+                  type: string
+              required:
+              - name
+      summary: Copy of
+      operationId: patch_client-id-consecutive-action-streaks-consecutive-streak-id-1
+      tags:
+      - Consecutive Action Streaks
+x-provenance:
+  method: searched
+  source: https://docs.livelike.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://docs.livelike.com/reference/archive-a-consecutive-action-streak.md
+  - https://docs.livelike.com/reference/archive-a-periodic-streak.md
+  - https://docs.livelike.com/reference/assign-quest-variant-to-profile.md
+  - https://docs.livelike.com/reference/create-a-periodic-streak-1.md
+  - https://docs.livelike.com/reference/create-a-periodic-streak.md
+  - https://docs.livelike.com/reference/create-ab-test-quest.md
+  - https://docs.livelike.com/reference/create-streak-milestone.md
+  - https://docs.livelike.com/reference/create-streak-target-with-csv.md
+  - https://docs.livelike.com/reference/create-streak-targets.md
+  - https://docs.livelike.com/reference/delete-a-consecutive-action-streak.md
+  - https://docs.livelike.com/reference/delete-periodic-streak.md
+  - https://docs.livelike.com/reference/delete-streak-milestone.md
+  - https://docs.livelike.com/reference/delete-streak-target.md
+  - https://docs.livelike.com/reference/get-ab-test-quest.md
+  - https://docs.livelike.com/reference/get-periodic-streak-detail-1.md
+  - https://docs.livelike.com/reference/get-periodic-streak-detail.md
+  - https://docs.livelike.com/reference/list-ab-test-quests.md
+  - https://docs.livelike.com/reference/list-periodic-streaks-1.md
+  - https://docs.livelike.com/reference/list-periodic-streaks.md
+  - https://docs.livelike.com/reference/list-streak-milestones.md
+  - https://docs.livelike.com/reference/list-streak-targets.md
+  - https://docs.livelike.com/reference/publish-periodic-streak-1.md
+  - https://docs.livelike.com/reference/publish-periodic-streak.md
+  - https://docs.livelike.com/reference/unarchive-a-consecutive-action-streak.md
+  - https://docs.livelike.com/reference/unarchive-a-periodic-streak.md
+  - https://docs.livelike.com/reference/update-a-periodic-streak-1.md
+  - https://docs.livelike.com/reference/update-a-periodic-streak.md
+  - https://docs.livelike.com/reference/update-streak-milestone.md
+  - https://docs.livelike.com/reference/update-streak-target.md
+  merge:
+    pages: 29
+    deduped: 0
+    conflicts_kept_first: 0

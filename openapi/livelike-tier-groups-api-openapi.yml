@@ -1,0 +1,559 @@
+openapi: 3.2.0
+info:
+  title: engagement-suite Tier Groups API
+  version: '1'
+servers:
+- url: https://cf-blast.livelikecdn.com/api/v1
+security:
+- {}
+tags:
+- name: Tier Groups
+paths:
+  /tier-groups/:
+    post:
+      summary: Create Tier Group
+      description: ''
+      operationId: create-tier-group
+      parameters:
+      - name: Authorization
+        in: header
+        description: Producer token is required
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - client_id
+              - title
+              properties:
+                client_id:
+                  type: string
+                title:
+                  type: string
+                description:
+                  type: string
+                image:
+                  type: string
+                attributes:
+                  type: array
+                  description: key and value pairs
+                  items:
+                    properties:
+                      key:
+                        type: string
+                      value:
+                        type: string
+                    required:
+                    - key
+                    - value
+                    type: object
+      responses:
+        '201':
+          description: '201'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"id\": \"b3d57ed7-b2fe-4e36-a1b5-729bf4870923\",\n    \"url\": \"https://cf-blast.livelikecdn.com/api/v1/tier-groups/b3d57ed7-b2fe-4e36-a1b5-729bf4870923/\",\n    \"title\": \"Loyalty Tiers\",\n    \"status\": \"active\",\n    \"created_at\": \"2025-04-08T03:44:11.960422Z\",\n    \"client_id\": \"Iso1WANkUyFcsTod4iJ3ryFcYQOlOGmmZL3g0W5h\",\n    \"attributes\": [\n        {\n            \"key\": \"test\",\n            \"value\": \"yes\"\n        }\n    ],\n    \"description\": null,\n    \"image_url\": \"https://cf-blast-storage-us-east-1.livelikeblast.com/assets/8f944313-87f9-4a67-bf37-51116649efd4.png\"\n}"
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: b3d57ed7-b2fe-4e36-a1b5-729bf4870923
+                  url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/tier-groups/b3d57ed7-b2fe-4e36-a1b5-729bf4870923/
+                  title:
+                    type: string
+                    example: Loyalty Tiers
+                  status:
+                    type: string
+                    example: active
+                  created_at:
+                    type: string
+                    example: '2025-04-08T03:44:11.960422Z'
+                  client_id:
+                    type: string
+                    example: Iso1WANkUyFcsTod4iJ3ryFcYQOlOGmmZL3g0W5h
+                  attributes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                          example: test
+                        value:
+                          type: string
+                          example: 'yes'
+                  description: {}
+                  image_url:
+                    type: string
+                    example: https://cf-blast-storage-us-east-1.livelikeblast.com/assets/8f944313-87f9-4a67-bf37-51116649efd4.png
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Tier Groups
+  /tier-groups/{tier_group_id}/:
+    patch:
+      summary: Update Tier Group
+      description: ''
+      operationId: update-tier-group
+      parameters:
+      - name: tier_group_id
+        in: path
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                title:
+                  type: string
+                attributes:
+                  type: array
+                  items:
+                    properties:
+                      key:
+                        type: string
+                      value:
+                        type: string
+                    required:
+                    - key
+                    - value
+                    type: object
+                image:
+                  type: string
+                  format: binary
+                status:
+                  type: string
+                  enum:
+                  - active
+                  - archived
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"id\": \"ec1a5ec5-fd96-4787-ad55-76f5cb62f3d5\",\n    \"url\": \"https://cf-blast.livelikecdn.com/api/v1/tier-groups/ec1a5ec5-fd96-4787-ad55-76f5cb62f3d5/\",\n    \"title\": \"New Tier Group 2\",\n    \"status\": \"active\",\n    \"created_at\": \"2025-03-06T06:09:53.626798Z\",\n    \"client_id\": \"Iso1WANkUyFcsTod4iJ3ryFcYQOlOGmmZL3g0W5h\",\n    \"attributes\": [],\n    \"description\": null,\n    \"image_url\": null\n}"
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: ec1a5ec5-fd96-4787-ad55-76f5cb62f3d5
+                  url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/tier-groups/ec1a5ec5-fd96-4787-ad55-76f5cb62f3d5/
+                  title:
+                    type: string
+                    example: New Tier Group 2
+                  status:
+                    type: string
+                    example: active
+                  created_at:
+                    type: string
+                    example: '2025-03-06T06:09:53.626798Z'
+                  client_id:
+                    type: string
+                    example: Iso1WANkUyFcsTod4iJ3ryFcYQOlOGmmZL3g0W5h
+                  attributes:
+                    type: array
+                  description: {}
+                  image_url: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"detail\": \"Only the 'status' field can be updated for archived TierGroups.\",\n    \"error_code\": \"invalid\"\n}"
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    example: Only the 'status' field can be updated for archived TierGroups.
+                  error_code:
+                    type: string
+                    example: invalid
+      deprecated: false
+      tags:
+      - Tier Groups
+    delete:
+      summary: Delete a Tier Group
+      description: ''
+      operationId: delete-a-tier-group
+      responses:
+        '204':
+          description: '204'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Tier Groups
+  /tier-groups/{tier_group_id}/tiers/:
+    get:
+      summary: List Tiers
+      description: List Tiers within a Tier Group
+      operationId: list-tier
+      parameters:
+      - name: tier_group_id
+        in: path
+        description: UUID of the Tier Group.
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"count\": 3,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": \"457d7452-007f-4c94-8a7a-f98fe54b69e1\",\n            \"url\": \"http://localhost:8888/api/v1/tiers/457d7452-007f-4c94-8a7a-f98fe54b69e1/\",\n            \"tier_group_id\": \"5f24dcf4-a96f-4498-b077-d16ea5e77a6b\",\n            \"tier_group\": \"New Tier\",\n            \"reward_item_id\": null,\n            \"reward_item_name\": null,\n            \"attributes\": [],\n            \"order\": 1,\n            \"status\": \"active\",\n            \"title\": \"Gold\",\n            \"image\": null,\n            \"description\": null,\n            \"reward_item_threshold\": null,\n            \"created_at\": \"2025-04-10T06:15:10.062029Z\"\n        },\n        {\n            \"id\": \"4114d210-ef1d-4bc5-953a-daf74c49ee0e\",\n            \"url\": \"http://localhost:8888/api/v1/tiers/4114d210-ef1d-4bc5-953a-daf74c49ee0e/\",\n            \"tier_group_id\": \"5f24dcf4-a96f-4498-b077-d16ea5e77a6b\",\n            \"tier_group\": \"New Tier\",\n            \"reward_item_id\": null,\n            \"reward_item_name\": null,\n            \"attributes\": [],\n            \"order\": 2,\n            \"status\": \"active\",\n            \"title\": \"Silver\",\n            \"image\": null,\n            \"description\": null,\n            \"reward_item_threshold\": null,\n            \"created_at\": \"2025-04-10T06:15:15.759411Z\"\n        },\n        {\n            \"id\": \"03d32043-a73a-4ac5-ab95-f797baabaa8d\",\n            \"url\": \"http://localhost:8888/api/v1/tiers/03d32043-a73a-4ac5-ab95-f797baabaa8d/\",\n            \"tier_group_id\": \"5f24dcf4-a96f-4498-b077-d16ea5e77a6b\",\n            \"tier_group\": \"New Tier\",\n            \"reward_item_id\": null,\n            \"reward_item_name\": null,\n            \"attributes\": [],\n            \"order\": 3,\n            \"status\": \"active\",\n            \"title\": \"Bronze\",\n            \"image\": null,\n            \"description\": null,\n            \"reward_item_threshold\": null,\n            \"created_at\": \"2025-04-10T06:15:20.175833Z\"\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 3
+                    default: 0
+                  next: {}
+                  previous: {}
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: 457d7452-007f-4c94-8a7a-f98fe54b69e1
+                        url:
+                          type: string
+                          example: http://localhost:8888/api/v1/tiers/457d7452-007f-4c94-8a7a-f98fe54b69e1/
+                        tier_group_id:
+                          type: string
+                          example: 5f24dcf4-a96f-4498-b077-d16ea5e77a6b
+                        tier_group:
+                          type: string
+                          example: New Tier
+                        reward_item_id: {}
+                        reward_item_name: {}
+                        attributes:
+                          type: array
+                        order:
+                          type: integer
+                          example: 1
+                          default: 0
+                        status:
+                          type: string
+                          example: active
+                        title:
+                          type: string
+                          example: Gold
+                        image: {}
+                        description: {}
+                        reward_item_threshold: {}
+                        created_at:
+                          type: string
+                          example: '2025-04-10T06:15:10.062029Z'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Tier Groups
+x-readme-fauxas: true
+x-provenance:
+  method: searched
+  source: https://docs.livelike.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://docs.livelike.com/reference/add-bulk-chat-memberships.md
+  - https://docs.livelike.com/reference/add-members-to-group.md
+  - https://docs.livelike.com/reference/add-quest-badges.md
+  - https://docs.livelike.com/reference/award-a-badge-to-a-user.md
+  - https://docs.livelike.com/reference/batch-invoke-reward-action.md
+  - https://docs.livelike.com/reference/claim-user-quest-badges.md
+  - https://docs.livelike.com/reference/claim-user-quest-rewards.md
+  - https://docs.livelike.com/reference/create-a-base-role.md
+  - https://docs.livelike.com/reference/create-a-cheer-meter.md
+  - https://docs.livelike.com/reference/create-a-comment-board.md
+  - https://docs.livelike.com/reference/create-a-comment.md
+  - https://docs.livelike.com/reference/create-a-flair-assignment.md
+  - https://docs.livelike.com/reference/create-a-flair-scope.md
+  - https://docs.livelike.com/reference/create-a-flair.md
+  - https://docs.livelike.com/reference/create-a-group.md
+  - https://docs.livelike.com/reference/create-a-pin-message.md
+  - https://docs.livelike.com/reference/create-a-pinned-comment.md
+  - https://docs.livelike.com/reference/create-a-profile-block.md
+  - https://docs.livelike.com/reference/create-a-profile-relationship.md
+  - https://docs.livelike.com/reference/create-a-program-ban.md
+  - https://docs.livelike.com/reference/create-a-redemption-key.md
+  - https://docs.livelike.com/reference/create-a-registered-link.md
+  - https://docs.livelike.com/reference/create-a-relationship-type.md
+  - https://docs.livelike.com/reference/create-a-rich-post.md
+  - https://docs.livelike.com/reference/create-a-social-embed.md
+  - https://docs.livelike.com/reference/create-a-sticker.md
+  - https://docs.livelike.com/reference/create-a-text-quiz.md
+  - https://docs.livelike.com/reference/create-a-user-reaction.md
+  - https://docs.livelike.com/reference/create-a-user-tier.md
+  - https://docs.livelike.com/reference/create-a-video-alert.md
+  - https://docs.livelike.com/reference/create-an-access-rule-for-muteglobally-mute.md
+  - https://docs.livelike.com/reference/create-an-alert.md
+  - https://docs.livelike.com/reference/create-an-image-number-prediction.md
+  - https://docs.livelike.com/reference/create-an-image-quiz.md
+  - https://docs.livelike.com/reference/create-an-image-slider.md
+  - https://docs.livelike.com/reference/create-badge-1.md
+  - https://docs.livelike.com/reference/create-comment-report.md
+  - https://docs.livelike.com/reference/create-comments-ban.md
+  - https://docs.livelike.com/reference/create-image-number-prediction-follow-up.md
+  - https://docs.livelike.com/reference/create-image-number-prediction-option.md
+  - https://docs.livelike.com/reference/create-image-poll.md
+  - https://docs.livelike.com/reference/create-image-prediction-follow-up.md
+  - https://docs.livelike.com/reference/create-image-prediction-option.md
+  - https://docs.livelike.com/reference/create-poll-vote.md
+  - https://docs.livelike.com/reference/create-profile-by-custom-id.md
+  - https://docs.livelike.com/reference/create-quality-rules.md
+  - https://docs.livelike.com/reference/create-quest-rewards.md
+  - https://docs.livelike.com/reference/create-quests.md
+  - https://docs.livelike.com/reference/create-reaction-emoji.md
+  - https://docs.livelike.com/reference/create-reward-item.md
+  - https://docs.livelike.com/reference/create-reward-table-entry.md
+  - https://docs.livelike.com/reference/create-reward-table.md
+  - https://docs.livelike.com/reference/create-role-assignments.md
+  - https://docs.livelike.com/reference/create-role-grant-assignment.md
+  - https://docs.livelike.com/reference/create-roles.md
+  - https://docs.livelike.com/reference/create-task.md
+  - https://docs.livelike.com/reference/create-text-poll.md
+  - https://docs.livelike.com/reference/create-text-prediction-follow-up.md
+  - https://docs.livelike.com/reference/create-text-prediction-option.md
+  - https://docs.livelike.com/reference/create-tier-benefit.md
+  - https://docs.livelike.com/reference/create-tier-group.md
+  - https://docs.livelike.com/reference/create-tier.md
+  - https://docs.livelike.com/reference/create-user-profile.md
+  - https://docs.livelike.com/reference/create-user-quest.md
+  - https://docs.livelike.com/reference/creating-reward-actions.md
+  - https://docs.livelike.com/reference/credit-reward-item.md
+  - https://docs.livelike.com/reference/debit-reward-item.md
+  - https://docs.livelike.com/reference/delete-a-base-role.md
+  - https://docs.livelike.com/reference/delete-a-comment.md
+  - https://docs.livelike.com/reference/delete-a-flair-assignment.md
+  - https://docs.livelike.com/reference/delete-a-flair.md
+  - https://docs.livelike.com/reference/delete-a-program-ban.md
+  - https://docs.livelike.com/reference/delete-a-redemption-key.md
+  - https://docs.livelike.com/reference/delete-a-registered-link.md
+  - https://docs.livelike.com/reference/delete-a-role.md
+  - https://docs.livelike.com/reference/delete-a-tier-group.md
+  - https://docs.livelike.com/reference/delete-a-user-reaction.md
+  - https://docs.livelike.com/reference/delete-a-video-alert.md
+  - https://docs.livelike.com/reference/delete-bulk-chat-memberships.md
+  - https://docs.livelike.com/reference/delete-comment-board-by-custom-id.md
+  - https://docs.livelike.com/reference/delete-comment-board.md
+  - https://docs.livelike.com/reference/delete-comments-ban.md
+  - https://docs.livelike.com/reference/delete-profile-group.md
+  - https://docs.livelike.com/reference/delete-quest.md
+  - https://docs.livelike.com/reference/delete-reaction-emoji.md
+  - https://docs.livelike.com/reference/delete-reward-table-entry.md
+  - https://docs.livelike.com/reference/delete-reward-table.md
+  - https://docs.livelike.com/reference/delete-role-assignment.md
+  - https://docs.livelike.com/reference/delete-role-grant-unassignment.md
+  - https://docs.livelike.com/reference/delete-task.md
+  - https://docs.livelike.com/reference/delete-tier-benefit.md
+  - https://docs.livelike.com/reference/delete-tier.md
+  - https://docs.livelike.com/reference/delete-userquest.md
+  - https://docs.livelike.com/reference/delete-widget.md
+  - https://docs.livelike.com/reference/dismiss-all-reports-for-a-reported-comment.md
+  - https://docs.livelike.com/reference/flair-assignment-detail.md
+  - https://docs.livelike.com/reference/flair-detail-1.md
+  - https://docs.livelike.com/reference/flair-detail.md
+  - https://docs.livelike.com/reference/get-a-badge.md
+  - https://docs.livelike.com/reference/get-a-redemption-key.md
+  - https://docs.livelike.com/reference/get-a-rich-post.md
+  - https://docs.livelike.com/reference/get-a-social-embed.md
+  - https://docs.livelike.com/reference/get-a-text-ask-widget.md
+  - https://docs.livelike.com/reference/get-a-text-poll.md
+  - https://docs.livelike.com/reference/get-a-text-quiz.md
+  - https://docs.livelike.com/reference/get-a-video-alert.md
+  - https://docs.livelike.com/reference/get-an-alert-1.md
+  - https://docs.livelike.com/reference/get-an-asset-1.md
+  - https://docs.livelike.com/reference/get-an-asset.md
+  - https://docs.livelike.com/reference/get-an-emoji-slider.md
+  - https://docs.livelike.com/reference/get-an-image-poll.md
+  - https://docs.livelike.com/reference/get-an-image-quiz.md
+  - https://docs.livelike.com/reference/get-blocked-profile-ids.md
+  - https://docs.livelike.com/reference/get-blocked-profiles.md
+  - https://docs.livelike.com/reference/get-chatroom-message-count.md
+  - https://docs.livelike.com/reference/get-chatroom-messages.md
+  - https://docs.livelike.com/reference/get-comment-board-by-custom_id.md
+  - https://docs.livelike.com/reference/get-comment-counts.md
+  - https://docs.livelike.com/reference/get-image-number-prediction.md
+  - https://docs.livelike.com/reference/get-leaderboard-by-custom-id.md
+  - https://docs.livelike.com/reference/get-list-of-base-roles.md
+  - https://docs.livelike.com/reference/get-list-of-comment-board-bans.md
+  - https://docs.livelike.com/reference/get-list-of-comment-reports.md
+  - https://docs.livelike.com/reference/get-list-of-earned-badges.md
+  - https://docs.livelike.com/reference/get-list-of-quest-rewards.md
+  - https://docs.livelike.com/reference/get-list-of-resources.md
+  - https://docs.livelike.com/reference/get-pinned-message-info.md
+  - https://docs.livelike.com/reference/get-profile-by-custom-id.md
+  - https://docs.livelike.com/reference/get-profile-group-detail.md
+  - https://docs.livelike.com/reference/get-profile-group-members.md
+  - https://docs.livelike.com/reference/get-program-bans.md
+  - https://docs.livelike.com/reference/get-program-by-custom-id.md
+  - https://docs.livelike.com/reference/get-quest-badges.md
+  - https://docs.livelike.com/reference/get-quests.md
+  - https://docs.livelike.com/reference/get-reaction-space-by-target-group-id.md
+  - https://docs.livelike.com/reference/get-reported-chat-messages.md
+  - https://docs.livelike.com/reference/get-reward-item-balance.md
+  - https://docs.livelike.com/reference/get-reward-table-entry.md
+  - https://docs.livelike.com/reference/get-reward-table.md
+  - https://docs.livelike.com/reference/get-role-templates.md
+  - https://docs.livelike.com/reference/get-roles.md
+  - https://docs.livelike.com/reference/get-task.md
+  - https://docs.livelike.com/reference/get-the-list-of-comment-boards.md
+  - https://docs.livelike.com/reference/get-user-quest-rewards.md
+  - https://docs.livelike.com/reference/get-user-reaction-count-per-space.md
+  - https://docs.livelike.com/reference/get-user-reaction-count.md
+  - https://docs.livelike.com/reference/get-users-badges.md
+  - https://docs.livelike.com/reference/get_reaction-space-by-target-group-id-client-id-target-group-id-1.md
+  - https://docs.livelike.com/reference/invoking-custom-actions.md
+  - https://docs.livelike.com/reference/list-assets.md
+  - https://docs.livelike.com/reference/list-available-badges.md
+  - https://docs.livelike.com/reference/list-badge-progress.md
+  - https://docs.livelike.com/reference/list-comments-by-author.md
+  - https://docs.livelike.com/reference/list-comments.md
+  - https://docs.livelike.com/reference/list-flair-assignments.md
+  - https://docs.livelike.com/reference/list-flairs-1.md
+  - https://docs.livelike.com/reference/list-flairs.md
+  - https://docs.livelike.com/reference/list-invoked-reward-actions.md
+  - https://docs.livelike.com/reference/list-permissions.md
+  - https://docs.livelike.com/reference/list-pinned-comments.md
+  - https://docs.livelike.com/reference/list-profile-relationships.md
+  - https://docs.livelike.com/reference/list-profiles-who-have-earned-a-specific-badge.md
+  - https://docs.livelike.com/reference/list-program-sponsors.md
+  - https://docs.livelike.com/reference/list-quests.md
+  - https://docs.livelike.com/reference/list-reaction-spaces.md
+  - https://docs.livelike.com/reference/list-redemption-keys.md
+  - https://docs.livelike.com/reference/list-registered-links.md
+  - https://docs.livelike.com/reference/list-relationship-types.md
+  - https://docs.livelike.com/reference/list-replies-to-profiles-comments.md
+  - https://docs.livelike.com/reference/list-reward-actions.md
+  - https://docs.livelike.com/reference/list-reward-item-balances.md
+  - https://docs.livelike.com/reference/list-reward-item-transfers.md
+  - https://docs.livelike.com/reference/list-reward-items.md
+  - https://docs.livelike.com/reference/list-reward-tables.md
+  - https://docs.livelike.com/reference/list-reward-transactions.md
+  - https://docs.livelike.com/reference/list-rich-posts-1-1.md
+  - https://docs.livelike.com/reference/list-rich-posts-1.md
+  - https://docs.livelike.com/reference/list-rich-posts.md
+  - https://docs.livelike.com/reference/list-role-assignments.md
+  - https://docs.livelike.com/reference/list-tasks.md
+  - https://docs.livelike.com/reference/list-tier-benefits.md
+  - https://docs.livelike.com/reference/list-tier-groups.md
+  - https://docs.livelike.com/reference/list-tier-transactions.md
+  - https://docs.livelike.com/reference/list-tier.md
+  - https://docs.livelike.com/reference/list-user-quests.md
+  - https://docs.livelike.com/reference/list-user-reactions.md
+  - https://docs.livelike.com/reference/list-user-tiers.md
+  - https://docs.livelike.com/reference/list-widget-reports.md
+  - https://docs.livelike.com/reference/moderate-a-widget-report.md
+  - https://docs.livelike.com/reference/patch-update-a-base-role.md
+  - https://docs.livelike.com/reference/patch-update-a-role-copy.md
+  - https://docs.livelike.com/reference/patch_reaction-space-by-target-group-id-client-id-target-group-id-1-1.md
+  - https://docs.livelike.com/reference/prizeout-user-session.md
+  - https://docs.livelike.com/reference/profile-permissions-check.md
+  - https://docs.livelike.com/reference/publish-widget.md
+  - https://docs.livelike.com/reference/put-update-a-base-role.md
+  - https://docs.livelike.com/reference/remove-a-chatroom-access-rule.md
+  - https://docs.livelike.com/reference/remove-a-quest-reward.md
+  - https://docs.livelike.com/reference/remove-badge-from-quest.md
+  - https://docs.livelike.com/reference/remove-members-from-group.md
+  - https://docs.livelike.com/reference/report-a-widget.md
+  - https://docs.livelike.com/reference/retrieve-a-tier.md
+  - https://docs.livelike.com/reference/retrieve-reward-item.md
+  - https://docs.livelike.com/reference/retrieve-tier-benefit.md
+  - https://docs.livelike.com/reference/revoke-earned-badge.md
+  - https://docs.livelike.com/reference/reward-item-transfers.md
+  - https://docs.livelike.com/reference/role-grant-detail.md
+  - https://docs.livelike.com/reference/role-grants-list.md
+  - https://docs.livelike.com/reference/send-a-widget-chat-message.md
+  - https://docs.livelike.com/reference/send-chat-message.md
+  - https://docs.livelike.com/reference/unassignment-by-natural-key.md
+  - https://docs.livelike.com/reference/unblock-profile-by-profile-custom-id.md
+  - https://docs.livelike.com/reference/unblock-profile.md
+  - https://docs.livelike.com/reference/unpin-a-pinned-comment.md
+  - https://docs.livelike.com/reference/unpin-message.md
+  - https://docs.livelike.com/reference/update-a-comment-board.md
+  - https://docs.livelike.com/reference/update-a-comment.md
+  - https://docs.livelike.com/reference/update-a-flair-1.md
+  - https://docs.livelike.com/reference/update-a-flair-assignment.md
+  - https://docs.livelike.com/reference/update-a-flair.md
+  - https://docs.livelike.com/reference/update-a-redemption-key-by-code.md
+  - https://docs.livelike.com/reference/update-a-redemption-key.md
+  - https://docs.livelike.com/reference/update-a-role.md
+  - https://docs.livelike.com/reference/update-a-video-alert.md
+  - https://docs.livelike.com/reference/update-comment-board-by-custom-id.md
+  - https://docs.livelike.com/reference/update-comment-quality-rules.md
+  - https://docs.livelike.com/reference/update-image-number-prediction-option.md
+  - https://docs.livelike.com/reference/update-image-number-prediction.md
+  - https://docs.livelike.com/reference/update-image-prediction-option.md
+  - https://docs.livelike.com/reference/update-profile-group.md
+  - https://docs.livelike.com/reference/update-reaction-emoji.md
+  - https://docs.livelike.com/reference/update-text-prediction-option.md
+  - https://docs.livelike.com/reference/update-tier-benefit.md
+  - https://docs.livelike.com/reference/update-tier-group.md
+  - https://docs.livelike.com/reference/update-tier.md
+  - https://docs.livelike.com/reference/update-user-quest-task-progress.md
+  - https://docs.livelike.com/reference/update-user-quest.md
+  merge:
+    pages: 237
+    deduped: 0
+    conflicts_kept_first: 0

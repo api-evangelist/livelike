@@ -1,0 +1,415 @@
+openapi: 3.2.0
+info:
+  title: Livelike Reaction Spaces API
+  version: '1'
+  description: 'Operations tagged Reaction Spaces across 2 of this provider''s published API definitions: livelike-engagement-suite-openapi.yml, livelike-reaction-spaces-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://cf-blast.livelikecdn.com/api/v1
+- url: https://cf-blast.livelikecdn.com/api/v1/reaction-spaces/
+security:
+- {}
+tags:
+- name: Reaction Spaces
+paths:
+  /reaction-spaces/:
+    get:
+      summary: List Reaction Spaces
+      description: ''
+      operationId: list-reaction-spaces
+      parameters:
+      - name: client_id
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: reaction_space_id
+        in: query
+        schema:
+          type: string
+      - name: target_group_id
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"count\": 2,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": \"b964db17-1c2f-40ac-9c7c-9b0a014abc23\",\n            \"url\": \"https://cf-blast.livelikecdn.com/api/v1/reaction-spaces/b964db17-1c2f-40ac-9c7c-9b0a014abc23/\",\n            \"created_by\": \"e0a92904-2c6c-400e-93ba-d379142f06cc\",\n            \"client_id\": \"pnODbVXg0UI80s0l2aH5Y7FOuGbftoAdSNqpdvo6\",\n            \"name\": null,\n            \"reaction_pack_ids\": [],\n\t          \"custom_data\": null,\n            \"target_group_id\": \"readme\",\n            \"reaction_space_channel\": \"reaction_space.b964db17-1c2f-40ac-9c7c-9b0a014abc23\",\n            \"user_reactions_url\": \"https://cf-blast.livelikecdn.com/api/v1/user-reactions/\",\n            \"user_reaction_detail_url_template\": \"https://cf-blast.livelikecdn.com/api/v1/user-reactions/{user_reaction_id}/\",\n            \"user_reactions_count_url\": \"https://cf-blast.livelikecdn.com/api/v1/user-reactions-count/\"\n        },\n        {\n            \"id\": \"cef70d30-17d0-400c-8273-6bf14d7e3f98\",\n            \"url\": \"https://cf-blast.livelikecdn.com/api/v1/reaction-spaces/cef70d30-17d0-400c-8273-6bf14d7e3f98/\",\n            \"created_by\": \"4c86ee7e-bd92-4af9-8388-76473b26d16f\",\n            \"client_id\": \"pnODbVXg0UI80s0l2aH5Y7FOuGbftoAdSNqpdvo6\",\n            \"name\": null,\n            \"reaction_pack_ids\": [\n                \"f6fc5ed1-c48e-4c0e-9a90-6831f1725b5a\",\n                \"e684c275-17ea-43bf-a22b-9018f873c450\"\n            ],\n\t          \"custom_data\": null,\n            \"target_group_id\": \"target-group-1\",\n            \"reaction_space_channel\": \"reaction_space.cef70d30-17d0-400c-8273-6bf14d7e3f98\",\n            \"user_reactions_url\": \"https://cf-blast.livelikecdn.com/api/v1/user-reactions/\",\n            \"user_reaction_detail_url_template\": \"https://cf-blast.livelikecdn.com/api/v1/user-reactions/{user_reaction_id}/\",\n            \"user_reactions_count_url\": \"https://cf-blast.livelikecdn.com/api/v1/user-reactions-count/\"\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 2
+                    default: 0
+                  next: {}
+                  previous: {}
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: b964db17-1c2f-40ac-9c7c-9b0a014abc23
+                        url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/reaction-spaces/b964db17-1c2f-40ac-9c7c-9b0a014abc23/
+                        created_by:
+                          type: string
+                          example: e0a92904-2c6c-400e-93ba-d379142f06cc
+                        client_id:
+                          type: string
+                          example: pnODbVXg0UI80s0l2aH5Y7FOuGbftoAdSNqpdvo6
+                        name: {}
+                        reaction_pack_ids:
+                          type: array
+                        custom_data: {}
+                        target_group_id:
+                          type: string
+                          example: readme
+                        reaction_space_channel:
+                          type: string
+                          example: reaction_space.b964db17-1c2f-40ac-9c7c-9b0a014abc23
+                        user_reactions_url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/user-reactions/
+                        user_reaction_detail_url_template:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/user-reactions/{user_reaction_id}/
+                        user_reactions_count_url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/user-reactions-count/
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Reaction Spaces
+    servers:
+    - url: https://cf-blast.livelikecdn.com/api/v1
+  /:
+    post:
+      summary: Create Reaction Space
+      description: ''
+      operationId: create-reaction-space
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - target_group_id
+              properties:
+                name:
+                  type: string
+                target_group_id:
+                  type: string
+                  description: Reaction space's custom id
+                reaction_pack_ids:
+                  type: array
+                  description: List of reaction pack ids
+                  items:
+                    type: string
+                custom_data:
+                  type: string
+      responses:
+        '201':
+          description: '201'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"id\": \"b964db17-1c2f-40ac-9c7c-9b0a014abc23\",\n    \"url\": \"https://cf-blast.livelikecdn.com/api/v1/reaction-spaces/b964db17-1c2f-40ac-9c7c-9b0a014abc23/\",\n    \"created_by\": \"e0a92904-2c6c-400e-93ba-d379142f06cc\",\n    \"client_id\": \"pnODbVXg0UI80s0l2aH5Y7FOuGbftoAdSNqpdvo6\",\n    \"name\": null,\n    \"custom_data\": null,\n    \"reaction_pack_ids\": [],\n    \"target_group_id\": \"sample_target_group_id\",\n    \"reaction_space_channel\": \"reaction_space.b964db17-1c2f-40ac-9c7c-9b0a014abc23\",\n    \"user_reactions_url\": \"https://cf-blast.livelikecdn.com/api/v1/user-reactions/\",\n    \"user_reaction_detail_url_template\": \"https://cf-blast.livelikecdn.com/api/v1/user-reactions/{user_reaction_id}/\",\n    \"user_reactions_count_url\": \"https://cf-blast.livelikecdn.com/api/v1/user-reactions-count/\"\n}"
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: b964db17-1c2f-40ac-9c7c-9b0a014abc23
+                  url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/reaction-spaces/b964db17-1c2f-40ac-9c7c-9b0a014abc23/
+                  created_by:
+                    type: string
+                    example: e0a92904-2c6c-400e-93ba-d379142f06cc
+                  client_id:
+                    type: string
+                    example: pnODbVXg0UI80s0l2aH5Y7FOuGbftoAdSNqpdvo6
+                  name: {}
+                  custom_data: {}
+                  reaction_pack_ids:
+                    type: array
+                  target_group_id:
+                    type: string
+                    example: sample_target_group_id
+                  reaction_space_channel:
+                    type: string
+                    example: reaction_space.b964db17-1c2f-40ac-9c7c-9b0a014abc23
+                  user_reactions_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/user-reactions/
+                  user_reaction_detail_url_template:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/user-reactions/{user_reaction_id}/
+                  user_reactions_count_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/user-reactions-count/
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      x-readme:
+        code-samples:
+        - language: text
+          code: "curl --location --request POST 'https://cf-blast-qa.livelikecdn.com/api/v1/reaction-spaces/' \\\n--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUwYTkyOTA0LTJjNmMtNDAwZS05M2JhLWQzNzkxNDJmMDZjYyIsImNsaWVudF9pZCI6InBuT0RiVlhnMFVJODBzMGwyYUg1WTdGT3VHYmZ0b0FkU05xcGR2bzYiLCJhY2Nlc3NfdG9rZW4iOiJnQ0Q5SC1IdVB3UXFJckRVTE5uazZqVEwwLUhMNjUyaTNVZXJZXzMzVjdrN0J4NkpJaXk1a0EiLCJpc19wcm9kdWNlciI6dHJ1ZSwiaXNzIjoiYmxhc3QiLCJpYXQiOjE2NTg4Mjg3NDl9.WkeQVByqkuuEfY4ty8-2vVCDqZq0MBCkgzRzCMUnN9Y' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n   \"target_group_id\": \"sample_target_group_id\",\n   \"reaction_pack_ids\": [ ]\n\n}'"
+        samples-languages:
+        - text
+      tags:
+      - Reaction Spaces
+    servers:
+    - url: https://cf-blast.livelikecdn.com/api/v1/reaction-spaces/
+  /{id}:
+    get:
+      summary: Get a Reaction Space
+      description: ''
+      operationId: get-a-reaction-space
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"id\": \"f16b5c94-c780-4712-8547-6399263dde46\",\n    \"url\": \"https://cf-blast.livelikecdn.com/api/v1/reaction-spaces/f16b5c94-c780-4712-8547-6399263dde46/\",\n    \"created_by\": \"e0a92904-2c6c-400e-93ba-d379142f06cc\",\n    \"client_id\": \"pnODbVXg0UI80s0l2aH5Y7FOuGbftoAdSNqpdvo6\",\n    \"name\": null,\n    \"reaction_pack_ids\": [],\n    \"target_group_id\": \"1232@aV\",\n    \"reaction_space_channel\": \"reaction_space.f16b5c94-c780-4712-8547-6399263dde46\",\n    \"user_reactions_url\": \"https://cf-blast.livelikecdn.com/api/v1/user-reactions/\",\n    \"user_reaction_detail_url_template\": \"https://cf-blast.livelikecdn.com/api/v1/user-reactions/{user_reaction_id}/\",\n    \"user_reactions_count_url\": \"https://cf-blast.livelikecdn.com/api/v1/user-reactions-count/\",\n\t  \"custom_data\": null\n}"
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: f16b5c94-c780-4712-8547-6399263dde46
+                  url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/reaction-spaces/f16b5c94-c780-4712-8547-6399263dde46/
+                  created_by:
+                    type: string
+                    example: e0a92904-2c6c-400e-93ba-d379142f06cc
+                  client_id:
+                    type: string
+                    example: pnODbVXg0UI80s0l2aH5Y7FOuGbftoAdSNqpdvo6
+                  name: {}
+                  reaction_pack_ids:
+                    type: array
+                  target_group_id:
+                    type: string
+                    example: 1232@aV
+                  reaction_space_channel:
+                    type: string
+                    example: reaction_space.f16b5c94-c780-4712-8547-6399263dde46
+                  user_reactions_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/user-reactions/
+                  user_reaction_detail_url_template:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/user-reactions/{user_reaction_id}/
+                  user_reactions_count_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/user-reactions-count/
+                  custom_data: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: 'curl --location --request GET ''https://cf-blast.livelikecdn.com/api/v1/reaction-spaces/f16b5c94-c780-4712-8547-6399263dde46/'' \
+
+            --header ''Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUwYTkyOTA0LTJjNmMtNDAwZS05M2JhLWQzNzkxNDJmMDZjYyIsImNsaWVudF9pZCI6InBuT0RiVlhnMFVJODBzMGwyYUg1WTdGT3VHYmZ0b0FkU05xcGR2bzYiLCJhY2Nlc3NfdG9rZW4iOiJnQ0Q5SC1IdVB3UXFJckRVTE5uazZqVEwwLUhMNjUyaTNVZXJZXzMzVjdrN0J4NkpJaXk1a0EiLCJpc19wcm9kdWNlciI6dHJ1ZSwiaXNzIjoiYmxhc3QiLCJpYXQiOjE2NTg4Mjg3NDl9.WkeQVByqkuuEfY4ty8-2vVCDqZq0MBCkgzRzCMUnN9Y'''
+        samples-languages:
+        - curl
+      tags:
+      - Reaction Spaces
+    patch:
+      summary: Update a Reaction Space
+      description: ''
+      operationId: update-a-reaction-space
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reaction_pack_ids:
+                  type: array
+                  items:
+                    type: string
+                custom_data:
+                  type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"id\": \"b964db17-1c2f-40ac-9c7c-9b0a014abc23\",\n    \"url\": \"https://cf-blast.livelikecdn.com/api/v1/reaction-spaces/b964db17-1c2f-40ac-9c7c-9b0a014abc23/\",\n    \"created_by\": \"e0a92904-2c6c-400e-93ba-d379142f06cc\",\n    \"client_id\": \"pnODbVXg0UI80s0l2aH5Y7FOuGbftoAdSNqpdvo6\",\n    \"name\": null,\n    \"reaction_pack_ids\": [\n    \t\"f6fc5ed1-c48e-4c0e-9a90-6831f1725b5a\",\n    \t\"e684c275-17ea-43bf-a22b-9018f873c450\"\n    ],\n    \"custom_data\": null,\n    \"target_group_id\": \"readme\",\n    \"reaction_space_channel\": \"reaction_space.b964db17-1c2f-40ac-9c7c-9b0a014abc23\",\n    \"user_reactions_url\": \"https://cf-blast.livelikecdn.com/api/v1/user-reactions/\",\n    \"user_reaction_detail_url_template\": \"https://cf-blast.livelikecdn.com/api/v1/user-reactions/{user_reaction_id}/\",\n    \"user_reactions_count_url\": \"https://cf-blast.livelikecdn.com/api/v1/user-reactions-count/\"\n}"
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: b964db17-1c2f-40ac-9c7c-9b0a014abc23
+                  url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/reaction-spaces/b964db17-1c2f-40ac-9c7c-9b0a014abc23/
+                  created_by:
+                    type: string
+                    example: e0a92904-2c6c-400e-93ba-d379142f06cc
+                  client_id:
+                    type: string
+                    example: pnODbVXg0UI80s0l2aH5Y7FOuGbftoAdSNqpdvo6
+                  name: {}
+                  reaction_pack_ids:
+                    type: array
+                    items:
+                      type: string
+                      example: f6fc5ed1-c48e-4c0e-9a90-6831f1725b5a
+                  custom_data: {}
+                  target_group_id:
+                    type: string
+                    example: readme
+                  reaction_space_channel:
+                    type: string
+                    example: reaction_space.b964db17-1c2f-40ac-9c7c-9b0a014abc23
+                  user_reactions_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/user-reactions/
+                  user_reaction_detail_url_template:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/user-reactions/{user_reaction_id}/
+                  user_reactions_count_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/user-reactions-count/
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Reaction Spaces
+    servers:
+    - url: https://cf-blast.livelikecdn.com/api/v1/reaction-spaces/
+  /{id}/:
+    delete:
+      description: ''
+      operationId: delete_new-endpoint
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              examples:
+                New Example:
+                  summary: New Example
+                  value: '{}'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              examples:
+                New Example:
+                  value:
+                    detail: Authentication credentials were not provided.
+                    error_code: MISSING_AUTH_CREDENTIALS
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              examples:
+                New Example 1:
+                  value:
+                    detail: No ReactionSpace matches the given query.
+                    error_code: not_found
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        description: Bearer Token
+        schema:
+          type: string
+          default: ''
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Reaction Spaces
+      summary: Delete new endpoint
+      x-summary-source: derived
+    servers:
+    - url: https://cf-blast.livelikecdn.com/api/v1/reaction-spaces/
+x-refined-from:
+- livelike-engagement-suite-openapi.yml
+- livelike-reaction-spaces-openapi.yml
+x-readme-fauxas: true
+x-provenance:
+  method: searched
+  source: https://docs.livelike.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://docs.livelike.com/reference/create-an-application.md
+  - https://docs.livelike.com/reference/create-multiplier-1.md
+  - https://docs.livelike.com/reference/create-multiplier.md
+  - https://docs.livelike.com/reference/delete-an-application.md
+  - https://docs.livelike.com/reference/delete-comment-quality-rules.md
+  - https://docs.livelike.com/reference/list-reward-multipliers.md
+  - https://docs.livelike.com/reference/listing-applications-widgets.md
+  - https://docs.livelike.com/reference/retrieve-reward-multiplier-1-1-1-1.md
+  - https://docs.livelike.com/reference/retrieve-reward-multiplier-1-1-1.md
+  - https://docs.livelike.com/reference/retrieve-reward-multiplier-1-1.md
+  - https://docs.livelike.com/reference/retrieve-reward-multiplier-1.md
+  - https://docs.livelike.com/reference/retrieve-reward-multiplier.md
+  - https://docs.livelike.com/reference/update-an-application.md
+  merge:
+    pages: 13
+    deduped: 12
+    conflicts_kept_first: 0

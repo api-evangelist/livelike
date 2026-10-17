@@ -1,0 +1,103 @@
+openapi: 3.2.0
+info:
+  title: profiles User Streak Milestones API
+  version: '1'
+servers:
+- url: https://cf-blast.livelikecdn.com/api/v1/profiles
+security:
+- {}
+tags:
+- name: User Streak Milestones
+paths:
+  /{profile-id}/user-streak-milestones/:
+    get:
+      description: ''
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              examples:
+                OK:
+                  summary: OK
+                  value:
+                    count: 1
+                    next: https://cf-blast.livelikecdn.com/api/v1/profiles/52c54183-a995-4686-8c73-6612fad2edd1/user-streak-milestones/?page=2
+                    previous: null
+                    results:
+                    - id: ca5d4b65-7ac5-4269-9554-e5f0fc7f5029
+                      url: https://cf-blast.livelikecdn.com/api/v1/profiles/52c54183-a995-4686-8c73-6612fad2edd1/user-streak-milestones/ca5d4b65-7ac5-4269-9554-e5f0fc7f5029/
+                      user_streak_id: 20a0ec53-8ee7-4da3-b88e-b95c37ccb6f0
+                      profile_id: 52c54183-a995-4686-8c73-6612fad2edd1
+                      streak:
+                        id: 70bb4143-6368-4912-ab26-4fc2a3eb7126
+                        name: Multiple Sequence order streak test
+                        period: null
+                        streak_type: consecutive_action
+                      milestone_id: 6c65dec1-b57f-417f-bfe8-2621622a8703
+                      milestone_name: Milestone 1
+                      milestone_type: custom
+                      milestone_length: 1
+                      milestone_reached_at: '2026-01-27T13:10:46.704661Z'
+                      milestone_rewards:
+                      - reward_item_id: 8c474b3d-3aee-4324-a35c-67274f863dba
+                        reward_item_name: test reward item
+                        reward_item_amount: 12
+                        is_claimed: true
+                        claim_url: https://cf-blast.livelikecdn.com/api/v1/profiles/52c54183-a995-4686-8c73-6612fad2edd1/user-streak-milestones/ca5d4b65-7ac5-4269-9554-e5f0fc7f5029/rewards/b9bec14c-1e2c-4eba-aee8-f8dcebeb5f78/claim/
+      parameters:
+      - in: path
+        name: profile-id
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: streak_id
+        schema:
+          type: string
+      - in: query
+        name: milestone_id
+        schema:
+          type: string
+      - in: query
+        name: milestone_reached_at_since
+        schema:
+          type: string
+      - in: query
+        name: milestone_reached_at_until
+        schema:
+          type: string
+      operationId: get_profile-id-user-streak-milestones
+      tags:
+      - User Streak Milestones
+      summary: Get profile id user streak milestones
+      x-summary-source: derived
+x-readme-fauxas: true
+x-provenance:
+  method: searched
+  source: https://docs.livelike.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://docs.livelike.com/reference/activate-user-reward-multiplier-1.md
+  - https://docs.livelike.com/reference/activate-user-reward-multiplier.md
+  - https://docs.livelike.com/reference/assign-exclusive-reaction-pack-to-profile.md
+  - https://docs.livelike.com/reference/assign-exclusive-sticker-pack-to-profile.md
+  - https://docs.livelike.com/reference/delete-a-profile-relationship.md
+  - https://docs.livelike.com/reference/delete-user-profile.md
+  - https://docs.livelike.com/reference/get-unclaimed-widget-interactions.md
+  - https://docs.livelike.com/reference/get-user-profile.md
+  - https://docs.livelike.com/reference/get-widget-interactions.md
+  - https://docs.livelike.com/reference/list-a-users-chat-room-memberships.md
+  - https://docs.livelike.com/reference/list-profile-exclusive-reaction-packs.md
+  - https://docs.livelike.com/reference/list-profile-exclusive-sticker-packs.md
+  - https://docs.livelike.com/reference/list-user-streak-milestones.md
+  - https://docs.livelike.com/reference/list-user-streaks.md
+  - https://docs.livelike.com/reference/revoke-profile-reaction-pack.md
+  - https://docs.livelike.com/reference/revoke-profile-sticker-pack.md
+  - https://docs.livelike.com/reference/update-user-profile.md
+  merge:
+    pages: 17
+    deduped: 0
+    conflicts_kept_first: 0

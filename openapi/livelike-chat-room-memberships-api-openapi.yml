@@ -1,0 +1,189 @@
+openapi: 3.2.0
+info:
+  title: Livelike Chat Room Memberships API
+  version: '1'
+  description: 'Operations tagged Chat Room Memberships across 2 of this provider''s published API definitions: livelike-chat-room-memberships-openapi.yml, livelike-profiles-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://cf-blast.livelikecdn.com/api/v1/chat-room-memberships
+- url: https://cf-blast.livelikecdn.com/api/v1/profiles
+security:
+- {}
+tags:
+- name: Chat Room Memberships
+paths:
+  /{id}/:
+    delete:
+      summary: Delete a Chat Room Membership
+      description: ''
+      operationId: delete-a-chat-room-membership
+      parameters:
+      - name: id
+        in: path
+        description: Chat Room Membership ID
+        schema:
+          type: string
+        required: true
+      responses:
+        '204':
+          description: '204'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '403':
+          description: '403'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"detail\": \"application profile mismatch.\"\n}"
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    example: application profile mismatch.
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"detail\": \"Chat Room Membership does not exist.\"\n}"
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    example: Chat Room Membership does not exist.
+      deprecated: false
+      tags:
+      - Chat Room Memberships
+    servers:
+    - url: https://cf-blast.livelikecdn.com/api/v1/chat-room-memberships
+  /{id}/chat-room-memberships/:
+    get:
+      summary: List a User's Chat Room Memberships
+      description: ''
+      operationId: list-a-users-chat-room-memberships
+      parameters:
+      - name: id
+        in: path
+        description: Profile ID
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"count\": 1,\n  \"next\": null,\n  \"previous\": null,\n  \"results\": [\n    {\n      \"id\": \"2bd41d2c-423a-4229-b6db-7909bc002e53\",\n      \"url\": \"https://cf-blast.livelikecdn.com/api/v1/chat-room-memberships/2bd41d2c-423a-4229-b6db-7909bc002e53/\",\n      \"chat_room\": {\n        \"id\": \"f4dcf209-4ba5-467d-ba16-fc15ac55b1cf\",\n        \"url\": \"https://cf-blast.livelikecdn.com/api/v1/chat-rooms/f4dcf209-4ba5-467d-ba16-fc15ac55b1cf/\",\n        \"client_id\": \"UEvoLS228uG6sazor9oeX29IJ3zPwVZDZ2bdCGW2\",\n        \"title\": \"My Chat Room\",\n        \"created_at\": \"2020-04-28T14:55:00.042359Z\",\n        \"content_filter\": \"none\",\n        \"channels\": {\n          \"chat\": {\n            \"sendbird\": null,\n            \"pubnub\": \"chatroom.f4dcf209-4ba5-467d-ba16-fc15ac55b1cf\"\n          },\n          \"reactions\": {\n            \"pubnub\": \"chatroomreactions.f4dcf209-4ba5-467d-ba16-fc15ac55b1cf\"\n          }\n        },\n        \"upload_url\": \"https://cf-blast.livelikecdn.com/api/v1/chat-rooms/f4dcf209-4ba5-467d-ba16-fc15ac55b1cf/upload/\",\n        \"memberships_url\": \"https://cf-blast.livelikecdn.com/api/v1/chat-rooms/f4dcf209-4ba5-467d-ba16-fc15ac55b1cf/memberships/\",\n        \"sticker_packs_url\": \"https://cf-blast.livelikecdn.com/api/v1/sticker-packs/?chat_room_id=5052ea2f-0cb4-4fb6-bec8-fe275826b266\",\n        \"reaction_packs_url\": \"https://cf-blast.livelikecdn.com/api/v1/reaction-packs/?chat_room_id=5052ea2f-0cb4-4fb6-bec8-fe275826b266\"\n      }\n    }\n  ]\n}\n"
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 1
+                    default: 0
+                  next: {}
+                  previous: {}
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: 2bd41d2c-423a-4229-b6db-7909bc002e53
+                        url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/chat-room-memberships/2bd41d2c-423a-4229-b6db-7909bc002e53/
+                        chat_room:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: f4dcf209-4ba5-467d-ba16-fc15ac55b1cf
+                            url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/chat-rooms/f4dcf209-4ba5-467d-ba16-fc15ac55b1cf/
+                            client_id:
+                              type: string
+                              example: UEvoLS228uG6sazor9oeX29IJ3zPwVZDZ2bdCGW2
+                            title:
+                              type: string
+                              example: My Chat Room
+                            created_at:
+                              type: string
+                              example: '2020-04-28T14:55:00.042359Z'
+                            content_filter:
+                              type: string
+                              example: none
+                            channels:
+                              type: object
+                              properties:
+                                chat:
+                                  type: object
+                                  properties:
+                                    sendbird: {}
+                                    pubnub:
+                                      type: string
+                                      example: chatroom.f4dcf209-4ba5-467d-ba16-fc15ac55b1cf
+                                reactions:
+                                  type: object
+                                  properties:
+                                    pubnub:
+                                      type: string
+                                      example: chatroomreactions.f4dcf209-4ba5-467d-ba16-fc15ac55b1cf
+                            upload_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/chat-rooms/f4dcf209-4ba5-467d-ba16-fc15ac55b1cf/upload/
+                            memberships_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/chat-rooms/f4dcf209-4ba5-467d-ba16-fc15ac55b1cf/memberships/
+                            sticker_packs_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/sticker-packs/?chat_room_id=5052ea2f-0cb4-4fb6-bec8-fe275826b266
+                            reaction_packs_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/reaction-packs/?chat_room_id=5052ea2f-0cb4-4fb6-bec8-fe275826b266
+      deprecated: false
+      tags:
+      - Chat Room Memberships
+    servers:
+    - url: https://cf-blast.livelikecdn.com/api/v1/profiles
+x-refined-from:
+- livelike-chat-room-memberships-openapi.yml
+- livelike-profiles-openapi.yml
+x-readme-fauxas: true
+x-provenance:
+  method: searched
+  source: https://docs.livelike.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://docs.livelike.com/reference/create-an-application.md
+  - https://docs.livelike.com/reference/create-multiplier-1.md
+  - https://docs.livelike.com/reference/create-multiplier.md
+  - https://docs.livelike.com/reference/delete-an-application.md
+  - https://docs.livelike.com/reference/delete-comment-quality-rules.md
+  - https://docs.livelike.com/reference/list-reward-multipliers.md
+  - https://docs.livelike.com/reference/listing-applications-widgets.md
+  - https://docs.livelike.com/reference/retrieve-reward-multiplier-1-1-1-1.md
+  - https://docs.livelike.com/reference/retrieve-reward-multiplier-1-1-1.md
+  - https://docs.livelike.com/reference/retrieve-reward-multiplier-1-1.md
+  - https://docs.livelike.com/reference/retrieve-reward-multiplier-1.md
+  - https://docs.livelike.com/reference/retrieve-reward-multiplier.md
+  - https://docs.livelike.com/reference/update-an-application.md
+  merge:
+    pages: 13
+    deduped: 12
+    conflicts_kept_first: 0

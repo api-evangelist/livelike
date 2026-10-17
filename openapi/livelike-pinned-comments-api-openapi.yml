@@ -1,0 +1,869 @@
+openapi: 3.2.0
+info:
+  title: engagement-suite Pinned Comments API
+  version: '1'
+servers:
+- url: https://cf-blast.livelikecdn.com/api/v1
+security:
+- {}
+tags:
+- name: Pinned Comments
+paths:
+  /pinned-comments/:
+    post:
+      summary: Pinning a comment
+      description: ''
+      operationId: create-a-pinned-comment
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer token
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - comment_id
+              properties:
+                comment_id:
+                  type: string
+                  description: The comment id that is required for pinning.
+      responses:
+        '201':
+          description: '201'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"id\": \"718b35d3-5815-4f98-a7d3-648e63547724\",\n    \"url\": \"https://cf-blast.livelikecdn.com/api/v1/pinned-comments/718b35d3-5815-4f98-a7d3-648e63547724/\",\n    \"pinned_by_id\": \"3aa0c291-bd9a-4ce1-8789-027719b31607\",\n    \"pinned_by\": {\n        \"id\": \"3aa0c291-bd9a-4ce1-8789-027719b31607\",\n        \"url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/\",\n        \"created_at\": \"2021-08-16T12:22:53.359562Z\",\n        \"nickname\": \"Avinash\",\n        \"custom_id\": null,\n        \"custom_data\": null,\n        \"points\": 0,\n        \"badges\": [],\n        \"badges_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badges/\",\n        \"badge_progress_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badge-progress/\",\n        \"subscribe_channel\": \"profile.3aa0c291-bd9a-4ce1-8789-027719b31607\",\n        \"reported_count\": 0,\n        \"chat_room_memberships_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/chat-room-memberships/\",\n        \"reward_item_credit_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-credits/\",\n        \"reward_item_debit_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-debits/\",\n        \"reward_item_balances_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-balances/\",\n        \"reward_item_transfer_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-transfers/\",\n        \"block_profile_url\": \"https://cf-blast.livelikecdn.com/api/v1/profile-blocks/\",\n        \"blocked_profiles_template_url\": \"https://cf-blast.livelikecdn.com/api/v1/profile-blocks/?blocked_profile_id={blocked_profile_id}\",\n        \"blocked_profile_ids_url\": \"https://cf-blast.livelikecdn.com/api/v1/blocked-profile-ids/\",\n        \"leaderboards_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboards/\",\n        \"leaderboard_views_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboard-views/\",\n        \"earned_badges_url\": \"https://cf-blast.livelikecdn.com/api/v1/earned-badges/?profile_id=3aa0c291-bd9a-4ce1-8789-027719b31607\",\n        \"redemption_keys_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/redemption-keys/\"\n    },\n    \"comment_board_id\": \"18257fdb-e5ee-495e-82ca-eaa673624314\",\n    \"comment_id\": \"c460026b-809b-4670-ad1b-2ab7f41a1553\",\n    \"comment\": {\n        \"id\": \"c460026b-809b-4670-ad1b-2ab7f41a1553\",\n        \"url\": \"https://cf-blast.livelikecdn.com/api/v1/comments/c460026b-809b-4670-ad1b-2ab7f41a1553/\",\n        \"comment_board_id\": \"18257fdb-e5ee-495e-82ca-eaa673624314\",\n        \"parent_comment_id\": null,\n        \"thread_comment_id\": null,\n        \"text\": \"comment 4\",\n        \"filtered_text\": null,\n        \"content_filter\": [],\n        \"comment_depth\": 0,\n        \"custom_data\": null,\n        \"author_id\": \"3aa0c291-bd9a-4ce1-8789-027719b31607\",\n        \"author\": {\n            \"id\": \"3aa0c291-bd9a-4ce1-8789-027719b31607\",\n            \"url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/\",\n            \"created_at\": \"2021-08-16T12:22:53.359562Z\",\n            \"nickname\": \"Avinash\",\n            \"custom_id\": null,\n            \"custom_data\": null,\n            \"points\": 0,\n            \"badges\": [],\n            \"badges_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badges/\",\n            \"badge_progress_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badge-progress/\",\n            \"subscribe_channel\": \"profile.3aa0c291-bd9a-4ce1-8789-027719b31607\",\n            \"reported_count\": 0,\n            \"chat_room_memberships_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/chat-room-memberships/\",\n            \"reward_item_credit_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-credits/\",\n            \"reward_item_debit_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-debits/\",\n            \"reward_item_balances_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-balances/\",\n            \"reward_item_transfer_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-transfers/\",\n            \"block_profile_url\": \"https://cf-blast.livelikecdn.com/api/v1/profile-blocks/\",\n            \"blocked_profiles_template_url\": \"https://cf-blast.livelikecdn.com/api/v1/profile-blocks/?blocked_profile_id={blocked_profile_id}\",\n            \"blocked_profile_ids_url\": \"https://cf-blast.livelikecdn.com/api/v1/blocked-profile-ids/\",\n            \"leaderboards_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboards/\",\n            \"leaderboard_views_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboard-views/\",\n            \"earned_badges_url\": \"https://cf-blast.livelikecdn.com/api/v1/earned-badges/?profile_id=3aa0c291-bd9a-4ce1-8789-027719b31607\",\n            \"redemption_keys_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/redemption-keys/\"\n        },\n        \"author_image_url\": null,\n        \"is_deleted\": false,\n        \"deleted_by\": null,\n        \"created_at\": \"2024-08-28T13:44:10.637755Z\",\n        \"deleted_at\": null,\n        \"replies_url\": \"https://cf-blast.livelikecdn.com/api/v1/comments/?comment_board_id=18257fdb-e5ee-495e-82ca-eaa673624314&parent_comment_id=c460026b-809b-4670-ad1b-2ab7f41a1553&is_reply=True&thread_comment_id=c460026b-809b-4670-ad1b-2ab7f41a1553\",\n        \"replies_count\": 0,\n        \"is_reported\": false,\n        \"comment_reports_count\": 0,\n        \"dismiss_reported_comment_url\": \"https://cf-blast.livelikecdn.com/api/v1/comments/c460026b-809b-4670-ad1b-2ab7f41a1553/dismiss-reports/\",\n        \"reactions\": [],\n        \"mentions\": [],\n        \"pinned_comments_url\": \"https://cf-blast.livelikecdn.com/api/v1/pinned-comments/\"\n    },\n    \"pinned_at\": \"2024-09-05T03:44:48.816553Z\"\n}"
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: 718b35d3-5815-4f98-a7d3-648e63547724
+                  url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/pinned-comments/718b35d3-5815-4f98-a7d3-648e63547724/
+                  pinned_by_id:
+                    type: string
+                    example: 3aa0c291-bd9a-4ce1-8789-027719b31607
+                  pinned_by:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: 3aa0c291-bd9a-4ce1-8789-027719b31607
+                      url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/
+                      created_at:
+                        type: string
+                        example: '2021-08-16T12:22:53.359562Z'
+                      nickname:
+                        type: string
+                        example: Avinash
+                      custom_id: {}
+                      custom_data: {}
+                      points:
+                        type: integer
+                        example: 0
+                        default: 0
+                      badges:
+                        type: array
+                      badges_url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badges/
+                      badge_progress_url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badge-progress/
+                      subscribe_channel:
+                        type: string
+                        example: profile.3aa0c291-bd9a-4ce1-8789-027719b31607
+                      reported_count:
+                        type: integer
+                        example: 0
+                        default: 0
+                      chat_room_memberships_url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/chat-room-memberships/
+                      reward_item_credit_url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-credits/
+                      reward_item_debit_url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-debits/
+                      reward_item_balances_url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-balances/
+                      reward_item_transfer_url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-transfers/
+                      block_profile_url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/profile-blocks/
+                      blocked_profiles_template_url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/profile-blocks/?blocked_profile_id={blocked_profile_id}
+                      blocked_profile_ids_url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/blocked-profile-ids/
+                      leaderboards_url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboards/
+                      leaderboard_views_url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboard-views/
+                      earned_badges_url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/earned-badges/?profile_id=3aa0c291-bd9a-4ce1-8789-027719b31607
+                      redemption_keys_url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/redemption-keys/
+                  comment_board_id:
+                    type: string
+                    example: 18257fdb-e5ee-495e-82ca-eaa673624314
+                  comment_id:
+                    type: string
+                    example: c460026b-809b-4670-ad1b-2ab7f41a1553
+                  comment:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: c460026b-809b-4670-ad1b-2ab7f41a1553
+                      url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/comments/c460026b-809b-4670-ad1b-2ab7f41a1553/
+                      comment_board_id:
+                        type: string
+                        example: 18257fdb-e5ee-495e-82ca-eaa673624314
+                      parent_comment_id: {}
+                      thread_comment_id: {}
+                      text:
+                        type: string
+                        example: comment 4
+                      filtered_text: {}
+                      content_filter:
+                        type: array
+                      comment_depth:
+                        type: integer
+                        example: 0
+                        default: 0
+                      custom_data: {}
+                      author_id:
+                        type: string
+                        example: 3aa0c291-bd9a-4ce1-8789-027719b31607
+                      author:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            example: 3aa0c291-bd9a-4ce1-8789-027719b31607
+                          url:
+                            type: string
+                            example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/
+                          created_at:
+                            type: string
+                            example: '2021-08-16T12:22:53.359562Z'
+                          nickname:
+                            type: string
+                            example: Avinash
+                          custom_id: {}
+                          custom_data: {}
+                          points:
+                            type: integer
+                            example: 0
+                            default: 0
+                          badges:
+                            type: array
+                          badges_url:
+                            type: string
+                            example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badges/
+                          badge_progress_url:
+                            type: string
+                            example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badge-progress/
+                          subscribe_channel:
+                            type: string
+                            example: profile.3aa0c291-bd9a-4ce1-8789-027719b31607
+                          reported_count:
+                            type: integer
+                            example: 0
+                            default: 0
+                          chat_room_memberships_url:
+                            type: string
+                            example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/chat-room-memberships/
+                          reward_item_credit_url:
+                            type: string
+                            example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-credits/
+                          reward_item_debit_url:
+                            type: string
+                            example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-debits/
+                          reward_item_balances_url:
+                            type: string
+                            example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-balances/
+                          reward_item_transfer_url:
+                            type: string
+                            example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-transfers/
+                          block_profile_url:
+                            type: string
+                            example: https://cf-blast.livelikecdn.com/api/v1/profile-blocks/
+                          blocked_profiles_template_url:
+                            type: string
+                            example: https://cf-blast.livelikecdn.com/api/v1/profile-blocks/?blocked_profile_id={blocked_profile_id}
+                          blocked_profile_ids_url:
+                            type: string
+                            example: https://cf-blast.livelikecdn.com/api/v1/blocked-profile-ids/
+                          leaderboards_url:
+                            type: string
+                            example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboards/
+                          leaderboard_views_url:
+                            type: string
+                            example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboard-views/
+                          earned_badges_url:
+                            type: string
+                            example: https://cf-blast.livelikecdn.com/api/v1/earned-badges/?profile_id=3aa0c291-bd9a-4ce1-8789-027719b31607
+                          redemption_keys_url:
+                            type: string
+                            example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/redemption-keys/
+                      author_image_url: {}
+                      is_deleted:
+                        type: boolean
+                        example: false
+                        default: true
+                      deleted_by: {}
+                      created_at:
+                        type: string
+                        example: '2024-08-28T13:44:10.637755Z'
+                      deleted_at: {}
+                      replies_url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/comments/?comment_board_id=18257fdb-e5ee-495e-82ca-eaa673624314&parent_comment_id=c460026b-809b-4670-ad1b-2ab7f41a1553&is_reply=True&thread_comment_id=c460026b-809b-4670-ad1b-2ab7f41a1553
+                      replies_count:
+                        type: integer
+                        example: 0
+                        default: 0
+                      is_reported:
+                        type: boolean
+                        example: false
+                        default: true
+                      comment_reports_count:
+                        type: integer
+                        example: 0
+                        default: 0
+                      dismiss_reported_comment_url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/comments/c460026b-809b-4670-ad1b-2ab7f41a1553/dismiss-reports/
+                      reactions:
+                        type: array
+                      mentions:
+                        type: array
+                      pinned_comments_url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/pinned-comments/
+                  pinned_at:
+                    type: string
+                    example: '2024-09-05T03:44:48.816553Z'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"comment_id\": [\n        \"This field is required.\"\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  comment_id:
+                    type: array
+                    items:
+                      type: string
+                      example: This field is required.
+        '409':
+          description: '409'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"detail\": \"Comment is already Pinned\",\n    \"error_code\": \"invalid\"\n}"
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    example: Comment is already Pinned
+                  error_code:
+                    type: string
+                    example: invalid
+      deprecated: false
+      tags:
+      - Pinned Comments
+    get:
+      summary: List Pinned Comments
+      description: ''
+      operationId: list-pinned-comments
+      parameters:
+      - name: comment_board_id
+        in: query
+        description: comment board id for the pinned comments board
+        schema:
+          type: string
+      - name: pinned_by_id
+        in: query
+        description: profile id of the user who pinned a comment
+        schema:
+          type: string
+          default: profile id of the user who pinned the comment
+      - name: comment_id
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"count\": 3,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": \"7f0769d5-c4c4-4fe1-846b-177576eb8dfd\",\n            \"url\": \"https://cf-blast.livelikecdn.com/api/v1/pinned-comments/7f0769d5-c4c4-4fe1-846b-177576eb8dfd/\",\n            \"pinned_by_id\": \"3aa0c291-bd9a-4ce1-8789-027719b31607\",\n            \"pinned_by\": {\n                \"id\": \"3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                \"url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/\",\n                \"created_at\": \"2021-08-16T12:22:53.359562Z\",\n                \"nickname\": \"Avinash\",\n                \"custom_id\": null,\n                \"custom_data\": null,\n                \"points\": 0,\n                \"badges\": [],\n                \"badges_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badges/\",\n                \"badge_progress_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badge-progress/\",\n                \"subscribe_channel\": \"profile.3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                \"reported_count\": 0,\n                \"chat_room_memberships_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/chat-room-memberships/\",\n                \"reward_item_credit_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-credits/\",\n                \"reward_item_debit_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-debits/\",\n                \"reward_item_balances_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-balances/\",\n                \"reward_item_transfer_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-transfers/\",\n                \"block_profile_url\": \"https://cf-blast.livelikecdn.com/api/v1/profile-blocks/\",\n                \"blocked_profiles_template_url\": \"https://cf-blast.livelikecdn.com/api/v1/profile-blocks/?blocked_profile_id={blocked_profile_id}\",\n                \"blocked_profile_ids_url\": \"https://cf-blast.livelikecdn.com/api/v1/blocked-profile-ids/\",\n                \"leaderboards_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboards/\",\n                \"leaderboard_views_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboard-views/\",\n                \"earned_badges_url\": \"https://cf-blast.livelikecdn.com/api/v1/earned-badges/?profile_id=3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                \"redemption_keys_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/redemption-keys/\"\n            },\n            \"comment_board_id\": \"18257fdb-e5ee-495e-82ca-eaa673624314\",\n            \"comment_id\": \"c460026b-809b-4670-ad1b-2ab7f41a1553\",\n            \"comment\": {\n                \"id\": \"c460026b-809b-4670-ad1b-2ab7f41a1553\",\n                \"url\": \"https://cf-blast.livelikecdn.com/api/v1/comments/c460026b-809b-4670-ad1b-2ab7f41a1553/\",\n                \"comment_board_id\": \"18257fdb-e5ee-495e-82ca-eaa673624314\",\n                \"parent_comment_id\": null,\n                \"thread_comment_id\": null,\n                \"text\": \"comment 4\",\n                \"filtered_text\": null,\n                \"content_filter\": [],\n                \"comment_depth\": 0,\n                \"custom_data\": null,\n                \"author_id\": \"3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                \"author\": {\n                    \"id\": \"3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                    \"url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/\",\n                    \"created_at\": \"2021-08-16T12:22:53.359562Z\",\n                    \"nickname\": \"Avinash\",\n                    \"custom_id\": null,\n                    \"custom_data\": null,\n                    \"points\": 0,\n                    \"badges\": [],\n                    \"badges_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badges/\",\n                    \"badge_progress_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badge-progress/\",\n                    \"subscribe_channel\": \"profile.3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                    \"reported_count\": 0,\n                    \"chat_room_memberships_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/chat-room-memberships/\",\n                    \"reward_item_credit_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-credits/\",\n                    \"reward_item_debit_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-debits/\",\n                    \"reward_item_balances_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-balances/\",\n                    \"reward_item_transfer_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-transfers/\",\n                    \"block_profile_url\": \"https://cf-blast.livelikecdn.com/api/v1/profile-blocks/\",\n                    \"blocked_profiles_template_url\": \"https://cf-blast.livelikecdn.com/api/v1/profile-blocks/?blocked_profile_id={blocked_profile_id}\",\n                    \"blocked_profile_ids_url\": \"https://cf-blast.livelikecdn.com/api/v1/blocked-profile-ids/\",\n                    \"leaderboards_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboards/\",\n                    \"leaderboard_views_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboard-views/\",\n                    \"earned_badges_url\": \"https://cf-blast.livelikecdn.com/api/v1/earned-badges/?profile_id=3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                    \"redemption_keys_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/redemption-keys/\"\n                },\n                \"author_image_url\": null,\n                \"is_deleted\": false,\n                \"deleted_by\": null,\n                \"created_at\": \"2024-08-28T13:44:10.637755Z\",\n                \"deleted_at\": null,\n                \"replies_url\": \"https://cf-blast.livelikecdn.com/api/v1/comments/?comment_board_id=18257fdb-e5ee-495e-82ca-eaa673624314&parent_comment_id=c460026b-809b-4670-ad1b-2ab7f41a1553&is_reply=True&thread_comment_id=c460026b-809b-4670-ad1b-2ab7f41a1553\",\n                \"replies_count\": 0,\n                \"is_reported\": false,\n                \"comment_reports_count\": 0,\n                \"dismiss_reported_comment_url\": \"https://cf-blast.livelikecdn.com/api/v1/comments/c460026b-809b-4670-ad1b-2ab7f41a1553/dismiss-reports/\",\n                \"reactions\": [],\n                \"mentions\": [],\n                \"pinned_comments_url\": \"https://cf-blast.livelikecdn.com/api/v1/pinned-comments/\"\n            },\n            \"pinned_at\": \"2024-09-05T03:50:17.299877Z\"\n        },\n        {\n            \"id\": \"9b862d3f-40cc-43d7-afef-cde7db465636\",\n            \"url\": \"https://cf-blast.livelikecdn.com/api/v1/pinned-comments/9b862d3f-40cc-43d7-afef-cde7db465636/\",\n            \"pinned_by_id\": \"3aa0c291-bd9a-4ce1-8789-027719b31607\",\n            \"pinned_by\": {\n                \"id\": \"3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                \"url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/\",\n                \"created_at\": \"2021-08-16T12:22:53.359562Z\",\n                \"nickname\": \"Avinash\",\n                \"custom_id\": null,\n                \"custom_data\": null,\n                \"points\": 0,\n                \"badges\": [],\n                \"badges_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badges/\",\n                \"badge_progress_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badge-progress/\",\n                \"subscribe_channel\": \"profile.3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                \"reported_count\": 0,\n                \"chat_room_memberships_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/chat-room-memberships/\",\n                \"reward_item_credit_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-credits/\",\n                \"reward_item_debit_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-debits/\",\n                \"reward_item_balances_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-balances/\",\n                \"reward_item_transfer_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-transfers/\",\n                \"block_profile_url\": \"https://cf-blast.livelikecdn.com/api/v1/profile-blocks/\",\n                \"blocked_profiles_template_url\": \"https://cf-blast.livelikecdn.com/api/v1/profile-blocks/?blocked_profile_id={blocked_profile_id}\",\n                \"blocked_profile_ids_url\": \"https://cf-blast.livelikecdn.com/api/v1/blocked-profile-ids/\",\n                \"leaderboards_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboards/\",\n                \"leaderboard_views_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboard-views/\",\n                \"earned_badges_url\": \"https://cf-blast.livelikecdn.com/api/v1/earned-badges/?profile_id=3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                \"redemption_keys_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/redemption-keys/\"\n            },\n            \"comment_board_id\": \"18257fdb-e5ee-495e-82ca-eaa673624314\",\n            \"comment_id\": \"b3b40d92-7686-48d0-b6a1-debecbb6033c\",\n            \"comment\": {\n                \"id\": \"b3b40d92-7686-48d0-b6a1-debecbb6033c\",\n                \"url\": \"https://cf-blast.livelikecdn.com/api/v1/comments/b3b40d92-7686-48d0-b6a1-debecbb6033c/\",\n                \"comment_board_id\": \"18257fdb-e5ee-495e-82ca-eaa673624314\",\n                \"parent_comment_id\": null,\n                \"thread_comment_id\": null,\n                \"text\": \"Comment 2\",\n                \"filtered_text\": null,\n                \"content_filter\": [],\n                \"comment_depth\": 0,\n                \"custom_data\": null,\n                \"author_id\": \"3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                \"author\": {\n                    \"id\": \"3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                    \"url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/\",\n                    \"created_at\": \"2021-08-16T12:22:53.359562Z\",\n                    \"nickname\": \"Avinash\",\n                    \"custom_id\": null,\n                    \"custom_data\": null,\n                    \"points\": 0,\n                    \"badges\": [],\n                    \"badges_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badges/\",\n                    \"badge_progress_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badge-progress/\",\n                    \"subscribe_channel\": \"profile.3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                    \"reported_count\": 0,\n                    \"chat_room_memberships_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/chat-room-memberships/\",\n                    \"reward_item_credit_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-credits/\",\n                    \"reward_item_debit_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-debits/\",\n                    \"reward_item_balances_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-balances/\",\n                    \"reward_item_transfer_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-transfers/\",\n                    \"block_profile_url\": \"https://cf-blast.livelikecdn.com/api/v1/profile-blocks/\",\n                    \"blocked_profiles_template_url\": \"https://cf-blast.livelikecdn.com/api/v1/profile-blocks/?blocked_profile_id={blocked_profile_id}\",\n                    \"blocked_profile_ids_url\": \"https://cf-blast.livelikecdn.com/api/v1/blocked-profile-ids/\",\n                    \"leaderboards_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboards/\",\n                    \"leaderboard_views_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboard-views/\",\n                    \"earned_badges_url\": \"https://cf-blast.livelikecdn.com/api/v1/earned-badges/?profile_id=3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                    \"redemption_keys_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/redemption-keys/\"\n                },\n                \"author_image_url\": null,\n                \"is_deleted\": false,\n                \"deleted_by\": null,\n                \"created_at\": \"2024-08-28T13:38:10.967377Z\",\n                \"deleted_at\": null,\n                \"replies_url\": \"https://cf-blast.livelikecdn.com/api/v1/comments/?comment_board_id=18257fdb-e5ee-495e-82ca-eaa673624314&parent_comment_id=b3b40d92-7686-48d0-b6a1-debecbb6033c&is_reply=True&thread_comment_id=b3b40d92-7686-48d0-b6a1-debecbb6033c\",\n                \"replies_count\": 0,\n                \"is_reported\": false,\n                \"comment_reports_count\": 0,\n                \"dismiss_reported_comment_url\": \"https://cf-blast.livelikecdn.com/api/v1/comments/b3b40d92-7686-48d0-b6a1-debecbb6033c/dismiss-reports/\",\n                \"reactions\": [],\n                \"mentions\": [],\n                \"pinned_comments_url\": \"https://cf-blast.livelikecdn.com/api/v1/pinned-comments/\"\n            },\n            \"pinned_at\": \"2024-08-28T13:38:29.430572Z\"\n        },\n        {\n            \"id\": \"776dabb6-9189-460b-be6a-9e4aa8d5bfa7\",\n            \"url\": \"https://cf-blast.livelikecdn.com/api/v1/pinned-comments/776dabb6-9189-460b-be6a-9e4aa8d5bfa7/\",\n            \"pinned_by_id\": \"3aa0c291-bd9a-4ce1-8789-027719b31607\",\n            \"pinned_by\": {\n                \"id\": \"3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                \"url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/\",\n                \"created_at\": \"2021-08-16T12:22:53.359562Z\",\n                \"nickname\": \"Avinash\",\n                \"custom_id\": null,\n                \"custom_data\": null,\n                \"points\": 0,\n                \"badges\": [],\n                \"badges_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badges/\",\n                \"badge_progress_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badge-progress/\",\n                \"subscribe_channel\": \"profile.3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                \"reported_count\": 0,\n                \"chat_room_memberships_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/chat-room-memberships/\",\n                \"reward_item_credit_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-credits/\",\n                \"reward_item_debit_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-debits/\",\n                \"reward_item_balances_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-balances/\",\n                \"reward_item_transfer_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-transfers/\",\n                \"block_profile_url\": \"https://cf-blast.livelikecdn.com/api/v1/profile-blocks/\",\n                \"blocked_profiles_template_url\": \"https://cf-blast.livelikecdn.com/api/v1/profile-blocks/?blocked_profile_id={blocked_profile_id}\",\n                \"blocked_profile_ids_url\": \"https://cf-blast.livelikecdn.com/api/v1/blocked-profile-ids/\",\n                \"leaderboards_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboards/\",\n                \"leaderboard_views_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboard-views/\",\n                \"earned_badges_url\": \"https://cf-blast.livelikecdn.com/api/v1/earned-badges/?profile_id=3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                \"redemption_keys_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/redemption-keys/\"\n            },\n            \"comment_board_id\": \"18257fdb-e5ee-495e-82ca-eaa673624314\",\n            \"comment_id\": \"13e715c4-8955-4470-a67f-c00c4e92a276\",\n            \"comment\": {\n                \"id\": \"13e715c4-8955-4470-a67f-c00c4e92a276\",\n                \"url\": \"https://cf-blast.livelikecdn.com/api/v1/comments/13e715c4-8955-4470-a67f-c00c4e92a276/\",\n                \"comment_board_id\": \"18257fdb-e5ee-495e-82ca-eaa673624314\",\n                \"parent_comment_id\": null,\n                \"thread_comment_id\": null,\n                \"text\": \"Comment 1\",\n                \"filtered_text\": null,\n                \"content_filter\": [],\n                \"comment_depth\": 0,\n                \"custom_data\": null,\n                \"author_id\": \"3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                \"author\": {\n                    \"id\": \"3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                    \"url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/\",\n                    \"created_at\": \"2021-08-16T12:22:53.359562Z\",\n                    \"nickname\": \"Avinash\",\n                    \"custom_id\": null,\n                    \"custom_data\": null,\n                    \"points\": 0,\n                    \"badges\": [],\n                    \"badges_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badges/\",\n                    \"badge_progress_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badge-progress/\",\n                    \"subscribe_channel\": \"profile.3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                    \"reported_count\": 0,\n                    \"chat_room_memberships_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/chat-room-memberships/\",\n                    \"reward_item_credit_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-credits/\",\n                    \"reward_item_debit_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-debits/\",\n                    \"reward_item_balances_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-balances/\",\n                    \"reward_item_transfer_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-transfers/\",\n                    \"block_profile_url\": \"https://cf-blast.livelikecdn.com/api/v1/profile-blocks/\",\n                    \"blocked_profiles_template_url\": \"https://cf-blast.livelikecdn.com/api/v1/profile-blocks/?blocked_profile_id={blocked_profile_id}\",\n                    \"blocked_profile_ids_url\": \"https://cf-blast.livelikecdn.com/api/v1/blocked-profile-ids/\",\n                    \"leaderboards_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboards/\",\n                    \"leaderboard_views_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboard-views/\",\n                    \"earned_badges_url\": \"https://cf-blast.livelikecdn.com/api/v1/earned-badges/?profile_id=3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                    \"redemption_keys_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/redemption-keys/\"\n                },\n                \"author_image_url\": null,\n                \"is_deleted\": false,\n                \"deleted_by\": null,\n                \"created_at\": \"2024-08-28T13:35:59.474529Z\",\n                \"deleted_at\": null,\n                \"replies_url\": \"https://cf-blast.livelikecdn.com/api/v1/comments/?comment_board_id=18257fdb-e5ee-495e-82ca-eaa673624314&parent_comment_id=13e715c4-8955-4470-a67f-c00c4e92a276&is_reply=True&thread_comment_id=13e715c4-8955-4470-a67f-c00c4e92a276\",\n                \"replies_count\": 0,\n                \"is_reported\": false,\n                \"comment_reports_count\": 0,\n                \"dismiss_reported_comment_url\": \"https://cf-blast.livelikecdn.com/api/v1/comments/13e715c4-8955-4470-a67f-c00c4e92a276/dismiss-reports/\",\n                \"reactions\": [],\n                \"mentions\": [],\n                \"pinned_comments_url\": \"https://cf-blast.livelikecdn.com/api/v1/pinned-comments/\"\n            },\n            \"pinned_at\": \"2024-08-28T13:38:18.500693Z\"\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 3
+                    default: 0
+                  next: {}
+                  previous: {}
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: 7f0769d5-c4c4-4fe1-846b-177576eb8dfd
+                        url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/pinned-comments/7f0769d5-c4c4-4fe1-846b-177576eb8dfd/
+                        pinned_by_id:
+                          type: string
+                          example: 3aa0c291-bd9a-4ce1-8789-027719b31607
+                        pinned_by:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: 3aa0c291-bd9a-4ce1-8789-027719b31607
+                            url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/
+                            created_at:
+                              type: string
+                              example: '2021-08-16T12:22:53.359562Z'
+                            nickname:
+                              type: string
+                              example: Avinash
+                            custom_id: {}
+                            custom_data: {}
+                            points:
+                              type: integer
+                              example: 0
+                              default: 0
+                            badges:
+                              type: array
+                            badges_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badges/
+                            badge_progress_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badge-progress/
+                            subscribe_channel:
+                              type: string
+                              example: profile.3aa0c291-bd9a-4ce1-8789-027719b31607
+                            reported_count:
+                              type: integer
+                              example: 0
+                              default: 0
+                            chat_room_memberships_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/chat-room-memberships/
+                            reward_item_credit_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-credits/
+                            reward_item_debit_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-debits/
+                            reward_item_balances_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-balances/
+                            reward_item_transfer_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-transfers/
+                            block_profile_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/profile-blocks/
+                            blocked_profiles_template_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/profile-blocks/?blocked_profile_id={blocked_profile_id}
+                            blocked_profile_ids_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/blocked-profile-ids/
+                            leaderboards_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboards/
+                            leaderboard_views_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboard-views/
+                            earned_badges_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/earned-badges/?profile_id=3aa0c291-bd9a-4ce1-8789-027719b31607
+                            redemption_keys_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/redemption-keys/
+                        comment_board_id:
+                          type: string
+                          example: 18257fdb-e5ee-495e-82ca-eaa673624314
+                        comment_id:
+                          type: string
+                          example: c460026b-809b-4670-ad1b-2ab7f41a1553
+                        comment:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: c460026b-809b-4670-ad1b-2ab7f41a1553
+                            url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/comments/c460026b-809b-4670-ad1b-2ab7f41a1553/
+                            comment_board_id:
+                              type: string
+                              example: 18257fdb-e5ee-495e-82ca-eaa673624314
+                            parent_comment_id: {}
+                            thread_comment_id: {}
+                            text:
+                              type: string
+                              example: comment 4
+                            filtered_text: {}
+                            content_filter:
+                              type: array
+                            comment_depth:
+                              type: integer
+                              example: 0
+                              default: 0
+                            custom_data: {}
+                            author_id:
+                              type: string
+                              example: 3aa0c291-bd9a-4ce1-8789-027719b31607
+                            author:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                  example: 3aa0c291-bd9a-4ce1-8789-027719b31607
+                                url:
+                                  type: string
+                                  example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/
+                                created_at:
+                                  type: string
+                                  example: '2021-08-16T12:22:53.359562Z'
+                                nickname:
+                                  type: string
+                                  example: Avinash
+                                custom_id: {}
+                                custom_data: {}
+                                points:
+                                  type: integer
+                                  example: 0
+                                  default: 0
+                                badges:
+                                  type: array
+                                badges_url:
+                                  type: string
+                                  example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badges/
+                                badge_progress_url:
+                                  type: string
+                                  example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badge-progress/
+                                subscribe_channel:
+                                  type: string
+                                  example: profile.3aa0c291-bd9a-4ce1-8789-027719b31607
+                                reported_count:
+                                  type: integer
+                                  example: 0
+                                  default: 0
+                                chat_room_memberships_url:
+                                  type: string
+                                  example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/chat-room-memberships/
+                                reward_item_credit_url:
+                                  type: string
+                                  example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-credits/
+                                reward_item_debit_url:
+                                  type: string
+                                  example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-debits/
+                                reward_item_balances_url:
+                                  type: string
+                                  example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-balances/
+                                reward_item_transfer_url:
+                                  type: string
+                                  example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-transfers/
+                                block_profile_url:
+                                  type: string
+                                  example: https://cf-blast.livelikecdn.com/api/v1/profile-blocks/
+                                blocked_profiles_template_url:
+                                  type: string
+                                  example: https://cf-blast.livelikecdn.com/api/v1/profile-blocks/?blocked_profile_id={blocked_profile_id}
+                                blocked_profile_ids_url:
+                                  type: string
+                                  example: https://cf-blast.livelikecdn.com/api/v1/blocked-profile-ids/
+                                leaderboards_url:
+                                  type: string
+                                  example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboards/
+                                leaderboard_views_url:
+                                  type: string
+                                  example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboard-views/
+                                earned_badges_url:
+                                  type: string
+                                  example: https://cf-blast.livelikecdn.com/api/v1/earned-badges/?profile_id=3aa0c291-bd9a-4ce1-8789-027719b31607
+                                redemption_keys_url:
+                                  type: string
+                                  example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/redemption-keys/
+                            author_image_url: {}
+                            is_deleted:
+                              type: boolean
+                              example: false
+                              default: true
+                            deleted_by: {}
+                            created_at:
+                              type: string
+                              example: '2024-08-28T13:44:10.637755Z'
+                            deleted_at: {}
+                            replies_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/comments/?comment_board_id=18257fdb-e5ee-495e-82ca-eaa673624314&parent_comment_id=c460026b-809b-4670-ad1b-2ab7f41a1553&is_reply=True&thread_comment_id=c460026b-809b-4670-ad1b-2ab7f41a1553
+                            replies_count:
+                              type: integer
+                              example: 0
+                              default: 0
+                            is_reported:
+                              type: boolean
+                              example: false
+                              default: true
+                            comment_reports_count:
+                              type: integer
+                              example: 0
+                              default: 0
+                            dismiss_reported_comment_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/comments/c460026b-809b-4670-ad1b-2ab7f41a1553/dismiss-reports/
+                            reactions:
+                              type: array
+                            mentions:
+                              type: array
+                            pinned_comments_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/pinned-comments/
+                        pinned_at:
+                          type: string
+                          example: '2024-09-05T03:50:17.299877Z'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Pinned Comments
+  /pinned-comments/{pinned-comment-id}/:
+    delete:
+      summary: Unpin a pinned comment
+      description: ''
+      operationId: unpin-a-pinned-comment
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer Token
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: '204'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Pinned Comments
+x-readme-fauxas: true
+x-provenance:
+  method: searched
+  source: https://docs.livelike.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://docs.livelike.com/reference/add-bulk-chat-memberships.md
+  - https://docs.livelike.com/reference/add-members-to-group.md
+  - https://docs.livelike.com/reference/add-quest-badges.md
+  - https://docs.livelike.com/reference/award-a-badge-to-a-user.md
+  - https://docs.livelike.com/reference/batch-invoke-reward-action.md
+  - https://docs.livelike.com/reference/claim-user-quest-badges.md
+  - https://docs.livelike.com/reference/claim-user-quest-rewards.md
+  - https://docs.livelike.com/reference/create-a-base-role.md
+  - https://docs.livelike.com/reference/create-a-cheer-meter.md
+  - https://docs.livelike.com/reference/create-a-comment-board.md
+  - https://docs.livelike.com/reference/create-a-comment.md
+  - https://docs.livelike.com/reference/create-a-flair-assignment.md
+  - https://docs.livelike.com/reference/create-a-flair-scope.md
+  - https://docs.livelike.com/reference/create-a-flair.md
+  - https://docs.livelike.com/reference/create-a-group.md
+  - https://docs.livelike.com/reference/create-a-pin-message.md
+  - https://docs.livelike.com/reference/create-a-pinned-comment.md
+  - https://docs.livelike.com/reference/create-a-profile-block.md
+  - https://docs.livelike.com/reference/create-a-profile-relationship.md
+  - https://docs.livelike.com/reference/create-a-program-ban.md
+  - https://docs.livelike.com/reference/create-a-redemption-key.md
+  - https://docs.livelike.com/reference/create-a-registered-link.md
+  - https://docs.livelike.com/reference/create-a-relationship-type.md
+  - https://docs.livelike.com/reference/create-a-rich-post.md
+  - https://docs.livelike.com/reference/create-a-social-embed.md
+  - https://docs.livelike.com/reference/create-a-sticker.md
+  - https://docs.livelike.com/reference/create-a-text-quiz.md
+  - https://docs.livelike.com/reference/create-a-user-reaction.md
+  - https://docs.livelike.com/reference/create-a-user-tier.md
+  - https://docs.livelike.com/reference/create-a-video-alert.md
+  - https://docs.livelike.com/reference/create-an-access-rule-for-muteglobally-mute.md
+  - https://docs.livelike.com/reference/create-an-alert.md
+  - https://docs.livelike.com/reference/create-an-image-number-prediction.md
+  - https://docs.livelike.com/reference/create-an-image-quiz.md
+  - https://docs.livelike.com/reference/create-an-image-slider.md
+  - https://docs.livelike.com/reference/create-badge-1.md
+  - https://docs.livelike.com/reference/create-comment-report.md
+  - https://docs.livelike.com/reference/create-comments-ban.md
+  - https://docs.livelike.com/reference/create-image-number-prediction-follow-up.md
+  - https://docs.livelike.com/reference/create-image-number-prediction-option.md
+  - https://docs.livelike.com/reference/create-image-poll.md
+  - https://docs.livelike.com/reference/create-image-prediction-follow-up.md
+  - https://docs.livelike.com/reference/create-image-prediction-option.md
+  - https://docs.livelike.com/reference/create-poll-vote.md
+  - https://docs.livelike.com/reference/create-profile-by-custom-id.md
+  - https://docs.livelike.com/reference/create-quality-rules.md
+  - https://docs.livelike.com/reference/create-quest-rewards.md
+  - https://docs.livelike.com/reference/create-quests.md
+  - https://docs.livelike.com/reference/create-reaction-emoji.md
+  - https://docs.livelike.com/reference/create-reward-item.md
+  - https://docs.livelike.com/reference/create-reward-table-entry.md
+  - https://docs.livelike.com/reference/create-reward-table.md
+  - https://docs.livelike.com/reference/create-role-assignments.md
+  - https://docs.livelike.com/reference/create-role-grant-assignment.md
+  - https://docs.livelike.com/reference/create-roles.md
+  - https://docs.livelike.com/reference/create-task.md
+  - https://docs.livelike.com/reference/create-text-poll.md
+  - https://docs.livelike.com/reference/create-text-prediction-follow-up.md
+  - https://docs.livelike.com/reference/create-text-prediction-option.md
+  - https://docs.livelike.com/reference/create-tier-benefit.md
+  - https://docs.livelike.com/reference/create-tier-group.md
+  - https://docs.livelike.com/reference/create-tier.md
+  - https://docs.livelike.com/reference/create-user-profile.md
+  - https://docs.livelike.com/reference/create-user-quest.md
+  - https://docs.livelike.com/reference/creating-reward-actions.md
+  - https://docs.livelike.com/reference/credit-reward-item.md
+  - https://docs.livelike.com/reference/debit-reward-item.md
+  - https://docs.livelike.com/reference/delete-a-base-role.md
+  - https://docs.livelike.com/reference/delete-a-comment.md
+  - https://docs.livelike.com/reference/delete-a-flair-assignment.md
+  - https://docs.livelike.com/reference/delete-a-flair.md
+  - https://docs.livelike.com/reference/delete-a-program-ban.md
+  - https://docs.livelike.com/reference/delete-a-redemption-key.md
+  - https://docs.livelike.com/reference/delete-a-registered-link.md
+  - https://docs.livelike.com/reference/delete-a-role.md
+  - https://docs.livelike.com/reference/delete-a-tier-group.md
+  - https://docs.livelike.com/reference/delete-a-user-reaction.md
+  - https://docs.livelike.com/reference/delete-a-video-alert.md
+  - https://docs.livelike.com/reference/delete-bulk-chat-memberships.md
+  - https://docs.livelike.com/reference/delete-comment-board-by-custom-id.md
+  - https://docs.livelike.com/reference/delete-comment-board.md
+  - https://docs.livelike.com/reference/delete-comments-ban.md
+  - https://docs.livelike.com/reference/delete-profile-group.md
+  - https://docs.livelike.com/reference/delete-quest.md
+  - https://docs.livelike.com/reference/delete-reaction-emoji.md
+  - https://docs.livelike.com/reference/delete-reward-table-entry.md
+  - https://docs.livelike.com/reference/delete-reward-table.md
+  - https://docs.livelike.com/reference/delete-role-assignment.md
+  - https://docs.livelike.com/reference/delete-role-grant-unassignment.md
+  - https://docs.livelike.com/reference/delete-task.md
+  - https://docs.livelike.com/reference/delete-tier-benefit.md
+  - https://docs.livelike.com/reference/delete-tier.md
+  - https://docs.livelike.com/reference/delete-userquest.md
+  - https://docs.livelike.com/reference/delete-widget.md
+  - https://docs.livelike.com/reference/dismiss-all-reports-for-a-reported-comment.md
+  - https://docs.livelike.com/reference/flair-assignment-detail.md
+  - https://docs.livelike.com/reference/flair-detail-1.md
+  - https://docs.livelike.com/reference/flair-detail.md
+  - https://docs.livelike.com/reference/get-a-badge.md
+  - https://docs.livelike.com/reference/get-a-redemption-key.md
+  - https://docs.livelike.com/reference/get-a-rich-post.md
+  - https://docs.livelike.com/reference/get-a-social-embed.md
+  - https://docs.livelike.com/reference/get-a-text-ask-widget.md
+  - https://docs.livelike.com/reference/get-a-text-poll.md
+  - https://docs.livelike.com/reference/get-a-text-quiz.md
+  - https://docs.livelike.com/reference/get-a-video-alert.md
+  - https://docs.livelike.com/reference/get-an-alert-1.md
+  - https://docs.livelike.com/reference/get-an-asset-1.md
+  - https://docs.livelike.com/reference/get-an-asset.md
+  - https://docs.livelike.com/reference/get-an-emoji-slider.md
+  - https://docs.livelike.com/reference/get-an-image-poll.md
+  - https://docs.livelike.com/reference/get-an-image-quiz.md
+  - https://docs.livelike.com/reference/get-blocked-profile-ids.md
+  - https://docs.livelike.com/reference/get-blocked-profiles.md
+  - https://docs.livelike.com/reference/get-chatroom-message-count.md
+  - https://docs.livelike.com/reference/get-chatroom-messages.md
+  - https://docs.livelike.com/reference/get-comment-board-by-custom_id.md
+  - https://docs.livelike.com/reference/get-comment-counts.md
+  - https://docs.livelike.com/reference/get-image-number-prediction.md
+  - https://docs.livelike.com/reference/get-leaderboard-by-custom-id.md
+  - https://docs.livelike.com/reference/get-list-of-base-roles.md
+  - https://docs.livelike.com/reference/get-list-of-comment-board-bans.md
+  - https://docs.livelike.com/reference/get-list-of-comment-reports.md
+  - https://docs.livelike.com/reference/get-list-of-earned-badges.md
+  - https://docs.livelike.com/reference/get-list-of-quest-rewards.md
+  - https://docs.livelike.com/reference/get-list-of-resources.md
+  - https://docs.livelike.com/reference/get-pinned-message-info.md
+  - https://docs.livelike.com/reference/get-profile-by-custom-id.md
+  - https://docs.livelike.com/reference/get-profile-group-detail.md
+  - https://docs.livelike.com/reference/get-profile-group-members.md
+  - https://docs.livelike.com/reference/get-program-bans.md
+  - https://docs.livelike.com/reference/get-program-by-custom-id.md
+  - https://docs.livelike.com/reference/get-quest-badges.md
+  - https://docs.livelike.com/reference/get-quests.md
+  - https://docs.livelike.com/reference/get-reaction-space-by-target-group-id.md
+  - https://docs.livelike.com/reference/get-reported-chat-messages.md
+  - https://docs.livelike.com/reference/get-reward-item-balance.md
+  - https://docs.livelike.com/reference/get-reward-table-entry.md
+  - https://docs.livelike.com/reference/get-reward-table.md
+  - https://docs.livelike.com/reference/get-role-templates.md
+  - https://docs.livelike.com/reference/get-roles.md
+  - https://docs.livelike.com/reference/get-task.md
+  - https://docs.livelike.com/reference/get-the-list-of-comment-boards.md
+  - https://docs.livelike.com/reference/get-user-quest-rewards.md
+  - https://docs.livelike.com/reference/get-user-reaction-count-per-space.md
+  - https://docs.livelike.com/reference/get-user-reaction-count.md
+  - https://docs.livelike.com/reference/get-users-badges.md
+  - https://docs.livelike.com/reference/get_reaction-space-by-target-group-id-client-id-target-group-id-1.md
+  - https://docs.livelike.com/reference/invoking-custom-actions.md
+  - https://docs.livelike.com/reference/list-assets.md
+  - https://docs.livelike.com/reference/list-available-badges.md
+  - https://docs.livelike.com/reference/list-badge-progress.md
+  - https://docs.livelike.com/reference/list-comments-by-author.md
+  - https://docs.livelike.com/reference/list-comments.md
+  - https://docs.livelike.com/reference/list-flair-assignments.md
+  - https://docs.livelike.com/reference/list-flairs-1.md
+  - https://docs.livelike.com/reference/list-flairs.md
+  - https://docs.livelike.com/reference/list-invoked-reward-actions.md
+  - https://docs.livelike.com/reference/list-permissions.md
+  - https://docs.livelike.com/reference/list-pinned-comments.md
+  - https://docs.livelike.com/reference/list-profile-relationships.md
+  - https://docs.livelike.com/reference/list-profiles-who-have-earned-a-specific-badge.md
+  - https://docs.livelike.com/reference/list-program-sponsors.md
+  - https://docs.livelike.com/reference/list-quests.md
+  - https://docs.livelike.com/reference/list-reaction-spaces.md
+  - https://docs.livelike.com/reference/list-redemption-keys.md
+  - https://docs.livelike.com/reference/list-registered-links.md
+  - https://docs.livelike.com/reference/list-relationship-types.md
+  - https://docs.livelike.com/reference/list-replies-to-profiles-comments.md
+  - https://docs.livelike.com/reference/list-reward-actions.md
+  - https://docs.livelike.com/reference/list-reward-item-balances.md
+  - https://docs.livelike.com/reference/list-reward-item-transfers.md
+  - https://docs.livelike.com/reference/list-reward-items.md
+  - https://docs.livelike.com/reference/list-reward-tables.md
+  - https://docs.livelike.com/reference/list-reward-transactions.md
+  - https://docs.livelike.com/reference/list-rich-posts-1-1.md
+  - https://docs.livelike.com/reference/list-rich-posts-1.md
+  - https://docs.livelike.com/reference/list-rich-posts.md
+  - https://docs.livelike.com/reference/list-role-assignments.md
+  - https://docs.livelike.com/reference/list-tasks.md
+  - https://docs.livelike.com/reference/list-tier-benefits.md
+  - https://docs.livelike.com/reference/list-tier-groups.md
+  - https://docs.livelike.com/reference/list-tier-transactions.md
+  - https://docs.livelike.com/reference/list-tier.md
+  - https://docs.livelike.com/reference/list-user-quests.md
+  - https://docs.livelike.com/reference/list-user-reactions.md
+  - https://docs.livelike.com/reference/list-user-tiers.md
+  - https://docs.livelike.com/reference/list-widget-reports.md
+  - https://docs.livelike.com/reference/moderate-a-widget-report.md
+  - https://docs.livelike.com/reference/patch-update-a-base-role.md
+  - https://docs.livelike.com/reference/patch-update-a-role-copy.md
+  - https://docs.livelike.com/reference/patch_reaction-space-by-target-group-id-client-id-target-group-id-1-1.md
+  - https://docs.livelike.com/reference/prizeout-user-session.md
+  - https://docs.livelike.com/reference/profile-permissions-check.md
+  - https://docs.livelike.com/reference/publish-widget.md
+  - https://docs.livelike.com/reference/put-update-a-base-role.md
+  - https://docs.livelike.com/reference/remove-a-chatroom-access-rule.md
+  - https://docs.livelike.com/reference/remove-a-quest-reward.md
+  - https://docs.livelike.com/reference/remove-badge-from-quest.md
+  - https://docs.livelike.com/reference/remove-members-from-group.md
+  - https://docs.livelike.com/reference/report-a-widget.md
+  - https://docs.livelike.com/reference/retrieve-a-tier.md
+  - https://docs.livelike.com/reference/retrieve-reward-item.md
+  - https://docs.livelike.com/reference/retrieve-tier-benefit.md
+  - https://docs.livelike.com/reference/revoke-earned-badge.md
+  - https://docs.livelike.com/reference/reward-item-transfers.md
+  - https://docs.livelike.com/reference/role-grant-detail.md
+  - https://docs.livelike.com/reference/role-grants-list.md
+  - https://docs.livelike.com/reference/send-a-widget-chat-message.md
+  - https://docs.livelike.com/reference/send-chat-message.md
+  - https://docs.livelike.com/reference/unassignment-by-natural-key.md
+  - https://docs.livelike.com/reference/unblock-profile-by-profile-custom-id.md
+  - https://docs.livelike.com/reference/unblock-profile.md
+  - https://docs.livelike.com/reference/unpin-a-pinned-comment.md
+  - https://docs.livelike.com/reference/unpin-message.md
+  - https://docs.livelike.com/reference/update-a-comment-board.md
+  - https://docs.livelike.com/reference/update-a-comment.md
+  - https://docs.livelike.com/reference/update-a-flair-1.md
+  - https://docs.livelike.com/reference/update-a-flair-assignment.md
+  - https://docs.livelike.com/reference/update-a-flair.md
+  - https://docs.livelike.com/reference/update-a-redemption-key-by-code.md
+  - https://docs.livelike.com/reference/update-a-redemption-key.md
+  - https://docs.livelike.com/reference/update-a-role.md
+  - https://docs.livelike.com/reference/update-a-video-alert.md
+  - https://docs.livelike.com/reference/update-comment-board-by-custom-id.md
+  - https://docs.livelike.com/reference/update-comment-quality-rules.md
+  - https://docs.livelike.com/reference/update-image-number-prediction-option.md
+  - https://docs.livelike.com/reference/update-image-number-prediction.md
+  - https://docs.livelike.com/reference/update-image-prediction-option.md
+  - https://docs.livelike.com/reference/update-profile-group.md
+  - https://docs.livelike.com/reference/update-reaction-emoji.md
+  - https://docs.livelike.com/reference/update-text-prediction-option.md
+  - https://docs.livelike.com/reference/update-tier-benefit.md
+  - https://docs.livelike.com/reference/update-tier-group.md
+  - https://docs.livelike.com/reference/update-tier.md
+  - https://docs.livelike.com/reference/update-user-quest-task-progress.md
+  - https://docs.livelike.com/reference/update-user-quest.md
+  merge:
+    pages: 237
+    deduped: 0
+    conflicts_kept_first: 0

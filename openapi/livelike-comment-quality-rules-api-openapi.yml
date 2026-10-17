@@ -1,0 +1,71 @@
+openapi: 3.2.0
+info:
+  title: applications Comment Quality Rules API
+  version: '1'
+servers:
+- url: https://cf-blast.livelikecdn.com/api/v1/applications/
+security:
+- sec0: []
+tags:
+- name: Comment Quality Rules
+paths:
+  /{client_id}/comment-quality-rules/{uuid}/:
+    delete:
+      description: ''
+      responses:
+        '204':
+          description: No Content
+      parameters:
+      - in: path
+        name: client_id
+        schema:
+          type: string
+        required: true
+      - in: header
+        name: Authorization
+        schema:
+          type: string
+        required: true
+        description: Bearer Token
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      operationId: delete_client-id-comment-quality-rules-uuid
+      tags:
+      - Comment Quality Rules
+      summary: Delete client id comment quality rules uuid
+      x-summary-source: derived
+components:
+  securitySchemes:
+    sec0:
+      type: apiKey
+      in: header
+      name: Authorization
+      x-bearer-format: token
+x-readme-fauxas: true
+x-provenance:
+  method: searched
+  source: https://docs.livelike.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://docs.livelike.com/reference/create-an-application.md
+  - https://docs.livelike.com/reference/create-multiplier-1.md
+  - https://docs.livelike.com/reference/create-multiplier.md
+  - https://docs.livelike.com/reference/delete-an-application.md
+  - https://docs.livelike.com/reference/delete-comment-quality-rules.md
+  - https://docs.livelike.com/reference/list-reward-multipliers.md
+  - https://docs.livelike.com/reference/listing-applications-widgets.md
+  - https://docs.livelike.com/reference/retrieve-reward-multiplier-1-1-1-1.md
+  - https://docs.livelike.com/reference/retrieve-reward-multiplier-1-1-1.md
+  - https://docs.livelike.com/reference/retrieve-reward-multiplier-1-1.md
+  - https://docs.livelike.com/reference/retrieve-reward-multiplier-1.md
+  - https://docs.livelike.com/reference/retrieve-reward-multiplier.md
+  - https://docs.livelike.com/reference/update-an-application.md
+  merge:
+    pages: 13
+    deduped: 12
+    conflicts_kept_first: 0

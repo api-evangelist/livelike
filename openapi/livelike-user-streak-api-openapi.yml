@@ -1,0 +1,85 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: Base URL. User Streak API
+servers:
+- url: https://cf-blast.livelikecdn.com/api/v1/
+tags:
+- name: User Streak
+paths:
+  /user-streak/{user-streak-id}/reset/:
+    post:
+      description: ''
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              examples:
+                OK:
+                  summary: OK
+                  value:
+                    id: 77b07b0a-c6f5-4c5e-a365-934f9d22c39b
+                    url: https://cf-blast-game-changers.livelikecdn.com/api/v1/user-streaks/77b07b0a-c6f5-4c5e-a365-934f9d22c39b/
+                    profile_id: 12cc3d8f-8ba9-468d-97eb-45c25ccdca6c
+                    streak_id: 6d2d2c99-767c-489b-b9a8-58de76b0bddc
+                    streak:
+                      id: 6d2d2c99-767c-489b-b9a8-58de76b0bddc
+                      name: Recurring and repeat on reset test 1
+                      period: null
+                      streak_type: consecutive_action
+                    first_activity: '2026-02-16T06:51:07Z'
+                    last_activity: '2026-02-16T06:51:09Z'
+                    reset_at: '2026-02-16T06:51:35.442952Z'
+                    current_streak_length: 1
+                    maximum_streak_length: 8
+                    freeze_start: null
+                    freeze_until: null
+                    freeze_reason: ''
+                    milestone_count: 0
+                    milestones_url: https://cf-blast-game-changers.livelikecdn.com/api/v1/user-streaks/77b07b0a-c6f5-4c5e-a365-934f9d22c39b/milestones/
+                    status: reset
+                    reason: Reset freeze user streak
+      parameters:
+      - in: path
+        name: user-streak-id
+        schema:
+          type: string
+        required: true
+      operationId: post_user-streak-user-streak-id-reset
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+              required:
+              - reason
+      tags:
+      - User Streak
+      summary: Post user streak user streak id reset
+      x-summary-source: derived
+x-provenance:
+  method: searched
+  source: https://docs.livelike.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://docs.livelike.com/reference/create-automation-partner.md
+  - https://docs.livelike.com/reference/create-templates.md
+  - https://docs.livelike.com/reference/create-user-streak.md
+  - https://docs.livelike.com/reference/delete-template.md
+  - https://docs.livelike.com/reference/list-automation-partners.md
+  - https://docs.livelike.com/reference/list-templates.md
+  - https://docs.livelike.com/reference/progress.md
+  - https://docs.livelike.com/reference/reset-user-streak.md
+  - https://docs.livelike.com/reference/retrieve-template.md
+  - https://docs.livelike.com/reference/update-automation-partner.md
+  - https://docs.livelike.com/reference/update-template.md
+  merge:
+    pages: 11
+    deduped: 0
+    conflicts_kept_first: 0

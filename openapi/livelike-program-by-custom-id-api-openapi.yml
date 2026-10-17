@@ -1,0 +1,671 @@
+openapi: 3.2.0
+info:
+  title: engagement-suite Program By Custom Id API
+  version: '1'
+servers:
+- url: https://cf-blast.livelikecdn.com/api/v1
+security:
+- {}
+tags:
+- name: Program By Custom Id
+paths:
+  /program-by-custom-id/{client_id}/{custom_id}:
+    get:
+      summary: Get Program by Custom ID
+      description: ''
+      operationId: get-program-by-custom-id
+      parameters:
+      - name: client_id
+        in: path
+        description: Client ID of the application the program belongs to
+        schema:
+          type: string
+        required: true
+      - name: custom_id
+        in: path
+        description: Custom ID of the program to look up
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"url\": \"https://cf-blast.livelikecdn.com/api/v1/programs/a49b1d25-5c73-4b92-8dd5-57fed8586a6e/\",\n  \"widgets_url\": \"https://cf-blast.livelikecdn.com/api/v1/programs/a49b1d25-5c73-4b92-8dd5-57fed8586a6e/widgets/\",\n  \"timeline_url\": \"https://cf-blast.livelikecdn.com/api/v1/programs/a49b1d25-5c73-4b92-8dd5-57fed8586a6e/widgets/?ordering=recent&status=published&page=1\",\n  \"leaderboard_url\": \"https://blast-prod-us-east-1.livelikeblast.com/services/_forbidden\",\n  \"rank_url\": \"https://blast-prod-us-east-1.livelikeblast.com/services/_forbidden\",\n  \"client_id\": \"mOBYul18quffrBDuq2IACKtVuLbUzXIPye5S3bq5\",\n  \"application_url\": \"https://cf-blast.livelikecdn.com/api/v1/applications/mOBYul18quffrBDuq2IACKtVuLbUzXIPye5S3bq5/\",\n  \"id\": \"a49b1d25-5c73-4b92-8dd5-57fed8586a6e\",\n  \"custom_id\": \"match_uuid\",\n  \"title\": \"Ind Vs Aus\",\n  \"created_at\": \"2024-09-13T06:20:02.186138Z\",\n  \"scheduled_at\": \"2024-09-13T06:20:01.011000Z\",\n  \"started_at\": null,\n  \"stopped_at\": null,\n  \"queue_order_url\": \"https://cf-blast.livelikecdn.com/api/v1/programs/a49b1d25-5c73-4b92-8dd5-57fed8586a6e/queue-order/\",\n  \"delete_widgets_url\": \"https://cf-blast.livelikecdn.com/api/v1/programs/a49b1d25-5c73-4b92-8dd5-57fed8586a6e/delete-widgets/\",\n  \"widgets_enabled\": true,\n  \"chat_enabled\": true,\n  \"subscribe_channel\": \"program.a49b1d25-5c73-4b92-8dd5-57fed8586a6e\",\n  \"widget_count\": 0,\n  \"sendbird_channel\": null,\n  \"stream_url\": \"\",\n  \"status\": \"past\",\n  \"sync_sessions_url\": \"https://blast-prod-us-east-1.livelikeblast.com/services/_empty-page\",\n  \"sync_channel\": null,\n  \"start_program_url\": \"https://cf-blast.livelikecdn.com/api/v1/programs/a49b1d25-5c73-4b92-8dd5-57fed8586a6e/start/\",\n  \"stop_program_url\": \"https://cf-blast.livelikecdn.com/api/v1/programs/a49b1d25-5c73-4b92-8dd5-57fed8586a6e/stop/\",\n  \"active_sessions_statistics_url\": \"https://cf-blast.livelikecdn.com/api/v1/programs/a49b1d25-5c73-4b92-8dd5-57fed8586a6e/statistics/active-sessions/\",\n  \"statistics_channel\": \"program.statistics.a49b1d25-5c73-4b92-8dd5-57fed8586a6e\",\n  \"current_active_session_count\": 0,\n  \"sticker_packs_url\": \"https://cf-blast.livelikecdn.com/api/v1/sticker-packs/?program_id=a49b1d25-5c73-4b92-8dd5-57fed8586a6e\",\n  \"reaction_packs_url\": \"https://cf-blast.livelikecdn.com/api/v1/reaction-packs/?program_id=a49b1d25-5c73-4b92-8dd5-57fed8586a6e\",\n  \"widget_reaction_packs_url\": \"https://cf-blast.livelikecdn.com/api/v1/widget-reaction-packs/?program_id=a49b1d25-5c73-4b92-8dd5-57fed8586a6e\",\n  \"update_sticker_packs_url\": \"https://cf-blast.livelikecdn.com/api/v1/programs/a49b1d25-5c73-4b92-8dd5-57fed8586a6e/sticker-packs/\",\n  \"analytics_properties\": {\n    \"Program ID\": \"a49b1d25-5c73-4b92-8dd5-57fed8586a6e\",\n    \"Program Title\": \"Ind Vs Aus\",\n    \"Custom Program ID\": \"match_uuid\"\n  },\n  \"rewards_type\": \"none\",\n  \"report_url\": \"https://blast-prod-us-east-1.livelikeblast.com/services/_forbidden\",\n  \"ban_url\": \"https://blast-prod-us-east-1.livelikeblast.com/services/_forbidden\",\n  \"moderation_url\": \"https://blast-prod-us-east-1.livelikeblast.com/services/_forbidden\",\n  \"banned_chat_users_url\": \"https://blast-prod-us-east-1.livelikeblast.com/services/_forbidden\",\n  \"oembed_url\": \"https://cf-blast.livelikecdn.com/api/v1/oembed-meta/\",\n  \"chat_rooms\": [\n    {\n      \"id\": \"11684ff0-4924-460c-8dca-e59a6c66ea43\",\n      \"url\": \"https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/\",\n      \"client_id\": \"mOBYul18quffrBDuq2IACKtVuLbUzXIPye5S3bq5\",\n      \"title\": \"Ind Vs Aus\",\n      \"created_at\": \"2024-09-13T06:20:02.332415Z\",\n      \"content_filter\": \"none\",\n      \"visibility\": \"everyone\",\n      \"channels\": {\n        \"chat\": {\n          \"sendbird\": null,\n          \"pubnub\": \"chatroom.11684ff0-4924-460c-8dca-e59a6c66ea43\"\n        },\n        \"reactions\": {\n          \"pubnub\": \"chatroom.reactions.11684ff0-4924-460c-8dca-e59a6c66ea43\"\n        },\n        \"control\": {\n          \"pubnub\": \"chatroom.control.11684ff0-4924-460c-8dca-e59a6c66ea43\"\n        }\n      },\n      \"report_message_url\": \"https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/report-chat-message/\",\n      \"reported_messages_url\": \"https://cf-blast.livelikecdn.com/api/v1/reported-chat-room-messages/?chat_room_id=11684ff0-4924-460c-8dca-e59a6c66ea43&status=pending\",\n      \"delete_message_url\": \"https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/delete-chat-message/\",\n      \"upload_url\": \"https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/upload/\",\n      \"memberships_url\": \"https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/memberships/\",\n      \"muted_status_url_template\": \"https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/muted-status/{profile_id}/\",\n      \"custom_messages_url\": \"https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/custom-messages/\",\n      \"sticker_packs_url\": \"https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/sticker-packs/\",\n      \"reaction_packs_url\": \"https://cf-blast-storage.livelikecdn.com/reaction-packs/11684ff0-4924-460c-8dca-e59a6c66ea43/reaction_packs.json\",\n      \"custom_data\": null,\n      \"sponsors_url\": \"https://cf-blast-storage.livelikecdn.com/sponsors/11684ff0-4924-460c-8dca-e59a6c66ea43/sponsors.json\",\n      \"chatroom_messages_url\": \"https://cf-blast.livelikecdn.com/api/v1/chatroom-messages/\",\n      \"chatroom_messages_count_url\": \"https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/chatroom_messages_count/\",\n      \"pubnub_messages_reaction_url_template\": \"https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/pubnub-messages/{message_timetoken}/reactions/\",\n      \"pubnub_messages_remove_reaction_url_template\": \"https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/pubnub-messages/{message_timetoken}/reactions/{action_timetoken}/\",\n      \"token_gates\": [],\n      \"chatroom_token_gate_access_url_template\": \"\",\n      \"chatroom_access_rule_url\": \"https://cf-blast.livelikecdn.com/api/v1/chat-room-access-rules/\",\n      \"reported_chat_messages_url\": \"https://cf-blast.livelikecdn.com/api/v1/reported-chat-messages/\",\n      \"reaction_space_id\": \"81a2dde4-e62a-4cf8-a09a-a8d7fa384c05\"\n    }\n  ],\n  \"default_chat_room\": {\n    \"id\": \"11684ff0-4924-460c-8dca-e59a6c66ea43\",\n    \"url\": \"https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/\",\n    \"client_id\": \"mOBYul18quffrBDuq2IACKtVuLbUzXIPye5S3bq5\",\n    \"title\": \"Ind Vs Aus\",\n    \"created_at\": \"2024-09-13T06:20:02.332415Z\",\n    \"content_filter\": \"none\",\n    \"visibility\": \"everyone\",\n    \"channels\": {\n      \"chat\": {\n        \"sendbird\": null,\n        \"pubnub\": \"chatroom.11684ff0-4924-460c-8dca-e59a6c66ea43\"\n      },\n      \"reactions\": {\n        \"pubnub\": \"chatroom.reactions.11684ff0-4924-460c-8dca-e59a6c66ea43\"\n      },\n      \"control\": {\n        \"pubnub\": \"chatroom.control.11684ff0-4924-460c-8dca-e59a6c66ea43\"\n      }\n    },\n    \"report_message_url\": \"https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/report-chat-message/\",\n    \"reported_messages_url\": \"https://cf-blast.livelikecdn.com/api/v1/reported-chat-room-messages/?chat_room_id=11684ff0-4924-460c-8dca-e59a6c66ea43&status=pending\",\n    \"delete_message_url\": \"https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/delete-chat-message/\",\n    \"upload_url\": \"https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/upload/\",\n    \"memberships_url\": \"https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/memberships/\",\n    \"muted_status_url_template\": \"https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/muted-status/{profile_id}/\",\n    \"custom_messages_url\": \"https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/custom-messages/\",\n    \"sticker_packs_url\": \"https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/sticker-packs/\",\n    \"reaction_packs_url\": \"https://cf-blast-storage.livelikecdn.com/reaction-packs/11684ff0-4924-460c-8dca-e59a6c66ea43/reaction_packs.json\",\n    \"custom_data\": null,\n    \"sponsors_url\": \"https://cf-blast-storage.livelikecdn.com/sponsors/11684ff0-4924-460c-8dca-e59a6c66ea43/sponsors.json\",\n    \"chatroom_messages_url\": \"https://cf-blast.livelikecdn.com/api/v1/chatroom-messages/\",\n    \"chatroom_messages_count_url\": \"https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/chatroom_messages_count/\",\n    \"pubnub_messages_reaction_url_template\": \"https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/pubnub-messages/{message_timetoken}/reactions/\",\n    \"pubnub_messages_remove_reaction_url_template\": \"https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/pubnub-messages/{message_timetoken}/reactions/{action_timetoken}/\",\n    \"token_gates\": [],\n    \"chatroom_token_gate_access_url_template\": \"\",\n    \"chatroom_access_rule_url\": \"https://cf-blast.livelikecdn.com/api/v1/chat-room-access-rules/\",\n    \"reported_chat_messages_url\": \"https://cf-blast.livelikecdn.com/api/v1/reported-chat-messages/\",\n    \"reaction_space_id\": \"81a2dde4-e62a-4cf8-a09a-a8d7fa384c05\"\n  },\n  \"leaderboards\": [],\n  \"sponsors\": [],\n  \"sponsors_url\": \"https://cf-blast-storage.livelikecdn.com/sponsors/a49b1d25-5c73-4b92-8dd5-57fed8586a6e/sponsors.json\",\n  \"reward_items\": [],\n  \"widget_interactions_url_template\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/{profile_id}/widget-interactions/\",\n  \"unclaimed_widget_interactions_url_template\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/{profile_id}/unclaimed-widget-interactions/\",\n  \"pubnub_enabled\": false,\n  \"custom_data\": null,\n  \"attributes\": []\n}"
+              schema:
+                type: object
+                properties:
+                  url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/programs/a49b1d25-5c73-4b92-8dd5-57fed8586a6e/
+                  widgets_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/programs/a49b1d25-5c73-4b92-8dd5-57fed8586a6e/widgets/
+                  timeline_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/programs/a49b1d25-5c73-4b92-8dd5-57fed8586a6e/widgets/?ordering=recent&status=published&page=1
+                  leaderboard_url:
+                    type: string
+                    example: https://blast-prod-us-east-1.livelikeblast.com/services/_forbidden
+                  rank_url:
+                    type: string
+                    example: https://blast-prod-us-east-1.livelikeblast.com/services/_forbidden
+                  client_id:
+                    type: string
+                    example: mOBYul18quffrBDuq2IACKtVuLbUzXIPye5S3bq5
+                  application_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/applications/mOBYul18quffrBDuq2IACKtVuLbUzXIPye5S3bq5/
+                  id:
+                    type: string
+                    example: a49b1d25-5c73-4b92-8dd5-57fed8586a6e
+                  custom_id:
+                    type: string
+                    example: match_uuid
+                  title:
+                    type: string
+                    example: Ind Vs Aus
+                  created_at:
+                    type: string
+                    example: '2024-09-13T06:20:02.186138Z'
+                  scheduled_at:
+                    type: string
+                    example: '2024-09-13T06:20:01.011000Z'
+                  started_at: {}
+                  stopped_at: {}
+                  queue_order_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/programs/a49b1d25-5c73-4b92-8dd5-57fed8586a6e/queue-order/
+                  delete_widgets_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/programs/a49b1d25-5c73-4b92-8dd5-57fed8586a6e/delete-widgets/
+                  widgets_enabled:
+                    type: boolean
+                    example: true
+                    default: true
+                  chat_enabled:
+                    type: boolean
+                    example: true
+                    default: true
+                  subscribe_channel:
+                    type: string
+                    example: program.a49b1d25-5c73-4b92-8dd5-57fed8586a6e
+                  widget_count:
+                    type: integer
+                    example: 0
+                    default: 0
+                  sendbird_channel: {}
+                  stream_url:
+                    type: string
+                    example: ''
+                  status:
+                    type: string
+                    example: past
+                  sync_sessions_url:
+                    type: string
+                    example: https://blast-prod-us-east-1.livelikeblast.com/services/_empty-page
+                  sync_channel: {}
+                  start_program_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/programs/a49b1d25-5c73-4b92-8dd5-57fed8586a6e/start/
+                  stop_program_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/programs/a49b1d25-5c73-4b92-8dd5-57fed8586a6e/stop/
+                  active_sessions_statistics_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/programs/a49b1d25-5c73-4b92-8dd5-57fed8586a6e/statistics/active-sessions/
+                  statistics_channel:
+                    type: string
+                    example: program.statistics.a49b1d25-5c73-4b92-8dd5-57fed8586a6e
+                  current_active_session_count:
+                    type: integer
+                    example: 0
+                    default: 0
+                  sticker_packs_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/sticker-packs/?program_id=a49b1d25-5c73-4b92-8dd5-57fed8586a6e
+                  reaction_packs_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/reaction-packs/?program_id=a49b1d25-5c73-4b92-8dd5-57fed8586a6e
+                  widget_reaction_packs_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/widget-reaction-packs/?program_id=a49b1d25-5c73-4b92-8dd5-57fed8586a6e
+                  update_sticker_packs_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/programs/a49b1d25-5c73-4b92-8dd5-57fed8586a6e/sticker-packs/
+                  analytics_properties:
+                    type: object
+                    properties:
+                      Program ID:
+                        type: string
+                        example: a49b1d25-5c73-4b92-8dd5-57fed8586a6e
+                      Program Title:
+                        type: string
+                        example: Ind Vs Aus
+                      Custom Program ID:
+                        type: string
+                        example: match_uuid
+                  rewards_type:
+                    type: string
+                    example: none
+                  report_url:
+                    type: string
+                    example: https://blast-prod-us-east-1.livelikeblast.com/services/_forbidden
+                  ban_url:
+                    type: string
+                    example: https://blast-prod-us-east-1.livelikeblast.com/services/_forbidden
+                  moderation_url:
+                    type: string
+                    example: https://blast-prod-us-east-1.livelikeblast.com/services/_forbidden
+                  banned_chat_users_url:
+                    type: string
+                    example: https://blast-prod-us-east-1.livelikeblast.com/services/_forbidden
+                  oembed_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/oembed-meta/
+                  chat_rooms:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: 11684ff0-4924-460c-8dca-e59a6c66ea43
+                        url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/
+                        client_id:
+                          type: string
+                          example: mOBYul18quffrBDuq2IACKtVuLbUzXIPye5S3bq5
+                        title:
+                          type: string
+                          example: Ind Vs Aus
+                        created_at:
+                          type: string
+                          example: '2024-09-13T06:20:02.332415Z'
+                        content_filter:
+                          type: string
+                          example: none
+                        visibility:
+                          type: string
+                          example: everyone
+                        channels:
+                          type: object
+                          properties:
+                            chat:
+                              type: object
+                              properties:
+                                sendbird: {}
+                                pubnub:
+                                  type: string
+                                  example: chatroom.11684ff0-4924-460c-8dca-e59a6c66ea43
+                            reactions:
+                              type: object
+                              properties:
+                                pubnub:
+                                  type: string
+                                  example: chatroom.reactions.11684ff0-4924-460c-8dca-e59a6c66ea43
+                            control:
+                              type: object
+                              properties:
+                                pubnub:
+                                  type: string
+                                  example: chatroom.control.11684ff0-4924-460c-8dca-e59a6c66ea43
+                        report_message_url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/report-chat-message/
+                        reported_messages_url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/reported-chat-room-messages/?chat_room_id=11684ff0-4924-460c-8dca-e59a6c66ea43&status=pending
+                        delete_message_url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/delete-chat-message/
+                        upload_url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/upload/
+                        memberships_url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/memberships/
+                        muted_status_url_template:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/muted-status/{profile_id}/
+                        custom_messages_url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/custom-messages/
+                        sticker_packs_url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/sticker-packs/
+                        reaction_packs_url:
+                          type: string
+                          example: https://cf-blast-storage.livelikecdn.com/reaction-packs/11684ff0-4924-460c-8dca-e59a6c66ea43/reaction_packs.json
+                        custom_data: {}
+                        sponsors_url:
+                          type: string
+                          example: https://cf-blast-storage.livelikecdn.com/sponsors/11684ff0-4924-460c-8dca-e59a6c66ea43/sponsors.json
+                        chatroom_messages_url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/chatroom-messages/
+                        chatroom_messages_count_url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/chatroom_messages_count/
+                        pubnub_messages_reaction_url_template:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/pubnub-messages/{message_timetoken}/reactions/
+                        pubnub_messages_remove_reaction_url_template:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/pubnub-messages/{message_timetoken}/reactions/{action_timetoken}/
+                        token_gates:
+                          type: array
+                        chatroom_token_gate_access_url_template:
+                          type: string
+                          example: ''
+                        chatroom_access_rule_url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/chat-room-access-rules/
+                        reported_chat_messages_url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/reported-chat-messages/
+                        reaction_space_id:
+                          type: string
+                          example: 81a2dde4-e62a-4cf8-a09a-a8d7fa384c05
+                  default_chat_room:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: 11684ff0-4924-460c-8dca-e59a6c66ea43
+                      url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/
+                      client_id:
+                        type: string
+                        example: mOBYul18quffrBDuq2IACKtVuLbUzXIPye5S3bq5
+                      title:
+                        type: string
+                        example: Ind Vs Aus
+                      created_at:
+                        type: string
+                        example: '2024-09-13T06:20:02.332415Z'
+                      content_filter:
+                        type: string
+                        example: none
+                      visibility:
+                        type: string
+                        example: everyone
+                      channels:
+                        type: object
+                        properties:
+                          chat:
+                            type: object
+                            properties:
+                              sendbird: {}
+                              pubnub:
+                                type: string
+                                example: chatroom.11684ff0-4924-460c-8dca-e59a6c66ea43
+                          reactions:
+                            type: object
+                            properties:
+                              pubnub:
+                                type: string
+                                example: chatroom.reactions.11684ff0-4924-460c-8dca-e59a6c66ea43
+                          control:
+                            type: object
+                            properties:
+                              pubnub:
+                                type: string
+                                example: chatroom.control.11684ff0-4924-460c-8dca-e59a6c66ea43
+                      report_message_url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/report-chat-message/
+                      reported_messages_url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/reported-chat-room-messages/?chat_room_id=11684ff0-4924-460c-8dca-e59a6c66ea43&status=pending
+                      delete_message_url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/delete-chat-message/
+                      upload_url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/upload/
+                      memberships_url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/memberships/
+                      muted_status_url_template:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/muted-status/{profile_id}/
+                      custom_messages_url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/custom-messages/
+                      sticker_packs_url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/sticker-packs/
+                      reaction_packs_url:
+                        type: string
+                        example: https://cf-blast-storage.livelikecdn.com/reaction-packs/11684ff0-4924-460c-8dca-e59a6c66ea43/reaction_packs.json
+                      custom_data: {}
+                      sponsors_url:
+                        type: string
+                        example: https://cf-blast-storage.livelikecdn.com/sponsors/11684ff0-4924-460c-8dca-e59a6c66ea43/sponsors.json
+                      chatroom_messages_url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/chatroom-messages/
+                      chatroom_messages_count_url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/chatroom_messages_count/
+                      pubnub_messages_reaction_url_template:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/pubnub-messages/{message_timetoken}/reactions/
+                      pubnub_messages_remove_reaction_url_template:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/chat-rooms/11684ff0-4924-460c-8dca-e59a6c66ea43/pubnub-messages/{message_timetoken}/reactions/{action_timetoken}/
+                      token_gates:
+                        type: array
+                      chatroom_token_gate_access_url_template:
+                        type: string
+                        example: ''
+                      chatroom_access_rule_url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/chat-room-access-rules/
+                      reported_chat_messages_url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/reported-chat-messages/
+                      reaction_space_id:
+                        type: string
+                        example: 81a2dde4-e62a-4cf8-a09a-a8d7fa384c05
+                  leaderboards:
+                    type: array
+                  sponsors:
+                    type: array
+                  sponsors_url:
+                    type: string
+                    example: https://cf-blast-storage.livelikecdn.com/sponsors/a49b1d25-5c73-4b92-8dd5-57fed8586a6e/sponsors.json
+                  reward_items:
+                    type: array
+                  widget_interactions_url_template:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/profiles/{profile_id}/widget-interactions/
+                  unclaimed_widget_interactions_url_template:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/profiles/{profile_id}/unclaimed-widget-interactions/
+                  pubnub_enabled:
+                    type: boolean
+                    example: false
+                    default: true
+                  custom_data: {}
+                  attributes:
+                    type: array
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"detail\": \"Program with custom_id not found.\"\n}"
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    example: Program with custom_id not found.
+      deprecated: false
+      security: []
+      x-readme:
+        code-samples:
+        - code: "curl -L --request GET \\\n     --url https://cf-blast.livelikecdn.com/api/v1/program-by-custom-id/client_id/custom_id \\\n     --header 'accept: application/json'"
+          language: shell
+          name: ''
+        samples-languages:
+        - shell
+      tags:
+      - Program By Custom Id
+x-readme-fauxas: true
+x-provenance:
+  method: searched
+  source: https://docs.livelike.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://docs.livelike.com/reference/add-bulk-chat-memberships.md
+  - https://docs.livelike.com/reference/add-members-to-group.md
+  - https://docs.livelike.com/reference/add-quest-badges.md
+  - https://docs.livelike.com/reference/award-a-badge-to-a-user.md
+  - https://docs.livelike.com/reference/batch-invoke-reward-action.md
+  - https://docs.livelike.com/reference/claim-user-quest-badges.md
+  - https://docs.livelike.com/reference/claim-user-quest-rewards.md
+  - https://docs.livelike.com/reference/create-a-base-role.md
+  - https://docs.livelike.com/reference/create-a-cheer-meter.md
+  - https://docs.livelike.com/reference/create-a-comment-board.md
+  - https://docs.livelike.com/reference/create-a-comment.md
+  - https://docs.livelike.com/reference/create-a-flair-assignment.md
+  - https://docs.livelike.com/reference/create-a-flair-scope.md
+  - https://docs.livelike.com/reference/create-a-flair.md
+  - https://docs.livelike.com/reference/create-a-group.md
+  - https://docs.livelike.com/reference/create-a-pin-message.md
+  - https://docs.livelike.com/reference/create-a-pinned-comment.md
+  - https://docs.livelike.com/reference/create-a-profile-block.md
+  - https://docs.livelike.com/reference/create-a-profile-relationship.md
+  - https://docs.livelike.com/reference/create-a-program-ban.md
+  - https://docs.livelike.com/reference/create-a-redemption-key.md
+  - https://docs.livelike.com/reference/create-a-registered-link.md
+  - https://docs.livelike.com/reference/create-a-relationship-type.md
+  - https://docs.livelike.com/reference/create-a-rich-post.md
+  - https://docs.livelike.com/reference/create-a-social-embed.md
+  - https://docs.livelike.com/reference/create-a-sticker.md
+  - https://docs.livelike.com/reference/create-a-text-quiz.md
+  - https://docs.livelike.com/reference/create-a-user-reaction.md
+  - https://docs.livelike.com/reference/create-a-user-tier.md
+  - https://docs.livelike.com/reference/create-a-video-alert.md
+  - https://docs.livelike.com/reference/create-an-access-rule-for-muteglobally-mute.md
+  - https://docs.livelike.com/reference/create-an-alert.md
+  - https://docs.livelike.com/reference/create-an-image-number-prediction.md
+  - https://docs.livelike.com/reference/create-an-image-quiz.md
+  - https://docs.livelike.com/reference/create-an-image-slider.md
+  - https://docs.livelike.com/reference/create-badge-1.md
+  - https://docs.livelike.com/reference/create-comment-report.md
+  - https://docs.livelike.com/reference/create-comments-ban.md
+  - https://docs.livelike.com/reference/create-image-number-prediction-follow-up.md
+  - https://docs.livelike.com/reference/create-image-number-prediction-option.md
+  - https://docs.livelike.com/reference/create-image-poll.md
+  - https://docs.livelike.com/reference/create-image-prediction-follow-up.md
+  - https://docs.livelike.com/reference/create-image-prediction-option.md
+  - https://docs.livelike.com/reference/create-poll-vote.md
+  - https://docs.livelike.com/reference/create-profile-by-custom-id.md
+  - https://docs.livelike.com/reference/create-quality-rules.md
+  - https://docs.livelike.com/reference/create-quest-rewards.md
+  - https://docs.livelike.com/reference/create-quests.md
+  - https://docs.livelike.com/reference/create-reaction-emoji.md
+  - https://docs.livelike.com/reference/create-reward-item.md
+  - https://docs.livelike.com/reference/create-reward-table-entry.md
+  - https://docs.livelike.com/reference/create-reward-table.md
+  - https://docs.livelike.com/reference/create-role-assignments.md
+  - https://docs.livelike.com/reference/create-role-grant-assignment.md
+  - https://docs.livelike.com/reference/create-roles.md
+  - https://docs.livelike.com/reference/create-task.md
+  - https://docs.livelike.com/reference/create-text-poll.md
+  - https://docs.livelike.com/reference/create-text-prediction-follow-up.md
+  - https://docs.livelike.com/reference/create-text-prediction-option.md
+  - https://docs.livelike.com/reference/create-tier-benefit.md
+  - https://docs.livelike.com/reference/create-tier-group.md
+  - https://docs.livelike.com/reference/create-tier.md
+  - https://docs.livelike.com/reference/create-user-profile.md
+  - https://docs.livelike.com/reference/create-user-quest.md
+  - https://docs.livelike.com/reference/creating-reward-actions.md
+  - https://docs.livelike.com/reference/credit-reward-item.md
+  - https://docs.livelike.com/reference/debit-reward-item.md
+  - https://docs.livelike.com/reference/delete-a-base-role.md
+  - https://docs.livelike.com/reference/delete-a-comment.md
+  - https://docs.livelike.com/reference/delete-a-flair-assignment.md
+  - https://docs.livelike.com/reference/delete-a-flair.md
+  - https://docs.livelike.com/reference/delete-a-program-ban.md
+  - https://docs.livelike.com/reference/delete-a-redemption-key.md
+  - https://docs.livelike.com/reference/delete-a-registered-link.md
+  - https://docs.livelike.com/reference/delete-a-role.md
+  - https://docs.livelike.com/reference/delete-a-tier-group.md
+  - https://docs.livelike.com/reference/delete-a-user-reaction.md
+  - https://docs.livelike.com/reference/delete-a-video-alert.md
+  - https://docs.livelike.com/reference/delete-bulk-chat-memberships.md
+  - https://docs.livelike.com/reference/delete-comment-board-by-custom-id.md
+  - https://docs.livelike.com/reference/delete-comment-board.md
+  - https://docs.livelike.com/reference/delete-comments-ban.md
+  - https://docs.livelike.com/reference/delete-profile-group.md
+  - https://docs.livelike.com/reference/delete-quest.md
+  - https://docs.livelike.com/reference/delete-reaction-emoji.md
+  - https://docs.livelike.com/reference/delete-reward-table-entry.md
+  - https://docs.livelike.com/reference/delete-reward-table.md
+  - https://docs.livelike.com/reference/delete-role-assignment.md
+  - https://docs.livelike.com/reference/delete-role-grant-unassignment.md
+  - https://docs.livelike.com/reference/delete-task.md
+  - https://docs.livelike.com/reference/delete-tier-benefit.md
+  - https://docs.livelike.com/reference/delete-tier.md
+  - https://docs.livelike.com/reference/delete-userquest.md
+  - https://docs.livelike.com/reference/delete-widget.md
+  - https://docs.livelike.com/reference/dismiss-all-reports-for-a-reported-comment.md
+  - https://docs.livelike.com/reference/flair-assignment-detail.md
+  - https://docs.livelike.com/reference/flair-detail-1.md
+  - https://docs.livelike.com/reference/flair-detail.md
+  - https://docs.livelike.com/reference/get-a-badge.md
+  - https://docs.livelike.com/reference/get-a-redemption-key.md
+  - https://docs.livelike.com/reference/get-a-rich-post.md
+  - https://docs.livelike.com/reference/get-a-social-embed.md
+  - https://docs.livelike.com/reference/get-a-text-ask-widget.md
+  - https://docs.livelike.com/reference/get-a-text-poll.md
+  - https://docs.livelike.com/reference/get-a-text-quiz.md
+  - https://docs.livelike.com/reference/get-a-video-alert.md
+  - https://docs.livelike.com/reference/get-an-alert-1.md
+  - https://docs.livelike.com/reference/get-an-asset-1.md
+  - https://docs.livelike.com/reference/get-an-asset.md
+  - https://docs.livelike.com/reference/get-an-emoji-slider.md
+  - https://docs.livelike.com/reference/get-an-image-poll.md
+  - https://docs.livelike.com/reference/get-an-image-quiz.md
+  - https://docs.livelike.com/reference/get-blocked-profile-ids.md
+  - https://docs.livelike.com/reference/get-blocked-profiles.md
+  - https://docs.livelike.com/reference/get-chatroom-message-count.md
+  - https://docs.livelike.com/reference/get-chatroom-messages.md
+  - https://docs.livelike.com/reference/get-comment-board-by-custom_id.md
+  - https://docs.livelike.com/reference/get-comment-counts.md
+  - https://docs.livelike.com/reference/get-image-number-prediction.md
+  - https://docs.livelike.com/reference/get-leaderboard-by-custom-id.md
+  - https://docs.livelike.com/reference/get-list-of-base-roles.md
+  - https://docs.livelike.com/reference/get-list-of-comment-board-bans.md
+  - https://docs.livelike.com/reference/get-list-of-comment-reports.md
+  - https://docs.livelike.com/reference/get-list-of-earned-badges.md
+  - https://docs.livelike.com/reference/get-list-of-quest-rewards.md
+  - https://docs.livelike.com/reference/get-list-of-resources.md
+  - https://docs.livelike.com/reference/get-pinned-message-info.md
+  - https://docs.livelike.com/reference/get-profile-by-custom-id.md
+  - https://docs.livelike.com/reference/get-profile-group-detail.md
+  - https://docs.livelike.com/reference/get-profile-group-members.md
+  - https://docs.livelike.com/reference/get-program-bans.md
+  - https://docs.livelike.com/reference/get-program-by-custom-id.md
+  - https://docs.livelike.com/reference/get-quest-badges.md
+  - https://docs.livelike.com/reference/get-quests.md
+  - https://docs.livelike.com/reference/get-reaction-space-by-target-group-id.md
+  - https://docs.livelike.com/reference/get-reported-chat-messages.md
+  - https://docs.livelike.com/reference/get-reward-item-balance.md
+  - https://docs.livelike.com/reference/get-reward-table-entry.md
+  - https://docs.livelike.com/reference/get-reward-table.md
+  - https://docs.livelike.com/reference/get-role-templates.md
+  - https://docs.livelike.com/reference/get-roles.md
+  - https://docs.livelike.com/reference/get-task.md
+  - https://docs.livelike.com/reference/get-the-list-of-comment-boards.md
+  - https://docs.livelike.com/reference/get-user-quest-rewards.md
+  - https://docs.livelike.com/reference/get-user-reaction-count-per-space.md
+  - https://docs.livelike.com/reference/get-user-reaction-count.md
+  - https://docs.livelike.com/reference/get-users-badges.md
+  - https://docs.livelike.com/reference/get_reaction-space-by-target-group-id-client-id-target-group-id-1.md
+  - https://docs.livelike.com/reference/invoking-custom-actions.md
+  - https://docs.livelike.com/reference/list-assets.md
+  - https://docs.livelike.com/reference/list-available-badges.md
+  - https://docs.livelike.com/reference/list-badge-progress.md
+  - https://docs.livelike.com/reference/list-comments-by-author.md
+  - https://docs.livelike.com/reference/list-comments.md
+  - https://docs.livelike.com/reference/list-flair-assignments.md
+  - https://docs.livelike.com/reference/list-flairs-1.md
+  - https://docs.livelike.com/reference/list-flairs.md
+  - https://docs.livelike.com/reference/list-invoked-reward-actions.md
+  - https://docs.livelike.com/reference/list-permissions.md
+  - https://docs.livelike.com/reference/list-pinned-comments.md
+  - https://docs.livelike.com/reference/list-profile-relationships.md
+  - https://docs.livelike.com/reference/list-profiles-who-have-earned-a-specific-badge.md
+  - https://docs.livelike.com/reference/list-program-sponsors.md
+  - https://docs.livelike.com/reference/list-quests.md
+  - https://docs.livelike.com/reference/list-reaction-spaces.md
+  - https://docs.livelike.com/reference/list-redemption-keys.md
+  - https://docs.livelike.com/reference/list-registered-links.md
+  - https://docs.livelike.com/reference/list-relationship-types.md
+  - https://docs.livelike.com/reference/list-replies-to-profiles-comments.md
+  - https://docs.livelike.com/reference/list-reward-actions.md
+  - https://docs.livelike.com/reference/list-reward-item-balances.md
+  - https://docs.livelike.com/reference/list-reward-item-transfers.md
+  - https://docs.livelike.com/reference/list-reward-items.md
+  - https://docs.livelike.com/reference/list-reward-tables.md
+  - https://docs.livelike.com/reference/list-reward-transactions.md
+  - https://docs.livelike.com/reference/list-rich-posts-1-1.md
+  - https://docs.livelike.com/reference/list-rich-posts-1.md
+  - https://docs.livelike.com/reference/list-rich-posts.md
+  - https://docs.livelike.com/reference/list-role-assignments.md
+  - https://docs.livelike.com/reference/list-tasks.md
+  - https://docs.livelike.com/reference/list-tier-benefits.md
+  - https://docs.livelike.com/reference/list-tier-groups.md
+  - https://docs.livelike.com/reference/list-tier-transactions.md
+  - https://docs.livelike.com/reference/list-tier.md
+  - https://docs.livelike.com/reference/list-user-quests.md
+  - https://docs.livelike.com/reference/list-user-reactions.md
+  - https://docs.livelike.com/reference/list-user-tiers.md
+  - https://docs.livelike.com/reference/list-widget-reports.md
+  - https://docs.livelike.com/reference/moderate-a-widget-report.md
+  - https://docs.livelike.com/reference/patch-update-a-base-role.md
+  - https://docs.livelike.com/reference/patch-update-a-role-copy.md
+  - https://docs.livelike.com/reference/patch_reaction-space-by-target-group-id-client-id-target-group-id-1-1.md
+  - https://docs.livelike.com/reference/prizeout-user-session.md
+  - https://docs.livelike.com/reference/profile-permissions-check.md
+  - https://docs.livelike.com/reference/publish-widget.md
+  - https://docs.livelike.com/reference/put-update-a-base-role.md
+  - https://docs.livelike.com/reference/remove-a-chatroom-access-rule.md
+  - https://docs.livelike.com/reference/remove-a-quest-reward.md
+  - https://docs.livelike.com/reference/remove-badge-from-quest.md
+  - https://docs.livelike.com/reference/remove-members-from-group.md
+  - https://docs.livelike.com/reference/report-a-widget.md
+  - https://docs.livelike.com/reference/retrieve-a-tier.md
+  - https://docs.livelike.com/reference/retrieve-reward-item.md
+  - https://docs.livelike.com/reference/retrieve-tier-benefit.md
+  - https://docs.livelike.com/reference/revoke-earned-badge.md
+  - https://docs.livelike.com/reference/reward-item-transfers.md
+  - https://docs.livelike.com/reference/role-grant-detail.md
+  - https://docs.livelike.com/reference/role-grants-list.md
+  - https://docs.livelike.com/reference/send-a-widget-chat-message.md
+  - https://docs.livelike.com/reference/send-chat-message.md
+  - https://docs.livelike.com/reference/unassignment-by-natural-key.md
+  - https://docs.livelike.com/reference/unblock-profile-by-profile-custom-id.md
+  - https://docs.livelike.com/reference/unblock-profile.md
+  - https://docs.livelike.com/reference/unpin-a-pinned-comment.md
+  - https://docs.livelike.com/reference/unpin-message.md
+  - https://docs.livelike.com/reference/update-a-comment-board.md
+  - https://docs.livelike.com/reference/update-a-comment.md
+  - https://docs.livelike.com/reference/update-a-flair-1.md
+  - https://docs.livelike.com/reference/update-a-flair-assignment.md
+  - https://docs.livelike.com/reference/update-a-flair.md
+  - https://docs.livelike.com/reference/update-a-redemption-key-by-code.md
+  - https://docs.livelike.com/reference/update-a-redemption-key.md
+  - https://docs.livelike.com/reference/update-a-role.md
+  - https://docs.livelike.com/reference/update-a-video-alert.md
+  - https://docs.livelike.com/reference/update-comment-board-by-custom-id.md
+  - https://docs.livelike.com/reference/update-comment-quality-rules.md
+  - https://docs.livelike.com/reference/update-image-number-prediction-option.md
+  - https://docs.livelike.com/reference/update-image-number-prediction.md
+  - https://docs.livelike.com/reference/update-image-prediction-option.md
+  - https://docs.livelike.com/reference/update-profile-group.md
+  - https://docs.livelike.com/reference/update-reaction-emoji.md
+  - https://docs.livelike.com/reference/update-text-prediction-option.md
+  - https://docs.livelike.com/reference/update-tier-benefit.md
+  - https://docs.livelike.com/reference/update-tier-group.md
+  - https://docs.livelike.com/reference/update-tier.md
+  - https://docs.livelike.com/reference/update-user-quest-task-progress.md
+  - https://docs.livelike.com/reference/update-user-quest.md
+  merge:
+    pages: 237
+    deduped: 0
+    conflicts_kept_first: 0

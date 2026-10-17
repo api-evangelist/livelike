@@ -1,0 +1,581 @@
+openapi: 3.2.0
+info:
+  title: applications Reward Multipliers API
+  version: '1'
+servers:
+- url: https://cf-blast.livelikecdn.com/api/v1/applications/
+security:
+- sec0: []
+tags:
+- name: Reward Multipliers
+paths:
+  /{client_id}/reward-multipliers/:
+    post:
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              examples:
+                Created:
+                  summary: Created
+                  value:
+                    id: 2a2d8630-94a7-42c2-a043-7c728571d361
+                    url: http://localhost:8888/api/v1/applications/PlI2efBCBRGw56KBcHucDvTevGv5x5Egqn0R2P8R/reward-multipliers/2a2d8630-94a7-42c2-a043-7c728571d361/
+                    name: Double Earnings
+                    description: Double your earning of Dummy Points.
+                    multiplier_factor: 2
+                    activation_type: user_activated
+                    status: draft
+                    active_duration: P2DT00H00M00S
+                    started_at: '2026-07-01T12:00:00Z'
+                    stopped_at: '2026-08-30T12:00:01Z'
+                    profile_groups: []
+                    profile_group_ids: []
+                    reward_items:
+                    - id: 67c1d6f2-262c-40db-bc9e-6b6731d60297
+                      name: Dummy Points
+                    reward_item_ids:
+                    - 67c1d6f2-262c-40db-bc9e-6b6731d60297
+                    attributes:
+                    - key: category
+                      value: bonus
+                    - key: tier
+                      value: premium
+                    created_at: '2026-05-29T01:31:06.882627Z'
+                    updated_at: '2026-05-29T01:31:06.882647Z'
+                    created_by:
+                      id: 246b30d0-4596-4484-a89e-35fc8849c22e
+                      nickname: Atomic Swan
+                    updated_by:
+                      id: 246b30d0-4596-4484-a89e-35fc8849c22e
+                      nickname: Atomic Swan
+      parameters:
+      - in: path
+        name: client_id
+        schema:
+          type: string
+        required: true
+      operationId: post_client-id-reward-multipliers
+      summary: Create Reward Multiplier
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                multiplier_factor:
+                  type: integer
+                  description: Multiplier value applied to reward earnings (e.g. 2 = double rewards)
+                activation_type:
+                  type: string
+                  enum:
+                  - user_activated
+                  - automatic
+                  description: Defines how the multiplier is activated (e.g. user activated or automatic).
+                active_duration:
+                  type: string
+                  description: Duration for which the user activated multiplier remains active after activation, in ISO 8601 format.
+                started_at:
+                  type: string
+                  description: UTC timestamp when the multiplier becomes available. The timestamp should not be in the past.
+                stopped_at:
+                  type: string
+                  description: UTC timestamp when the multiplier expires and stops being available. The timestamp should not be in the past.
+                reward_item_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: List of reward item UUIDs that the multiplier applies to.
+                profile_group_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: List of reward item UUIDs that the multiplier applies to.
+              required:
+              - name
+              - multiplier_factor
+              - activation_type
+              - reward_item_ids
+      description: ''
+      tags:
+      - Reward Multipliers
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              examples:
+                OK:
+                  summary: OK
+                  value:
+                    count: 1
+                    next: null
+                    previous: null
+                    results:
+                    - id: 9664ba88-6fe2-42a4-8d6a-cb39ef3b3b3d
+                      url: http://localhost:8888/api/v1/applications/PlI2efBCBRGw56KBcHucDvTevGv5x5Egqn0R2P8R/reward-multipliers/9664ba88-6fe2-42a4-8d6a-cb39ef3b3b3d/
+                      name: 3x Your Earnings on weekend
+                      description: Earn 3x rewards during the today's match.
+                      multiplier_factor: 3
+                      activation_type: user_activated
+                      status: live
+                      active_duration: P2DT00H00M00S
+                      started_at: null
+                      stopped_at: null
+                      profile_groups: []
+                      profile_group_ids: []
+                      reward_items:
+                      - id: 2ab53eda-a387-4b0a-bce6-a7972fda1372
+                        name: AUG Reward
+                      - id: 5fafa961-0287-43e6-ba0f-36dd107091c8
+                        name: Correct answer bonus points
+                      reward_item_ids:
+                      - 2ab53eda-a387-4b0a-bce6-a7972fda1372
+                      - 5fafa961-0287-43e6-ba0f-36dd107091c8
+                      attributes: []
+                      created_at: '2026-04-16T11:25:49.570792Z'
+                      updated_at: '2026-04-23T05:01:19.704615Z'
+                      created_by:
+                        id: 246b30d0-4596-4484-a89e-35fc8849c22e
+                        nickname: Atomic Swan
+                      updated_by:
+                        id: 246b30d0-4596-4484-a89e-35fc8849c22e
+                        nickname: Atomic Swan
+      parameters:
+      - in: path
+        name: client_id
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: activation_type
+        schema:
+          type: string
+          enum:
+          - user-activated
+          - automatic
+      - in: query
+        name: profile_groups
+        schema:
+          type: string
+      - in: query
+        name: reward_item
+        schema:
+          type: string
+      - in: query
+        name: status
+        schema:
+          type: string
+          enum:
+          - live
+          - draft
+          - archived
+          - upcoming
+          - expired
+      operationId: get_client-id-reward-multipliers
+      summary: List Reward Multipliers
+      tags:
+      - Reward Multipliers
+  /{client_id}/reward-multipliers/{reward_multiplier_id}:
+    get:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              examples:
+                OK:
+                  summary: OK
+                  value:
+                    id: 2a2d8630-94a7-42c2-a043-7c728571d361
+                    url: http://localhost:8888/api/v1/applications/PlI2efBCBRGw56KBcHucDvTevGv5x5Egqn0R2P8R/reward-multipliers/2a2d8630-94a7-42c2-a043-7c728571d361/
+                    name: Double Earnings
+                    description: Double your earning of Dummy Points.
+                    multiplier_factor: 2
+                    activation_type: user_activated
+                    status: draft
+                    active_duration: P2DT00H00M00S
+                    started_at: '2026-07-01T12:00:00Z'
+                    stopped_at: '2026-08-30T12:00:01Z'
+                    profile_groups: []
+                    profile_group_ids: []
+                    reward_items:
+                    - id: 67c1d6f2-262c-40db-bc9e-6b6731d60297
+                      name: Dummy Points
+                    reward_item_ids:
+                    - 67c1d6f2-262c-40db-bc9e-6b6731d60297
+                    attributes:
+                    - key: category
+                      value: bonus
+                    - key: tier
+                      value: premium
+                    created_at: '2026-05-29T01:31:06.882627Z'
+                    updated_at: '2026-05-29T01:31:06.882647Z'
+                    created_by:
+                      id: 246b30d0-4596-4484-a89e-35fc8849c22e
+                      nickname: Atomic Swan
+                    updated_by:
+                      id: 246b30d0-4596-4484-a89e-35fc8849c22e
+                      nickname: Atomic Swan
+      parameters:
+      - in: path
+        name: client_id
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: reward_multiplier_id
+        schema:
+          type: string
+        required: true
+      summary: Retrieve Reward Multiplier
+      operationId: get_client-id-reward-multipliers-reward-multiplier-id
+      tags:
+      - Reward Multipliers
+    patch:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              examples:
+                OK:
+                  summary: OK
+                  value:
+                    id: 2a2d8630-94a7-42c2-a043-7c728571d361
+                    url: http://localhost:8888/api/v1/applications/PlI2efBCBRGw56KBcHucDvTevGv5x5Egqn0R2P8R/reward-multipliers/2a2d8630-94a7-42c2-a043-7c728571d361/
+                    name: Double Earnings
+                    description: Double your earning of Dummy Points.
+                    multiplier_factor: 2
+                    activation_type: user_activated
+                    status: draft
+                    active_duration: P2DT00H00M00S
+                    started_at: '2026-07-01T12:00:00Z'
+                    stopped_at: '2026-08-30T12:00:01Z'
+                    profile_groups: []
+                    profile_group_ids: []
+                    reward_items:
+                    - id: 67c1d6f2-262c-40db-bc9e-6b6731d60297
+                      name: Dummy Points
+                    reward_item_ids:
+                    - 67c1d6f2-262c-40db-bc9e-6b6731d60297
+                    attributes:
+                    - key: category
+                      value: bonus
+                    - key: tier
+                      value: premium
+                    created_at: '2026-05-29T01:31:06.882627Z'
+                    updated_at: '2026-05-29T01:31:06.882647Z'
+                    created_by:
+                      id: 246b30d0-4596-4484-a89e-35fc8849c22e
+                      nickname: Atomic Swan
+                    updated_by:
+                      id: 246b30d0-4596-4484-a89e-35fc8849c22e
+                      nickname: Atomic Swan
+          description: OK
+      parameters:
+      - in: path
+        name: client_id
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: reward_multiplier_id
+        schema:
+          type: string
+        required: true
+      summary: Update Reward Multiplier
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                multiplier_factor:
+                  type: integer
+                  description: Multiplier value applied to reward earnings (e.g. 2 = double rewards)
+                activation_type:
+                  type: string
+                  enum:
+                  - user_activated
+                  - automatic
+                  description: Defines how the multiplier is activated (e.g. user activated or automatic).
+                active_duration:
+                  type: string
+                  description: Duration for which the user activated multiplier remains active after activation, in ISO 8601 format.
+                started_at:
+                  type: string
+                stopped_at:
+                  type: string
+                reward_item_ids:
+                  type: array
+                  items:
+                    type: string
+                profile_group_ids:
+                  type: array
+                  items:
+                    type: string
+              required:
+              - name
+              - multiplier_factor
+              - activation_type
+              - reward_item_ids
+      description: ''
+      operationId: patch_client-id-reward-multipliers-reward-multiplier-id
+      tags:
+      - Reward Multipliers
+  /{client_id}/reward-multipliers/{reward_multiplier_id}-1:
+    delete:
+      responses:
+        '204':
+          description: ''
+          content:
+            application/json: {}
+      parameters:
+      - in: path
+        name: client_id
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: reward_multiplier_id
+        schema:
+          type: string
+        required: true
+      summary: Delete Reward Multiplier
+      operationId: delete_client-id-reward-multipliers-reward-multiplier-id-1
+      tags:
+      - Reward Multipliers
+  /{client_id}/reward-multipliers/{reward_multiplier_id}/archive/:
+    post:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              examples:
+                OK:
+                  summary: OK
+                  value:
+                    id: 1702ddd8-1ce6-49c3-82ab-ecc9ca65537a
+                    url: http://localhost:8888/api/v1/applications/PlI2efBCBRGw56KBcHucDvTevGv5x5Egqn0R2P8R/reward-multipliers/1702ddd8-1ce6-49c3-82ab-ecc9ca65537a/
+                    name: Rewar
+                    description: new desc up
+                    multiplier_factor: 2
+                    activation_type: user_activated
+                    status: upcoming
+                    active_duration: P2DT00H00M00S
+                    started_at: '2026-09-01T12:00:00Z'
+                    stopped_at: '2026-11-30T12:00:01Z'
+                    profile_groups: []
+                    profile_group_ids: []
+                    reward_items:
+                    - id: 67c1d6f2-262c-40db-bc9e-6b6731d60297
+                      name: Dummy Points
+                    reward_item_ids:
+                    - 67c1d6f2-262c-40db-bc9e-6b6731d60297
+                    attributes:
+                    - key: category1
+                      value: bonus1
+                    - key: category2
+                      value: bonus2
+                    created_at: '2026-05-29T01:54:29.237780Z'
+                    updated_at: '2026-05-29T02:19:46.313597Z'
+                    created_by:
+                      id: 246b30d0-4596-4484-a89e-35fc8849c22e
+                      nickname: Atomic Swan
+                    updated_by:
+                      id: 246b30d0-4596-4484-a89e-35fc8849c22e
+                      nickname: Atomic Swan
+          description: OK
+        '204':
+          description: ''
+          content:
+            application/json: {}
+      parameters:
+      - in: path
+        name: client_id
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: reward_multiplier_id
+        schema:
+          type: string
+        required: true
+      summary: Archive Reward Multiplier
+      operationId: post_client-id-reward-multipliers-reward-multiplier-id-archive
+      tags:
+      - Reward Multipliers
+  /{client_id}/reward-multipliers/{reward_multiplier_id}/publish/:
+    post:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              examples:
+                OK:
+                  summary: OK
+                  value:
+                    id: 1702ddd8-1ce6-49c3-82ab-ecc9ca65537a
+                    url: http://localhost:8888/api/v1/applications/PlI2efBCBRGw56KBcHucDvTevGv5x5Egqn0R2P8R/reward-multipliers/1702ddd8-1ce6-49c3-82ab-ecc9ca65537a/
+                    name: Rewar
+                    description: new desc up
+                    multiplier_factor: 2
+                    activation_type: user_activated
+                    status: upcoming
+                    active_duration: P2DT00H00M00S
+                    started_at: '2026-09-01T12:00:00Z'
+                    stopped_at: '2026-11-30T12:00:01Z'
+                    profile_groups: []
+                    profile_group_ids: []
+                    reward_items:
+                    - id: 67c1d6f2-262c-40db-bc9e-6b6731d60297
+                      name: Dummy Points
+                    reward_item_ids:
+                    - 67c1d6f2-262c-40db-bc9e-6b6731d60297
+                    attributes:
+                    - key: category1
+                      value: bonus1
+                    - key: category2
+                      value: bonus2
+                    created_at: '2026-05-29T01:54:29.237780Z'
+                    updated_at: '2026-05-29T02:19:46.313597Z'
+                    created_by:
+                      id: 246b30d0-4596-4484-a89e-35fc8849c22e
+                      nickname: Atomic Swan
+                    updated_by:
+                      id: 246b30d0-4596-4484-a89e-35fc8849c22e
+                      nickname: Atomic Swan
+          description: OK
+        '204':
+          description: ''
+          content:
+            application/json: {}
+      parameters:
+      - in: path
+        name: client_id
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: reward_multiplier_id
+        schema:
+          type: string
+        required: true
+      summary: Publish Reward Multiplier
+      operationId: post_client-id-reward-multipliers-reward-multiplier-id-publish
+      tags:
+      - Reward Multipliers
+  /{client_id}/reward-multipliers/{reward_multiplier_id}/unarchive/:
+    post:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              examples:
+                OK:
+                  summary: OK
+                  value:
+                    id: 1702ddd8-1ce6-49c3-82ab-ecc9ca65537a
+                    url: http://localhost:8888/api/v1/applications/PlI2efBCBRGw56KBcHucDvTevGv5x5Egqn0R2P8R/reward-multipliers/1702ddd8-1ce6-49c3-82ab-ecc9ca65537a/
+                    name: Rewar
+                    description: new desc up
+                    multiplier_factor: 2
+                    activation_type: user_activated
+                    status: upcoming
+                    active_duration: P2DT00H00M00S
+                    started_at: '2026-09-01T12:00:00Z'
+                    stopped_at: '2026-11-30T12:00:01Z'
+                    profile_groups: []
+                    profile_group_ids: []
+                    reward_items:
+                    - id: 67c1d6f2-262c-40db-bc9e-6b6731d60297
+                      name: Dummy Points
+                    reward_item_ids:
+                    - 67c1d6f2-262c-40db-bc9e-6b6731d60297
+                    attributes:
+                    - key: category1
+                      value: bonus1
+                    - key: category2
+                      value: bonus2
+                    created_at: '2026-05-29T01:54:29.237780Z'
+                    updated_at: '2026-05-29T02:19:46.313597Z'
+                    created_by:
+                      id: 246b30d0-4596-4484-a89e-35fc8849c22e
+                      nickname: Atomic Swan
+                    updated_by:
+                      id: 246b30d0-4596-4484-a89e-35fc8849c22e
+                      nickname: Atomic Swan
+          description: OK
+        '204':
+          description: ''
+          content:
+            application/json: {}
+      parameters:
+      - in: path
+        name: client_id
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: reward_multiplier_id
+        schema:
+          type: string
+        required: true
+      summary: Unarchive Reward Multiplier
+      operationId: post_client-id-reward-multipliers-reward-multiplier-id-unarchive
+      tags:
+      - Reward Multipliers
+components:
+  securitySchemes:
+    sec0:
+      type: apiKey
+      in: header
+      name: Authorization
+      x-bearer-format: token
+x-readme-fauxas: true
+x-provenance:
+  method: searched
+  source: https://docs.livelike.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://docs.livelike.com/reference/create-an-application.md
+  - https://docs.livelike.com/reference/create-multiplier-1.md
+  - https://docs.livelike.com/reference/create-multiplier.md
+  - https://docs.livelike.com/reference/delete-an-application.md
+  - https://docs.livelike.com/reference/delete-comment-quality-rules.md
+  - https://docs.livelike.com/reference/list-reward-multipliers.md
+  - https://docs.livelike.com/reference/listing-applications-widgets.md
+  - https://docs.livelike.com/reference/retrieve-reward-multiplier-1-1-1-1.md
+  - https://docs.livelike.com/reference/retrieve-reward-multiplier-1-1-1.md
+  - https://docs.livelike.com/reference/retrieve-reward-multiplier-1-1.md
+  - https://docs.livelike.com/reference/retrieve-reward-multiplier-1.md
+  - https://docs.livelike.com/reference/retrieve-reward-multiplier.md
+  - https://docs.livelike.com/reference/update-an-application.md
+  merge:
+    pages: 13
+    deduped: 12
+    conflicts_kept_first: 0

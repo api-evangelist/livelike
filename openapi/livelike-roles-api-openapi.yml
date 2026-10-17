@@ -1,0 +1,704 @@
+openapi: 3.2.0
+info:
+  title: engagement-suite Roles API
+  version: '1'
+servers:
+- url: https://cf-blast.livelikecdn.com/api/v1
+security:
+- {}
+tags:
+- name: Roles
+paths:
+  /roles/:
+    post:
+      summary: Create a Role
+      description: ''
+      operationId: create-roles
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - key
+              - name
+              properties:
+                key:
+                  type: string
+                  description: key of the role to be created
+                name:
+                  type: string
+                  description: name of the role to be created
+                role_template_key:
+                  type: string
+                  description: key of the role template to add permissions from.
+                permission_ids:
+                  type: array
+                  description: Array of permission_ids to add to the role
+                  items:
+                    type: string
+                permission_keys:
+                  type: array
+                  description: Array of permission_keys to add to the role
+                  items:
+                    type: string
+      responses:
+        '201':
+          description: '201'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"id\": \"8c3d8a63-ef55-4268-b2a4-517a4c15cbb7\",\n    \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/roles/8c3d8a63-ef55-4268-b2a4-517a4c15cbb7/\",\n    \"client_id\": \"lom9db0XtQUhOZQq1vz8QPfSpiyyxppiUVGMcAje\",\n    \"name\": \"yashtemplrole03\",\n    \"description\": \"\",\n    \"key\": \"yash-temp-role03\",\n    \"permissions\": [\n        {\n            \"id\": \"f30dec26-5212-4fa1-89f7-ff825db07846\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/f30dec26-5212-4fa1-89f7-ff825db07846/\",\n            \"name\": \"Publish Twitter Spotlight\",\n            \"description\": \"\",\n            \"key\": \"publish-twitter-spotlight\",\n            \"created_at\": \"2023-12-29T00:15:49.123000Z\"\n        },\n        {\n            \"id\": \"c0796a69-da84-41a8-b5b9-780e35e5267e\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/c0796a69-da84-41a8-b5b9-780e35e5267e/\",\n            \"name\": \"Publish Video Alert\",\n            \"description\": \"\",\n            \"key\": \"publish-video-alert\",\n            \"created_at\": \"2023-12-29T00:15:49.124000Z\"\n        }\n    ],\n    \"created_at\": \"2024-02-29T11:18:43.782290Z\",\n    \"is_active\": true\n}"
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: 8c3d8a63-ef55-4268-b2a4-517a4c15cbb7
+                  url:
+                    type: string
+                    example: https://cf-blast-dig.livelikecdn.com/api/v1/rbac/roles/8c3d8a63-ef55-4268-b2a4-517a4c15cbb7/
+                  client_id:
+                    type: string
+                    example: lom9db0XtQUhOZQq1vz8QPfSpiyyxppiUVGMcAje
+                  name:
+                    type: string
+                    example: yashtemplrole03
+                  description:
+                    type: string
+                    example: ''
+                  key:
+                    type: string
+                    example: yash-temp-role03
+                  permissions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: f30dec26-5212-4fa1-89f7-ff825db07846
+                        url:
+                          type: string
+                          example: https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/f30dec26-5212-4fa1-89f7-ff825db07846/
+                        name:
+                          type: string
+                          example: Publish Twitter Spotlight
+                        description:
+                          type: string
+                          example: ''
+                        key:
+                          type: string
+                          example: publish-twitter-spotlight
+                        created_at:
+                          type: string
+                          example: '2023-12-29T00:15:49.123000Z'
+                  created_at:
+                    type: string
+                    example: '2024-02-29T11:18:43.782290Z'
+                  is_active:
+                    type: boolean
+                    example: true
+                    default: true
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Roles
+    get:
+      summary: Get List of Roles
+      description: ''
+      operationId: get-roles
+      parameters:
+      - name: client_id
+        in: query
+        description: Filter roles to a specific application
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"count\": 7,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": \"864017eb-f8b8-4cf3-b33c-42fcc89b3f46\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/roles/864017eb-f8b8-4cf3-b33c-42fcc89b3f46/\",\n            \"client_id\": \"ROA1TtZi9rGdYeGVRdHCs5oBc3J3o4fOgNlh1FPN\",\n            \"name\": \"Widget Creator\",\n            \"description\": \"\",\n            \"key\": \"widget-creator\",\n            \"permissions\": [\n                {\n                    \"id\": \"5e009781-c6fc-4e80-afb2-8e67412548f5\",\n                    \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/5e009781-c6fc-4e80-afb2-8e67412548f5/\",\n                    \"name\": \"Create Alert\",\n                    \"description\": \"\",\n                    \"key\": \"create-alert\",\n                    \"created_at\": \"2023-12-29T00:15:49.133000Z\"\n                },\n                {\n                    \"id\": \"e3b2cd22-e79b-44e1-8832-4553024d4408\",\n                    \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/e3b2cd22-e79b-44e1-8832-4553024d4408/\",\n                    \"name\": \"Create Cheer Meter\",\n                    \"description\": \"\",\n                    \"key\": \"create-cheer-meter\",\n                    \"created_at\": \"2023-12-29T00:15:49.134000Z\"\n                },\n                {\n                    \"id\": \"1709daec-244b-4ac5-8c23-427ea2eeb10b\",\n                    \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/1709daec-244b-4ac5-8c23-427ea2eeb10b/\",\n                    \"name\": \"Create Emoji Poll\",\n                    \"description\": \"\",\n                    \"key\": \"create-emoji-poll\",\n                    \"created_at\": \"2023-12-29T00:15:49.131000Z\"\n                },\n                {\n                    \"id\": \"d1cff216-bf2f-4842-8229-1af6bad583d8\",\n                    \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/d1cff216-bf2f-4842-8229-1af6bad583d8/\",\n                    \"name\": \"Create Emoji Slider\",\n                    \"description\": \"\",\n                    \"key\": \"create-emoji-slider\",\n                    \"created_at\": \"2023-12-29T00:15:49.134000Z\"\n                },\n                {\n                    \"id\": \"82c7451e-a1b1-4651-b34d-75b32990d166\",\n                    \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/82c7451e-a1b1-4651-b34d-75b32990d166/\",\n                    \"name\": \"Create Image Number Prediction\",\n                    \"description\": \"\",\n                    \"key\": \"create-image-number-prediction\",\n                    \"created_at\": \"2023-12-29T00:15:49.130000Z\"\n                },\n                {\n                    \"id\": \"2700d2d0-363f-4270-8cbd-53da1ee9d176\",\n                    \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/2700d2d0-363f-4270-8cbd-53da1ee9d176/\",\n                    \"name\": \"Create Image Number Prediction Follow Up\",\n                    \"description\": \"\",\n                    \"key\": \"create-image-number-prediction-follow-up\",\n                    \"created_at\": \"2023-12-29T00:15:49.130000Z\"\n                },\n                {\n                    \"id\": \"d6d75bf0-574c-49c0-a877-8a30c8ac97a8\",\n                    \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/d6d75bf0-574c-49c0-a877-8a30c8ac97a8/\",\n                    \"name\": \"Create Image Poll\",\n                    \"description\": \"\",\n                    \"key\": \"create-image-poll\",\n                    \"created_at\": \"2023-12-29T00:15:49.131000Z\"\n                },\n                {\n                    \"id\": \"436d57d7-d367-4837-8e99-b2db8b4e8bdc\",\n                    \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/436d57d7-d367-4837-8e99-b2db8b4e8bdc/\",\n                    \"name\": \"Create Image Prediction\",\n                    \"description\": \"\",\n                    \"key\": \"create-image-prediction\",\n                    \"created_at\": \"2023-12-29T00:15:49.129000Z\"\n                },\n                {\n                    \"id\": \"daba9589-83ee-45be-9c79-7861c2c76af3\",\n                    \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/daba9589-83ee-45be-9c79-7861c2c76af3/\",\n                    \"name\": \"Create Image Prediction Follow Up\",\n                    \"description\": \"\",\n                    \"key\": \"create-image-prediction-follow-up\",\n                    \"created_at\": \"2023-12-29T00:15:49.129000Z\"\n                },\n                {\n                    \"id\": \"25a6d692-ae5b-40d1-b314-9ab63b50a6ed\",\n                    \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/25a6d692-ae5b-40d1-b314-9ab63b50a6ed/\",\n                    \"name\": \"Create Image Quiz\",\n                    \"description\": \"\",\n                    \"key\": \"create-image-quiz\",\n                    \"created_at\": \"2023-12-29T00:15:49.132000Z\"\n                },\n                {\n                    \"id\": \"78545c43-c596-405a-80bb-2db0cfeae531\",\n                    \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/78545c43-c596-405a-80bb-2db0cfeae531/\",\n                    \"name\": \"Create Rich Post\",\n                    \"description\": \"\",\n                    \"key\": \"create-rich-post\",\n                    \"created_at\": \"2023-12-29T00:15:49.135000Z\"\n                },\n                {\n                    \"id\": \"96d4fbe9-67bb-4a8a-ae76-b35a025d234a\",\n                    \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/96d4fbe9-67bb-4a8a-ae76-b35a025d234a/\",\n                    \"name\": \"Create Social Embed\",\n                    \"description\": \"\",\n                    \"key\": \"create-social-embed\",\n                    \"created_at\": \"2023-12-29T00:15:49.135000Z\"\n                },\n                {\n                    \"id\": \"2d84f0a0-d168-4178-a063-e7d21c12d589\",\n                    \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/2d84f0a0-d168-4178-a063-e7d21c12d589/\",\n                    \"name\": \"Create Text Ask\",\n                    \"description\": \"\",\n                    \"key\": \"create-text-ask\",\n                    \"created_at\": \"2023-12-29T00:15:49.127000Z\"\n                },\n                {\n                    \"id\": \"bf01de42-4b36-41e1-9178-ddbfc0d3679f\",\n                    \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/bf01de42-4b36-41e1-9178-ddbfc0d3679f/\",\n                    \"name\": \"Create Text Poll\",\n                    \"description\": \"\",\n                    \"key\": \"create-text-poll\",\n                    \"created_at\": \"2023-12-29T00:15:49.127000Z\"\n                },\n                {\n                    \"id\": \"237cad7f-74b2-460b-a7c1-3552727cfd9b\",\n                    \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/237cad7f-74b2-460b-a7c1-3552727cfd9b/\",\n                    \"name\": \"Create Text Prediction\",\n                    \"description\": \"\",\n                    \"key\": \"create-text-prediction\",\n                    \"created_at\": \"2023-12-29T00:15:49.128000Z\"\n                },\n                {\n                    \"id\": \"e674fc43-bbb9-4537-8d25-b5567e3ea2e6\",\n                    \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/e674fc43-bbb9-4537-8d25-b5567e3ea2e6/\",\n                    \"name\": \"Create Text Prediction Follow Up\",\n                    \"description\": \"\",\n                    \"key\": \"create-text-prediction-follow-up\",\n                    \"created_at\": \"2023-12-29T00:15:49.128000Z\"\n                },\n                {\n                    \"id\": \"3ae8074e-436f-47d1-98ae-59412302506f\",\n                    \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/3ae8074e-436f-47d1-98ae-59412302506f/\",\n                    \"name\": \"Create Text Quiz\",\n                    \"description\": \"\",\n                    \"key\": \"create-text-quiz\",\n                    \"created_at\": \"2023-12-29T00:15:49.126000Z\"\n                },\n                {\n                    \"id\": \"478f792c-1d83-4522-bfbe-e7ea031aeae4\",\n                    \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/478f792c-1d83-4522-bfbe-e7ea031aeae4/\",\n                    \"name\": \"Create Twitter Spotlight\",\n                    \"description\": \"\",\n                    \"key\": \"create-twitter-spotlight\",\n                    \"created_at\": \"2023-12-29T00:15:49.132000Z\"\n                },\n                {\n                    \"id\": \"ccd5c2fc-6f0e-4549-acc7-7d2cfb6924e3\",\n                    \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/ccd5c2fc-6f0e-4549-acc7-7d2cfb6924e3/\",\n                    \"name\": \"Create Video Alert\",\n                    \"description\": \"\",\n                    \"key\": \"create-video-alert\",\n                    \"created_at\": \"2023-12-29T00:15:49.133000Z\"\n                }\n            ],\n            \"created_at\": \"2024-02-20T07:41:00Z\",\n            \"is_active\": true\n        }\n                \n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 7
+                    default: 0
+                  next: {}
+                  previous: {}
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: 864017eb-f8b8-4cf3-b33c-42fcc89b3f46
+                        url:
+                          type: string
+                          example: https://cf-blast-dig.livelikecdn.com/api/v1/rbac/roles/864017eb-f8b8-4cf3-b33c-42fcc89b3f46/
+                        client_id:
+                          type: string
+                          example: ROA1TtZi9rGdYeGVRdHCs5oBc3J3o4fOgNlh1FPN
+                        name:
+                          type: string
+                          example: Widget Creator
+                        description:
+                          type: string
+                          example: ''
+                        key:
+                          type: string
+                          example: widget-creator
+                        permissions:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                example: 5e009781-c6fc-4e80-afb2-8e67412548f5
+                              url:
+                                type: string
+                                example: https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/5e009781-c6fc-4e80-afb2-8e67412548f5/
+                              name:
+                                type: string
+                                example: Create Alert
+                              description:
+                                type: string
+                                example: ''
+                              key:
+                                type: string
+                                example: create-alert
+                              created_at:
+                                type: string
+                                example: '2023-12-29T00:15:49.133000Z'
+                        created_at:
+                          type: string
+                          example: '2024-02-20T07:41:00Z'
+                        is_active:
+                          type: boolean
+                          example: true
+                          default: true
+      deprecated: false
+      security: []
+      tags:
+      - Roles
+  /roles/{id}:
+    patch:
+      summary: Patch Update a Role
+      description: Used to add permissions, and update the key/name of the role. Patch Update adds the supplied permissions to existing ones in the supplied role.
+      operationId: update-a-role
+      parameters:
+      - name: id
+        in: path
+        description: id of the role to be updated
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: updated name for the role
+                key:
+                  type: string
+                  description: new key for the role
+                permission_ids:
+                  type: array
+                  description: permissions_ids to be added
+                  items:
+                    type: string
+                permission_keys:
+                  type: array
+                  description: permission_keys to be added
+                  items:
+                    type: string
+                role_template_key:
+                  type: string
+                  description: key of the role template, permissions of which need to be added to the role
+                role_template_id:
+                  type: string
+                  description: id of the role template, permissions of which need to be added to the role
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"id\": \"78d3b9f7-46d2-450c-b41c-293ca460cdb2\",\n    \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/roles/78d3b9f7-46d2-450c-b41c-293ca460cdb2/\",\n    \"client_id\": \"lom9db0XtQUhOZQq1vz8QPfSpiyyxppiUVGMcAje\",\n    \"name\": \"yash01role01\",\n    \"description\": \"\",\n    \"key\": \"yash-temp-role01\",\n    \"permissions\": [\n        {\n            \"id\": \"5e009781-c6fc-4e80-afb2-8e67412548f5\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/5e009781-c6fc-4e80-afb2-8e67412548f5/\",\n            \"name\": \"Create Alert\",\n            \"description\": \"\",\n            \"key\": \"create-alert\",\n            \"created_at\": \"2023-12-29T00:15:49.133000Z\"\n        },\n        {\n            \"id\": \"e3b2cd22-e79b-44e1-8832-4553024d4408\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/e3b2cd22-e79b-44e1-8832-4553024d4408/\",\n            \"name\": \"Create Cheer Meter\",\n            \"description\": \"\",\n            \"key\": \"create-cheer-meter\",\n            \"created_at\": \"2023-12-29T00:15:49.134000Z\"\n        },\n        {\n            \"id\": \"1709daec-244b-4ac5-8c23-427ea2eeb10b\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/1709daec-244b-4ac5-8c23-427ea2eeb10b/\",\n            \"name\": \"Create Emoji Poll\",\n            \"description\": \"\",\n            \"key\": \"create-emoji-poll\",\n            \"created_at\": \"2023-12-29T00:15:49.131000Z\"\n        },\n        {\n            \"id\": \"d1cff216-bf2f-4842-8229-1af6bad583d8\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/d1cff216-bf2f-4842-8229-1af6bad583d8/\",\n            \"name\": \"Create Emoji Slider\",\n            \"description\": \"\",\n            \"key\": \"create-emoji-slider\",\n            \"created_at\": \"2023-12-29T00:15:49.134000Z\"\n        },\n        {\n            \"id\": \"82c7451e-a1b1-4651-b34d-75b32990d166\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/82c7451e-a1b1-4651-b34d-75b32990d166/\",\n            \"name\": \"Create Image Number Prediction\",\n            \"description\": \"\",\n            \"key\": \"create-image-number-prediction\",\n            \"created_at\": \"2023-12-29T00:15:49.130000Z\"\n        },\n        {\n            \"id\": \"2700d2d0-363f-4270-8cbd-53da1ee9d176\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/2700d2d0-363f-4270-8cbd-53da1ee9d176/\",\n            \"name\": \"Create Image Number Prediction Follow Up\",\n            \"description\": \"\",\n            \"key\": \"create-image-number-prediction-follow-up\",\n            \"created_at\": \"2023-12-29T00:15:49.130000Z\"\n        },\n        {\n            \"id\": \"d6d75bf0-574c-49c0-a877-8a30c8ac97a8\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/d6d75bf0-574c-49c0-a877-8a30c8ac97a8/\",\n            \"name\": \"Create Image Poll\",\n            \"description\": \"\",\n            \"key\": \"create-image-poll\",\n            \"created_at\": \"2023-12-29T00:15:49.131000Z\"\n        },\n        {\n            \"id\": \"436d57d7-d367-4837-8e99-b2db8b4e8bdc\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/436d57d7-d367-4837-8e99-b2db8b4e8bdc/\",\n            \"name\": \"Create Image Prediction\",\n            \"description\": \"\",\n            \"key\": \"create-image-prediction\",\n            \"created_at\": \"2023-12-29T00:15:49.129000Z\"\n        },\n        {\n            \"id\": \"daba9589-83ee-45be-9c79-7861c2c76af3\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/daba9589-83ee-45be-9c79-7861c2c76af3/\",\n            \"name\": \"Create Image Prediction Follow Up\",\n            \"description\": \"\",\n            \"key\": \"create-image-prediction-follow-up\",\n            \"created_at\": \"2023-12-29T00:15:49.129000Z\"\n        },\n        {\n            \"id\": \"25a6d692-ae5b-40d1-b314-9ab63b50a6ed\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/25a6d692-ae5b-40d1-b314-9ab63b50a6ed/\",\n            \"name\": \"Create Image Quiz\",\n            \"description\": \"\",\n            \"key\": \"create-image-quiz\",\n            \"created_at\": \"2023-12-29T00:15:49.132000Z\"\n        },\n        {\n            \"id\": \"78545c43-c596-405a-80bb-2db0cfeae531\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/78545c43-c596-405a-80bb-2db0cfeae531/\",\n            \"name\": \"Create Rich Post\",\n            \"description\": \"\",\n            \"key\": \"create-rich-post\",\n            \"created_at\": \"2023-12-29T00:15:49.135000Z\"\n        },\n        {\n            \"id\": \"96d4fbe9-67bb-4a8a-ae76-b35a025d234a\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/96d4fbe9-67bb-4a8a-ae76-b35a025d234a/\",\n            \"name\": \"Create Social Embed\",\n            \"description\": \"\",\n            \"key\": \"create-social-embed\",\n            \"created_at\": \"2023-12-29T00:15:49.135000Z\"\n        },\n        {\n            \"id\": \"2d84f0a0-d168-4178-a063-e7d21c12d589\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/2d84f0a0-d168-4178-a063-e7d21c12d589/\",\n            \"name\": \"Create Text Ask\",\n            \"description\": \"\",\n            \"key\": \"create-text-ask\",\n            \"created_at\": \"2023-12-29T00:15:49.127000Z\"\n        },\n        {\n            \"id\": \"bf01de42-4b36-41e1-9178-ddbfc0d3679f\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/bf01de42-4b36-41e1-9178-ddbfc0d3679f/\",\n            \"name\": \"Create Text Poll\",\n            \"description\": \"\",\n            \"key\": \"create-text-poll\",\n            \"created_at\": \"2023-12-29T00:15:49.127000Z\"\n        },\n        {\n            \"id\": \"237cad7f-74b2-460b-a7c1-3552727cfd9b\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/237cad7f-74b2-460b-a7c1-3552727cfd9b/\",\n            \"name\": \"Create Text Prediction\",\n            \"description\": \"\",\n            \"key\": \"create-text-prediction\",\n            \"created_at\": \"2023-12-29T00:15:49.128000Z\"\n        },\n        {\n            \"id\": \"e674fc43-bbb9-4537-8d25-b5567e3ea2e6\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/e674fc43-bbb9-4537-8d25-b5567e3ea2e6/\",\n            \"name\": \"Create Text Prediction Follow Up\",\n            \"description\": \"\",\n            \"key\": \"create-text-prediction-follow-up\",\n            \"created_at\": \"2023-12-29T00:15:49.128000Z\"\n        },\n        {\n            \"id\": \"3ae8074e-436f-47d1-98ae-59412302506f\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/3ae8074e-436f-47d1-98ae-59412302506f/\",\n            \"name\": \"Create Text Quiz\",\n            \"description\": \"\",\n            \"key\": \"create-text-quiz\",\n            \"created_at\": \"2023-12-29T00:15:49.126000Z\"\n        },\n        {\n            \"id\": \"478f792c-1d83-4522-bfbe-e7ea031aeae4\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/478f792c-1d83-4522-bfbe-e7ea031aeae4/\",\n            \"name\": \"Create Twitter Spotlight\",\n            \"description\": \"\",\n            \"key\": \"create-twitter-spotlight\",\n            \"created_at\": \"2023-12-29T00:15:49.132000Z\"\n        },\n        {\n            \"id\": \"ccd5c2fc-6f0e-4549-acc7-7d2cfb6924e3\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/ccd5c2fc-6f0e-4549-acc7-7d2cfb6924e3/\",\n            \"name\": \"Create Video Alert\",\n            \"description\": \"\",\n            \"key\": \"create-video-alert\",\n            \"created_at\": \"2023-12-29T00:15:49.133000Z\"\n        },\n        {\n            \"id\": \"8ef670c4-a740-4758-ac1d-70121c5550d5\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/8ef670c4-a740-4758-ac1d-70121c5550d5/\",\n            \"name\": \"Publish Alert\",\n            \"description\": \"\",\n            \"key\": \"publish-alert\",\n            \"created_at\": \"2023-12-29T00:15:49.123000Z\"\n        },\n        {\n            \"id\": \"3612b68b-b8a8-40c4-969d-4bee21dfb0f4\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/3612b68b-b8a8-40c4-969d-4bee21dfb0f4/\",\n            \"name\": \"Publish Cheer Meter\",\n            \"description\": \"\",\n            \"key\": \"publish-cheer-meter\",\n            \"created_at\": \"2023-12-29T00:15:49.124000Z\"\n        },\n        {\n            \"id\": \"c5f851ff-3464-4b29-a939-9d7ad914f847\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/c5f851ff-3464-4b29-a939-9d7ad914f847/\",\n            \"name\": \"Publish Emoji Poll\",\n            \"description\": \"\",\n            \"key\": \"publish-emoji-poll\",\n            \"created_at\": \"2023-12-29T00:15:49.121000Z\"\n        },\n        {\n            \"id\": \"db8b0f39-db51-46d4-b1ee-a396af2cafd9\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/db8b0f39-db51-46d4-b1ee-a396af2cafd9/\",\n            \"name\": \"Publish Emoji Slider\",\n            \"description\": \"\",\n            \"key\": \"publish-emoji-slider\",\n            \"created_at\": \"2023-12-29T00:15:49.125000Z\"\n        },\n        {\n            \"id\": \"82931bc8-03c7-4d8f-bdcd-07b65365c7c9\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/82931bc8-03c7-4d8f-bdcd-07b65365c7c9/\",\n            \"name\": \"Publish Image Number Prediction\",\n            \"description\": \"\",\n            \"key\": \"publish-image-number-prediction\",\n            \"created_at\": \"2023-12-29T00:15:49.120000Z\"\n        },\n        {\n            \"id\": \"47a96dac-d8be-4056-b5f2-7ff96ca1a8d7\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/47a96dac-d8be-4056-b5f2-7ff96ca1a8d7/\",\n            \"name\": \"Publish Image Number Prediction Follow Up\",\n            \"description\": \"\",\n            \"key\": \"publish-image-number-prediction-follow-up\",\n            \"created_at\": \"2023-12-29T00:15:49.121000Z\"\n        },\n        {\n            \"id\": \"e1878156-c3c3-450c-a6c6-2ea9f5451f8f\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/e1878156-c3c3-450c-a6c6-2ea9f5451f8f/\",\n            \"name\": \"Publish Image Poll\",\n            \"description\": \"\",\n            \"key\": \"publish-image-poll\",\n            \"created_at\": \"2023-12-29T00:15:49.122000Z\"\n        },\n        {\n            \"id\": \"ab0fc1d0-7d9d-4a17-b0b7-2f4cafa39dc7\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/ab0fc1d0-7d9d-4a17-b0b7-2f4cafa39dc7/\",\n            \"name\": \"Publish Image Prediction\",\n            \"description\": \"\",\n            \"key\": \"publish-image-prediction\",\n            \"created_at\": \"2023-12-29T00:15:49.120000Z\"\n        },\n        {\n            \"id\": \"d2503318-6787-4699-92ea-5757edc3cdfc\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/d2503318-6787-4699-92ea-5757edc3cdfc/\",\n            \"name\": \"Publish Image Prediction Follow Up\",\n            \"description\": \"\",\n            \"key\": \"publish-image-prediction-follow-up\",\n            \"created_at\": \"2023-12-29T00:15:49.120000Z\"\n        },\n        {\n            \"id\": \"0230458f-3605-42ff-90a3-fb2159096b00\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/0230458f-3605-42ff-90a3-fb2159096b00/\",\n            \"name\": \"Publish Image Quiz\",\n            \"description\": \"\",\n            \"key\": \"publish-image-quiz\",\n            \"created_at\": \"2023-12-29T00:15:49.122000Z\"\n        },\n        {\n            \"id\": \"5833fc79-78b8-4a18-9e91-bccd6888c2c8\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/5833fc79-78b8-4a18-9e91-bccd6888c2c8/\",\n            \"name\": \"Publish Rich Post\",\n            \"description\": \"\",\n            \"key\": \"publish-rich-post\",\n            \"created_at\": \"2023-12-29T00:15:49.125000Z\"\n        },\n        {\n            \"id\": \"32ffa141-ecc4-41a9-9df6-079d1002529e\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/32ffa141-ecc4-41a9-9df6-079d1002529e/\",\n            \"name\": \"Publish Social Embed\",\n            \"description\": \"\",\n            \"key\": \"publish-social-embed\",\n            \"created_at\": \"2023-12-29T00:15:49.126000Z\"\n        },\n        {\n            \"id\": \"5ed5f80d-ed8e-490a-a375-3320ce6d0709\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/5ed5f80d-ed8e-490a-a375-3320ce6d0709/\",\n            \"name\": \"Publish Text Ask\",\n            \"description\": \"\",\n            \"key\": \"publish-text-ask\",\n            \"created_at\": \"2023-12-29T00:15:49.117000Z\"\n        },\n        {\n            \"id\": \"226cef32-69c7-4755-ab0e-cb7aa5eebc70\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/226cef32-69c7-4755-ab0e-cb7aa5eebc70/\",\n            \"name\": \"Publish Text Poll\",\n            \"description\": \"\",\n            \"key\": \"publish-text-poll\",\n            \"created_at\": \"2023-12-29T00:15:49.118000Z\"\n        },\n        {\n            \"id\": \"6540488a-b743-4833-b49a-07d95cf240cc\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/6540488a-b743-4833-b49a-07d95cf240cc/\",\n            \"name\": \"Publish Text Prediction\",\n            \"description\": \"\",\n            \"key\": \"publish-text-prediction\",\n            \"created_at\": \"2023-12-29T00:15:49.118000Z\"\n        },\n        {\n            \"id\": \"da048ab9-4437-42f9-86f7-5ddf49aebed6\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/da048ab9-4437-42f9-86f7-5ddf49aebed6/\",\n            \"name\": \"Publish Text Prediction Follow Up\",\n            \"description\": \"\",\n            \"key\": \"publish-text-prediction-follow-up\",\n            \"created_at\": \"2023-12-29T00:15:49.119000Z\"\n        },\n        {\n            \"id\": \"5e3c4b67-fe52-4c7a-a2f5-ec3c04844028\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/5e3c4b67-fe52-4c7a-a2f5-ec3c04844028/\",\n            \"name\": \"Publish Text Quiz\",\n            \"description\": \"\",\n            \"key\": \"publish-text-quiz\",\n            \"created_at\": \"2023-12-29T00:15:49.117000Z\"\n        },\n        {\n            \"id\": \"f30dec26-5212-4fa1-89f7-ff825db07846\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/f30dec26-5212-4fa1-89f7-ff825db07846/\",\n            \"name\": \"Publish Twitter Spotlight\",\n            \"description\": \"\",\n            \"key\": \"publish-twitter-spotlight\",\n            \"created_at\": \"2023-12-29T00:15:49.123000Z\"\n        },\n        {\n            \"id\": \"c0796a69-da84-41a8-b5b9-780e35e5267e\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/c0796a69-da84-41a8-b5b9-780e35e5267e/\",\n            \"name\": \"Publish Video Alert\",\n            \"description\": \"\",\n            \"key\": \"publish-video-alert\",\n            \"created_at\": \"2023-12-29T00:15:49.124000Z\"\n        },\n        {\n            \"id\": \"37b41f65-2b50-464e-997e-ec2ebfe19dd1\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/37b41f65-2b50-464e-997e-ec2ebfe19dd1/\",\n            \"name\": \"testPerm\",\n            \"description\": \"Yash\",\n            \"key\": \"test-perm\",\n            \"created_at\": \"2024-02-19T10:28:47Z\"\n        }\n    ],\n    \"created_at\": \"2024-02-20T08:29:36.309688Z\",\n    \"is_active\": true\n}"
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: 78d3b9f7-46d2-450c-b41c-293ca460cdb2
+                  url:
+                    type: string
+                    example: https://cf-blast-dig.livelikecdn.com/api/v1/rbac/roles/78d3b9f7-46d2-450c-b41c-293ca460cdb2/
+                  client_id:
+                    type: string
+                    example: lom9db0XtQUhOZQq1vz8QPfSpiyyxppiUVGMcAje
+                  name:
+                    type: string
+                    example: yash01role01
+                  description:
+                    type: string
+                    example: ''
+                  key:
+                    type: string
+                    example: yash-temp-role01
+                  permissions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: 5e009781-c6fc-4e80-afb2-8e67412548f5
+                        url:
+                          type: string
+                          example: https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/5e009781-c6fc-4e80-afb2-8e67412548f5/
+                        name:
+                          type: string
+                          example: Create Alert
+                        description:
+                          type: string
+                          example: ''
+                        key:
+                          type: string
+                          example: create-alert
+                        created_at:
+                          type: string
+                          example: '2023-12-29T00:15:49.133000Z'
+                  created_at:
+                    type: string
+                    example: '2024-02-20T08:29:36.309688Z'
+                  is_active:
+                    type: boolean
+                    example: true
+                    default: true
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Roles
+    put:
+      summary: Put Update a Role
+      description: Used to replace existing permissions in a role to a new set of permissions, and also update name/key of the role
+      operationId: patch-update-a-role-copy
+      parameters:
+      - name: id
+        in: path
+        description: id of the role to be updated
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: updated name for the role
+                key:
+                  type: string
+                  description: new key for the role
+                permission_ids:
+                  type: array
+                  description: permissions_ids to be added
+                  items:
+                    type: string
+                permission_keys:
+                  type: array
+                  description: permission_keys to be added
+                  items:
+                    type: string
+                role_template_key:
+                  type: string
+                  description: key of the role template, permissions of which need to be added to the role
+                role_template_id:
+                  type: string
+                  description: id of the role template, permissions of which need to be added to the role
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"id\": \"78d3b9f7-46d2-450c-b41c-293ca460cdb2\",\n    \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/roles/78d3b9f7-46d2-450c-b41c-293ca460cdb2/\",\n    \"client_id\": \"lom9db0XtQUhOZQq1vz8QPfSpiyyxppiUVGMcAje\",\n    \"name\": \"yash01role01\",\n    \"description\": \"\",\n    \"key\": \"yash-temp-role01\",\n    \"permissions\": [\n        {\n            \"id\": \"5e009781-c6fc-4e80-afb2-8e67412548f5\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/5e009781-c6fc-4e80-afb2-8e67412548f5/\",\n            \"name\": \"Create Alert\",\n            \"description\": \"\",\n            \"key\": \"create-alert\",\n            \"created_at\": \"2023-12-29T00:15:49.133000Z\"\n        },\n        {\n            \"id\": \"e3b2cd22-e79b-44e1-8832-4553024d4408\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/e3b2cd22-e79b-44e1-8832-4553024d4408/\",\n            \"name\": \"Create Cheer Meter\",\n            \"description\": \"\",\n            \"key\": \"create-cheer-meter\",\n            \"created_at\": \"2023-12-29T00:15:49.134000Z\"\n        },\n        {\n            \"id\": \"1709daec-244b-4ac5-8c23-427ea2eeb10b\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/1709daec-244b-4ac5-8c23-427ea2eeb10b/\",\n            \"name\": \"Create Emoji Poll\",\n            \"description\": \"\",\n            \"key\": \"create-emoji-poll\",\n            \"created_at\": \"2023-12-29T00:15:49.131000Z\"\n        },\n        {\n            \"id\": \"d1cff216-bf2f-4842-8229-1af6bad583d8\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/d1cff216-bf2f-4842-8229-1af6bad583d8/\",\n            \"name\": \"Create Emoji Slider\",\n            \"description\": \"\",\n            \"key\": \"create-emoji-slider\",\n            \"created_at\": \"2023-12-29T00:15:49.134000Z\"\n        },\n        {\n            \"id\": \"82c7451e-a1b1-4651-b34d-75b32990d166\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/82c7451e-a1b1-4651-b34d-75b32990d166/\",\n            \"name\": \"Create Image Number Prediction\",\n            \"description\": \"\",\n            \"key\": \"create-image-number-prediction\",\n            \"created_at\": \"2023-12-29T00:15:49.130000Z\"\n        },\n        {\n            \"id\": \"2700d2d0-363f-4270-8cbd-53da1ee9d176\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/2700d2d0-363f-4270-8cbd-53da1ee9d176/\",\n            \"name\": \"Create Image Number Prediction Follow Up\",\n            \"description\": \"\",\n            \"key\": \"create-image-number-prediction-follow-up\",\n            \"created_at\": \"2023-12-29T00:15:49.130000Z\"\n        },\n        {\n            \"id\": \"d6d75bf0-574c-49c0-a877-8a30c8ac97a8\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/d6d75bf0-574c-49c0-a877-8a30c8ac97a8/\",\n            \"name\": \"Create Image Poll\",\n            \"description\": \"\",\n            \"key\": \"create-image-poll\",\n            \"created_at\": \"2023-12-29T00:15:49.131000Z\"\n        },\n        {\n            \"id\": \"436d57d7-d367-4837-8e99-b2db8b4e8bdc\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/436d57d7-d367-4837-8e99-b2db8b4e8bdc/\",\n            \"name\": \"Create Image Prediction\",\n            \"description\": \"\",\n            \"key\": \"create-image-prediction\",\n            \"created_at\": \"2023-12-29T00:15:49.129000Z\"\n        },\n        {\n            \"id\": \"daba9589-83ee-45be-9c79-7861c2c76af3\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/daba9589-83ee-45be-9c79-7861c2c76af3/\",\n            \"name\": \"Create Image Prediction Follow Up\",\n            \"description\": \"\",\n            \"key\": \"create-image-prediction-follow-up\",\n            \"created_at\": \"2023-12-29T00:15:49.129000Z\"\n        },\n        {\n            \"id\": \"25a6d692-ae5b-40d1-b314-9ab63b50a6ed\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/25a6d692-ae5b-40d1-b314-9ab63b50a6ed/\",\n            \"name\": \"Create Image Quiz\",\n            \"description\": \"\",\n            \"key\": \"create-image-quiz\",\n            \"created_at\": \"2023-12-29T00:15:49.132000Z\"\n        },\n        {\n            \"id\": \"78545c43-c596-405a-80bb-2db0cfeae531\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/78545c43-c596-405a-80bb-2db0cfeae531/\",\n            \"name\": \"Create Rich Post\",\n            \"description\": \"\",\n            \"key\": \"create-rich-post\",\n            \"created_at\": \"2023-12-29T00:15:49.135000Z\"\n        },\n        {\n            \"id\": \"96d4fbe9-67bb-4a8a-ae76-b35a025d234a\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/96d4fbe9-67bb-4a8a-ae76-b35a025d234a/\",\n            \"name\": \"Create Social Embed\",\n            \"description\": \"\",\n            \"key\": \"create-social-embed\",\n            \"created_at\": \"2023-12-29T00:15:49.135000Z\"\n        },\n        {\n            \"id\": \"2d84f0a0-d168-4178-a063-e7d21c12d589\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/2d84f0a0-d168-4178-a063-e7d21c12d589/\",\n            \"name\": \"Create Text Ask\",\n            \"description\": \"\",\n            \"key\": \"create-text-ask\",\n            \"created_at\": \"2023-12-29T00:15:49.127000Z\"\n        },\n        {\n            \"id\": \"bf01de42-4b36-41e1-9178-ddbfc0d3679f\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/bf01de42-4b36-41e1-9178-ddbfc0d3679f/\",\n            \"name\": \"Create Text Poll\",\n            \"description\": \"\",\n            \"key\": \"create-text-poll\",\n            \"created_at\": \"2023-12-29T00:15:49.127000Z\"\n        },\n        {\n            \"id\": \"237cad7f-74b2-460b-a7c1-3552727cfd9b\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/237cad7f-74b2-460b-a7c1-3552727cfd9b/\",\n            \"name\": \"Create Text Prediction\",\n            \"description\": \"\",\n            \"key\": \"create-text-prediction\",\n            \"created_at\": \"2023-12-29T00:15:49.128000Z\"\n        },\n        {\n            \"id\": \"e674fc43-bbb9-4537-8d25-b5567e3ea2e6\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/e674fc43-bbb9-4537-8d25-b5567e3ea2e6/\",\n            \"name\": \"Create Text Prediction Follow Up\",\n            \"description\": \"\",\n            \"key\": \"create-text-prediction-follow-up\",\n            \"created_at\": \"2023-12-29T00:15:49.128000Z\"\n        },\n        {\n            \"id\": \"3ae8074e-436f-47d1-98ae-59412302506f\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/3ae8074e-436f-47d1-98ae-59412302506f/\",\n            \"name\": \"Create Text Quiz\",\n            \"description\": \"\",\n            \"key\": \"create-text-quiz\",\n            \"created_at\": \"2023-12-29T00:15:49.126000Z\"\n        },\n        {\n            \"id\": \"478f792c-1d83-4522-bfbe-e7ea031aeae4\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/478f792c-1d83-4522-bfbe-e7ea031aeae4/\",\n            \"name\": \"Create Twitter Spotlight\",\n            \"description\": \"\",\n            \"key\": \"create-twitter-spotlight\",\n            \"created_at\": \"2023-12-29T00:15:49.132000Z\"\n        },\n        {\n            \"id\": \"ccd5c2fc-6f0e-4549-acc7-7d2cfb6924e3\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/ccd5c2fc-6f0e-4549-acc7-7d2cfb6924e3/\",\n            \"name\": \"Create Video Alert\",\n            \"description\": \"\",\n            \"key\": \"create-video-alert\",\n            \"created_at\": \"2023-12-29T00:15:49.133000Z\"\n        },\n        {\n            \"id\": \"8ef670c4-a740-4758-ac1d-70121c5550d5\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/8ef670c4-a740-4758-ac1d-70121c5550d5/\",\n            \"name\": \"Publish Alert\",\n            \"description\": \"\",\n            \"key\": \"publish-alert\",\n            \"created_at\": \"2023-12-29T00:15:49.123000Z\"\n        },\n        {\n            \"id\": \"3612b68b-b8a8-40c4-969d-4bee21dfb0f4\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/3612b68b-b8a8-40c4-969d-4bee21dfb0f4/\",\n            \"name\": \"Publish Cheer Meter\",\n            \"description\": \"\",\n            \"key\": \"publish-cheer-meter\",\n            \"created_at\": \"2023-12-29T00:15:49.124000Z\"\n        },\n        {\n            \"id\": \"c5f851ff-3464-4b29-a939-9d7ad914f847\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/c5f851ff-3464-4b29-a939-9d7ad914f847/\",\n            \"name\": \"Publish Emoji Poll\",\n            \"description\": \"\",\n            \"key\": \"publish-emoji-poll\",\n            \"created_at\": \"2023-12-29T00:15:49.121000Z\"\n        },\n        {\n            \"id\": \"db8b0f39-db51-46d4-b1ee-a396af2cafd9\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/db8b0f39-db51-46d4-b1ee-a396af2cafd9/\",\n            \"name\": \"Publish Emoji Slider\",\n            \"description\": \"\",\n            \"key\": \"publish-emoji-slider\",\n            \"created_at\": \"2023-12-29T00:15:49.125000Z\"\n        },\n        {\n            \"id\": \"82931bc8-03c7-4d8f-bdcd-07b65365c7c9\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/82931bc8-03c7-4d8f-bdcd-07b65365c7c9/\",\n            \"name\": \"Publish Image Number Prediction\",\n            \"description\": \"\",\n            \"key\": \"publish-image-number-prediction\",\n            \"created_at\": \"2023-12-29T00:15:49.120000Z\"\n        },\n        {\n            \"id\": \"47a96dac-d8be-4056-b5f2-7ff96ca1a8d7\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/47a96dac-d8be-4056-b5f2-7ff96ca1a8d7/\",\n            \"name\": \"Publish Image Number Prediction Follow Up\",\n            \"description\": \"\",\n            \"key\": \"publish-image-number-prediction-follow-up\",\n            \"created_at\": \"2023-12-29T00:15:49.121000Z\"\n        },\n        {\n            \"id\": \"e1878156-c3c3-450c-a6c6-2ea9f5451f8f\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/e1878156-c3c3-450c-a6c6-2ea9f5451f8f/\",\n            \"name\": \"Publish Image Poll\",\n            \"description\": \"\",\n            \"key\": \"publish-image-poll\",\n            \"created_at\": \"2023-12-29T00:15:49.122000Z\"\n        },\n        {\n            \"id\": \"ab0fc1d0-7d9d-4a17-b0b7-2f4cafa39dc7\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/ab0fc1d0-7d9d-4a17-b0b7-2f4cafa39dc7/\",\n            \"name\": \"Publish Image Prediction\",\n            \"description\": \"\",\n            \"key\": \"publish-image-prediction\",\n            \"created_at\": \"2023-12-29T00:15:49.120000Z\"\n        },\n        {\n            \"id\": \"d2503318-6787-4699-92ea-5757edc3cdfc\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/d2503318-6787-4699-92ea-5757edc3cdfc/\",\n            \"name\": \"Publish Image Prediction Follow Up\",\n            \"description\": \"\",\n            \"key\": \"publish-image-prediction-follow-up\",\n            \"created_at\": \"2023-12-29T00:15:49.120000Z\"\n        },\n        {\n            \"id\": \"0230458f-3605-42ff-90a3-fb2159096b00\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/0230458f-3605-42ff-90a3-fb2159096b00/\",\n            \"name\": \"Publish Image Quiz\",\n            \"description\": \"\",\n            \"key\": \"publish-image-quiz\",\n            \"created_at\": \"2023-12-29T00:15:49.122000Z\"\n        },\n        {\n            \"id\": \"5833fc79-78b8-4a18-9e91-bccd6888c2c8\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/5833fc79-78b8-4a18-9e91-bccd6888c2c8/\",\n            \"name\": \"Publish Rich Post\",\n            \"description\": \"\",\n            \"key\": \"publish-rich-post\",\n            \"created_at\": \"2023-12-29T00:15:49.125000Z\"\n        },\n        {\n            \"id\": \"32ffa141-ecc4-41a9-9df6-079d1002529e\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/32ffa141-ecc4-41a9-9df6-079d1002529e/\",\n            \"name\": \"Publish Social Embed\",\n            \"description\": \"\",\n            \"key\": \"publish-social-embed\",\n            \"created_at\": \"2023-12-29T00:15:49.126000Z\"\n        },\n        {\n            \"id\": \"5ed5f80d-ed8e-490a-a375-3320ce6d0709\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/5ed5f80d-ed8e-490a-a375-3320ce6d0709/\",\n            \"name\": \"Publish Text Ask\",\n            \"description\": \"\",\n            \"key\": \"publish-text-ask\",\n            \"created_at\": \"2023-12-29T00:15:49.117000Z\"\n        },\n        {\n            \"id\": \"226cef32-69c7-4755-ab0e-cb7aa5eebc70\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/226cef32-69c7-4755-ab0e-cb7aa5eebc70/\",\n            \"name\": \"Publish Text Poll\",\n            \"description\": \"\",\n            \"key\": \"publish-text-poll\",\n            \"created_at\": \"2023-12-29T00:15:49.118000Z\"\n        },\n        {\n            \"id\": \"6540488a-b743-4833-b49a-07d95cf240cc\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/6540488a-b743-4833-b49a-07d95cf240cc/\",\n            \"name\": \"Publish Text Prediction\",\n            \"description\": \"\",\n            \"key\": \"publish-text-prediction\",\n            \"created_at\": \"2023-12-29T00:15:49.118000Z\"\n        },\n        {\n            \"id\": \"da048ab9-4437-42f9-86f7-5ddf49aebed6\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/da048ab9-4437-42f9-86f7-5ddf49aebed6/\",\n            \"name\": \"Publish Text Prediction Follow Up\",\n            \"description\": \"\",\n            \"key\": \"publish-text-prediction-follow-up\",\n            \"created_at\": \"2023-12-29T00:15:49.119000Z\"\n        },\n        {\n            \"id\": \"5e3c4b67-fe52-4c7a-a2f5-ec3c04844028\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/5e3c4b67-fe52-4c7a-a2f5-ec3c04844028/\",\n            \"name\": \"Publish Text Quiz\",\n            \"description\": \"\",\n            \"key\": \"publish-text-quiz\",\n            \"created_at\": \"2023-12-29T00:15:49.117000Z\"\n        },\n        {\n            \"id\": \"f30dec26-5212-4fa1-89f7-ff825db07846\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/f30dec26-5212-4fa1-89f7-ff825db07846/\",\n            \"name\": \"Publish Twitter Spotlight\",\n            \"description\": \"\",\n            \"key\": \"publish-twitter-spotlight\",\n            \"created_at\": \"2023-12-29T00:15:49.123000Z\"\n        },\n        {\n            \"id\": \"c0796a69-da84-41a8-b5b9-780e35e5267e\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/c0796a69-da84-41a8-b5b9-780e35e5267e/\",\n            \"name\": \"Publish Video Alert\",\n            \"description\": \"\",\n            \"key\": \"publish-video-alert\",\n            \"created_at\": \"2023-12-29T00:15:49.124000Z\"\n        },\n        {\n            \"id\": \"37b41f65-2b50-464e-997e-ec2ebfe19dd1\",\n            \"url\": \"https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/37b41f65-2b50-464e-997e-ec2ebfe19dd1/\",\n            \"name\": \"testPerm\",\n            \"description\": \"Yash\",\n            \"key\": \"test-perm\",\n            \"created_at\": \"2024-02-19T10:28:47Z\"\n        }\n    ],\n    \"created_at\": \"2024-02-20T08:29:36.309688Z\",\n    \"is_active\": true\n}"
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: 78d3b9f7-46d2-450c-b41c-293ca460cdb2
+                  url:
+                    type: string
+                    example: https://cf-blast-dig.livelikecdn.com/api/v1/rbac/roles/78d3b9f7-46d2-450c-b41c-293ca460cdb2/
+                  client_id:
+                    type: string
+                    example: lom9db0XtQUhOZQq1vz8QPfSpiyyxppiUVGMcAje
+                  name:
+                    type: string
+                    example: yash01role01
+                  description:
+                    type: string
+                    example: ''
+                  key:
+                    type: string
+                    example: yash-temp-role01
+                  permissions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: 5e009781-c6fc-4e80-afb2-8e67412548f5
+                        url:
+                          type: string
+                          example: https://cf-blast-dig.livelikecdn.com/api/v1/rbac/permissions/5e009781-c6fc-4e80-afb2-8e67412548f5/
+                        name:
+                          type: string
+                          example: Create Alert
+                        description:
+                          type: string
+                          example: ''
+                        key:
+                          type: string
+                          example: create-alert
+                        created_at:
+                          type: string
+                          example: '2023-12-29T00:15:49.133000Z'
+                  created_at:
+                    type: string
+                    example: '2024-02-20T08:29:36.309688Z'
+                  is_active:
+                    type: boolean
+                    example: true
+                    default: true
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Roles
+    delete:
+      summary: Delete a Role
+      description: ''
+      operationId: delete-a-role
+      parameters:
+      - name: id
+        in: path
+        description: id of the role to be deleted
+        schema:
+          type: string
+        required: true
+      responses:
+        '204':
+          description: '204'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: ''
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Roles
+x-readme-fauxas: true
+x-provenance:
+  method: searched
+  source: https://docs.livelike.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://docs.livelike.com/reference/add-bulk-chat-memberships.md
+  - https://docs.livelike.com/reference/add-members-to-group.md
+  - https://docs.livelike.com/reference/add-quest-badges.md
+  - https://docs.livelike.com/reference/award-a-badge-to-a-user.md
+  - https://docs.livelike.com/reference/batch-invoke-reward-action.md
+  - https://docs.livelike.com/reference/claim-user-quest-badges.md
+  - https://docs.livelike.com/reference/claim-user-quest-rewards.md
+  - https://docs.livelike.com/reference/create-a-base-role.md
+  - https://docs.livelike.com/reference/create-a-cheer-meter.md
+  - https://docs.livelike.com/reference/create-a-comment-board.md
+  - https://docs.livelike.com/reference/create-a-comment.md
+  - https://docs.livelike.com/reference/create-a-flair-assignment.md
+  - https://docs.livelike.com/reference/create-a-flair-scope.md
+  - https://docs.livelike.com/reference/create-a-flair.md
+  - https://docs.livelike.com/reference/create-a-group.md
+  - https://docs.livelike.com/reference/create-a-pin-message.md
+  - https://docs.livelike.com/reference/create-a-pinned-comment.md
+  - https://docs.livelike.com/reference/create-a-profile-block.md
+  - https://docs.livelike.com/reference/create-a-profile-relationship.md
+  - https://docs.livelike.com/reference/create-a-program-ban.md
+  - https://docs.livelike.com/reference/create-a-redemption-key.md
+  - https://docs.livelike.com/reference/create-a-registered-link.md
+  - https://docs.livelike.com/reference/create-a-relationship-type.md
+  - https://docs.livelike.com/reference/create-a-rich-post.md
+  - https://docs.livelike.com/reference/create-a-social-embed.md
+  - https://docs.livelike.com/reference/create-a-sticker.md
+  - https://docs.livelike.com/reference/create-a-text-quiz.md
+  - https://docs.livelike.com/reference/create-a-user-reaction.md
+  - https://docs.livelike.com/reference/create-a-user-tier.md
+  - https://docs.livelike.com/reference/create-a-video-alert.md
+  - https://docs.livelike.com/reference/create-an-access-rule-for-muteglobally-mute.md
+  - https://docs.livelike.com/reference/create-an-alert.md
+  - https://docs.livelike.com/reference/create-an-image-number-prediction.md
+  - https://docs.livelike.com/reference/create-an-image-quiz.md
+  - https://docs.livelike.com/reference/create-an-image-slider.md
+  - https://docs.livelike.com/reference/create-badge-1.md
+  - https://docs.livelike.com/reference/create-comment-report.md
+  - https://docs.livelike.com/reference/create-comments-ban.md
+  - https://docs.livelike.com/reference/create-image-number-prediction-follow-up.md
+  - https://docs.livelike.com/reference/create-image-number-prediction-option.md
+  - https://docs.livelike.com/reference/create-image-poll.md
+  - https://docs.livelike.com/reference/create-image-prediction-follow-up.md
+  - https://docs.livelike.com/reference/create-image-prediction-option.md
+  - https://docs.livelike.com/reference/create-poll-vote.md
+  - https://docs.livelike.com/reference/create-profile-by-custom-id.md
+  - https://docs.livelike.com/reference/create-quality-rules.md
+  - https://docs.livelike.com/reference/create-quest-rewards.md
+  - https://docs.livelike.com/reference/create-quests.md
+  - https://docs.livelike.com/reference/create-reaction-emoji.md
+  - https://docs.livelike.com/reference/create-reward-item.md
+  - https://docs.livelike.com/reference/create-reward-table-entry.md
+  - https://docs.livelike.com/reference/create-reward-table.md
+  - https://docs.livelike.com/reference/create-role-assignments.md
+  - https://docs.livelike.com/reference/create-role-grant-assignment.md
+  - https://docs.livelike.com/reference/create-roles.md
+  - https://docs.livelike.com/reference/create-task.md
+  - https://docs.livelike.com/reference/create-text-poll.md
+  - https://docs.livelike.com/reference/create-text-prediction-follow-up.md
+  - https://docs.livelike.com/reference/create-text-prediction-option.md
+  - https://docs.livelike.com/reference/create-tier-benefit.md
+  - https://docs.livelike.com/reference/create-tier-group.md
+  - https://docs.livelike.com/reference/create-tier.md
+  - https://docs.livelike.com/reference/create-user-profile.md
+  - https://docs.livelike.com/reference/create-user-quest.md
+  - https://docs.livelike.com/reference/creating-reward-actions.md
+  - https://docs.livelike.com/reference/credit-reward-item.md
+  - https://docs.livelike.com/reference/debit-reward-item.md
+  - https://docs.livelike.com/reference/delete-a-base-role.md
+  - https://docs.livelike.com/reference/delete-a-comment.md
+  - https://docs.livelike.com/reference/delete-a-flair-assignment.md
+  - https://docs.livelike.com/reference/delete-a-flair.md
+  - https://docs.livelike.com/reference/delete-a-program-ban.md
+  - https://docs.livelike.com/reference/delete-a-redemption-key.md
+  - https://docs.livelike.com/reference/delete-a-registered-link.md
+  - https://docs.livelike.com/reference/delete-a-role.md
+  - https://docs.livelike.com/reference/delete-a-tier-group.md
+  - https://docs.livelike.com/reference/delete-a-user-reaction.md
+  - https://docs.livelike.com/reference/delete-a-video-alert.md
+  - https://docs.livelike.com/reference/delete-bulk-chat-memberships.md
+  - https://docs.livelike.com/reference/delete-comment-board-by-custom-id.md
+  - https://docs.livelike.com/reference/delete-comment-board.md
+  - https://docs.livelike.com/reference/delete-comments-ban.md
+  - https://docs.livelike.com/reference/delete-profile-group.md
+  - https://docs.livelike.com/reference/delete-quest.md
+  - https://docs.livelike.com/reference/delete-reaction-emoji.md
+  - https://docs.livelike.com/reference/delete-reward-table-entry.md
+  - https://docs.livelike.com/reference/delete-reward-table.md
+  - https://docs.livelike.com/reference/delete-role-assignment.md
+  - https://docs.livelike.com/reference/delete-role-grant-unassignment.md
+  - https://docs.livelike.com/reference/delete-task.md
+  - https://docs.livelike.com/reference/delete-tier-benefit.md
+  - https://docs.livelike.com/reference/delete-tier.md
+  - https://docs.livelike.com/reference/delete-userquest.md
+  - https://docs.livelike.com/reference/delete-widget.md
+  - https://docs.livelike.com/reference/dismiss-all-reports-for-a-reported-comment.md
+  - https://docs.livelike.com/reference/flair-assignment-detail.md
+  - https://docs.livelike.com/reference/flair-detail-1.md
+  - https://docs.livelike.com/reference/flair-detail.md
+  - https://docs.livelike.com/reference/get-a-badge.md
+  - https://docs.livelike.com/reference/get-a-redemption-key.md
+  - https://docs.livelike.com/reference/get-a-rich-post.md
+  - https://docs.livelike.com/reference/get-a-social-embed.md
+  - https://docs.livelike.com/reference/get-a-text-ask-widget.md
+  - https://docs.livelike.com/reference/get-a-text-poll.md
+  - https://docs.livelike.com/reference/get-a-text-quiz.md
+  - https://docs.livelike.com/reference/get-a-video-alert.md
+  - https://docs.livelike.com/reference/get-an-alert-1.md
+  - https://docs.livelike.com/reference/get-an-asset-1.md
+  - https://docs.livelike.com/reference/get-an-asset.md
+  - https://docs.livelike.com/reference/get-an-emoji-slider.md
+  - https://docs.livelike.com/reference/get-an-image-poll.md
+  - https://docs.livelike.com/reference/get-an-image-quiz.md
+  - https://docs.livelike.com/reference/get-blocked-profile-ids.md
+  - https://docs.livelike.com/reference/get-blocked-profiles.md
+  - https://docs.livelike.com/reference/get-chatroom-message-count.md
+  - https://docs.livelike.com/reference/get-chatroom-messages.md
+  - https://docs.livelike.com/reference/get-comment-board-by-custom_id.md
+  - https://docs.livelike.com/reference/get-comment-counts.md
+  - https://docs.livelike.com/reference/get-image-number-prediction.md
+  - https://docs.livelike.com/reference/get-leaderboard-by-custom-id.md
+  - https://docs.livelike.com/reference/get-list-of-base-roles.md
+  - https://docs.livelike.com/reference/get-list-of-comment-board-bans.md
+  - https://docs.livelike.com/reference/get-list-of-comment-reports.md
+  - https://docs.livelike.com/reference/get-list-of-earned-badges.md
+  - https://docs.livelike.com/reference/get-list-of-quest-rewards.md
+  - https://docs.livelike.com/reference/get-list-of-resources.md
+  - https://docs.livelike.com/reference/get-pinned-message-info.md
+  - https://docs.livelike.com/reference/get-profile-by-custom-id.md
+  - https://docs.livelike.com/reference/get-profile-group-detail.md
+  - https://docs.livelike.com/reference/get-profile-group-members.md
+  - https://docs.livelike.com/reference/get-program-bans.md
+  - https://docs.livelike.com/reference/get-program-by-custom-id.md
+  - https://docs.livelike.com/reference/get-quest-badges.md
+  - https://docs.livelike.com/reference/get-quests.md
+  - https://docs.livelike.com/reference/get-reaction-space-by-target-group-id.md
+  - https://docs.livelike.com/reference/get-reported-chat-messages.md
+  - https://docs.livelike.com/reference/get-reward-item-balance.md
+  - https://docs.livelike.com/reference/get-reward-table-entry.md
+  - https://docs.livelike.com/reference/get-reward-table.md
+  - https://docs.livelike.com/reference/get-role-templates.md
+  - https://docs.livelike.com/reference/get-roles.md
+  - https://docs.livelike.com/reference/get-task.md
+  - https://docs.livelike.com/reference/get-the-list-of-comment-boards.md
+  - https://docs.livelike.com/reference/get-user-quest-rewards.md
+  - https://docs.livelike.com/reference/get-user-reaction-count-per-space.md
+  - https://docs.livelike.com/reference/get-user-reaction-count.md
+  - https://docs.livelike.com/reference/get-users-badges.md
+  - https://docs.livelike.com/reference/get_reaction-space-by-target-group-id-client-id-target-group-id-1.md
+  - https://docs.livelike.com/reference/invoking-custom-actions.md
+  - https://docs.livelike.com/reference/list-assets.md
+  - https://docs.livelike.com/reference/list-available-badges.md
+  - https://docs.livelike.com/reference/list-badge-progress.md
+  - https://docs.livelike.com/reference/list-comments-by-author.md
+  - https://docs.livelike.com/reference/list-comments.md
+  - https://docs.livelike.com/reference/list-flair-assignments.md
+  - https://docs.livelike.com/reference/list-flairs-1.md
+  - https://docs.livelike.com/reference/list-flairs.md
+  - https://docs.livelike.com/reference/list-invoked-reward-actions.md
+  - https://docs.livelike.com/reference/list-permissions.md
+  - https://docs.livelike.com/reference/list-pinned-comments.md
+  - https://docs.livelike.com/reference/list-profile-relationships.md
+  - https://docs.livelike.com/reference/list-profiles-who-have-earned-a-specific-badge.md
+  - https://docs.livelike.com/reference/list-program-sponsors.md
+  - https://docs.livelike.com/reference/list-quests.md
+  - https://docs.livelike.com/reference/list-reaction-spaces.md
+  - https://docs.livelike.com/reference/list-redemption-keys.md
+  - https://docs.livelike.com/reference/list-registered-links.md
+  - https://docs.livelike.com/reference/list-relationship-types.md
+  - https://docs.livelike.com/reference/list-replies-to-profiles-comments.md
+  - https://docs.livelike.com/reference/list-reward-actions.md
+  - https://docs.livelike.com/reference/list-reward-item-balances.md
+  - https://docs.livelike.com/reference/list-reward-item-transfers.md
+  - https://docs.livelike.com/reference/list-reward-items.md
+  - https://docs.livelike.com/reference/list-reward-tables.md
+  - https://docs.livelike.com/reference/list-reward-transactions.md
+  - https://docs.livelike.com/reference/list-rich-posts-1-1.md
+  - https://docs.livelike.com/reference/list-rich-posts-1.md
+  - https://docs.livelike.com/reference/list-rich-posts.md
+  - https://docs.livelike.com/reference/list-role-assignments.md
+  - https://docs.livelike.com/reference/list-tasks.md
+  - https://docs.livelike.com/reference/list-tier-benefits.md
+  - https://docs.livelike.com/reference/list-tier-groups.md
+  - https://docs.livelike.com/reference/list-tier-transactions.md
+  - https://docs.livelike.com/reference/list-tier.md
+  - https://docs.livelike.com/reference/list-user-quests.md
+  - https://docs.livelike.com/reference/list-user-reactions.md
+  - https://docs.livelike.com/reference/list-user-tiers.md
+  - https://docs.livelike.com/reference/list-widget-reports.md
+  - https://docs.livelike.com/reference/moderate-a-widget-report.md
+  - https://docs.livelike.com/reference/patch-update-a-base-role.md
+  - https://docs.livelike.com/reference/patch-update-a-role-copy.md
+  - https://docs.livelike.com/reference/patch_reaction-space-by-target-group-id-client-id-target-group-id-1-1.md
+  - https://docs.livelike.com/reference/prizeout-user-session.md
+  - https://docs.livelike.com/reference/profile-permissions-check.md
+  - https://docs.livelike.com/reference/publish-widget.md
+  - https://docs.livelike.com/reference/put-update-a-base-role.md
+  - https://docs.livelike.com/reference/remove-a-chatroom-access-rule.md
+  - https://docs.livelike.com/reference/remove-a-quest-reward.md
+  - https://docs.livelike.com/reference/remove-badge-from-quest.md
+  - https://docs.livelike.com/reference/remove-members-from-group.md
+  - https://docs.livelike.com/reference/report-a-widget.md
+  - https://docs.livelike.com/reference/retrieve-a-tier.md
+  - https://docs.livelike.com/reference/retrieve-reward-item.md
+  - https://docs.livelike.com/reference/retrieve-tier-benefit.md
+  - https://docs.livelike.com/reference/revoke-earned-badge.md
+  - https://docs.livelike.com/reference/reward-item-transfers.md
+  - https://docs.livelike.com/reference/role-grant-detail.md
+  - https://docs.livelike.com/reference/role-grants-list.md
+  - https://docs.livelike.com/reference/send-a-widget-chat-message.md
+  - https://docs.livelike.com/reference/send-chat-message.md
+  - https://docs.livelike.com/reference/unassignment-by-natural-key.md
+  - https://docs.livelike.com/reference/unblock-profile-by-profile-custom-id.md
+  - https://docs.livelike.com/reference/unblock-profile.md
+  - https://docs.livelike.com/reference/unpin-a-pinned-comment.md
+  - https://docs.livelike.com/reference/unpin-message.md
+  - https://docs.livelike.com/reference/update-a-comment-board.md
+  - https://docs.livelike.com/reference/update-a-comment.md
+  - https://docs.livelike.com/reference/update-a-flair-1.md
+  - https://docs.livelike.com/reference/update-a-flair-assignment.md
+  - https://docs.livelike.com/reference/update-a-flair.md
+  - https://docs.livelike.com/reference/update-a-redemption-key-by-code.md
+  - https://docs.livelike.com/reference/update-a-redemption-key.md
+  - https://docs.livelike.com/reference/update-a-role.md
+  - https://docs.livelike.com/reference/update-a-video-alert.md
+  - https://docs.livelike.com/reference/update-comment-board-by-custom-id.md
+  - https://docs.livelike.com/reference/update-comment-quality-rules.md
+  - https://docs.livelike.com/reference/update-image-number-prediction-option.md
+  - https://docs.livelike.com/reference/update-image-number-prediction.md
+  - https://docs.livelike.com/reference/update-image-prediction-option.md
+  - https://docs.livelike.com/reference/update-profile-group.md
+  - https://docs.livelike.com/reference/update-reaction-emoji.md
+  - https://docs.livelike.com/reference/update-text-prediction-option.md
+  - https://docs.livelike.com/reference/update-tier-benefit.md
+  - https://docs.livelike.com/reference/update-tier-group.md
+  - https://docs.livelike.com/reference/update-tier.md
+  - https://docs.livelike.com/reference/update-user-quest-task-progress.md
+  - https://docs.livelike.com/reference/update-user-quest.md
+  merge:
+    pages: 237
+    deduped: 0
+    conflicts_kept_first: 0

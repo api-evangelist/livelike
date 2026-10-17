@@ -1,0 +1,779 @@
+openapi: 3.2.0
+info:
+  title: engagement-suite Comments API
+  version: '1'
+servers:
+- url: https://cf-blast.livelikecdn.com/api/v1
+security:
+- {}
+tags:
+- name: Comments
+paths:
+  /comments/:
+    post:
+      summary: Create a Comment
+      description: ''
+      operationId: create-a-comment
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer Token
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - comment_board_id
+              properties:
+                comment_board_id:
+                  type: string
+                text:
+                  type: string
+                  description: Comment text
+                custom_data:
+                  type: string
+                parent_comment_id:
+                  type: string
+                  description: Comment id of the parent comment for which this comment be treated as a reply
+                attributes:
+                  type: array
+                  items:
+                    properties:
+                      key:
+                        type: string
+                      value:
+                        type: string
+                    required:
+                    - key
+                    - value
+                    type: object
+                is_excluded_from_trending:
+                  type: boolean
+                  default: 'false'
+                is_excluded_from_quality:
+                  type: boolean
+                  default: 'false'
+      responses:
+        '201':
+          description: '201'
+          content:
+            application/json:
+              examples:
+                New comment created:
+                  value: "{\n    \"id\": \"69d1c606-7759-4aa7-9a8d-747da62d10e6\",\n    \"url\": \"https://cf-blast.livelikecdn.com/api/v1/comments/69d1c606-7759-4aa7-9a8d-747da62d10e6/\",\n    \"comment_board_id\": \"d849e096-d36d-406e-bff0-0627f13b19d4\",\n    \"parent_comment_id\": \"822b69ea-cee0-422b-b0f8-4001a8cdee01\",\n    \"thread_comment_id\": \"822b69ea-cee0-422b-b0f8-4001a8cdee01\",\n    \"text\": \"Sample Comment\",\n    \"comment_depth\": 1,\n    \"custom_data\": null,\n    \"author_id\": \"460c435b-d3b7-4add-bc63-628b0911f811\",\n    \"is_deleted\": false,\n    \"created_at\": \"2022-12-22T08:59:32.761643Z\",\n    \"replies_url\": null,\n    \"attributes\": [\n      \t{\n          \"key\": \"key-1\",\n          \"value\": \"value-1\"\n      \t}\n      ]\n}"
+                  summary: New comment created
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: 69d1c606-7759-4aa7-9a8d-747da62d10e6
+                  url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/comments/69d1c606-7759-4aa7-9a8d-747da62d10e6/
+                  comment_board_id:
+                    type: string
+                    example: d849e096-d36d-406e-bff0-0627f13b19d4
+                  parent_comment_id:
+                    type: string
+                    example: 822b69ea-cee0-422b-b0f8-4001a8cdee01
+                  thread_comment_id:
+                    type: string
+                    example: 822b69ea-cee0-422b-b0f8-4001a8cdee01
+                  text:
+                    type: string
+                    example: Sample Comment
+                  comment_depth:
+                    type: integer
+                    example: 1
+                    default: 0
+                  custom_data: {}
+                  author_id:
+                    type: string
+                    example: 460c435b-d3b7-4add-bc63-628b0911f811
+                  is_deleted:
+                    type: boolean
+                    example: false
+                    default: true
+                  created_at:
+                    type: string
+                    example: '2022-12-22T08:59:32.761643Z'
+                  replies_url: {}
+                  attributes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                          example: key-1
+                        value:
+                          type: string
+                          example: value-1
+                  is_excluded_from_quality:
+                    type: boolean
+                  is_excluded_from_trending:
+                    type: boolean
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Too many mentions:
+                  value:
+                    mentions:
+                      detail: You can mention at most 10 users in a comment.
+                  summary: Too many mentions
+                Mention index out of bounds:
+                  summary: Mention index out of bounds
+                  value:
+                    mentions:
+                      detail: Mention 'end_index' out of bounds, should be less than text length
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Comments
+    get:
+      summary: List comments
+      description: ''
+      operationId: list-comments
+      parameters:
+      - name: comment_board_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: multiple comment_board_ids are accepted.
+      - name: thread_comment_id
+        in: query
+        description: Comment thread ID
+        schema:
+          type: string
+      - name: parent_comment_id
+        in: query
+        description: This will return all the replies to the parent_comment_id within that board
+        schema:
+          type: string
+      - name: ordering
+        in: query
+        description: 1. created_at → default ordering, returns comments in ascending order of created_at 2. -created_at. → opposite of created at, returns comments in descending order of created_at, 3. reaction_count -> order by reaction_count , in desc order 4. -reaction_count -> opposite of reaction_count. 5. reply_count -> order by reply_count of a comments , in desc order 6. -reply_count -> opposite of reply_count 7. trending_score -> Order by trending score, most trending comment first 8. relationship -> at the top comments from author with specified relationship in order_relationship_type 9. -relationship -> opposite of relationship
+        schema:
+          type: string
+          enum:
+          - created_at
+          - -created_at
+          - reaction_count
+          - -reaction_count
+          - reply_count
+          - -reply_count
+          - trending_score
+          - relationship
+          - -relationship
+          default: created_at
+      - name: replied_since
+        in: query
+        description: Replies created time greater than or equal
+        schema:
+          type: string
+      - name: replied_until
+        in: query
+        description: Replies created time less than or equal
+        schema:
+          type: string
+      - name: top_level
+        in: query
+        description: Set to true to return only top level comments
+        schema:
+          type: boolean
+      - name: is_reply
+        in: query
+        description: If the comment is a reply
+        schema:
+          type: boolean
+      - name: is_reported
+        in: query
+        description: Reported Comments
+        schema:
+          type: boolean
+      - name: is_deleted
+        in: query
+        description: Whether deleted comments should be included.  Setting is_deleted=False will exclude all deleted comments whether or not they have non-deleted replies.
+        schema:
+          type: boolean
+      - name: without_deleted_thread
+        in: query
+        description: Set to true to exclude deleted threads in response
+        schema:
+          type: boolean
+      - name: since
+        in: query
+        description: Filters comments created after this time.
+        schema:
+          type: string
+          format: date
+      - name: until
+        in: query
+        description: Filters comments created until this time.
+        schema:
+          type: string
+          format: date
+      - name: reaction_id
+        in: query
+        description: if want to sort comments by reaction_count on a specific reaction_id, this requires ordering as reaction_count, -reaction_count
+        schema:
+          type: string
+      - name: attributes
+        in: query
+        description: filters comment by key, value pair eg. ?attributes=key:value
+        schema:
+          type: string
+      - in: query
+        name: relationship_type
+        schema:
+          type: string
+        description: Unique keys for profile relationship types (Example - follow, friend)
+      - in: query
+        name: relationship_from_profile_id
+        schema:
+          type: string
+        description: Profile UUID for the from_profile in a profile relationship. This parameter or an auth token for the from_profile is required with relationship_type.
+      - in: query
+        name: mentioned_profile_id
+        schema:
+          type: string
+        description: Profile Id of mentioned user
+      - in: query
+        name: trending_score_gte
+        schema:
+          type: number
+        description: Trending score greater than or equal to
+      - in: query
+        name: trending_score_lte
+        schema:
+          type: number
+        description: Trending score less than or equal to
+      - in: query
+        name: is_high_quality
+        schema:
+          type: boolean
+        description: Filter comments that have been categorized as high quality passing all comment quality rules
+      - in: query
+        name: per_board_limit
+        schema:
+          type: number
+        description: Limit the number of comments for each passed comment board ID by a certain number
+      - in: query
+        name: ordering_relationship_type
+        schema:
+          type: string
+        description: Returns a list of comments along with specified relationship between integrator and author at the top or bottom depends of ordering param. If this param is used ordering must have relationship or -relationship value.
+      - in: query
+        name: exclude_inactive_profile
+        schema:
+          type: boolean
+        description: When set to true, excludes comments from authors whose profiles have been deactivated/deleted.
+      - in: query
+        name: without_reported_thread
+        schema:
+          type: boolean
+          default: 'false'
+        description: Use the without_reported_thread parameter to omit reported comments that have no replies. A reported parent comment that has replies remains visible so that its reply thread can still be rendered.
+      - in: query
+        name: inline_replies_ordering
+        schema:
+          type: string
+          enum:
+          - created_at
+          - -created_at
+          - reaction_count
+          - -reaction_count
+          - reply_count
+          - -reply_count
+          - trending_score
+        description: Controls the ordering of inline replies returned when replies_limit is specified. Possible values are the same as for the ordering query parameter. If this parameter is not provided, the ordering falls back to the ordering parameter.
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value:
+                    count: 1
+                    next: null
+                    previous: null
+                    results:
+                    - id: 3437f488-5c45-468b-8a14-c9b67ee77337
+                      url: https://cf-blast.livelikecdn.com/api/v1/comments/3437f488-5c45-468b-8a14-c9b67ee77337/
+                      comment_board_id: d849e096-d36d-406e-bff0-0627f13b19d4
+                      parent_comment_id: null
+                      thread_comment_id: 3437f488-5c45-468b-8a14-c9b67ee77337
+                      text: test_comment
+                      comment_depth: 0
+                      custom_data: custom data
+                      author_id: 96819c56-063d-4fad-929a-79a0648122f4
+                      author:
+                        id: 96819c56-063d-4fad-929a-79a0648122f4
+                        url: https://cf-blast.livelikecdn.com/api/v1/profiles/96819c56-063d-4fad-929a-79a0648122f4/
+                        created_at: '2023-01-24T13:52:13Z'
+                        nickname: Mega Shot
+                        custom_id: null
+                        custom_data: ''
+                      is_author_active: true
+                      is_deleted: false
+                      trending_score: 1.05439
+                      created_at: '2022-12-09T13:06:39.379146Z'
+                      replies_url: https://cf-blast.livelikecdn.com/api/v1/comments/?comment_board_id=d849e096-d36d-406e-bff0-0627f13b19d4&parent_comment_id=3437f488-5c45-468b-8a14-c9b67ee77337
+                      replies_count: 3
+                      attributes:
+                      - key: key-1
+                        value: value-1
+                      reactions:
+                      - reaction_id: ad6aea57-f4d3-4336-b12e-914147f3940b
+                        count: 14
+                        self_reacted_user_reaction_id: 2aed404b-e44f-4159-b53a-84cce0996203
+                      - reaction_id: c4c3cb96-13d4-464b-9450-41a2fa7dc56f
+                        count: 10
+                        self_reacted_user_reaction_id: 3b99b9a5-c325-4c5c-be77-1f485d52c5e3
+                      mentions:
+                      - mentioned_profile_nickname: Risky Keeper
+                        id: 3fe076c4-87e0-4237-a9ae-15410d0bca4a
+                        start_index: 1
+                        end_index: 2
+                        mentioned_profile_id: 398245d6-23a2-4c60-be38-5d3386462770
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      tags:
+      - Comments
+  /comments/{comment_id}/dismiss-reports/:
+    patch:
+      summary: Dismiss all reports for a reported comment
+      description: ''
+      operationId: dismiss-all-reports-for-a-reported-comment
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer Token
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - report_status
+              properties:
+                report_status:
+                  type: string
+                  description: dismissed
+      responses:
+        '202':
+          description: '202'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    “detail”: “All reports for this comment will be dismissed”\n}"
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Comments
+  /comments/{id}:
+    patch:
+      summary: Update a comment
+      description: ''
+      operationId: update-a-comment
+      parameters:
+      - name: id
+        in: path
+        description: comment-id
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                is_excluded_from_trending:
+                  type: boolean
+                is_excluded_from_quality:
+                  type: boolean
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"id\": \"3437f488-5c45-468b-8a14-c9b67ee77337\",\n    \"url\": \"https://cf-blast.livelikecdn.com/api/v1/comments/3437f488-5c45-468b-8a14-c9b67ee77337/\",\n    \"comment_board_id\": \"d849e096-d36d-406e-bff0-0627f13b19d4\",\n    \"parent_comment_id\": null,\n    \"thread_comment_id\": \"3437f488-5c45-468b-8a14-c9b67ee77337\",\n    \"text\": \"test_comment\",\n    \"comment_depth\": 0,\n    \"custom_data\": \"custom data\",\n    \"author_id\": \"96819c56-063d-4fad-929a-79a0648122f4\",\n    \"is_deleted\": false,\n    \"created_at\": \"2022-12-09T13:06:39.379146Z\",\n    \"replies_url\": \"https://cf-blast.livelikecdn.com/api/v1/comments/?comment_board_id=d849e096-d36d-406e-bff0-0627f13b19d4&parent_comment_id=3437f488-5c45-468b-8a14-c9b67ee77337\"\n}"
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: 3437f488-5c45-468b-8a14-c9b67ee77337
+                  url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/comments/3437f488-5c45-468b-8a14-c9b67ee77337/
+                  comment_board_id:
+                    type: string
+                    example: d849e096-d36d-406e-bff0-0627f13b19d4
+                  parent_comment_id: {}
+                  thread_comment_id:
+                    type: string
+                    example: 3437f488-5c45-468b-8a14-c9b67ee77337
+                  text:
+                    type: string
+                    example: test_comment
+                  comment_depth:
+                    type: integer
+                    example: 0
+                    default: 0
+                  custom_data:
+                    type: string
+                    example: custom data
+                  author_id:
+                    type: string
+                    example: 96819c56-063d-4fad-929a-79a0648122f4
+                  is_deleted:
+                    type: boolean
+                    example: false
+                    default: true
+                  created_at:
+                    type: string
+                    example: '2022-12-09T13:06:39.379146Z'
+                  replies_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/comments/?comment_board_id=d849e096-d36d-406e-bff0-0627f13b19d4&parent_comment_id=3437f488-5c45-468b-8a14-c9b67ee77337
+                  is_excluded_from_quality:
+                    type: boolean
+                  is_excluded_from_trending:
+                    type: string
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Comments
+    delete:
+      summary: Delete a comment
+      description: ''
+      operationId: delete-a-comment
+      parameters:
+      - name: id
+        in: path
+        description: comment-id
+        schema:
+          type: string
+        required: true
+      responses:
+        '204':
+          description: '204'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Comments
+x-readme-fauxas: true
+x-provenance:
+  method: searched
+  source: https://docs.livelike.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://docs.livelike.com/reference/add-bulk-chat-memberships.md
+  - https://docs.livelike.com/reference/add-members-to-group.md
+  - https://docs.livelike.com/reference/add-quest-badges.md
+  - https://docs.livelike.com/reference/award-a-badge-to-a-user.md
+  - https://docs.livelike.com/reference/batch-invoke-reward-action.md
+  - https://docs.livelike.com/reference/claim-user-quest-badges.md
+  - https://docs.livelike.com/reference/claim-user-quest-rewards.md
+  - https://docs.livelike.com/reference/create-a-base-role.md
+  - https://docs.livelike.com/reference/create-a-cheer-meter.md
+  - https://docs.livelike.com/reference/create-a-comment-board.md
+  - https://docs.livelike.com/reference/create-a-comment.md
+  - https://docs.livelike.com/reference/create-a-flair-assignment.md
+  - https://docs.livelike.com/reference/create-a-flair-scope.md
+  - https://docs.livelike.com/reference/create-a-flair.md
+  - https://docs.livelike.com/reference/create-a-group.md
+  - https://docs.livelike.com/reference/create-a-pin-message.md
+  - https://docs.livelike.com/reference/create-a-pinned-comment.md
+  - https://docs.livelike.com/reference/create-a-profile-block.md
+  - https://docs.livelike.com/reference/create-a-profile-relationship.md
+  - https://docs.livelike.com/reference/create-a-program-ban.md
+  - https://docs.livelike.com/reference/create-a-redemption-key.md
+  - https://docs.livelike.com/reference/create-a-registered-link.md
+  - https://docs.livelike.com/reference/create-a-relationship-type.md
+  - https://docs.livelike.com/reference/create-a-rich-post.md
+  - https://docs.livelike.com/reference/create-a-social-embed.md
+  - https://docs.livelike.com/reference/create-a-sticker.md
+  - https://docs.livelike.com/reference/create-a-text-quiz.md
+  - https://docs.livelike.com/reference/create-a-user-reaction.md
+  - https://docs.livelike.com/reference/create-a-user-tier.md
+  - https://docs.livelike.com/reference/create-a-video-alert.md
+  - https://docs.livelike.com/reference/create-an-access-rule-for-muteglobally-mute.md
+  - https://docs.livelike.com/reference/create-an-alert.md
+  - https://docs.livelike.com/reference/create-an-image-number-prediction.md
+  - https://docs.livelike.com/reference/create-an-image-quiz.md
+  - https://docs.livelike.com/reference/create-an-image-slider.md
+  - https://docs.livelike.com/reference/create-badge-1.md
+  - https://docs.livelike.com/reference/create-comment-report.md
+  - https://docs.livelike.com/reference/create-comments-ban.md
+  - https://docs.livelike.com/reference/create-image-number-prediction-follow-up.md
+  - https://docs.livelike.com/reference/create-image-number-prediction-option.md
+  - https://docs.livelike.com/reference/create-image-poll.md
+  - https://docs.livelike.com/reference/create-image-prediction-follow-up.md
+  - https://docs.livelike.com/reference/create-image-prediction-option.md
+  - https://docs.livelike.com/reference/create-poll-vote.md
+  - https://docs.livelike.com/reference/create-profile-by-custom-id.md
+  - https://docs.livelike.com/reference/create-quality-rules.md
+  - https://docs.livelike.com/reference/create-quest-rewards.md
+  - https://docs.livelike.com/reference/create-quests.md
+  - https://docs.livelike.com/reference/create-reaction-emoji.md
+  - https://docs.livelike.com/reference/create-reward-item.md
+  - https://docs.livelike.com/reference/create-reward-table-entry.md
+  - https://docs.livelike.com/reference/create-reward-table.md
+  - https://docs.livelike.com/reference/create-role-assignments.md
+  - https://docs.livelike.com/reference/create-role-grant-assignment.md
+  - https://docs.livelike.com/reference/create-roles.md
+  - https://docs.livelike.com/reference/create-task.md
+  - https://docs.livelike.com/reference/create-text-poll.md
+  - https://docs.livelike.com/reference/create-text-prediction-follow-up.md
+  - https://docs.livelike.com/reference/create-text-prediction-option.md
+  - https://docs.livelike.com/reference/create-tier-benefit.md
+  - https://docs.livelike.com/reference/create-tier-group.md
+  - https://docs.livelike.com/reference/create-tier.md
+  - https://docs.livelike.com/reference/create-user-profile.md
+  - https://docs.livelike.com/reference/create-user-quest.md
+  - https://docs.livelike.com/reference/creating-reward-actions.md
+  - https://docs.livelike.com/reference/credit-reward-item.md
+  - https://docs.livelike.com/reference/debit-reward-item.md
+  - https://docs.livelike.com/reference/delete-a-base-role.md
+  - https://docs.livelike.com/reference/delete-a-comment.md
+  - https://docs.livelike.com/reference/delete-a-flair-assignment.md
+  - https://docs.livelike.com/reference/delete-a-flair.md
+  - https://docs.livelike.com/reference/delete-a-program-ban.md
+  - https://docs.livelike.com/reference/delete-a-redemption-key.md
+  - https://docs.livelike.com/reference/delete-a-registered-link.md
+  - https://docs.livelike.com/reference/delete-a-role.md
+  - https://docs.livelike.com/reference/delete-a-tier-group.md
+  - https://docs.livelike.com/reference/delete-a-user-reaction.md
+  - https://docs.livelike.com/reference/delete-a-video-alert.md
+  - https://docs.livelike.com/reference/delete-bulk-chat-memberships.md
+  - https://docs.livelike.com/reference/delete-comment-board-by-custom-id.md
+  - https://docs.livelike.com/reference/delete-comment-board.md
+  - https://docs.livelike.com/reference/delete-comments-ban.md
+  - https://docs.livelike.com/reference/delete-profile-group.md
+  - https://docs.livelike.com/reference/delete-quest.md
+  - https://docs.livelike.com/reference/delete-reaction-emoji.md
+  - https://docs.livelike.com/reference/delete-reward-table-entry.md
+  - https://docs.livelike.com/reference/delete-reward-table.md
+  - https://docs.livelike.com/reference/delete-role-assignment.md
+  - https://docs.livelike.com/reference/delete-role-grant-unassignment.md
+  - https://docs.livelike.com/reference/delete-task.md
+  - https://docs.livelike.com/reference/delete-tier-benefit.md
+  - https://docs.livelike.com/reference/delete-tier.md
+  - https://docs.livelike.com/reference/delete-userquest.md
+  - https://docs.livelike.com/reference/delete-widget.md
+  - https://docs.livelike.com/reference/dismiss-all-reports-for-a-reported-comment.md
+  - https://docs.livelike.com/reference/flair-assignment-detail.md
+  - https://docs.livelike.com/reference/flair-detail-1.md
+  - https://docs.livelike.com/reference/flair-detail.md
+  - https://docs.livelike.com/reference/get-a-badge.md
+  - https://docs.livelike.com/reference/get-a-redemption-key.md
+  - https://docs.livelike.com/reference/get-a-rich-post.md
+  - https://docs.livelike.com/reference/get-a-social-embed.md
+  - https://docs.livelike.com/reference/get-a-text-ask-widget.md
+  - https://docs.livelike.com/reference/get-a-text-poll.md
+  - https://docs.livelike.com/reference/get-a-text-quiz.md
+  - https://docs.livelike.com/reference/get-a-video-alert.md
+  - https://docs.livelike.com/reference/get-an-alert-1.md
+  - https://docs.livelike.com/reference/get-an-asset-1.md
+  - https://docs.livelike.com/reference/get-an-asset.md
+  - https://docs.livelike.com/reference/get-an-emoji-slider.md
+  - https://docs.livelike.com/reference/get-an-image-poll.md
+  - https://docs.livelike.com/reference/get-an-image-quiz.md
+  - https://docs.livelike.com/reference/get-blocked-profile-ids.md
+  - https://docs.livelike.com/reference/get-blocked-profiles.md
+  - https://docs.livelike.com/reference/get-chatroom-message-count.md
+  - https://docs.livelike.com/reference/get-chatroom-messages.md
+  - https://docs.livelike.com/reference/get-comment-board-by-custom_id.md
+  - https://docs.livelike.com/reference/get-comment-counts.md
+  - https://docs.livelike.com/reference/get-image-number-prediction.md
+  - https://docs.livelike.com/reference/get-leaderboard-by-custom-id.md
+  - https://docs.livelike.com/reference/get-list-of-base-roles.md
+  - https://docs.livelike.com/reference/get-list-of-comment-board-bans.md
+  - https://docs.livelike.com/reference/get-list-of-comment-reports.md
+  - https://docs.livelike.com/reference/get-list-of-earned-badges.md
+  - https://docs.livelike.com/reference/get-list-of-quest-rewards.md
+  - https://docs.livelike.com/reference/get-list-of-resources.md
+  - https://docs.livelike.com/reference/get-pinned-message-info.md
+  - https://docs.livelike.com/reference/get-profile-by-custom-id.md
+  - https://docs.livelike.com/reference/get-profile-group-detail.md
+  - https://docs.livelike.com/reference/get-profile-group-members.md
+  - https://docs.livelike.com/reference/get-program-bans.md
+  - https://docs.livelike.com/reference/get-program-by-custom-id.md
+  - https://docs.livelike.com/reference/get-quest-badges.md
+  - https://docs.livelike.com/reference/get-quests.md
+  - https://docs.livelike.com/reference/get-reaction-space-by-target-group-id.md
+  - https://docs.livelike.com/reference/get-reported-chat-messages.md
+  - https://docs.livelike.com/reference/get-reward-item-balance.md
+  - https://docs.livelike.com/reference/get-reward-table-entry.md
+  - https://docs.livelike.com/reference/get-reward-table.md
+  - https://docs.livelike.com/reference/get-role-templates.md
+  - https://docs.livelike.com/reference/get-roles.md
+  - https://docs.livelike.com/reference/get-task.md
+  - https://docs.livelike.com/reference/get-the-list-of-comment-boards.md
+  - https://docs.livelike.com/reference/get-user-quest-rewards.md
+  - https://docs.livelike.com/reference/get-user-reaction-count-per-space.md
+  - https://docs.livelike.com/reference/get-user-reaction-count.md
+  - https://docs.livelike.com/reference/get-users-badges.md
+  - https://docs.livelike.com/reference/get_reaction-space-by-target-group-id-client-id-target-group-id-1.md
+  - https://docs.livelike.com/reference/invoking-custom-actions.md
+  - https://docs.livelike.com/reference/list-assets.md
+  - https://docs.livelike.com/reference/list-available-badges.md
+  - https://docs.livelike.com/reference/list-badge-progress.md
+  - https://docs.livelike.com/reference/list-comments-by-author.md
+  - https://docs.livelike.com/reference/list-comments.md
+  - https://docs.livelike.com/reference/list-flair-assignments.md
+  - https://docs.livelike.com/reference/list-flairs-1.md
+  - https://docs.livelike.com/reference/list-flairs.md
+  - https://docs.livelike.com/reference/list-invoked-reward-actions.md
+  - https://docs.livelike.com/reference/list-permissions.md
+  - https://docs.livelike.com/reference/list-pinned-comments.md
+  - https://docs.livelike.com/reference/list-profile-relationships.md
+  - https://docs.livelike.com/reference/list-profiles-who-have-earned-a-specific-badge.md
+  - https://docs.livelike.com/reference/list-program-sponsors.md
+  - https://docs.livelike.com/reference/list-quests.md
+  - https://docs.livelike.com/reference/list-reaction-spaces.md
+  - https://docs.livelike.com/reference/list-redemption-keys.md
+  - https://docs.livelike.com/reference/list-registered-links.md
+  - https://docs.livelike.com/reference/list-relationship-types.md
+  - https://docs.livelike.com/reference/list-replies-to-profiles-comments.md
+  - https://docs.livelike.com/reference/list-reward-actions.md
+  - https://docs.livelike.com/reference/list-reward-item-balances.md
+  - https://docs.livelike.com/reference/list-reward-item-transfers.md
+  - https://docs.livelike.com/reference/list-reward-items.md
+  - https://docs.livelike.com/reference/list-reward-tables.md
+  - https://docs.livelike.com/reference/list-reward-transactions.md
+  - https://docs.livelike.com/reference/list-rich-posts-1-1.md
+  - https://docs.livelike.com/reference/list-rich-posts-1.md
+  - https://docs.livelike.com/reference/list-rich-posts.md
+  - https://docs.livelike.com/reference/list-role-assignments.md
+  - https://docs.livelike.com/reference/list-tasks.md
+  - https://docs.livelike.com/reference/list-tier-benefits.md
+  - https://docs.livelike.com/reference/list-tier-groups.md
+  - https://docs.livelike.com/reference/list-tier-transactions.md
+  - https://docs.livelike.com/reference/list-tier.md
+  - https://docs.livelike.com/reference/list-user-quests.md
+  - https://docs.livelike.com/reference/list-user-reactions.md
+  - https://docs.livelike.com/reference/list-user-tiers.md
+  - https://docs.livelike.com/reference/list-widget-reports.md
+  - https://docs.livelike.com/reference/moderate-a-widget-report.md
+  - https://docs.livelike.com/reference/patch-update-a-base-role.md
+  - https://docs.livelike.com/reference/patch-update-a-role-copy.md
+  - https://docs.livelike.com/reference/patch_reaction-space-by-target-group-id-client-id-target-group-id-1-1.md
+  - https://docs.livelike.com/reference/prizeout-user-session.md
+  - https://docs.livelike.com/reference/profile-permissions-check.md
+  - https://docs.livelike.com/reference/publish-widget.md
+  - https://docs.livelike.com/reference/put-update-a-base-role.md
+  - https://docs.livelike.com/reference/remove-a-chatroom-access-rule.md
+  - https://docs.livelike.com/reference/remove-a-quest-reward.md
+  - https://docs.livelike.com/reference/remove-badge-from-quest.md
+  - https://docs.livelike.com/reference/remove-members-from-group.md
+  - https://docs.livelike.com/reference/report-a-widget.md
+  - https://docs.livelike.com/reference/retrieve-a-tier.md
+  - https://docs.livelike.com/reference/retrieve-reward-item.md
+  - https://docs.livelike.com/reference/retrieve-tier-benefit.md
+  - https://docs.livelike.com/reference/revoke-earned-badge.md
+  - https://docs.livelike.com/reference/reward-item-transfers.md
+  - https://docs.livelike.com/reference/role-grant-detail.md
+  - https://docs.livelike.com/reference/role-grants-list.md
+  - https://docs.livelike.com/reference/send-a-widget-chat-message.md
+  - https://docs.livelike.com/reference/send-chat-message.md
+  - https://docs.livelike.com/reference/unassignment-by-natural-key.md
+  - https://docs.livelike.com/reference/unblock-profile-by-profile-custom-id.md
+  - https://docs.livelike.com/reference/unblock-profile.md
+  - https://docs.livelike.com/reference/unpin-a-pinned-comment.md
+  - https://docs.livelike.com/reference/unpin-message.md
+  - https://docs.livelike.com/reference/update-a-comment-board.md
+  - https://docs.livelike.com/reference/update-a-comment.md
+  - https://docs.livelike.com/reference/update-a-flair-1.md
+  - https://docs.livelike.com/reference/update-a-flair-assignment.md
+  - https://docs.livelike.com/reference/update-a-flair.md
+  - https://docs.livelike.com/reference/update-a-redemption-key-by-code.md
+  - https://docs.livelike.com/reference/update-a-redemption-key.md
+  - https://docs.livelike.com/reference/update-a-role.md
+  - https://docs.livelike.com/reference/update-a-video-alert.md
+  - https://docs.livelike.com/reference/update-comment-board-by-custom-id.md
+  - https://docs.livelike.com/reference/update-comment-quality-rules.md
+  - https://docs.livelike.com/reference/update-image-number-prediction-option.md
+  - https://docs.livelike.com/reference/update-image-number-prediction.md
+  - https://docs.livelike.com/reference/update-image-prediction-option.md
+  - https://docs.livelike.com/reference/update-profile-group.md
+  - https://docs.livelike.com/reference/update-reaction-emoji.md
+  - https://docs.livelike.com/reference/update-text-prediction-option.md
+  - https://docs.livelike.com/reference/update-tier-benefit.md
+  - https://docs.livelike.com/reference/update-tier-group.md
+  - https://docs.livelike.com/reference/update-tier.md
+  - https://docs.livelike.com/reference/update-user-quest-task-progress.md
+  - https://docs.livelike.com/reference/update-user-quest.md
+  merge:
+    pages: 237
+    deduped: 0
+    conflicts_kept_first: 0

@@ -1,0 +1,624 @@
+openapi: 3.2.0
+info:
+  title: engagement-suite Text Quizzes API
+  version: '1'
+servers:
+- url: https://cf-blast.livelikecdn.com/api/v1
+security:
+- {}
+tags:
+- name: Text Quizzes
+paths:
+  /text-quizzes/:
+    post:
+      summary: Create a Text Quiz
+      description: ''
+      operationId: create-a-text-quiz
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - program_id
+              - question
+              - choices
+              properties:
+                program_id:
+                  type: string
+                  description: The id of the program to create the Text Quiz for
+                question:
+                  type: string
+                  description: The question or prompt asked by the Text Quiz
+                choices:
+                  type: array
+                  description: The choices of the Text Quiz
+                interactive_until:
+                  type: string
+                  description: The UTC time that the widget will stop accepting interactions
+                  format: date
+                playback_time_ms:
+                  type: integer
+                  description: Video playback time in milliseconds
+                  format: int32
+                custom_data:
+                  type: string
+                widget_attributes:
+                  type: array
+                  items:
+                    properties:
+                      key:
+                        type: string
+                      value:
+                        type: string
+                    required:
+                    - key
+                    - value
+                    type: object
+                sponsor_ids:
+                  type: array
+                  description: Links the ```sponsors``` with this Text Quiz. Note that only valid sponsor_ids will be linked to a Text Quiz.
+                  items:
+                    type: string
+      responses:
+        '201':
+          description: '201'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"choices\": [\n    {\n      \"answer_count\": 0,\n      \"answer_url\": \"https://blastrt-prod-us-east-1.livelikecdn.com/api/v1/widget-interactions/text-quiz/cfa2139a-2430-44e4-9e2f-a17a46ab6466/choices/cdf0ad02-b51d-4646-b0ca-2f0361f2c6ce/answers/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbmNyeXB0ZWQiOiJnQUFBQUFCaFM0a3VpR3JYajZYczRMUU1pOWhIeFVEejU2dUpSVVdGcGZKV19ja0UxbThlWmppVUF2UXEyOC1kak9BY2VMN0xFMWZiYzBPUzFXajNjSnhTckE3YnBIR0U2Zz09IiwiaXNzIjoiYmxhc3QiLCJpYXQiOjE2MzIzNDAyNzB9.qB5-XPKREBTy_4rzQSUYoznKVVW73XwoXwQy5ZF5bpk/\",\n      \"description\": \"Seattle Seahawks\",\n      \"id\": \"cdf0ad02-b51d-4646-b0ca-2f0361f2c6ce\",\n      \"is_correct\": false,\n      \"translatable_fields\": [\n        \"description\"\n      ],\n      \"translations\": {}\n    },\n    {\n      \"answer_count\": 0,\n      \"answer_url\": \"https://blastrt-prod-us-east-1.livelikecdn.com/api/v1/widget-interactions/text-quiz/cfa2139a-2430-44e4-9e2f-a17a46ab6466/choices/23191948-1901-49b5-b3c2-de77ddacf5bf/answers/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbmNyeXB0ZWQiOiJnQUFBQUFCaFM0a3VxcjhVTE5mTlFLdkl0WkM5bFJNRk9nOWFCN010ZWpSZ0Z5S1NYQjhHR2FTcGZELWRGU3o1MEh2WXpTbnNMNUpBR2g2WnROMGpPcnlKeXdqRUJxUEdRdz09IiwiaXNzIjoiYmxhc3QiLCJpYXQiOjE2MzIzNDAyNzB9._5h3I5C_oLYu80E8Z4QL5MWC6iHAFjTq_HFI72h1Hv4/\",\n      \"description\": \"Denver Broncos\",\n      \"id\": \"23191948-1901-49b5-b3c2-de77ddacf5bf\",\n      \"is_correct\": true,\n      \"translatable_fields\": [\n        \"description\"\n      ],\n      \"translations\": {}\n    }\n  ],\n  \"client_id\": \"UJQCf1jWIhKmQpOYdhe6H56Uc4Xp50b1zdVaOowO\",\n  \"created_at\": \"2021-09-22T19:42:13.569848Z\",\n  \"created_by\": {\n    \"id\": \"1bf5b2ff-d82b-4400-b4eb-38a8d7bf538c\",\n    \"image_url\": null,\n    \"name\": null\n  },\n  \"custom_data\": null,\n  \"engagement_count\": 0,\n  \"engagement_percent\": \"0.000\",\n  \"id\": \"cfa2139a-2430-44e4-9e2f-a17a46ab6466\",\n  \"impression_count\": 1,\n  \"impression_url\": \"https://blastrt-prod-us-east-1.livelikecdn.com/api/v1/widget-impressions/text-quiz/cfa2139a-2430-44e4-9e2f-a17a46ab6466/\",\n  \"interaction_url\": \"https://cf-blast.livelikecdn.com/api/v1/text-quizzes/cfa2139a-2430-44e4-9e2f-a17a46ab6466/interactions/\",\n  \"interactive_until\":\"2022-01-18T18:53:56.510Z\",\n  \"kind\": \"text-quiz\",\n  \"program_date_time\": null,\n  \"program_id\": \"075a1d11-1489-4dd0-b7c4-a7642f5f517f\",\n  \"publish_delay\": \"P0DT00H00M00S\",\n  \"published_at\": \"2021-09-22T19:42:13.813239Z\",\n  \"question\": \"Which team has won a Super Bowl more recently?\",\n  \"reactions\": [],\n  \"rewards_url\": null,\n  \"schedule_url\": \"https://cf-blast.livelikecdn.com/api/v1/text-quizzes/cfa2139a-2430-44e4-9e2f-a17a46ab6466/schedule/\",\n  \"scheduled_at\": \"2021-09-22T19:42:13.721870Z\",\n  \"sponsors\": [],\n  \"status\": \"published\",\n  \"subscribe_channel\": \"program.widget.cfa2139a-2430-44e4-9e2f-a17a46ab6466\",\n  \"timeout\": \"P0DT00H00M30S\",\n  \"translatable_fields\": [\n    \"question\"\n  ],\n  \"translations\": {},\n  \"unique_impression_count\": 1,\n  \"playback_time_ms\": null,\n  \"url\": \"https://cf-blast.livelikecdn.com/api/v1/text-quizzes/cfa2139a-2430-44e4-9e2f-a17a46ab6466/\",\n  \"widget_interactions_url_template\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/{profile_id}/widget-interactions/?text_quiz_id=cfa2139a-2430-44e4-9e2f-a17a46ab6466\"\n}"
+              schema:
+                type: object
+                properties:
+                  choices:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        answer_count:
+                          type: integer
+                          example: 0
+                          default: 0
+                        answer_url:
+                          type: string
+                          example: https://blastrt-prod-us-east-1.livelikecdn.com/api/v1/widget-interactions/text-quiz/cfa2139a-2430-44e4-9e2f-a17a46ab6466/choices/cdf0ad02-b51d-4646-b0ca-2f0361f2c6ce/answers/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbmNyeXB0ZWQiOiJnQUFBQUFCaFM0a3VpR3JYajZYczRMUU1pOWhIeFVEejU2dUpSVVdGcGZKV19ja0UxbThlWmppVUF2UXEyOC1kak9BY2VMN0xFMWZiYzBPUzFXajNjSnhTckE3YnBIR0U2Zz09IiwiaXNzIjoiYmxhc3QiLCJpYXQiOjE2MzIzNDAyNzB9.qB5-XPKREBTy_4rzQSUYoznKVVW73XwoXwQy5ZF5bpk/
+                        description:
+                          type: string
+                          example: Seattle Seahawks
+                        id:
+                          type: string
+                          example: cdf0ad02-b51d-4646-b0ca-2f0361f2c6ce
+                        is_correct:
+                          type: boolean
+                          example: false
+                          default: true
+                        translatable_fields:
+                          type: array
+                          items:
+                            type: string
+                            example: description
+                        translations:
+                          type: object
+                          properties: {}
+                  client_id:
+                    type: string
+                    example: UJQCf1jWIhKmQpOYdhe6H56Uc4Xp50b1zdVaOowO
+                  created_at:
+                    type: string
+                    example: '2021-09-22T19:42:13.569848Z'
+                  created_by:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: 1bf5b2ff-d82b-4400-b4eb-38a8d7bf538c
+                      image_url: {}
+                      name: {}
+                  custom_data: {}
+                  engagement_count:
+                    type: integer
+                    example: 0
+                    default: 0
+                  engagement_percent:
+                    type: string
+                    example: '0.000'
+                  id:
+                    type: string
+                    example: cfa2139a-2430-44e4-9e2f-a17a46ab6466
+                  impression_count:
+                    type: integer
+                    example: 1
+                    default: 0
+                  impression_url:
+                    type: string
+                    example: https://blastrt-prod-us-east-1.livelikecdn.com/api/v1/widget-impressions/text-quiz/cfa2139a-2430-44e4-9e2f-a17a46ab6466/
+                  interaction_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/text-quizzes/cfa2139a-2430-44e4-9e2f-a17a46ab6466/interactions/
+                  interactive_until:
+                    type: string
+                    example: '2022-01-18T18:53:56.510Z'
+                  kind:
+                    type: string
+                    example: text-quiz
+                  program_date_time: {}
+                  program_id:
+                    type: string
+                    example: 075a1d11-1489-4dd0-b7c4-a7642f5f517f
+                  publish_delay:
+                    type: string
+                    example: P0DT00H00M00S
+                  published_at:
+                    type: string
+                    example: '2021-09-22T19:42:13.813239Z'
+                  question:
+                    type: string
+                    example: Which team has won a Super Bowl more recently?
+                  reactions:
+                    type: array
+                  rewards_url: {}
+                  schedule_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/text-quizzes/cfa2139a-2430-44e4-9e2f-a17a46ab6466/schedule/
+                  scheduled_at:
+                    type: string
+                    example: '2021-09-22T19:42:13.721870Z'
+                  sponsors:
+                    type: array
+                  status:
+                    type: string
+                    example: published
+                  subscribe_channel:
+                    type: string
+                    example: program.widget.cfa2139a-2430-44e4-9e2f-a17a46ab6466
+                  timeout:
+                    type: string
+                    example: P0DT00H00M30S
+                  translatable_fields:
+                    type: array
+                    items:
+                      type: string
+                      example: question
+                  translations:
+                    type: object
+                    properties: {}
+                  unique_impression_count:
+                    type: integer
+                    example: 1
+                    default: 0
+                  playback_time_ms: {}
+                  url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/text-quizzes/cfa2139a-2430-44e4-9e2f-a17a46ab6466/
+                  widget_interactions_url_template:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/profiles/{profile_id}/widget-interactions/?text_quiz_id=cfa2139a-2430-44e4-9e2f-a17a46ab6466
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --location --request POST 'https://cf-blast.livelikecdn.com/api/v1/text-quizzes/' \\\n--header 'Authorization: Bearer EH8HZniPzO78fnQ7sYFEsX-C5ETfniMI8JZc-PwdgkVoTcIK73tY3Q' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"program_id\": \"<uuid of program>\",\n    \"question\": \"What is round and red?\",\n    \"choices\": [\n        {\n        \"description\":\"Appple\",\n        \"is_correct\":true\n    },{\n        \"description\":\"Orange\",\n        \"is_correct\":false\n    }\n    ]\n}'"
+          name: sample
+        samples-languages:
+        - curl
+      tags:
+      - Text Quizzes
+  /text-quizzes/{id}/:
+    get:
+      summary: Get a Text Quiz
+      description: ''
+      operationId: get-a-text-quiz
+      parameters:
+      - name: id
+        in: path
+        description: Quiz ID
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"id\": \"cfa2139a-2430-44e4-9e2f-a17a46ab6466\",\n  \"url\": \"https://cf-blast.livelikecdn.com/api/v1/text-quizzes/cfa2139a-2430-44e4-9e2f-a17a46ab6466/\",\n  \"program_id\": \"075a1d11-1489-4dd0-b7c4-a7642f5f517f\",\n  \"client_id\": \"UJQCf1jWIhKmQpOYdhe6H56Uc4Xp50b1zdVaOowO\",\n  \"created_at\": \"2021-09-22T19:42:13.569848Z\",\n  \"kind\": \"text-quiz\",\n  \"published_at\": \"2021-09-22T19:42:13.813239Z\",\n  \"scheduled_at\": \"2021-09-22T19:42:13.721870Z\",\n  \"question\": \"Which team has won a Super Bowl more recently?\",\n  \"timeout\": \"P0DT00H00M30S\",\n  \"choices\": [\n    {\n      \"id\": \"cdf0ad02-b51d-4646-b0ca-2f0361f2c6ce\",\n      \"description\": \"Seattle Seahawks\",\n      \"is_correct\": false,\n      \"answer_url\": \"https://blastrt-prod-us-east-1.livelikecdn.com/api/v1/widget-interactions/text-quiz/cfa2139a-2430-44e4-9e2f-a17a46ab6466/choices/cdf0ad02-b51d-4646-b0ca-2f0361f2c6ce/answers/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbmNyeXB0ZWQiOiJnQUFBQUFCaFRHR3BKM3FZdXdGVk5zWTdvQVVORGh6SnZ2dHkzYjAtR2lIb3dzWVBabTZlN01aZWg0Vl9ZRy1Bd0twU2wyN0JiUllKZy1NY0xjN1JPenVMbVN4YVhlSHlBdz09IiwiaXNzIjoiYmxhc3QiLCJpYXQiOjE2MzIzOTU2ODl9.GLLYYuFQFB6ErNKQTSoYJMK7rE-A5g8HjYIm5-WiYxY/\",\n      \"answer_count\": 0,\n      \"translations\": {\n        \n      },\n      \"translatable_fields\": [\n        \"description\"\n      ]\n    },\n    {\n      \"id\": \"23191948-1901-49b5-b3c2-de77ddacf5bf\",\n      \"description\": \"Denver Broncos\",\n      \"is_correct\": true,\n      \"answer_url\": \"https://blastrt-prod-us-east-1.livelikecdn.com/api/v1/widget-interactions/text-quiz/cfa2139a-2430-44e4-9e2f-a17a46ab6466/choices/23191948-1901-49b5-b3c2-de77ddacf5bf/answers/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbmNyeXB0ZWQiOiJnQUFBQUFCaFRHR3BWNTFZMHhnM193bkdYV0hlQUNGaEhnTklNc2ZsYnU3RG9WeE1oR2Y4d01vblhDMkJITHZtT0l2cURETkMydnd0QlRqa3V0Sk9pSGNsZVRFdTA3ZlVPQT09IiwiaXNzIjoiYmxhc3QiLCJpYXQiOjE2MzIzOTU2ODl9.SCphutt_Pr3KDa-Bzqzmr5rJ0Oh89hbnXrHp2WnR8zw/\",\n      \"answer_count\": 0,\n      \"translations\": {\n        \n      },\n      \"translatable_fields\": [\n        \"description\"\n      ]\n    }\n  ],\n  \"subscribe_channel\": \"program.widget.cfa2139a-2430-44e4-9e2f-a17a46ab6466\",\n  \"program_date_time\": null,\n  \"publish_delay\": \"P0DT00H00M00S\",\n  \"interaction_url\": \"https://cf-blast.livelikecdn.com/api/v1/text-quizzes/cfa2139a-2430-44e4-9e2f-a17a46ab6466/interactions/\",\n  \"impression_url\": \"https://blastrt-prod-us-east-1.livelikecdn.com/api/v1/widget-impressions/text-quiz/cfa2139a-2430-44e4-9e2f-a17a46ab6466/\",\n  \"impression_count\": 1,\n  \"interactive_until\":\"2022-01-18T18:53:56.510Z\",\n  \"unique_impression_count\": 1,\n  \"engagement_count\": 0,\n  \"engagement_percent\": \"0.000\",\n  \"status\": \"published\",\n  \"created_by\": {\n    \"id\": \"1bf5b2ff-d82b-4400-b4eb-38a8d7bf538c\",\n    \"name\": null,\n    \"image_url\": null\n  },\n  \"schedule_url\": \"https://cf-blast.livelikecdn.com/api/v1/text-quizzes/cfa2139a-2430-44e4-9e2f-a17a46ab6466/schedule/\",\n  \"rewards_url\": null,\n  \"translations\": {\n    \n  },\n  \"translatable_fields\": [\n    \"question\"\n  ],\n  \"reactions\": [\n    \n  ],\n  \"custom_data\": null,\n  \"sponsors\": [\n    \n  ],\n  \"widget_interactions_url_template\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/{profile_id}/widget-interactions/?text_quiz_id=cfa2139a-2430-44e4-9e2f-a17a46ab6466\",\n  \"playback_time_ms\": null\n}"
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: cfa2139a-2430-44e4-9e2f-a17a46ab6466
+                  url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/text-quizzes/cfa2139a-2430-44e4-9e2f-a17a46ab6466/
+                  program_id:
+                    type: string
+                    example: 075a1d11-1489-4dd0-b7c4-a7642f5f517f
+                  client_id:
+                    type: string
+                    example: UJQCf1jWIhKmQpOYdhe6H56Uc4Xp50b1zdVaOowO
+                  created_at:
+                    type: string
+                    example: '2021-09-22T19:42:13.569848Z'
+                  kind:
+                    type: string
+                    example: text-quiz
+                  published_at:
+                    type: string
+                    example: '2021-09-22T19:42:13.813239Z'
+                  scheduled_at:
+                    type: string
+                    example: '2021-09-22T19:42:13.721870Z'
+                  question:
+                    type: string
+                    example: Which team has won a Super Bowl more recently?
+                  timeout:
+                    type: string
+                    example: P0DT00H00M30S
+                  choices:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: cdf0ad02-b51d-4646-b0ca-2f0361f2c6ce
+                        description:
+                          type: string
+                          example: Seattle Seahawks
+                        is_correct:
+                          type: boolean
+                          example: false
+                          default: true
+                        answer_url:
+                          type: string
+                          example: https://blastrt-prod-us-east-1.livelikecdn.com/api/v1/widget-interactions/text-quiz/cfa2139a-2430-44e4-9e2f-a17a46ab6466/choices/cdf0ad02-b51d-4646-b0ca-2f0361f2c6ce/answers/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbmNyeXB0ZWQiOiJnQUFBQUFCaFRHR3BKM3FZdXdGVk5zWTdvQVVORGh6SnZ2dHkzYjAtR2lIb3dzWVBabTZlN01aZWg0Vl9ZRy1Bd0twU2wyN0JiUllKZy1NY0xjN1JPenVMbVN4YVhlSHlBdz09IiwiaXNzIjoiYmxhc3QiLCJpYXQiOjE2MzIzOTU2ODl9.GLLYYuFQFB6ErNKQTSoYJMK7rE-A5g8HjYIm5-WiYxY/
+                        answer_count:
+                          type: integer
+                          example: 0
+                          default: 0
+                        translations:
+                          type: object
+                          properties: {}
+                        translatable_fields:
+                          type: array
+                          items:
+                            type: string
+                            example: description
+                  subscribe_channel:
+                    type: string
+                    example: program.widget.cfa2139a-2430-44e4-9e2f-a17a46ab6466
+                  program_date_time: {}
+                  publish_delay:
+                    type: string
+                    example: P0DT00H00M00S
+                  interaction_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/text-quizzes/cfa2139a-2430-44e4-9e2f-a17a46ab6466/interactions/
+                  impression_url:
+                    type: string
+                    example: https://blastrt-prod-us-east-1.livelikecdn.com/api/v1/widget-impressions/text-quiz/cfa2139a-2430-44e4-9e2f-a17a46ab6466/
+                  impression_count:
+                    type: integer
+                    example: 1
+                    default: 0
+                  interactive_until:
+                    type: string
+                    example: '2022-01-18T18:53:56.510Z'
+                  unique_impression_count:
+                    type: integer
+                    example: 1
+                    default: 0
+                  engagement_count:
+                    type: integer
+                    example: 0
+                    default: 0
+                  engagement_percent:
+                    type: string
+                    example: '0.000'
+                  status:
+                    type: string
+                    example: published
+                  created_by:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: 1bf5b2ff-d82b-4400-b4eb-38a8d7bf538c
+                      name: {}
+                      image_url: {}
+                  schedule_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/text-quizzes/cfa2139a-2430-44e4-9e2f-a17a46ab6466/schedule/
+                  rewards_url: {}
+                  translations:
+                    type: object
+                    properties: {}
+                  translatable_fields:
+                    type: array
+                    items:
+                      type: string
+                      example: question
+                  reactions:
+                    type: array
+                  custom_data: {}
+                  sponsors:
+                    type: array
+                  widget_interactions_url_template:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/profiles/{profile_id}/widget-interactions/?text_quiz_id=cfa2139a-2430-44e4-9e2f-a17a46ab6466
+                  playback_time_ms: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Text Quizzes
+x-readme-fauxas: true
+x-provenance:
+  method: searched
+  source: https://docs.livelike.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://docs.livelike.com/reference/add-bulk-chat-memberships.md
+  - https://docs.livelike.com/reference/add-members-to-group.md
+  - https://docs.livelike.com/reference/add-quest-badges.md
+  - https://docs.livelike.com/reference/award-a-badge-to-a-user.md
+  - https://docs.livelike.com/reference/batch-invoke-reward-action.md
+  - https://docs.livelike.com/reference/claim-user-quest-badges.md
+  - https://docs.livelike.com/reference/claim-user-quest-rewards.md
+  - https://docs.livelike.com/reference/create-a-base-role.md
+  - https://docs.livelike.com/reference/create-a-cheer-meter.md
+  - https://docs.livelike.com/reference/create-a-comment-board.md
+  - https://docs.livelike.com/reference/create-a-comment.md
+  - https://docs.livelike.com/reference/create-a-flair-assignment.md
+  - https://docs.livelike.com/reference/create-a-flair-scope.md
+  - https://docs.livelike.com/reference/create-a-flair.md
+  - https://docs.livelike.com/reference/create-a-group.md
+  - https://docs.livelike.com/reference/create-a-pin-message.md
+  - https://docs.livelike.com/reference/create-a-pinned-comment.md
+  - https://docs.livelike.com/reference/create-a-profile-block.md
+  - https://docs.livelike.com/reference/create-a-profile-relationship.md
+  - https://docs.livelike.com/reference/create-a-program-ban.md
+  - https://docs.livelike.com/reference/create-a-redemption-key.md
+  - https://docs.livelike.com/reference/create-a-registered-link.md
+  - https://docs.livelike.com/reference/create-a-relationship-type.md
+  - https://docs.livelike.com/reference/create-a-rich-post.md
+  - https://docs.livelike.com/reference/create-a-social-embed.md
+  - https://docs.livelike.com/reference/create-a-sticker.md
+  - https://docs.livelike.com/reference/create-a-text-quiz.md
+  - https://docs.livelike.com/reference/create-a-user-reaction.md
+  - https://docs.livelike.com/reference/create-a-user-tier.md
+  - https://docs.livelike.com/reference/create-a-video-alert.md
+  - https://docs.livelike.com/reference/create-an-access-rule-for-muteglobally-mute.md
+  - https://docs.livelike.com/reference/create-an-alert.md
+  - https://docs.livelike.com/reference/create-an-image-number-prediction.md
+  - https://docs.livelike.com/reference/create-an-image-quiz.md
+  - https://docs.livelike.com/reference/create-an-image-slider.md
+  - https://docs.livelike.com/reference/create-badge-1.md
+  - https://docs.livelike.com/reference/create-comment-report.md
+  - https://docs.livelike.com/reference/create-comments-ban.md
+  - https://docs.livelike.com/reference/create-image-number-prediction-follow-up.md
+  - https://docs.livelike.com/reference/create-image-number-prediction-option.md
+  - https://docs.livelike.com/reference/create-image-poll.md
+  - https://docs.livelike.com/reference/create-image-prediction-follow-up.md
+  - https://docs.livelike.com/reference/create-image-prediction-option.md
+  - https://docs.livelike.com/reference/create-poll-vote.md
+  - https://docs.livelike.com/reference/create-profile-by-custom-id.md
+  - https://docs.livelike.com/reference/create-quality-rules.md
+  - https://docs.livelike.com/reference/create-quest-rewards.md
+  - https://docs.livelike.com/reference/create-quests.md
+  - https://docs.livelike.com/reference/create-reaction-emoji.md
+  - https://docs.livelike.com/reference/create-reward-item.md
+  - https://docs.livelike.com/reference/create-reward-table-entry.md
+  - https://docs.livelike.com/reference/create-reward-table.md
+  - https://docs.livelike.com/reference/create-role-assignments.md
+  - https://docs.livelike.com/reference/create-role-grant-assignment.md
+  - https://docs.livelike.com/reference/create-roles.md
+  - https://docs.livelike.com/reference/create-task.md
+  - https://docs.livelike.com/reference/create-text-poll.md
+  - https://docs.livelike.com/reference/create-text-prediction-follow-up.md
+  - https://docs.livelike.com/reference/create-text-prediction-option.md
+  - https://docs.livelike.com/reference/create-tier-benefit.md
+  - https://docs.livelike.com/reference/create-tier-group.md
+  - https://docs.livelike.com/reference/create-tier.md
+  - https://docs.livelike.com/reference/create-user-profile.md
+  - https://docs.livelike.com/reference/create-user-quest.md
+  - https://docs.livelike.com/reference/creating-reward-actions.md
+  - https://docs.livelike.com/reference/credit-reward-item.md
+  - https://docs.livelike.com/reference/debit-reward-item.md
+  - https://docs.livelike.com/reference/delete-a-base-role.md
+  - https://docs.livelike.com/reference/delete-a-comment.md
+  - https://docs.livelike.com/reference/delete-a-flair-assignment.md
+  - https://docs.livelike.com/reference/delete-a-flair.md
+  - https://docs.livelike.com/reference/delete-a-program-ban.md
+  - https://docs.livelike.com/reference/delete-a-redemption-key.md
+  - https://docs.livelike.com/reference/delete-a-registered-link.md
+  - https://docs.livelike.com/reference/delete-a-role.md
+  - https://docs.livelike.com/reference/delete-a-tier-group.md
+  - https://docs.livelike.com/reference/delete-a-user-reaction.md
+  - https://docs.livelike.com/reference/delete-a-video-alert.md
+  - https://docs.livelike.com/reference/delete-bulk-chat-memberships.md
+  - https://docs.livelike.com/reference/delete-comment-board-by-custom-id.md
+  - https://docs.livelike.com/reference/delete-comment-board.md
+  - https://docs.livelike.com/reference/delete-comments-ban.md
+  - https://docs.livelike.com/reference/delete-profile-group.md
+  - https://docs.livelike.com/reference/delete-quest.md
+  - https://docs.livelike.com/reference/delete-reaction-emoji.md
+  - https://docs.livelike.com/reference/delete-reward-table-entry.md
+  - https://docs.livelike.com/reference/delete-reward-table.md
+  - https://docs.livelike.com/reference/delete-role-assignment.md
+  - https://docs.livelike.com/reference/delete-role-grant-unassignment.md
+  - https://docs.livelike.com/reference/delete-task.md
+  - https://docs.livelike.com/reference/delete-tier-benefit.md
+  - https://docs.livelike.com/reference/delete-tier.md
+  - https://docs.livelike.com/reference/delete-userquest.md
+  - https://docs.livelike.com/reference/delete-widget.md
+  - https://docs.livelike.com/reference/dismiss-all-reports-for-a-reported-comment.md
+  - https://docs.livelike.com/reference/flair-assignment-detail.md
+  - https://docs.livelike.com/reference/flair-detail-1.md
+  - https://docs.livelike.com/reference/flair-detail.md
+  - https://docs.livelike.com/reference/get-a-badge.md
+  - https://docs.livelike.com/reference/get-a-redemption-key.md
+  - https://docs.livelike.com/reference/get-a-rich-post.md
+  - https://docs.livelike.com/reference/get-a-social-embed.md
+  - https://docs.livelike.com/reference/get-a-text-ask-widget.md
+  - https://docs.livelike.com/reference/get-a-text-poll.md
+  - https://docs.livelike.com/reference/get-a-text-quiz.md
+  - https://docs.livelike.com/reference/get-a-video-alert.md
+  - https://docs.livelike.com/reference/get-an-alert-1.md
+  - https://docs.livelike.com/reference/get-an-asset-1.md
+  - https://docs.livelike.com/reference/get-an-asset.md
+  - https://docs.livelike.com/reference/get-an-emoji-slider.md
+  - https://docs.livelike.com/reference/get-an-image-poll.md
+  - https://docs.livelike.com/reference/get-an-image-quiz.md
+  - https://docs.livelike.com/reference/get-blocked-profile-ids.md
+  - https://docs.livelike.com/reference/get-blocked-profiles.md
+  - https://docs.livelike.com/reference/get-chatroom-message-count.md
+  - https://docs.livelike.com/reference/get-chatroom-messages.md
+  - https://docs.livelike.com/reference/get-comment-board-by-custom_id.md
+  - https://docs.livelike.com/reference/get-comment-counts.md
+  - https://docs.livelike.com/reference/get-image-number-prediction.md
+  - https://docs.livelike.com/reference/get-leaderboard-by-custom-id.md
+  - https://docs.livelike.com/reference/get-list-of-base-roles.md
+  - https://docs.livelike.com/reference/get-list-of-comment-board-bans.md
+  - https://docs.livelike.com/reference/get-list-of-comment-reports.md
+  - https://docs.livelike.com/reference/get-list-of-earned-badges.md
+  - https://docs.livelike.com/reference/get-list-of-quest-rewards.md
+  - https://docs.livelike.com/reference/get-list-of-resources.md
+  - https://docs.livelike.com/reference/get-pinned-message-info.md
+  - https://docs.livelike.com/reference/get-profile-by-custom-id.md
+  - https://docs.livelike.com/reference/get-profile-group-detail.md
+  - https://docs.livelike.com/reference/get-profile-group-members.md
+  - https://docs.livelike.com/reference/get-program-bans.md
+  - https://docs.livelike.com/reference/get-program-by-custom-id.md
+  - https://docs.livelike.com/reference/get-quest-badges.md
+  - https://docs.livelike.com/reference/get-quests.md
+  - https://docs.livelike.com/reference/get-reaction-space-by-target-group-id.md
+  - https://docs.livelike.com/reference/get-reported-chat-messages.md
+  - https://docs.livelike.com/reference/get-reward-item-balance.md
+  - https://docs.livelike.com/reference/get-reward-table-entry.md
+  - https://docs.livelike.com/reference/get-reward-table.md
+  - https://docs.livelike.com/reference/get-role-templates.md
+  - https://docs.livelike.com/reference/get-roles.md
+  - https://docs.livelike.com/reference/get-task.md
+  - https://docs.livelike.com/reference/get-the-list-of-comment-boards.md
+  - https://docs.livelike.com/reference/get-user-quest-rewards.md
+  - https://docs.livelike.com/reference/get-user-reaction-count-per-space.md
+  - https://docs.livelike.com/reference/get-user-reaction-count.md
+  - https://docs.livelike.com/reference/get-users-badges.md
+  - https://docs.livelike.com/reference/get_reaction-space-by-target-group-id-client-id-target-group-id-1.md
+  - https://docs.livelike.com/reference/invoking-custom-actions.md
+  - https://docs.livelike.com/reference/list-assets.md
+  - https://docs.livelike.com/reference/list-available-badges.md
+  - https://docs.livelike.com/reference/list-badge-progress.md
+  - https://docs.livelike.com/reference/list-comments-by-author.md
+  - https://docs.livelike.com/reference/list-comments.md
+  - https://docs.livelike.com/reference/list-flair-assignments.md
+  - https://docs.livelike.com/reference/list-flairs-1.md
+  - https://docs.livelike.com/reference/list-flairs.md
+  - https://docs.livelike.com/reference/list-invoked-reward-actions.md
+  - https://docs.livelike.com/reference/list-permissions.md
+  - https://docs.livelike.com/reference/list-pinned-comments.md
+  - https://docs.livelike.com/reference/list-profile-relationships.md
+  - https://docs.livelike.com/reference/list-profiles-who-have-earned-a-specific-badge.md
+  - https://docs.livelike.com/reference/list-program-sponsors.md
+  - https://docs.livelike.com/reference/list-quests.md
+  - https://docs.livelike.com/reference/list-reaction-spaces.md
+  - https://docs.livelike.com/reference/list-redemption-keys.md
+  - https://docs.livelike.com/reference/list-registered-links.md
+  - https://docs.livelike.com/reference/list-relationship-types.md
+  - https://docs.livelike.com/reference/list-replies-to-profiles-comments.md
+  - https://docs.livelike.com/reference/list-reward-actions.md
+  - https://docs.livelike.com/reference/list-reward-item-balances.md
+  - https://docs.livelike.com/reference/list-reward-item-transfers.md
+  - https://docs.livelike.com/reference/list-reward-items.md
+  - https://docs.livelike.com/reference/list-reward-tables.md
+  - https://docs.livelike.com/reference/list-reward-transactions.md
+  - https://docs.livelike.com/reference/list-rich-posts-1-1.md
+  - https://docs.livelike.com/reference/list-rich-posts-1.md
+  - https://docs.livelike.com/reference/list-rich-posts.md
+  - https://docs.livelike.com/reference/list-role-assignments.md
+  - https://docs.livelike.com/reference/list-tasks.md
+  - https://docs.livelike.com/reference/list-tier-benefits.md
+  - https://docs.livelike.com/reference/list-tier-groups.md
+  - https://docs.livelike.com/reference/list-tier-transactions.md
+  - https://docs.livelike.com/reference/list-tier.md
+  - https://docs.livelike.com/reference/list-user-quests.md
+  - https://docs.livelike.com/reference/list-user-reactions.md
+  - https://docs.livelike.com/reference/list-user-tiers.md
+  - https://docs.livelike.com/reference/list-widget-reports.md
+  - https://docs.livelike.com/reference/moderate-a-widget-report.md
+  - https://docs.livelike.com/reference/patch-update-a-base-role.md
+  - https://docs.livelike.com/reference/patch-update-a-role-copy.md
+  - https://docs.livelike.com/reference/patch_reaction-space-by-target-group-id-client-id-target-group-id-1-1.md
+  - https://docs.livelike.com/reference/prizeout-user-session.md
+  - https://docs.livelike.com/reference/profile-permissions-check.md
+  - https://docs.livelike.com/reference/publish-widget.md
+  - https://docs.livelike.com/reference/put-update-a-base-role.md
+  - https://docs.livelike.com/reference/remove-a-chatroom-access-rule.md
+  - https://docs.livelike.com/reference/remove-a-quest-reward.md
+  - https://docs.livelike.com/reference/remove-badge-from-quest.md
+  - https://docs.livelike.com/reference/remove-members-from-group.md
+  - https://docs.livelike.com/reference/report-a-widget.md
+  - https://docs.livelike.com/reference/retrieve-a-tier.md
+  - https://docs.livelike.com/reference/retrieve-reward-item.md
+  - https://docs.livelike.com/reference/retrieve-tier-benefit.md
+  - https://docs.livelike.com/reference/revoke-earned-badge.md
+  - https://docs.livelike.com/reference/reward-item-transfers.md
+  - https://docs.livelike.com/reference/role-grant-detail.md
+  - https://docs.livelike.com/reference/role-grants-list.md
+  - https://docs.livelike.com/reference/send-a-widget-chat-message.md
+  - https://docs.livelike.com/reference/send-chat-message.md
+  - https://docs.livelike.com/reference/unassignment-by-natural-key.md
+  - https://docs.livelike.com/reference/unblock-profile-by-profile-custom-id.md
+  - https://docs.livelike.com/reference/unblock-profile.md
+  - https://docs.livelike.com/reference/unpin-a-pinned-comment.md
+  - https://docs.livelike.com/reference/unpin-message.md
+  - https://docs.livelike.com/reference/update-a-comment-board.md
+  - https://docs.livelike.com/reference/update-a-comment.md
+  - https://docs.livelike.com/reference/update-a-flair-1.md
+  - https://docs.livelike.com/reference/update-a-flair-assignment.md
+  - https://docs.livelike.com/reference/update-a-flair.md
+  - https://docs.livelike.com/reference/update-a-redemption-key-by-code.md
+  - https://docs.livelike.com/reference/update-a-redemption-key.md
+  - https://docs.livelike.com/reference/update-a-role.md
+  - https://docs.livelike.com/reference/update-a-video-alert.md
+  - https://docs.livelike.com/reference/update-comment-board-by-custom-id.md
+  - https://docs.livelike.com/reference/update-comment-quality-rules.md
+  - https://docs.livelike.com/reference/update-image-number-prediction-option.md
+  - https://docs.livelike.com/reference/update-image-number-prediction.md
+  - https://docs.livelike.com/reference/update-image-prediction-option.md
+  - https://docs.livelike.com/reference/update-profile-group.md
+  - https://docs.livelike.com/reference/update-reaction-emoji.md
+  - https://docs.livelike.com/reference/update-text-prediction-option.md
+  - https://docs.livelike.com/reference/update-tier-benefit.md
+  - https://docs.livelike.com/reference/update-tier-group.md
+  - https://docs.livelike.com/reference/update-tier.md
+  - https://docs.livelike.com/reference/update-user-quest-task-progress.md
+  - https://docs.livelike.com/reference/update-user-quest.md
+  merge:
+    pages: 237
+    deduped: 0
+    conflicts_kept_first: 0

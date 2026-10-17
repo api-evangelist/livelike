@@ -1,0 +1,624 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: New Application Ab Test Quests API
+servers:
+- url: https://cf-blast.livelikecdn.com/api/v1/applications
+tags:
+- name: Ab Test Quests
+paths:
+  /{client-id}/ab-test-quests/:
+    post:
+      description: ''
+      responses:
+        '200':
+          description: ''
+        '201':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              examples:
+                Created:
+                  summary: Created
+                  value:
+                    id: 94d91bab-43bb-4c3b-a8ad-5c00f4588f0c
+                    quest_id: 69c98a19-426c-4ae1-a77e-62e0167aa4d1
+                    quest_name: Sample Quest
+                    quest_description: This is a sample AB Quest
+                    name: Test User Engagment
+                    description: Test uesr engagement for different reward amounts
+                    variants:
+                    - id: c96baa68-06be-4c85-8422-44ea102a6735
+                      name: Variant 1
+                      description: null
+                      allocation_percentage: '50.00'
+                      rewards:
+                      - id: 4b211889-f5fc-4001-a9d5-11ba76215a46
+                        url: http://localhost:8888/api/v1/quest-rewards/4b211889-f5fc-4001-a9d5-11ba76215a46/
+                        quest_id: 69c98a19-426c-4ae1-a77e-62e0167aa4d1
+                        reward_item_id: 3021bb8e-a372-41c5-a6c7-d8ca2aedf8f9
+                        reward_item_name: JULY Reward
+                        reward_item_amount: 10
+                        test_variants:
+                        - id: c96baa68-06be-4c85-8422-44ea102a6735
+                          name: Variant 1
+                          description: null
+                          allocation_percentage: '50.00'
+                        leaderboard_ids: []
+                      tasks: []
+                      badges:
+                      - id: e91e1007-8f77-4e4e-9435-fd2f3255aabd
+                        url: http://localhost:8888/api/v1/badges/e91e1007-8f77-4e4e-9435-fd2f3255aabd/
+                        client_id: PlI2efBCBRGw56KBcHucDvTevGv5x5Egqn0R2P8R
+                        name: Badge
+                        description: null
+                        badge_icon_url: /media/assets/3ab52963-c7bd-452f-8575-8b00c238ff48.jpg
+                        mimetype: application/octet-stream
+                        registered_links: []
+                        file: http://localhost:8888/media/assets/3ab52963-c7bd-452f-8575-8b00c238ff48.jpg
+                        attributes:
+                        - key: B
+                          value: '1'
+                        - key: C
+                          value: '1'
+                        - key: test1 AAA
+                          value: '1'
+                        - key: AAA
+                          value: '1'
+                      - id: d7265758-9442-49ba-8cb3-1415d9d14812
+                        url: http://localhost:8888/api/v1/badges/d7265758-9442-49ba-8cb3-1415d9d14812/
+                        client_id: PlI2efBCBRGw56KBcHucDvTevGv5x5Egqn0R2P8R
+                        name: Badge V1
+                        description: null
+                        badge_icon_url: /media/assets/67e3b526-751c-4e0a-b935-a8d4e96047dc.jpg
+                        mimetype: application/octet-stream
+                        registered_links: []
+                        file: http://localhost:8888/media/assets/67e3b526-751c-4e0a-b935-a8d4e96047dc.jpg
+                        attributes: []
+                      sponsors:
+                      - {}
+                    - id: 33289387-44b4-4679-9507-5e9d2ad1f32f
+                      name: Variant 2
+                      description: Original reward structure
+                      allocation_percentage: '50.00'
+                      rewards:
+                      - id: ad1a3070-aad7-48ef-a81a-c587e2a74e42
+                        url: http://localhost:8888/api/v1/quest-rewards/ad1a3070-aad7-48ef-a81a-c587e2a74e42/
+                        quest_id: 69c98a19-426c-4ae1-a77e-62e0167aa4d1
+                        reward_item_id: 2ab53eda-a387-4b0a-bce6-a7972fda1372
+                        reward_item_name: AUG Reward
+                        reward_item_amount: 1000
+                        test_variants:
+                        - id: 33289387-44b4-4679-9507-5e9d2ad1f32f
+                          name: Variant 2
+                          description: Original reward structure
+                          allocation_percentage: '50.00'
+                        leaderboard_ids: []
+                      tasks: []
+                      badges:
+                      - id: 75af5676-e116-4100-94ac-9d9461f4023d
+                        url: http://localhost:8888/api/v1/badges/75af5676-e116-4100-94ac-9d9461f4023d/
+                        client_id: PlI2efBCBRGw56KBcHucDvTevGv5x5Egqn0R2P8R
+                        name: July Badge
+                        description: null
+                        badge_icon_url: /media/assets/3cb7cc10-246a-41c2-9766-7ceee70ba05a.png
+                        mimetype: application/octet-stream
+                        registered_links: []
+                        file: http://localhost:8888/media/assets/3cb7cc10-246a-41c2-9766-7ceee70ba05a.png
+                        attributes: []
+                      sponsors:
+                      - {}
+                    profile_groups: []
+                    attributes: []
+                    started_at: '2024-06-25T23:59:59Z'
+                    stopped_at: '2026-01-25T23:59:59Z'
+                    timeout: null
+          description: Created
+      parameters:
+      - in: path
+        name: client-id
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: quest_name
+        schema:
+          type: string
+        description: Name of Quest
+        required: true
+      - in: query
+        name: quest_description
+        schema:
+          type: string
+        description: Description of Quest
+        required: false
+      - in: query
+        name: name
+        schema:
+          type: string
+        description: Name for AB test
+        required: true
+      - in: query
+        name: description
+        schema:
+          type: string
+        required: false
+        description: Description for AB Test
+      - in: query
+        name: profile_group_ids
+        schema:
+          type: array
+          items:
+            type: string
+        description: uuids of profile group ids to link to quest
+      - in: query
+        name: started_at
+        schema:
+          type: string
+          format: date-time
+        description: start time of quest in UTC
+      - in: query
+        name: stopped_at
+        schema:
+          type: string
+          format: date-time
+        description: end time of quest in UTC
+      - in: query
+        name: variants
+        schema:
+          type: array
+          items:
+            properties:
+              name:
+                type: string
+                description: Variant name
+              badge_ids:
+                type: array
+                items:
+                  type: string
+                description: A list of badge UUIDs to be linked to a specific variant.
+              quest_rewards:
+                type: array
+                items:
+                  properties:
+                    reward_item_id:
+                      type: string
+                      description: uuid if reward item
+                    reward_item_amount:
+                      type: integer
+                      description: 'amount value to be awarded '
+                  type: object
+                description: A list of reward objects to be associated with the quest variant.
+              sponsor_ids:
+                type: array
+                items:
+                  type: string
+                description: UUIDs of sponsors that should be linked to the quest variant.
+              quest_tasks:
+                type: array
+                description: A list of quest tasks to be associated with the variant for tracking and progressing the quest.
+                items:
+                  properties:
+                    name:
+                      type: string
+                      description: Display name of the quest task.
+                    target_value:
+                      type: string
+                      description: Required count or value to complete the task.
+                    quest_task_actions:
+                      type: array
+                      items:
+                        properties:
+                          reward_action_key:
+                            type: string
+                            description: key of the action whose occurrence increments the task’s progress.
+                        type: object
+                      description: List of actions that contribute toward progressing this task.
+                    attributes:
+                      type: array
+                      items:
+                        properties:
+                          key:
+                            type: string
+                          value:
+                            type: string
+                        type: object
+                      description: Quest task attributes
+                  type: object
+            type: object
+        description: 'Takes exactly two variant objects '
+        style: deepObject
+        explode: true
+        required: true
+      - in: query
+        name: timeout
+        schema:
+          type: string
+        description: Duration after the first user action within which the quest must be completed (used when started_at or stopped_at is not provided)
+      - in: query
+        name: attributes
+        schema:
+          type: array
+          items:
+            properties:
+              key:
+                type: string
+              value:
+                type: string
+            type: object
+        style: deepObject
+        explode: true
+        description: Quest attributes
+      operationId: post_client-id-ab-test-quests
+      tags:
+      - Ab Test Quests
+      summary: Post client id ab test quests
+      x-summary-source: derived
+    get:
+      description: ''
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              examples:
+                OK:
+                  summary: OK
+                  value:
+                    count: 2
+                    next: null
+                    previous: null
+                    results:
+                    - id: f2cfe8fb-ce6f-4d49-8056-1b79b78a4756
+                      quest_id: 2b87051c-4fea-46ca-91a0-f87ca61a94de
+                      quest_name: Clone - quest 1
+                      quest_description: null
+                      name: '                               aa'
+                      description: ''
+                      variants:
+                      - id: ac990b89-341c-4470-b043-60cd7ebb3ea5
+                        name: '                                   aa'
+                        description: ''
+                        allocation_percentage: '50.00'
+                        rewards: []
+                        tasks:
+                        - id: 17c35c06-42fd-4db9-86e6-293c4d499ed7
+                          url: https://cf-blast.livelikecdn.com/api/v1/quest-tasks/17c35c06-42fd-4db9-86e6-293c4d499ed7/
+                          name: sd
+                          description: null
+                          quest_id: 2b87051c-4fea-46ca-91a0-f87ca61a94de
+                          target_value: 3
+                          default_progress_increment: 1
+                          created_at: '2025-11-17T07:16:28.917792Z'
+                          attributes: []
+                          quest_task_actions: []
+                        badges: []
+                        sponsors: []
+                      - id: fbd1d8aa-4cdf-48ce-ae85-a71f3ab52ba6
+                        name: '                     a'
+                        description: ''
+                        allocation_percentage: '50.00'
+                        rewards: []
+                        tasks:
+                        - id: 931694ce-0fc3-4375-a297-79c26fd9993f
+                          url: https://cf-blast.livelikecdn.com/api/v1/quest-tasks/931694ce-0fc3-4375-a297-79c26fd9993f/
+                          name: cd
+                          description: null
+                          quest_id: 2b87051c-4fea-46ca-91a0-f87ca61a94de
+                          target_value: 22
+                          default_progress_increment: 1
+                          created_at: '2025-11-17T07:16:28.901370Z'
+                          attributes: []
+                          quest_task_actions: []
+                        badges: []
+                        sponsors: []
+                      profile_groups: []
+                      attributes: []
+                      started_at: null
+                      stopped_at: null
+                      timeout: null
+                    - id: eb847d2a-2fc4-42ad-b798-101f0c82b07f
+                      quest_id: 5c8d7c86-3b38-4e77-b599-b500716a6c1b
+                      quest_name: Weekly Watch Challenge
+                      quest_description: ''
+                      name: Task Complexity Experiment
+                      description: Test whether shorter, easier tasks (Variant A) or longer, more effortful tasks (Variant B) result in higher quest completion rates and sustained engagement.
+                      variants:
+                      - id: a03b7931-deaa-4559-80b1-0a80b0ffa966
+                        name: Light Engagement
+                        description: Measure if deeper, more time-intensive tasks create stronger engagement, even with equal rewards.
+                        allocation_percentage: '50.00'
+                        rewards:
+                        - id: 424389a5-1414-4742-9126-b1d1e4b4d93b
+                          url: https://cf-blast.livelikecdn.com/api/v1/quest-rewards/424389a5-1414-4742-9126-b1d1e4b4d93b/
+                          quest_id: 5c8d7c86-3b38-4e77-b599-b500716a6c1b
+                          reward_item_id: 8c474b3d-3aee-4324-a35c-67274f863dba
+                          reward_item_name: AB quest reward item
+                          reward_item_amount: 300
+                          test_variants:
+                          - id: a03b7931-deaa-4559-80b1-0a80b0ffa966
+                            name: Light Engagement
+                            description: Measure if deeper, more time-intensive tasks create stronger engagement, even with equal rewards.
+                            allocation_percentage: '50.00'
+                          leaderboard_ids: []
+                        tasks:
+                        - id: 9738f0f0-8191-43f3-912a-618966c205ff
+                          url: https://cf-blast.livelikecdn.com/api/v1/quest-tasks/9738f0f0-8191-43f3-912a-618966c205ff/
+                          name: Vote on a poll 1
+                          description: null
+                          quest_id: 5c8d7c86-3b38-4e77-b599-b500716a6c1b
+                          target_value: 1
+                          default_progress_increment: 1
+                          created_at: '2025-11-17T06:00:11.415079Z'
+                          attributes: []
+                          quest_task_actions:
+                          - id: b7a99aa4-6373-47cb-be3c-1c7e0344928f
+                            quest_task_id: 9738f0f0-8191-43f3-912a-618966c205ff
+                            reward_action_id: b550b832-17f9-4d8f-80b3-ddf2f019d6db
+                            reward_action_key: poll-voted
+                            default_progress_increment: 1
+                        - id: 9ba36399-54ef-404d-bef2-3e26e352e0a8
+                          url: https://cf-blast.livelikecdn.com/api/v1/quest-tasks/9ba36399-54ef-404d-bef2-3e26e352e0a8/
+                          name: Make Predictions
+                          description: null
+                          quest_id: 5c8d7c86-3b38-4e77-b599-b500716a6c1b
+                          target_value: 2
+                          default_progress_increment: 1
+                          created_at: '2025-11-17T06:00:11.348302Z'
+                          attributes: []
+                          quest_task_actions:
+                          - id: 1f91deae-07fc-4fdf-9c30-7b4aaab5e123
+                            quest_task_id: 9ba36399-54ef-404d-bef2-3e26e352e0a8
+                            reward_action_id: 0ea81f9c-6619-4c4b-8f4e-05874ea91f9c
+                            reward_action_key: prediction-made
+                            default_progress_increment: 1
+                        badges: []
+                        sponsors: []
+                      - id: 25f20450-0b39-423b-b439-628f1e3b43aa
+                        name: Deep Engagement
+                        description: Measure if deeper, more time-intensive tasks create stronger engagement, even with equal rewards.
+                        allocation_percentage: '50.00'
+                        rewards:
+                        - id: 95da845a-a460-4dc5-9158-e2d676902899
+                          url: https://cf-blast.livelikecdn.com/api/v1/quest-rewards/95da845a-a460-4dc5-9158-e2d676902899/
+                          quest_id: 5c8d7c86-3b38-4e77-b599-b500716a6c1b
+                          reward_item_id: 8c474b3d-3aee-4324-a35c-67274f863dba
+                          reward_item_name: AB quest reward item
+                          reward_item_amount: 300
+                          test_variants:
+                          - id: 25f20450-0b39-423b-b439-628f1e3b43aa
+                            name: Deep Engagement
+                            description: Measure if deeper, more time-intensive tasks create stronger engagement, even with equal rewards.
+                            allocation_percentage: '50.00'
+                          leaderboard_ids: []
+                        tasks:
+                        - id: 4fbe2aaf-95a0-4764-b0a5-7bb0c90af9d5
+                          url: https://cf-blast.livelikecdn.com/api/v1/quest-tasks/4fbe2aaf-95a0-4764-b0a5-7bb0c90af9d5/
+                          name: Vote on a poll
+                          description: null
+                          quest_id: 5c8d7c86-3b38-4e77-b599-b500716a6c1b
+                          target_value: 2
+                          default_progress_increment: 1
+                          created_at: '2025-11-17T06:00:11.380946Z'
+                          attributes: []
+                          quest_task_actions:
+                          - id: 8b80cd41-19cc-417b-8406-56491ee06862
+                            quest_task_id: 4fbe2aaf-95a0-4764-b0a5-7bb0c90af9d5
+                            reward_action_id: b550b832-17f9-4d8f-80b3-ddf2f019d6db
+                            reward_action_key: poll-voted
+                            default_progress_increment: 1
+                        - id: af5b1273-cb0c-414a-bf84-a603d56069ea
+                          url: https://cf-blast.livelikecdn.com/api/v1/quest-tasks/af5b1273-cb0c-414a-bf84-a603d56069ea/
+                          name: Make Correct Predictions
+                          description: null
+                          quest_id: 5c8d7c86-3b38-4e77-b599-b500716a6c1b
+                          target_value: 3
+                          default_progress_increment: 1
+                          created_at: '2025-11-17T06:00:11.309697Z'
+                          attributes: []
+                          quest_task_actions:
+                          - id: b1a0d747-c5f9-4858-b47c-3fb65ae68064
+                            quest_task_id: af5b1273-cb0c-414a-bf84-a603d56069ea
+                            reward_action_id: bf877c29-736f-49fb-96e2-43ef5e23ef0a
+                            reward_action_key: prediction-correct
+                            default_progress_increment: 1
+                        - id: 214e3408-6359-4bce-8428-266e4e09ac60
+                          url: https://cf-blast.livelikecdn.com/api/v1/quest-tasks/214e3408-6359-4bce-8428-266e4e09ac60/
+                          name: Answer Quiz correctly
+                          description: null
+                          quest_id: 5c8d7c86-3b38-4e77-b599-b500716a6c1b
+                          target_value: 2
+                          default_progress_increment: 1
+                          created_at: '2025-11-17T06:00:11.192407Z'
+                          attributes: []
+                          quest_task_actions:
+                          - id: 8c0981ea-9d3c-4e77-a068-8dd16eb84558
+                            quest_task_id: 214e3408-6359-4bce-8428-266e4e09ac60
+                            reward_action_id: 52ecc715-be8c-4992-9ff6-e20bffed4628
+                            reward_action_key: quiz-correct
+                            default_progress_increment: 1
+                        badges: []
+                        sponsors: []
+                      profile_groups: []
+                      attributes: []
+                      started_at: null
+                      stopped_at: null
+                      timeout: null
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 2
+                    default: 0
+                  next:
+                    type: string
+                  previous:
+                    type: string
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: f2cfe8fb-ce6f-4d49-8056-1b79b78a4756
+                        quest_id:
+                          type: string
+                          example: 2b87051c-4fea-46ca-91a0-f87ca61a94de
+                        quest_name:
+                          type: string
+                          example: Clone - quest 1
+                        quest_description: {}
+                        name:
+                          type: string
+                          example: '                               aa'
+                        description:
+                          type: string
+                          example: ''
+                        variants:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                example: ac990b89-341c-4470-b043-60cd7ebb3ea5
+                              name:
+                                type: string
+                                example: '                                   aa'
+                              description:
+                                type: string
+                                example: ''
+                              allocation_percentage:
+                                type: string
+                                example: '50.00'
+                              rewards:
+                                type: array
+                                items:
+                                  type: object
+                                  properties: {}
+                              tasks:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    id:
+                                      type: string
+                                      example: 17c35c06-42fd-4db9-86e6-293c4d499ed7
+                                    url:
+                                      type: string
+                                      example: https://cf-blast.livelikecdn.com/api/v1/quest-tasks/17c35c06-42fd-4db9-86e6-293c4d499ed7/
+                                    name:
+                                      type: string
+                                      example: sd
+                                    description: {}
+                                    quest_id:
+                                      type: string
+                                      example: 2b87051c-4fea-46ca-91a0-f87ca61a94de
+                                    target_value:
+                                      type: integer
+                                      example: 3
+                                      default: 0
+                                    default_progress_increment:
+                                      type: integer
+                                      example: 1
+                                      default: 0
+                                    created_at:
+                                      type: string
+                                      example: '2025-11-17T07:16:28.917792Z'
+                                    attributes:
+                                      type: array
+                                      items:
+                                        type: object
+                                        properties: {}
+                                    quest_task_actions:
+                                      type: array
+                                      items:
+                                        type: object
+                                        properties: {}
+                              badges:
+                                type: array
+                                items:
+                                  type: object
+                                  properties: {}
+                              sponsors:
+                                type: array
+                                items:
+                                  type: object
+                                  properties: {}
+                        profile_groups:
+                          type: array
+                          items:
+                            type: object
+                            properties: {}
+                        attributes:
+                          type: array
+                          items:
+                            type: object
+                            properties: {}
+                        started_at: {}
+                        stopped_at: {}
+                        timeout: {}
+      parameters:
+      - in: path
+        name: client-id
+        schema:
+          type: string
+          default: ''
+        required: true
+      - in: query
+        name: page
+        schema:
+          type: number
+      - in: query
+        name: page_size
+        schema:
+          type: number
+      operationId: get_client-id-ab-test-quests
+      tags:
+      - Ab Test Quests
+      summary: Get client id ab test quests
+      x-summary-source: derived
+x-provenance:
+  method: searched
+  source: https://docs.livelike.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://docs.livelike.com/reference/archive-a-consecutive-action-streak.md
+  - https://docs.livelike.com/reference/archive-a-periodic-streak.md
+  - https://docs.livelike.com/reference/assign-quest-variant-to-profile.md
+  - https://docs.livelike.com/reference/create-a-periodic-streak-1.md
+  - https://docs.livelike.com/reference/create-a-periodic-streak.md
+  - https://docs.livelike.com/reference/create-ab-test-quest.md
+  - https://docs.livelike.com/reference/create-streak-milestone.md
+  - https://docs.livelike.com/reference/create-streak-target-with-csv.md
+  - https://docs.livelike.com/reference/create-streak-targets.md
+  - https://docs.livelike.com/reference/delete-a-consecutive-action-streak.md
+  - https://docs.livelike.com/reference/delete-periodic-streak.md
+  - https://docs.livelike.com/reference/delete-streak-milestone.md
+  - https://docs.livelike.com/reference/delete-streak-target.md
+  - https://docs.livelike.com/reference/get-ab-test-quest.md
+  - https://docs.livelike.com/reference/get-periodic-streak-detail-1.md
+  - https://docs.livelike.com/reference/get-periodic-streak-detail.md
+  - https://docs.livelike.com/reference/list-ab-test-quests.md
+  - https://docs.livelike.com/reference/list-periodic-streaks-1.md
+  - https://docs.livelike.com/reference/list-periodic-streaks.md
+  - https://docs.livelike.com/reference/list-streak-milestones.md
+  - https://docs.livelike.com/reference/list-streak-targets.md
+  - https://docs.livelike.com/reference/publish-periodic-streak-1.md
+  - https://docs.livelike.com/reference/publish-periodic-streak.md
+  - https://docs.livelike.com/reference/unarchive-a-consecutive-action-streak.md
+  - https://docs.livelike.com/reference/unarchive-a-periodic-streak.md
+  - https://docs.livelike.com/reference/update-a-periodic-streak-1.md
+  - https://docs.livelike.com/reference/update-a-periodic-streak.md
+  - https://docs.livelike.com/reference/update-streak-milestone.md
+  - https://docs.livelike.com/reference/update-streak-target.md
+  merge:
+    pages: 29
+    deduped: 0
+    conflicts_kept_first: 0

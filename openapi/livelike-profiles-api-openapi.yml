@@ -1,0 +1,2098 @@
+openapi: 3.2.0
+info:
+  title: Livelike Profiles API
+  version: '1.0'
+  description: 'Operations tagged Profiles across 4 of this provider''s published API definitions: livelike-engagement-suite-openapi.yml, livelike-leaderboard-views-openapi.yml, livelike-new-application-openapi.yml, livelike-profiles-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://cf-blast.livelikecdn.com/api/v1
+- url: https://cf-blast.livelikecdn.com/api/v1/leaderboard-views
+- url: https://cf-blast.livelikecdn.com/api/v1/applications
+- url: https://cf-blast.livelikecdn.com/api/v1/profiles
+tags:
+- name: Profiles
+paths:
+  /profiles/profile_id/reward-item-balances/:
+    get:
+      summary: List Reward Item Balances
+      description: List reward item balances by passing reward_item_id
+      operationId: list-reward-item-balances
+      parameters:
+      - name: reward_item_id
+        in: query
+        description: accepts one or multiple reward_item_ids
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"count\": 1,\n  \"next\": null,\n  \"previous\": null,\n  \"results\": [\n    {\n      \"reward_item_id\": \"26894d5d-1efa-4997-bfe0-7e105fdc474d\",\n      \"reward_item_name\": \"Game Changer Points\",\n      \"reward_item_balance\": 342\n    }\n  ]\n}"
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 1
+                    default: 0
+                  next: {}
+                  previous: {}
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        reward_item_id:
+                          type: string
+                          example: 26894d5d-1efa-4997-bfe0-7e105fdc474d
+                        reward_item_name:
+                          type: string
+                          example: Game Changer Points
+                        reward_item_balance:
+                          type: integer
+                          example: 342
+                          default: 0
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: 'curl --location --request GET ''https://cf-blast.livelikecdn.com/api/v1/profiles/{profile_id}/reward-item-balances/?reward_item_id={reward_id}&reward_item_id={reward_id2}'' \
+
+            --header ''Authorization: Bearer {Access Token}'''
+        samples-languages:
+        - curl
+      tags:
+      - Profiles
+      security:
+      - {}
+    servers:
+    - url: https://cf-blast.livelikecdn.com/api/v1
+  /profiles/{ProfileID}/permissions-check/:
+    get:
+      description: ''
+      operationId: get_profiles{ProfileUUID}permissions-check
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              examples:
+                New Example:
+                  summary: New Example
+                  value:
+                    results:
+                    - permission_key: send_chat_message
+                      resource_kind: chat_room
+                      resource_key: room-uuid-123
+                      scope_id: scope_id1
+                      has_permission: true
+                    - permission_key: ban_user
+                      resource_kind: null
+                      resource_key: null
+                      scope_id: invalid_scope_id1
+                      has_permission: false
+                    - permission_key: moderate_comments
+                      resource_kind: comment_board
+                      resource_key: board-uuid-789
+                      scope_id: null
+                      has_permission: true
+                    - permission_key: moderate_comments
+                      resource_kind: invalid kind
+                      resource_key: invalid key
+                      scope_id: null
+                      has_permission: false
+      parameters:
+      - in: path
+        name: ProfileID
+        schema:
+          type: string
+        required: true
+        description: Profile UUID
+      - in: query
+        name: permission_key
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: scope_id
+        schema:
+          type: string
+        description: scope object UUID
+      - in: query
+        name: resource_kind
+        schema:
+          type: string
+        description: e.g comment-board, chat-room
+      - in: query
+        name: resource_key
+        schema:
+          type: string
+        description: Entity/Object UUID. e.g comment-board-uuid
+      tags:
+      - Profiles
+      security:
+      - {}
+      summary: Get profiles{profile UUID}permissions check
+      x-summary-source: derived
+    servers:
+    - url: https://cf-blast.livelikecdn.com/api/v1
+  /profiles/{id}/prizeout-session/:
+    post:
+      summary: Prizeout User Session
+      description: ''
+      operationId: prizeout-user-session
+      parameters:
+      - name: id
+        in: path
+        description: Unique ID of profile
+        schema:
+          type: string
+        required: true
+      - name: Authorization
+        in: header
+        description: Bearer <access-token>
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - email
+              - country
+              - region
+              - year_of_birth
+              properties:
+                email:
+                  type: string
+                country:
+                  type: string
+                region:
+                  type: string
+                year_of_birth:
+                  type: integer
+                  format: int32
+                firstname:
+                  type: string
+                lastname:
+                  type: string
+                gender:
+                  type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"session_id\": \"fdf7f8bf-6d26-45cc-82ba-2211b0b67b84\",\n    \"profile_id\": \"6fa4e248-e214-43e8-9214-8ec790dcb9c6\",\n    \"email\": \"abcd@gmail.com\",\n    \"created_at\": \"2022-11-04T09:01:17.352135Z\",\n    \"session_timeout\": \"P0DT00H30M00S\",\n    \"firstname\": \"AK\",\n    \"lastname\": \"KA\",\n    \"gender\": \"male\",\n    \"year_of_birth\": 1999,\n    \"country\": \"US\",\n    \"region\": \"MA\"\n}"
+              schema:
+                type: object
+                properties:
+                  session_id:
+                    type: string
+                    example: fdf7f8bf-6d26-45cc-82ba-2211b0b67b84
+                  profile_id:
+                    type: string
+                    example: 6fa4e248-e214-43e8-9214-8ec790dcb9c6
+                  email:
+                    type: string
+                    example: abcd@gmail.com
+                  created_at:
+                    type: string
+                    example: '2022-11-04T09:01:17.352135Z'
+                  session_timeout:
+                    type: string
+                    example: P0DT00H30M00S
+                  firstname:
+                    type: string
+                    example: AK
+                  lastname:
+                    type: string
+                    example: KA
+                  gender:
+                    type: string
+                    example: male
+                  year_of_birth:
+                    type: integer
+                    example: 1999
+                    default: 0
+                  country:
+                    type: string
+                    example: US
+                  region:
+                    type: string
+                    example: MA
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"email\": [\n        \"This field is required.\"\n    ],\n    \"year_of_birth\": [\n        \"This field is required.\"\n    ],\n    \"country\": [\n        \"This field is required.\"\n    ],\n    \"region\": [\n        \"This field is required.\"\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  email:
+                    type: array
+                    items:
+                      type: string
+                      example: This field is required.
+                  year_of_birth:
+                    type: array
+                    items:
+                      type: string
+                      example: This field is required.
+                  country:
+                    type: array
+                    items:
+                      type: string
+                      example: This field is required.
+                  region:
+                    type: array
+                    items:
+                      type: string
+                      example: This field is required.
+      deprecated: false
+      tags:
+      - Profiles
+      security:
+      - {}
+    servers:
+    - url: https://cf-blast.livelikecdn.com/api/v1
+  /profiles/{profile-id}/comment-replies/:
+    get:
+      summary: List Replies to Profile's Comments
+      description: This API endpoint retrieves all replies made by other users to comments created by a specific profile. For example, if a profile named "ray" has created 10 comments, this API will list all the replies made to those 10 comments by other users.
+      operationId: list-replies-to-profiles-comments
+      parameters:
+      - name: since
+        in: query
+        description: Filters all the replies since this time
+        schema:
+          type: string
+      - name: until
+        in: query
+        description: Filter all the replies until this time
+        schema:
+          type: string
+      - name: comment_board_id
+        in: query
+        description: Filters all the comments for this comment_board
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"count\": 4,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": \"55ba4782-1eb1-4c3e-a38d-622d3bd9acde\",\n            \"url\": \"https://cf-blast.livelikecdn.com/api/v1/comments/55ba4782-1eb1-4c3e-a38d-622d3bd9acde/\",\n            \"comment_board_id\": \"e7f24ae6-5c14-4e04-ae4e-190ea83c6098\",\n            \"parent_comment_id\": \"c1e5e200-aa8d-4806-8905-6c7adce1097a\",\n            \"thread_comment_id\": \"c1e5e200-aa8d-4806-8905-6c7adce1097a\",\n            \"text\": \"Reply 1 to Parent Message 1\",\n            \"filtered_text\": null,\n            \"content_filter\": [],\n            \"comment_depth\": 1,\n            \"custom_data\": null,\n            \"author_id\": \"3aa0c291-bd9a-4ce1-8789-027719b31607\",\n            \"author\": {\n                \"id\": \"3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                \"url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/\",\n                \"created_at\": \"2021-08-16T12:22:53.359562Z\",\n                \"nickname\": \"Avinash\",\n                \"custom_id\": null,\n                \"custom_data\": null,\n                \"points\": 0,\n                \"badges\": [],\n                \"badges_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badges/\",\n                \"badge_progress_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badge-progress/\",\n                \"subscribe_channel\": \"profile.3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                \"reported_count\": 0,\n                \"chat_room_memberships_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/chat-room-memberships/\",\n                \"reward_item_credit_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-credits/\",\n                \"reward_item_debit_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-debits/\",\n                \"reward_item_balances_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-balances/\",\n                \"reward_item_transfer_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-transfers/\",\n                \"block_profile_url\": \"https://cf-blast.livelikecdn.com/api/v1/profile-blocks/\",\n                \"blocked_profiles_template_url\": \"https://cf-blast.livelikecdn.com/api/v1/profile-blocks/?blocked_profile_id={blocked_profile_id}\",\n                \"blocked_profile_ids_url\": \"https://cf-blast.livelikecdn.com/api/v1/blocked-profile-ids/\",\n                \"leaderboards_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboards/\",\n                \"leaderboard_views_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboard-views/\",\n                \"earned_badges_url\": \"https://cf-blast.livelikecdn.com/api/v1/earned-badges/?profile_id=3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                \"redemption_keys_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/redemption-keys/\"\n            },\n            \"author_image_url\": null,\n            \"is_deleted\": false,\n            \"deleted_by\": null,\n            \"created_at\": \"2024-07-24T06:15:16.148899Z\",\n            \"deleted_at\": null,\n            \"replies_url\": \"https://cf-blast.livelikecdn.com/api/v1/comments/?comment_board_id=e7f24ae6-5c14-4e04-ae4e-190ea83c6098&parent_comment_id=55ba4782-1eb1-4c3e-a38d-622d3bd9acde&is_reply=True&thread_comment_id=c1e5e200-aa8d-4806-8905-6c7adce1097a\",\n            \"replies_count\": 0,\n            \"is_reported\": false,\n            \"comment_reports_count\": 0,\n            \"dismiss_reported_comment_url\": \"https://cf-blast.livelikecdn.com/api/v1/comments/55ba4782-1eb1-4c3e-a38d-622d3bd9acde/dismiss-reports/\",\n            \"reactions\": []\n        },\n        {\n            \"id\": \"6e2e5c5b-a96b-43db-8e3e-597e3678aacc\",\n            \"url\": \"https://cf-blast.livelikecdn.com/api/v1/comments/6e2e5c5b-a96b-43db-8e3e-597e3678aacc/\",\n            \"comment_board_id\": \"e7f24ae6-5c14-4e04-ae4e-190ea83c6098\",\n            \"parent_comment_id\": \"c1e5e200-aa8d-4806-8905-6c7adce1097a\",\n            \"thread_comment_id\": \"c1e5e200-aa8d-4806-8905-6c7adce1097a\",\n            \"text\": \"Reply 2 to Parent Message 2\",\n            \"filtered_text\": null,\n            \"content_filter\": [],\n            \"comment_depth\": 1,\n            \"custom_data\": null,\n            \"author_id\": \"3aa0c291-bd9a-4ce1-8789-027719b31607\",\n            \"author\": {\n                \"id\": \"3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                \"url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/\",\n                \"created_at\": \"2021-08-16T12:22:53.359562Z\",\n                \"nickname\": \"Avinash\",\n                \"custom_id\": null,\n                \"custom_data\": null,\n                \"points\": 0,\n                \"badges\": [],\n                \"badges_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badges/\",\n                \"badge_progress_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badge-progress/\",\n                \"subscribe_channel\": \"profile.3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                \"reported_count\": 0,\n                \"chat_room_memberships_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/chat-room-memberships/\",\n                \"reward_item_credit_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-credits/\",\n                \"reward_item_debit_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-debits/\",\n                \"reward_item_balances_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-balances/\",\n                \"reward_item_transfer_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-transfers/\",\n                \"block_profile_url\": \"https://cf-blast.livelikecdn.com/api/v1/profile-blocks/\",\n                \"blocked_profiles_template_url\": \"https://cf-blast.livelikecdn.com/api/v1/profile-blocks/?blocked_profile_id={blocked_profile_id}\",\n                \"blocked_profile_ids_url\": \"https://cf-blast.livelikecdn.com/api/v1/blocked-profile-ids/\",\n                \"leaderboards_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboards/\",\n                \"leaderboard_views_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboard-views/\",\n                \"earned_badges_url\": \"https://cf-blast.livelikecdn.com/api/v1/earned-badges/?profile_id=3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                \"redemption_keys_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/redemption-keys/\"\n            },\n            \"author_image_url\": null,\n            \"is_deleted\": false,\n            \"deleted_by\": null,\n            \"created_at\": \"2024-07-24T06:15:54.770201Z\",\n            \"deleted_at\": null,\n            \"replies_url\": \"https://cf-blast.livelikecdn.com/api/v1/comments/?comment_board_id=e7f24ae6-5c14-4e04-ae4e-190ea83c6098&parent_comment_id=6e2e5c5b-a96b-43db-8e3e-597e3678aacc&is_reply=True&thread_comment_id=c1e5e200-aa8d-4806-8905-6c7adce1097a\",\n            \"replies_count\": 0,\n            \"is_reported\": false,\n            \"comment_reports_count\": 0,\n            \"dismiss_reported_comment_url\": \"https://cf-blast.livelikecdn.com/api/v1/comments/6e2e5c5b-a96b-43db-8e3e-597e3678aacc/dismiss-reports/\",\n            \"reactions\": []\n        },\n        {\n            \"id\": \"fc87657f-2306-413e-8685-d18bfc8a98e4\",\n            \"url\": \"https://cf-blast.livelikecdn.com/api/v1/comments/fc87657f-2306-413e-8685-d18bfc8a98e4/\",\n            \"comment_board_id\": \"e7f24ae6-5c14-4e04-ae4e-190ea83c6098\",\n            \"parent_comment_id\": \"6f1afeda-ac10-4d4a-9ec6-9d450b68a451\",\n            \"thread_comment_id\": \"6f1afeda-ac10-4d4a-9ec6-9d450b68a451\",\n            \"text\": \"Reply 1 to Parent Message 1\",\n            \"filtered_text\": null,\n            \"content_filter\": [],\n            \"comment_depth\": 1,\n            \"custom_data\": null,\n            \"author_id\": \"3aa0c291-bd9a-4ce1-8789-027719b31607\",\n            \"author\": {\n                \"id\": \"3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                \"url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/\",\n                \"created_at\": \"2021-08-16T12:22:53.359562Z\",\n                \"nickname\": \"Avinash\",\n                \"custom_id\": null,\n                \"custom_data\": null,\n                \"points\": 0,\n                \"badges\": [],\n                \"badges_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badges/\",\n                \"badge_progress_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badge-progress/\",\n                \"subscribe_channel\": \"profile.3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                \"reported_count\": 0,\n                \"chat_room_memberships_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/chat-room-memberships/\",\n                \"reward_item_credit_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-credits/\",\n                \"reward_item_debit_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-debits/\",\n                \"reward_item_balances_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-balances/\",\n                \"reward_item_transfer_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-transfers/\",\n                \"block_profile_url\": \"https://cf-blast.livelikecdn.com/api/v1/profile-blocks/\",\n                \"blocked_profiles_template_url\": \"https://cf-blast.livelikecdn.com/api/v1/profile-blocks/?blocked_profile_id={blocked_profile_id}\",\n                \"blocked_profile_ids_url\": \"https://cf-blast.livelikecdn.com/api/v1/blocked-profile-ids/\",\n                \"leaderboards_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboards/\",\n                \"leaderboard_views_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboard-views/\",\n                \"earned_badges_url\": \"https://cf-blast.livelikecdn.com/api/v1/earned-badges/?profile_id=3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                \"redemption_keys_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/redemption-keys/\"\n            },\n            \"author_image_url\": null,\n            \"is_deleted\": false,\n            \"deleted_by\": null,\n            \"created_at\": \"2024-07-24T06:16:08.564699Z\",\n            \"deleted_at\": null,\n            \"replies_url\": \"https://cf-blast.livelikecdn.com/api/v1/comments/?comment_board_id=e7f24ae6-5c14-4e04-ae4e-190ea83c6098&parent_comment_id=fc87657f-2306-413e-8685-d18bfc8a98e4&is_reply=True&thread_comment_id=6f1afeda-ac10-4d4a-9ec6-9d450b68a451\",\n            \"replies_count\": 0,\n            \"is_reported\": false,\n            \"comment_reports_count\": 0,\n            \"dismiss_reported_comment_url\": \"https://cf-blast.livelikecdn.com/api/v1/comments/fc87657f-2306-413e-8685-d18bfc8a98e4/dismiss-reports/\",\n            \"reactions\": []\n        },\n        {\n            \"id\": \"f854cde7-d5ee-46d6-a83c-19b02a077ad4\",\n            \"url\": \"https://cf-blast.livelikecdn.com/api/v1/comments/f854cde7-d5ee-46d6-a83c-19b02a077ad4/\",\n            \"comment_board_id\": \"e7f24ae6-5c14-4e04-ae4e-190ea83c6098\",\n            \"parent_comment_id\": \"6f1afeda-ac10-4d4a-9ec6-9d450b68a451\",\n            \"thread_comment_id\": \"6f1afeda-ac10-4d4a-9ec6-9d450b68a451\",\n            \"text\": \"Reply 2 to Parent Message 1\",\n            \"filtered_text\": null,\n            \"content_filter\": [],\n            \"comment_depth\": 1,\n            \"custom_data\": null,\n            \"author_id\": \"3aa0c291-bd9a-4ce1-8789-027719b31607\",\n            \"author\": {\n                \"id\": \"3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                \"url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/\",\n                \"created_at\": \"2021-08-16T12:22:53.359562Z\",\n                \"nickname\": \"Avinash\",\n                \"custom_id\": null,\n                \"custom_data\": null,\n                \"points\": 0,\n                \"badges\": [],\n                \"badges_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badges/\",\n                \"badge_progress_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badge-progress/\",\n                \"subscribe_channel\": \"profile.3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                \"reported_count\": 0,\n                \"chat_room_memberships_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/chat-room-memberships/\",\n                \"reward_item_credit_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-credits/\",\n                \"reward_item_debit_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-debits/\",\n                \"reward_item_balances_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-balances/\",\n                \"reward_item_transfer_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-transfers/\",\n                \"block_profile_url\": \"https://cf-blast.livelikecdn.com/api/v1/profile-blocks/\",\n                \"blocked_profiles_template_url\": \"https://cf-blast.livelikecdn.com/api/v1/profile-blocks/?blocked_profile_id={blocked_profile_id}\",\n                \"blocked_profile_ids_url\": \"https://cf-blast.livelikecdn.com/api/v1/blocked-profile-ids/\",\n                \"leaderboards_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboards/\",\n                \"leaderboard_views_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboard-views/\",\n                \"earned_badges_url\": \"https://cf-blast.livelikecdn.com/api/v1/earned-badges/?profile_id=3aa0c291-bd9a-4ce1-8789-027719b31607\",\n                \"redemption_keys_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/redemption-keys/\"\n            },\n            \"author_image_url\": null,\n            \"is_deleted\": false,\n            \"deleted_by\": null,\n            \"created_at\": \"2024-07-24T06:16:22.549177Z\",\n            \"deleted_at\": null,\n            \"replies_url\": \"https://cf-blast.livelikecdn.com/api/v1/comments/?comment_board_id=e7f24ae6-5c14-4e04-ae4e-190ea83c6098&parent_comment_id=f854cde7-d5ee-46d6-a83c-19b02a077ad4&is_reply=True&thread_comment_id=6f1afeda-ac10-4d4a-9ec6-9d450b68a451\",\n            \"replies_count\": 0,\n            \"is_reported\": false,\n            \"comment_reports_count\": 0,\n            \"dismiss_reported_comment_url\": \"https://cf-blast.livelikecdn.com/api/v1/comments/f854cde7-d5ee-46d6-a83c-19b02a077ad4/dismiss-reports/\",\n            \"reactions\": []\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 4
+                    default: 0
+                  next: {}
+                  previous: {}
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: 55ba4782-1eb1-4c3e-a38d-622d3bd9acde
+                        url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/comments/55ba4782-1eb1-4c3e-a38d-622d3bd9acde/
+                        comment_board_id:
+                          type: string
+                          example: e7f24ae6-5c14-4e04-ae4e-190ea83c6098
+                        parent_comment_id:
+                          type: string
+                          example: c1e5e200-aa8d-4806-8905-6c7adce1097a
+                        thread_comment_id:
+                          type: string
+                          example: c1e5e200-aa8d-4806-8905-6c7adce1097a
+                        text:
+                          type: string
+                          example: Reply 1 to Parent Message 1
+                        filtered_text: {}
+                        content_filter:
+                          type: array
+                        comment_depth:
+                          type: integer
+                          example: 1
+                          default: 0
+                        custom_data: {}
+                        author_id:
+                          type: string
+                          example: 3aa0c291-bd9a-4ce1-8789-027719b31607
+                        author:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: 3aa0c291-bd9a-4ce1-8789-027719b31607
+                            url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/
+                            created_at:
+                              type: string
+                              example: '2021-08-16T12:22:53.359562Z'
+                            nickname:
+                              type: string
+                              example: Avinash
+                            custom_id: {}
+                            custom_data: {}
+                            points:
+                              type: integer
+                              example: 0
+                              default: 0
+                            badges:
+                              type: array
+                            badges_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badges/
+                            badge_progress_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/badge-progress/
+                            subscribe_channel:
+                              type: string
+                              example: profile.3aa0c291-bd9a-4ce1-8789-027719b31607
+                            reported_count:
+                              type: integer
+                              example: 0
+                              default: 0
+                            chat_room_memberships_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/chat-room-memberships/
+                            reward_item_credit_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-credits/
+                            reward_item_debit_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-debits/
+                            reward_item_balances_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-balances/
+                            reward_item_transfer_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/reward-item-transfers/
+                            block_profile_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/profile-blocks/
+                            blocked_profiles_template_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/profile-blocks/?blocked_profile_id={blocked_profile_id}
+                            blocked_profile_ids_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/blocked-profile-ids/
+                            leaderboards_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboards/
+                            leaderboard_views_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/leaderboard-views/
+                            earned_badges_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/earned-badges/?profile_id=3aa0c291-bd9a-4ce1-8789-027719b31607
+                            redemption_keys_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/profiles/3aa0c291-bd9a-4ce1-8789-027719b31607/redemption-keys/
+                        author_image_url: {}
+                        is_deleted:
+                          type: boolean
+                          example: false
+                          default: true
+                        deleted_by: {}
+                        created_at:
+                          type: string
+                          example: '2024-07-24T06:15:16.148899Z'
+                        deleted_at: {}
+                        replies_url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/comments/?comment_board_id=e7f24ae6-5c14-4e04-ae4e-190ea83c6098&parent_comment_id=55ba4782-1eb1-4c3e-a38d-622d3bd9acde&is_reply=True&thread_comment_id=c1e5e200-aa8d-4806-8905-6c7adce1097a
+                        replies_count:
+                          type: integer
+                          example: 0
+                          default: 0
+                        is_reported:
+                          type: boolean
+                          example: false
+                          default: true
+                        comment_reports_count:
+                          type: integer
+                          example: 0
+                          default: 0
+                        dismiss_reported_comment_url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/comments/55ba4782-1eb1-4c3e-a38d-622d3bd9acde/dismiss-reports/
+                        reactions:
+                          type: array
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Profiles
+      security:
+      - {}
+    servers:
+    - url: https://cf-blast.livelikecdn.com/api/v1
+  /profiles/{profile-id}/tier-groups/{tier-group-id}/user-tiers/:
+    put:
+      summary: Assign tier to a profile
+      description: ''
+      operationId: create-a-user-tier
+      parameters:
+      - name: Authorization
+        in: header
+        description: Producer Bearer Token
+        required: true
+        schema:
+          type: string
+      - name: profile-id
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: tier-group-id
+        in: path
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - tier_id
+              properties:
+                tier_id:
+                  type: string
+                reason:
+                  type: string
+                  description: Option reason for this credit transaction
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"id\": \"3bba40b4-83a6-4bd6-831a-69de0a339e09\",\n    \"url\": \"https://cf-blast.livelikecdn.com/api/v1/user-tiers/3bba40b4-83a6-4bd6-831a-69de0a339e09/\",\n    \"tier_id\": \"06988d58-dd66-4ad9-bef7-71f23b1b0c8d\",\n    \"tier\": {\n        \"id\": \"06988d58-dd66-4ad9-bef7-71f23b1b0c8d\",\n        \"url\": \"https://cf-blast.livelikecdn.com/api/v1/tiers/06988d58-dd66-4ad9-bef7-71f23b1b0c8d/\",\n        \"tier_group_id\": \"2c2a0375-c292-4176-af6d-e91133f73d9d\",\n        \"tier_group\": \"Jwel Tier Group\",\n        \"reward_item_id\": null,\n        \"reward_item_name\": null,\n        \"attributes\": [],\n        \"order\": 3,\n        \"status\": \"active\",\n        \"title\": \"Gold\",\n        \"image\": null,\n        \"description\": \"\",\n        \"reward_item_threshold\": null,\n        \"created_at\": \"2025-04-16T00:35:08.614257Z\"\n    },\n    \"assigned_to_id\": \"f9bf6ca9-7b9c-4a08-93ad-45bd4c1f899b\",\n    \"assigned_to\": {\n        \"id\": \"f9bf6ca9-7b9c-4a08-93ad-45bd4c1f899b\",\n        \"url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/f9bf6ca9-7b9c-4a08-93ad-45bd4c1f899b/\",\n        \"created_at\": \"2025-04-03T16:21:38Z\",\n        \"nickname\": \"Diligent Pig\",\n        \"custom_id\": null,\n        \"custom_data\": \"\",\n        \"attributes\": []\n    },\n    \"created_at\": \"2025-04-16T01:47:55.378500Z\",\n    \"assigned_by_id\": \"33ad4c90-559f-4050-be7d-7fe60526ef07\",\n    \"reason\": \"test\"\n}"
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: 3bba40b4-83a6-4bd6-831a-69de0a339e09
+                  url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/user-tiers/3bba40b4-83a6-4bd6-831a-69de0a339e09/
+                  tier_id:
+                    type: string
+                    example: 06988d58-dd66-4ad9-bef7-71f23b1b0c8d
+                  tier:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: 06988d58-dd66-4ad9-bef7-71f23b1b0c8d
+                      url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/tiers/06988d58-dd66-4ad9-bef7-71f23b1b0c8d/
+                      tier_group_id:
+                        type: string
+                        example: 2c2a0375-c292-4176-af6d-e91133f73d9d
+                      tier_group:
+                        type: string
+                        example: Jwel Tier Group
+                      reward_item_id: {}
+                      reward_item_name: {}
+                      attributes:
+                        type: array
+                      order:
+                        type: integer
+                        example: 3
+                        default: 0
+                      status:
+                        type: string
+                        example: active
+                      title:
+                        type: string
+                        example: Gold
+                      image: {}
+                      description:
+                        type: string
+                        example: ''
+                      reward_item_threshold: {}
+                      created_at:
+                        type: string
+                        example: '2025-04-16T00:35:08.614257Z'
+                  assigned_to_id:
+                    type: string
+                    example: f9bf6ca9-7b9c-4a08-93ad-45bd4c1f899b
+                  assigned_to:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: f9bf6ca9-7b9c-4a08-93ad-45bd4c1f899b
+                      url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/profiles/f9bf6ca9-7b9c-4a08-93ad-45bd4c1f899b/
+                      created_at:
+                        type: string
+                        example: '2025-04-03T16:21:38Z'
+                      nickname:
+                        type: string
+                        example: Diligent Pig
+                      custom_id: {}
+                      custom_data:
+                        type: string
+                        example: ''
+                      attributes:
+                        type: array
+                  created_at:
+                    type: string
+                    example: '2025-04-16T01:47:55.378500Z'
+                  assigned_by_id:
+                    type: string
+                    example: 33ad4c90-559f-4050-be7d-7fe60526ef07
+                  reason:
+                    type: string
+                    example: test
+        '201':
+          description: '201'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"id\": \"3bba40b4-83a6-4bd6-831a-69de0a339e09\",\n    \"url\": \"https://cf-blast.livelikecdn.com/api/v1/user-tiers/3bba40b4-83a6-4bd6-831a-69de0a339e09/\",\n    \"tier_id\": \"3152fefa-4bd4-45f4-9ce3-fc1656205264\",\n    \"tier\": {\n        \"id\": \"3152fefa-4bd4-45f4-9ce3-fc1656205264\",\n        \"url\": \"https://cf-blast.livelikecdn.com/api/v1/tiers/3152fefa-4bd4-45f4-9ce3-fc1656205264/\",\n        \"tier_group_id\": \"2c2a0375-c292-4176-af6d-e91133f73d9d\",\n        \"tier_group\": \"Jwel Tier Group\",\n        \"reward_item_id\": null,\n        \"reward_item_name\": null,\n        \"attributes\": [],\n        \"order\": 1,\n        \"status\": \"active\",\n        \"title\": \"Bronze\",\n        \"image\": null,\n        \"description\": \"\",\n        \"reward_item_threshold\": null,\n        \"created_at\": \"2025-04-16T00:34:51.830133Z\"\n    },\n    \"assigned_to_id\": \"f9bf6ca9-7b9c-4a08-93ad-45bd4c1f899b\",\n    \"assigned_to\": {\n        \"id\": \"f9bf6ca9-7b9c-4a08-93ad-45bd4c1f899b\",\n        \"url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/f9bf6ca9-7b9c-4a08-93ad-45bd4c1f899b/\",\n        \"created_at\": \"2025-04-03T16:21:38Z\",\n        \"nickname\": \"Diligent Pig\",\n        \"custom_id\": null,\n        \"custom_data\": \"\",\n        \"attributes\": []\n    },\n    \"created_at\": \"2025-04-16T01:47:55.378500Z\",\n    \"assigned_by_id\": \"33ad4c90-559f-4050-be7d-7fe60526ef07\",\n    \"reason\": \"test\"\n}"
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: 3bba40b4-83a6-4bd6-831a-69de0a339e09
+                  url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/user-tiers/3bba40b4-83a6-4bd6-831a-69de0a339e09/
+                  tier_id:
+                    type: string
+                    example: 3152fefa-4bd4-45f4-9ce3-fc1656205264
+                  tier:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: 3152fefa-4bd4-45f4-9ce3-fc1656205264
+                      url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/tiers/3152fefa-4bd4-45f4-9ce3-fc1656205264/
+                      tier_group_id:
+                        type: string
+                        example: 2c2a0375-c292-4176-af6d-e91133f73d9d
+                      tier_group:
+                        type: string
+                        example: Jwel Tier Group
+                      reward_item_id: {}
+                      reward_item_name: {}
+                      attributes:
+                        type: array
+                      order:
+                        type: integer
+                        example: 1
+                        default: 0
+                      status:
+                        type: string
+                        example: active
+                      title:
+                        type: string
+                        example: Bronze
+                      image: {}
+                      description:
+                        type: string
+                        example: ''
+                      reward_item_threshold: {}
+                      created_at:
+                        type: string
+                        example: '2025-04-16T00:34:51.830133Z'
+                  assigned_to_id:
+                    type: string
+                    example: f9bf6ca9-7b9c-4a08-93ad-45bd4c1f899b
+                  assigned_to:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: f9bf6ca9-7b9c-4a08-93ad-45bd4c1f899b
+                      url:
+                        type: string
+                        example: https://cf-blast.livelikecdn.com/api/v1/profiles/f9bf6ca9-7b9c-4a08-93ad-45bd4c1f899b/
+                      created_at:
+                        type: string
+                        example: '2025-04-03T16:21:38Z'
+                      nickname:
+                        type: string
+                        example: Diligent Pig
+                      custom_id: {}
+                      custom_data:
+                        type: string
+                        example: ''
+                      attributes:
+                        type: array
+                  created_at:
+                    type: string
+                    example: '2025-04-16T01:47:55.378500Z'
+                  assigned_by_id:
+                    type: string
+                    example: 33ad4c90-559f-4050-be7d-7fe60526ef07
+                  reason:
+                    type: string
+                    example: test
+        '204':
+          description: '204'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: ''
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"tier_id\": [\n        \"“06988sd58-dd66-4ad9-bef7-71f23b1b0c8d” is not a valid UUID.\"\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  tier_id:
+                    type: array
+                    items:
+                      type: string
+                      example: “06988sd58-dd66-4ad9-bef7-71f23b1b0c8d” is not a valid UUID.
+        '409':
+          description: '409'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"detail\": \"Tier already assigned.\"\n}"
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    example: Tier already assigned.
+      deprecated: false
+      tags:
+      - Profiles
+      security:
+      - {}
+    servers:
+    - url: https://cf-blast.livelikecdn.com/api/v1
+  /profiles/{profile_id}/badge-progress/:
+    get:
+      summary: List Badge progress
+      description: ''
+      operationId: list-badge-progress
+      parameters:
+      - name: badge_id
+        in: query
+        description: Can be repeated to list progress for multiple badges
+        schema:
+          type: string
+      - name: profile_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "[\n  {\n    \"badge\": {\n      \"id\": \"9d17db41-477f-47e5-b5c8-e03fa1b0fa4d\",\n      \"name\": \"Cool Badge\",\n      \"description\": \"test\",\n      \"badge_icon_url\": \"/media/assets/d545b7cb-b24a-456c-bc3e-c633901563bc.png\",\n      \"mimetype\": \"application/octet-stream\"\n    },\n    \"badge_progression\": [\n      {\n        \"reward_item_id\": \"09f7fcd6-24d6-4752-a10b-98dd7c687e78\",\n        \"reward_item_name\": \"Cool Award\",\n        \"reward_item_threshold\": 2,\n        \"current_reward_amount\": 14\n      }\n    ]\n  },\n  {\n    \"badge\": {\n      \"id\": \"b6c56227-8643-4e06-bb22-f30917575e48\",\n      \"name\": \"Second Badge\",\n      \"description\": \"another badge\",\n      \"badge_icon_url\": \"/media/assets/8f22fb78-35e7-4d53-a5ee-cb8f91e89d57.jpg\",\n      \"mimetype\": \"application/octet-stream\"\n    },\n    \"badge_progression\": [\n      {\n        \"reward_item_id\": \"09f7fcd6-24d6-4752-a10b-98dd7c687e78\",\n        \"reward_item_name\": \"Cool Award\",\n        \"reward_item_threshold\": 5,\n        \"current_reward_amount\": 14\n      }\n    ]\n  }\n]"
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    badge:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: 9d17db41-477f-47e5-b5c8-e03fa1b0fa4d
+                        name:
+                          type: string
+                          example: Cool Badge
+                        description:
+                          type: string
+                          example: test
+                        badge_icon_url:
+                          type: string
+                          example: /media/assets/d545b7cb-b24a-456c-bc3e-c633901563bc.png
+                        mimetype:
+                          type: string
+                          example: application/octet-stream
+                    badge_progression:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          reward_item_id:
+                            type: string
+                            example: 09f7fcd6-24d6-4752-a10b-98dd7c687e78
+                          reward_item_name:
+                            type: string
+                            example: Cool Award
+                          reward_item_threshold:
+                            type: integer
+                            example: 2
+                            default: 0
+                          current_reward_amount:
+                            type: integer
+                            example: 14
+                            default: 0
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: curl --location --request GET 'https://cf-blast.livelikecdn.com/api/v1/profiles/{profile_id}/badge-progress/?badge_id={badge_id}&badge_id={badge_id2}'
+        samples-languages:
+        - curl
+      tags:
+      - Profiles
+      security:
+      - {}
+    servers:
+    - url: https://cf-blast.livelikecdn.com/api/v1
+  /profiles/{profile_id}/badges/:
+    get:
+      summary: List Earned Badges
+      description: List badges earned by a user
+      operationId: get-users-badges
+      parameters:
+      - in: query
+        name: reward_item_id
+        schema:
+          type: string
+        description: Filter badges associated with the specified reward item
+      - in: path
+        name: profile_id
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"count\": 3,\n  \"next\": null,\n  \"previous\": null,\n  \"results\": [\n    {\n      \"awarded_at\": \"2021-07-12T17:07:15.135787Z\",\n      \"badge\": {\n        \"id\": \"9d17db41-477f-47e5-b5c8-e03fa1b0fa4d\",\n        \"name\": \"Cool Badge\",\n        \"description\": \"first available badge\",\n        \"badge_icon_url\": \"/media/assets/d545b7cb-b24a-456c-bc3e-c633901563bc.png\",\n        \"mimetype\": \"application/octet-stream\"\n      }\n    },\n    {\n      \"awarded_at\": \"2021-07-12T17:45:43.179425Z\",\n      \"badge\": {\n        \"id\": \"b6c56227-8643-4e06-bb22-f30917575e48\",\n        \"name\": \"Second Badge\",\n        \"description\": \"another badge\",\n        \"badge_icon_url\": \"/media/assets/8f22fb78-35e7-4d53-a5ee-cb8f91e89d57.jpg\",\n        \"mimetype\": \"application/octet-stream\"\n      }\n    },\n    {\n      \"awarded_at\": \"2021-07-13T14:40:42.895282Z\",\n      \"badge\": {\n        \"id\": \"24659aac-732e-4da0-a6bf-0338dd617b3a\",\n        \"name\": \"Third Badge\",\n        \"description\": null,\n        \"badge_icon_url\": \"/media/assets/49f71674-26ea-4814-be47-fab82feec6dc.jpg\",\n        \"mimetype\": \"application/octet-stream\"\n      }\n    }\n  ]\n}"
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 3
+                    default: 0
+                  next: {}
+                  previous: {}
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        awarded_at:
+                          type: string
+                          example: '2021-07-12T17:07:15.135787Z'
+                        badge:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: 9d17db41-477f-47e5-b5c8-e03fa1b0fa4d
+                            name:
+                              type: string
+                              example: Cool Badge
+                            description:
+                              type: string
+                              example: first available badge
+                            badge_icon_url:
+                              type: string
+                              example: /media/assets/d545b7cb-b24a-456c-bc3e-c633901563bc.png
+                            mimetype:
+                              type: string
+                              example: application/octet-stream
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --request GET \\\n     --url https://cf-blast.livelikecdn.com/api/v1/profiles/id/badges/ \\\n     --header 'Accept: application/json'"
+        - language: python
+          code: 'import requests
+
+
+            url = "https://cf-blast.livelikecdn.com/api/v1/profiles/id/badges/"
+
+
+            headers = {"Accept": "application/json"}
+
+
+            response = requests.request("GET", url, headers=headers)
+
+
+            print(response.text)'
+        - language: text
+          code: "const fetch = require('node-fetch');\n\nconst url = 'https://cf-blast.livelikecdn.com/api/v1/profiles/id/badges/';\nconst options = {method: 'GET', headers: {Accept: 'application/json'}};\n\nfetch(url, options)\n  .then(res => res.json())\n  .then(json => console.log(json))\n  .catch(err => console.error('error:' + err));"
+          name: Node
+        samples-languages:
+        - curl
+        - python
+        - text
+      tags:
+      - Profiles
+      security:
+      - {}
+    post:
+      summary: Award a Badge to a User
+      description: ''
+      operationId: award-a-badge-to-a-user
+      parameters:
+      - name: profile_id
+        in: path
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                badge_id:
+                  type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"awarded_at\": \"2021-07-13T16:32:39.959905Z\",\n  \"badge\": {\n    \"id\": \"77d640d7-9e03-4cbc-8aa9-38fe9bc5ec59\",\n    \"name\": \"badge 4\",\n    \"description\": \"test test test\",\n    \"badge_icon_url\": \"https://cf-blast-storage-qa.livelikecdn.com/assets/89c507e8-840b-4391-90e7-6621e07e8052.png\",\n    \"mimetype\": \"application/octet-stream\",\n    \"reward_item\": null,\n    \"reward_item_threshold\": 1\n  }\n}"
+              schema:
+                type: object
+                properties:
+                  awarded_at:
+                    type: string
+                    example: '2021-07-13T16:32:39.959905Z'
+                  badge:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: 77d640d7-9e03-4cbc-8aa9-38fe9bc5ec59
+                      name:
+                        type: string
+                        example: badge 4
+                      description:
+                        type: string
+                        example: test test test
+                      badge_icon_url:
+                        type: string
+                        example: https://cf-blast-storage-qa.livelikecdn.com/assets/89c507e8-840b-4391-90e7-6621e07e8052.png
+                      mimetype:
+                        type: string
+                        example: application/octet-stream
+                      reward_item: {}
+                      reward_item_threshold:
+                        type: integer
+                        example: 1
+                        default: 0
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Profiles
+      security:
+      - {}
+    servers:
+    - url: https://cf-blast.livelikecdn.com/api/v1
+  /profiles/{profile_id}/comments/:
+    get:
+      summary: List Comments by Author
+      description: ''
+      operationId: list-comments-by-author
+      parameters:
+      - name: comment_board_id
+        in: query
+        description: Optional comment_board filter
+        schema:
+          type: string
+      - name: parent_comment_id
+        in: query
+        description: This will return all the replies to the parent_comment_id within that board
+        schema:
+          type: string
+      - name: ordering
+        in: query
+        description: 1. created_at → default ordering, returns comments in ascending order of created_at 2. -created_at. → opposite of created at, returns comments in descending order of created_at
+        schema:
+          type: string
+          default: created_at
+      - name: top_level
+        in: query
+        description: Set to true to return only top level comments
+        schema:
+          type: boolean
+      - name: without_deleted_thread
+        in: query
+        description: Set to true to exclude deleted threads in response
+        schema:
+          type: boolean
+      - name: profile_id
+        in: path
+        description: Profile Id whose comments are to fetched
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"count\": 1,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": \"3437f488-5c45-468b-8a14-c9b67ee77337\",\n            \"url\": \"https://cf-blast.livelikecdn.com/api/v1/comments/3437f488-5c45-468b-8a14-c9b67ee77337/\",\n            \"comment_board_id\": \"d849e096-d36d-406e-bff0-0627f13b19d4\",\n            \"parent_comment_id\": null,\n            \"thread_comment_id\": \"3437f488-5c45-468b-8a14-c9b67ee77337\",\n            \"text\": \"test_comment\",\n            \"comment_depth\": 0,\n            \"custom_data\": \"custom data\",\n            \"author_id\": \"96819c56-063d-4fad-929a-79a0648122f4\",\n            \"is_deleted\": false,\n            \"created_at\": \"2022-12-09T13:06:39.379146Z\",\n            \"replies_url\": \"https://cf-blast.livelikecdn.com/api/v1/comments/?comment_board_id=d849e096-d36d-406e-bff0-0627f13b19d4&parent_comment_id=3437f488-5c45-468b-8a14-c9b67ee77337\"\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 1
+                    default: 0
+                  next: {}
+                  previous: {}
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: 3437f488-5c45-468b-8a14-c9b67ee77337
+                        url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/comments/3437f488-5c45-468b-8a14-c9b67ee77337/
+                        comment_board_id:
+                          type: string
+                          example: d849e096-d36d-406e-bff0-0627f13b19d4
+                        parent_comment_id: {}
+                        thread_comment_id:
+                          type: string
+                          example: 3437f488-5c45-468b-8a14-c9b67ee77337
+                        text:
+                          type: string
+                          example: test_comment
+                        comment_depth:
+                          type: integer
+                          example: 0
+                          default: 0
+                        custom_data:
+                          type: string
+                          example: custom data
+                        author_id:
+                          type: string
+                          example: 96819c56-063d-4fad-929a-79a0648122f4
+                        is_deleted:
+                          type: boolean
+                          example: false
+                          default: true
+                        created_at:
+                          type: string
+                          example: '2022-12-09T13:06:39.379146Z'
+                        replies_url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/comments/?comment_board_id=d849e096-d36d-406e-bff0-0627f13b19d4&parent_comment_id=3437f488-5c45-468b-8a14-c9b67ee77337
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Profiles
+      security:
+      - {}
+    servers:
+    - url: https://cf-blast.livelikecdn.com/api/v1
+  /profiles/{profile_id}/reward-item-balances/{reward_item_id}/:
+    get:
+      summary: Get reward item balance
+      description: You can see the reward item balance for a given user
+      operationId: get-reward-item-balance
+      parameters:
+      - name: profile_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: reward_item_id
+        in: path
+        schema:
+          type: string
+        required: true
+      responses:
+        '201':
+          description: '201'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"reward_item_id\": \"<reward_item_id>\",\n    \"reward_item_name\": \"Test Points\",\n    \"profile_id\": \"<profile_id>\",\n    \"reward_item_balance\": 550\n}\n"
+              schema:
+                type: object
+                properties:
+                  reward_item_id:
+                    type: string
+                    example: <reward_item_id>
+                  reward_item_name:
+                    type: string
+                    example: Test Points
+                  profile_id:
+                    type: string
+                    example: <profile_id>
+                  reward_item_balance:
+                    type: integer
+                    example: 550
+                    default: 0
+        '409':
+          description: '409'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"detail\": \"code already used.\"\n}\n"
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    example: code already used.
+      deprecated: false
+      security: []
+      tags:
+      - Profiles
+    servers:
+    - url: https://cf-blast.livelikecdn.com/api/v1
+  /profiles/{profile_id}/reward-item-credits/:
+    post:
+      summary: Credit Reward Item
+      description: Credit reward item points to a user profile
+      operationId: credit-reward-item
+      parameters:
+      - name: profile_id
+        in: path
+        schema:
+          type: string
+          default: ''
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reward_item_id:
+                  type: string
+                  default: ''
+                reward_item_amount:
+                  type: integer
+                  default: ''
+                  format: int32
+                description:
+                  type: string
+                  description: optional description for crediting the reward. eg. attended an away game vs Atlanta Braves on April 30th
+                custom_data:
+                  type: string
+                  description: String data to send with the reward item credit. Typically contains a string JSON payload to be decoded by the client SDK
+                attributes:
+                  type: array
+                  description: Key/value set of attributes to create that will be linked to the reward item
+                  items:
+                    properties:
+                      key:
+                        type: string
+                      value:
+                        type: string
+                    required:
+                    - key
+                    - value
+                    type: object
+                reason:
+                  type: string
+                  description: Optional reason for crediting the reward. eg. attend a game
+                leaderboard_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: List of leaderboard UUIDs to update; if provided, only those leaderboards are updated; if empty ([]), no linked leaderboards are updated; if omitted, all linked leaderboards are updated.
+                expires_at:
+                  type: string
+                  description: Date after which the credited amount stops counting toward the profile's balance. Must be today or later, and can't exceed the reward item's earning_ends_at.
+                  format: date
+                idempotency_key:
+                  type: string
+                  description: Client-supplied dedup token — replaying the same key returns/short-circuits the existing transaction instead of creating a duplicate.
+              required:
+              - reward_item_id
+              - reward_item_amount
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"new_balance\": 91,\n  \"created_at\": \"2021-09-21T22:06:39.906193Z\",\n  \"description\": \"Crediting 5 reward points for signup\",\n  \"custom_data\": \"{\\\"key\\\":\\\"key1\\\"}\",\n  \"prizeout_balance\": null,\n  \"attributes\": [\n    {\n      \"key\": \"size\",\n      \"value\": \"medium\"\n    }\n  ],\n  \"reason\": \"attend a game\",\n  \"description\": \"attended an away game vs Atlanta Braves on April 30th\",\n}"
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"attributes\": [\n        {\n            \"key\": [\n                \"This field is required.\"\n            ],\n            \"value\": [\n                \"This field is required.\"\n            ]\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  attributes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: array
+                          items:
+                            type: string
+                            example: This field is required.
+                        value:
+                          type: array
+                          items:
+                            type: string
+                            example: This field is required.
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --request POST \\\n  --url https://cf-blast.livelikecdn.com/api/v1/profiles/{profile_id}/reward-item-credits/ \\\n  --header 'Authorization: Bearer {producer token}' \\\n  --header 'Content-Type: application/json' \\\n  --data '{\n  \"reward_item_id\": \"{reward_item_id}\",\n  \"reward_item_amount\": {reward_item_amount},\n  \"description\": {description},\n  \"custom_data\": {custom_data},\n  \"attributes\": [{\n        \"key\": {key},\n        \"value\": {value}\n    }]\n}\n'"
+        samples-languages:
+        - curl
+      tags:
+      - Profiles
+      security:
+      - {}
+    servers:
+    - url: https://cf-blast.livelikecdn.com/api/v1
+  /profiles/{profile_id}/reward-item-debits/:
+    post:
+      summary: Debit Reward Item
+      description: Debit reward item points from a user profile
+      operationId: debit-reward-item
+      parameters:
+      - name: profile_id
+        in: path
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reward_item_id:
+                  type: string
+                reward_item_amount:
+                  type: integer
+                  default: null
+                  format: int32
+                description:
+                  type: string
+                  description: Optional description for debiting this reward item. eg. purchased a signed cap at a discounted price
+                custom_data:
+                  type: string
+                  description: String data to send with the reward debit. Typically contains a string JSON payload to be decoded by the client SDK
+                attributes:
+                  type: array
+                  description: Key/value set of attributes to create that will be linked to the reward item
+                  items:
+                    properties:
+                      key:
+                        type: string
+                      value:
+                        type: string
+                    required:
+                    - key
+                    - value
+                    type: object
+                reason:
+                  type: string
+                  description: Optional reason for debiting this reward item. eg. merch purchase.
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"id\": \"a9c7becd-ebf5-45d8-9cf1-99d7df1f114d\",\n  \"new_balance\": 91,\n  \"created_at\": \"2021-09-21T22:06:39.906193Z\",\n  \"description\": \"Debiting 5 reward points for buying super coin\",\n  \"custom_data\": \"{\\\"key\\\":\\\"key1\\\"}\",\n  \"prizeout_balance\": null,\n  \"attributes\": [\n    {\n      \"key\": \"size\",\n      \"value\": \"medium\"\n    }\n  ],\n  \"reason\": \"merch purchase\",\n  \"description\": \"purchased a signed cap at a discounted price\"\n}"
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: a9c7becd-ebf5-45d8-9cf1-99d7df1f114d
+                  new_balance:
+                    type: integer
+                    example: 91
+                    default: 0
+                  created_at:
+                    type: string
+                    example: '2021-09-21T22:06:39.906193Z'
+                  description:
+                    type: string
+                    example: purchased a signed cap at a discounted price
+                  custom_data:
+                    type: string
+                    example: '{"key":"key1"}'
+                  prizeout_balance: {}
+                  attributes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                          example: size
+                        value:
+                          type: string
+                          example: medium
+                  reason:
+                    type: string
+                    example: merch purchase
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                property attribute's key/value missing:
+                  value: "{\n    \"attributes\": [\n        {\n            \"key\": [\n                \"This field is required.\"\n            ],\n            \"value\": [\n                \"This field is required.\"\n            ]\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  attributes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: array
+                          items:
+                            type: string
+                            example: This field is required.
+                        value:
+                          type: array
+                          items:
+                            type: string
+                            example: This field is required.
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --request POST \\\n  --url https://cf-blast.livelikecdn.com/api/v1/profiles/{profile_id}/reward-item-debits/ \\\n  --header 'Authorization: Bearer {producer token}' \\\n  --header 'Content-Type: application/json' \\\n  --data '{\n  \"reward_item_id\": \"{reward_item_id}\",\n  \"reward_item_amount\": {reward_item_amount},\n  \"attributes\": [{\n        \"key\": {key},\n        \"value\": {value}\n    }]\n}\n'"
+        samples-languages:
+        - curl
+      tags:
+      - Profiles
+      security:
+      - {}
+    servers:
+    - url: https://cf-blast.livelikecdn.com/api/v1
+  /profiles/{profile_id}/reward-item-transfers/:
+    post:
+      summary: Transfer Reward Items
+      description: Transfer reward items from one user to another
+      operationId: reward-item-transfers
+      parameters:
+      - name: profile_id
+        in: path
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reward_item_id:
+                  type: string
+                recipient_profile_id:
+                  type: string
+                reward_item_amount:
+                  type: integer
+                  default: null
+                  format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"id\": \"8cc8982d-8f53-4d78-9f46-f173fc092b88\",\n  \"reward_item_amount\": 5,\n  \"created_at\": \"2021-09-26T16:48:09.385939Z\",\n  \"sender_profile_id\": \"fb436c54-dd7f-41dd-ac1e-f815218e530d\",\n  \"recipient_profile_id\": \"947d3a03-f87f-4146-8e32-043db3fdd25f\"\n  \"reward_item_id\": \"xxx\"\n}"
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: "curl --request POST \\\n  --url https://cf-blast.livelikecdn.com/api/v1/profiles/{profile_id}/reward-item-transfers/ \\\n  --header 'Authorization: Bearer {access_token}' \\\n  --header 'Content-Type: application/json' \\\n  --data '{\n  \"reward_item_id\": \"{reward_item_id}\",\n  \"reward_item_amount\": 4,\n  \"recipient_profile_id\": \"{recipient_profile_id}\"\n}\n'"
+        samples-languages:
+        - curl
+      tags:
+      - Profiles
+      security:
+      - {}
+    get:
+      summary: List Reward Item Transfers
+      description: You can see the reward item balance for a given user
+      operationId: list-reward-item-transfers
+      parameters:
+      - name: profile_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: reward_item_id
+        in: path
+        schema:
+          type: string
+        required: true
+      - name: transfer_type
+        in: query
+        description: transfer_type can be filtered by "received" or "sent"
+        schema:
+          type: string
+      responses:
+        '201':
+          description: '201'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"count\": 48,\n  \"next\": \"https://cf-blast-game-changers.livelikecdn.com/api/v1/profiles/b00b0b42-d6e4-4697-b0d7-137269a13805/reward-item-transfers/?page=2&transfer_type=debit\",\n  \"previous\": null,\n  \"results\": [\n    {\n      \"id\": \"b210f4fe-910e-48bd-98bb-190f76281aa3\",\n      \"created_at\": \"2021-10-07T15:57:26.007822Z\",\n      \"reward_item_id\": \"26894d5d-1efa-4997-bfe0-7e105fdc474d\",\n      \"reward_item_amount\": 6,\n      \"sender_profile_id\": \"b00b0b42-d6e4-4697-b0d7-137269a13805\",\n      \"recipient_profile_id\": \"5cf11253-b015-4bd2-a199-5f0bb4bcb4d9\"\n    },\n    {\n      \"id\": \"448606d5-a621-4274-b671-6ac7c540e448\",\n      \"created_at\": \"2021-10-01T10:39:25.488326Z\",\n      \"reward_item_id\": \"e4fb8a03-fd8a-4623-a33b-b0c9bb4a41a5\",\n      \"reward_item_amount\": 100,\n      \"sender_profile_id\": \"b00b0b42-d6e4-4697-b0d7-137269a13805\",\n      \"recipient_profile_id\": \"d01517dd-b2aa-42e1-bd0f-2efdbe7d46ba\"\n    }\n  ]\n}"
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 48
+                    default: 0
+                  next:
+                    type: string
+                    example: https://cf-blast-game-changers.livelikecdn.com/api/v1/profiles/b00b0b42-d6e4-4697-b0d7-137269a13805/reward-item-transfers/?page=2&transfer_type=debit
+                  previous: {}
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: b210f4fe-910e-48bd-98bb-190f76281aa3
+                        created_at:
+                          type: string
+                          example: '2021-10-07T15:57:26.007822Z'
+                        reward_item_id:
+                          type: string
+                          example: 26894d5d-1efa-4997-bfe0-7e105fdc474d
+                        reward_item_amount:
+                          type: integer
+                          example: 6
+                          default: 0
+                        sender_profile_id:
+                          type: string
+                          example: b00b0b42-d6e4-4697-b0d7-137269a13805
+                        recipient_profile_id:
+                          type: string
+                          example: 5cf11253-b015-4bd2-a199-5f0bb4bcb4d9
+        '409':
+          description: '409'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"detail\": \"code already used.\"\n}\n"
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    example: code already used.
+      deprecated: false
+      x-readme:
+        code-samples:
+        - language: curl
+          code: 'curl --location --request GET ''https://cf-blast.livelikecdn.com/api/v1/profiles/{profile_id}/reward-item-transfers/?transfer_type=sent'' \
+
+            --header ''Content-Disposition: attachment; filename="filename.jpg"'' \
+
+            --header ''Content-Type: application/json'' \
+
+            --header ''Authorization: Bearer {access token}'' \
+
+            --data-raw '''''
+        samples-languages:
+        - curl
+      tags:
+      - Profiles
+      security:
+      - {}
+    servers:
+    - url: https://cf-blast.livelikecdn.com/api/v1
+  /{id}/profiles/:
+    get:
+      summary: List Profiles for a Leaderboard View
+      description: Existing Profiles not in this set will be removed.
+      operationId: list-profiles-for-a-leaderboard-view
+      parameters:
+      - name: id
+        in: path
+        description: The Leaderboard View ID
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"count\": 1,\n  \"next\": null,\n  \"previous\": null,\n  \"results\": [\n    {\n      \"id\": \"5c92f58f-f987-4269-8a32-83efa6693999\",\n      \"url\": \"https://cf-blast.livelikecdn.com/api/v1/chat-room-memberships/5c92f58f-f987-4269-8a32-83efa6693999/\",\n      \"profile\": {\n        \"id\": \"26b0cae1-3890-486c-b6c0-0b36005c76d6\",\n        \"url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/26b0cae1-3890-486c-b6c0-0b36005c76d6/\",\n        \"created_at\": \"2020-04-16T23:15:07.550000Z\",\n        \"nickname\": \"Wise Bee\",\n        \"subscribe_channel\": \"profile.26b0cae1-3890-486c-b6c0-0b36005c76d6\",\n        \"reported_count\": 0,\n        \"chat_room_memberships_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/26b0cae1-3890-486c-b6c0-0b36005c76d6/chat-room-memberships/\"\n      }\n    }\n  ]\n}"
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 1
+                    default: 0
+                  next: {}
+                  previous: {}
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: 5c92f58f-f987-4269-8a32-83efa6693999
+                        url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/chat-room-memberships/5c92f58f-f987-4269-8a32-83efa6693999/
+                        profile:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: 26b0cae1-3890-486c-b6c0-0b36005c76d6
+                            url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/profiles/26b0cae1-3890-486c-b6c0-0b36005c76d6/
+                            created_at:
+                              type: string
+                              example: '2020-04-16T23:15:07.550000Z'
+                            nickname:
+                              type: string
+                              example: Wise Bee
+                            subscribe_channel:
+                              type: string
+                              example: profile.26b0cae1-3890-486c-b6c0-0b36005c76d6
+                            reported_count:
+                              type: integer
+                              example: 0
+                              default: 0
+                            chat_room_memberships_url:
+                              type: string
+                              example: https://cf-blast.livelikecdn.com/api/v1/profiles/26b0cae1-3890-486c-b6c0-0b36005c76d6/chat-room-memberships/
+      deprecated: false
+      tags:
+      - Profiles
+      security:
+      - {}
+    servers:
+    - url: https://cf-blast.livelikecdn.com/api/v1/leaderboard-views
+  /{id}/profiles/{profile_id}/:
+    delete:
+      summary: Delete a Profile from a Leaderboard View
+      description: Remove a single Profile from a Leaderboard View
+      operationId: delete-a-profile-from-a-leaderboard-view
+      parameters:
+      - name: id
+        in: path
+        description: The ID of the Leaderboard View
+        schema:
+          type: string
+        required: true
+      - name: profile_id
+        in: path
+        description: The ID of the Profile to delete from the Leaderboard View
+        schema:
+          type: string
+        required: true
+      responses:
+        '204':
+          description: '204'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Profiles
+      security:
+      - {}
+    servers:
+    - url: https://cf-blast.livelikecdn.com/api/v1/leaderboard-views
+  /{leaderboard-view-id}/profiles/{profile-id}/:
+    get:
+      description: ''
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              examples:
+                OK:
+                  summary: OK
+                  value:
+                    score: 900
+                    profile_id: c59f665b-9d16-46fa-88c3-306cd64f339c
+                    profile_nickname: Gleaming Octopus
+                    rank: 1
+                    percentile_rank: '1.000'
+                    profile:
+                      nickname: Gleaming Octopus
+                      leaderboards_url: https://cf-blast.livelikecdn.com/api/v1/profiles/c59f665b-9d16-46fa-88c3-306cd64f339c/leaderboards/
+                      chat_room_invitations_url_template: https://cf-blast.livelikecdn.com/api/v1/chat-room-invitations/?client_id={client_id}&invited_profile_id={profile_id}
+                      created_at: '2026-03-16T13:18:39.000Z'
+                      reward_item_balances_url: https://cf-blast.livelikecdn.com/api/v1/profiles/c59f665b-9d16-46fa-88c3-306cd64f339c/reward-item-balances/
+                      reward_item_credit_url: https://cf-blast.livelikecdn.com/api/v1/profiles/c59f665b-9d16-46fa-88c3-306cd64f339c/reward-item-credits/
+                      attributes: []
+                      reward_item_debit_url: https://cf-blast.livelikecdn.com/api/v1/profiles/c59f665b-9d16-46fa-88c3-306cd64f339c/reward-item-debits/
+                      id: c59f665b-9d16-46fa-88c3-306cd64f339c
+                      custom_data: null
+                      url: https://cf-blast.livelikecdn.com/api/v1/profiles/c59f665b-9d16-46fa-88c3-306cd64f339c/
+                      points: 0
+                      badges: []
+                      reported_count: 0
+                      subscribe_channel: profile.c59f665b-9d16-46fa-88c3-306cd64f339c
+                      streak_milestones_url: https://cf-blast.livelikecdn.com/api/v1/profiles/c59f665b-9d16-46fa-88c3-306cd64f339c/streak-milestones/
+                      chat_room_memberships_url: https://cf-blast.livelikecdn.com/api/v1/profiles/c59f665b-9d16-46fa-88c3-306cd64f339c/chat-room-memberships/
+                      custom_id: null
+                      redemption_keys_url: https://cf-blast.livelikecdn.com/api/v1/redemption-keys/
+                      pk: '570934'
+                      blocked_profile_ids_url: https://cf-blast.livelikecdn.com/api/v1/blocked-profile-ids/
+                      blocked_profiles_template_url: https://cf-blast.livelikecdn.com/api/v1/profile-blocks/?blocked_profile_id={blocked_profile_id}
+                      block_profile_url: https://cf-blast.livelikecdn.com/api/v1/profile-blocks/
+                      badge_progress_url: https://cf-blast.livelikecdn.com/api/v1/profiles/c59f665b-9d16-46fa-88c3-306cd64f339c/badge-progress/
+                      badges_url: https://cf-blast.livelikecdn.com/api/v1/profiles/c59f665b-9d16-46fa-88c3-306cd64f339c/badges/
+                      reward_item_transfer_url: https://cf-blast.livelikecdn.com/api/v1/profiles/c59f665b-9d16-46fa-88c3-306cd64f339c/reward-item-transfers/
+                      client_id: 4JF1QjhD594ve6IOkZaK5LFvIktqeW1xvFmsQiHY
+                      leaderboard_views_url: https://cf-blast.livelikecdn.com/api/v1/profiles/c59f665b-9d16-46fa-88c3-306cd64f339c/leaderboard-views/
+      parameters:
+      - in: path
+        name: leaderboard-view-id
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: profile-id
+        schema:
+          type: string
+        required: true
+      operationId: get_leaderboard-view-id-profiles-profile-id
+      tags:
+      - Profiles
+      security:
+      - {}
+      summary: Get leaderboard view id profiles profile id
+      x-summary-source: derived
+    servers:
+    - url: https://cf-blast.livelikecdn.com/api/v1/leaderboard-views
+  /profiles/{profile-id}/quest-variant-assignment:
+    put:
+      description: ''
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              examples:
+                OK:
+                  summary: OK
+                  value:
+                    profile_id: efc01b0d-fdeb-471a-8a0d-314220e65e03
+                    assigned:
+                    - id: e4999cbf-855e-4cff-bfca-36c47ac6d79f
+                      quest_id: 70d6fb38-8be5-45b1-8ca6-71aca6cba1c8
+                      assigned_test_variant:
+                        id: feaba22b-05a7-4e12-97ed-b220f892fea7
+                        name: New Variant
+                        description: null
+                        allocation_percentage: '50.00'
+                      ab_test:
+                        id: eb2bd245-1043-412e-a45f-0458f3fdfaf3
+                        name: AB Test Variant
+                        description: This is test test ab quest
+                        assignment_strategy: random
+                    skipped: []
+      parameters:
+      - in: path
+        name: profile-id
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: quest_ids
+        schema:
+          type: array
+          items:
+            type: string
+      operationId: put_profiles-profile-id-quest-variant-assignment
+      tags:
+      - Profiles
+      summary: Put profiles profile id quest variant assignment
+      x-summary-source: derived
+    servers:
+    - url: https://cf-blast.livelikecdn.com/api/v1/applications
+  /{id}/:
+    get:
+      summary: Get User Profile
+      description: ''
+      operationId: get-user-profile
+      parameters:
+      - name: id
+        in: path
+        description: Unique ID of profile to retrieve
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value:
+                    badges: []
+                    id: cf827079-fdca-49b9-a775-f24198496d5e
+                    custom_id: u_000123
+                    subscribe_channel: profile.cf827079-fdca-49b9-a775-f24198496d5e
+                    url: https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/
+                    chat_room_memberships_url: https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/chat-room-memberships/
+                    blocked_profiles_template_url: https://cf-blast.livelikecdn.com/api/v1/profile-blocks/?blocked_profile_id={blocked_profile_id}
+                    client_id: N8mzx8CUQWzTXBkKrKIXtvh4NY3dztltjxncM68c
+                    reward_item_balances_url: https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/reward-item-balances/
+                    reward_item_credit_url: https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/reward-item-credits/
+                    reward_item_debit_url: https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/reward-item-debits/
+                    custom_data: null
+                    reward_item_transfer_url: https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/reward-item-transfers/
+                    chat_room_invitations_url_template: https://cf-blast.livelikecdn.com/api/v1/chat-room-invitations/?client_id={client_id}&invited_profile_id={profile_id}
+                    badges_url: https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/badges/
+                    badge_progress_url: https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/badge-progress/
+                    block_profile_url: https://cf-blast.livelikecdn.com/api/v1/profile-blocks/
+                    blocked_profile_ids_url: https://cf-blast.livelikecdn.com/api/v1/blocked-profile-ids/
+                    points: 0
+                    reported_count: 0
+                    created_at: '2019-09-30T15:59:44.933696Z'
+                    nickname: Swift Bear
+                    attributes:
+                    - key: team_name
+                      value: All Stars
+              schema:
+                type: object
+                properties:
+                  badges:
+                    type: array
+                  id:
+                    type: string
+                    example: cf827079-fdca-49b9-a775-f24198496d5e
+                  subscribe_channel:
+                    type: string
+                    example: profile.cf827079-fdca-49b9-a775-f24198496d5e
+                  url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/
+                  chat_room_memberships_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/chat-room-memberships/
+                  blocked_profiles_template_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/profile-blocks/?blocked_profile_id={blocked_profile_id}
+                  client_id:
+                    type: string
+                    example: N8mzx8CUQWzTXBkKrKIXtvh4NY3dztltjxncM68c
+                  reward_item_balances_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/reward-item-balances/
+                  reward_item_credit_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/reward-item-credits/
+                  reward_item_debit_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/reward-item-debits/
+                  custom_data: {}
+                  reward_item_transfer_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/reward-item-transfers/
+                  chat_room_invitations_url_template:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/chat-room-invitations/?client_id={client_id}&invited_profile_id={profile_id}
+                  badges_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/badges/
+                  badge_progress_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/badge-progress/
+                  block_profile_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/profile-blocks/
+                  blocked_profile_ids_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/blocked-profile-ids/
+                  points:
+                    type: integer
+                    example: 0
+                    default: 0
+                  reported_count:
+                    type: integer
+                    example: 0
+                    default: 0
+                  created_at:
+                    type: string
+                    example: '2019-09-30T15:59:44.933696Z'
+                  nickname:
+                    type: string
+                    example: Swift Bear
+                  attributes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                          example: team_name
+                        value:
+                          type: string
+                          example: All Stars
+                  custom_id:
+                    type: string
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      security: []
+      tags:
+      - Profiles
+    delete:
+      summary: Delete User Profile
+      description: ''
+      operationId: delete-user-profile
+      parameters:
+      - name: id
+        in: path
+        description: Unique ID of profile to delete
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: ''
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      security: []
+      tags:
+      - Profiles
+    servers:
+    - url: https://cf-blast.livelikecdn.com/api/v1/profiles
+  /{profile_id}/:
+    patch:
+      summary: Update User Profile
+      description: ''
+      operationId: update-user-profile
+      parameters:
+      - name: profile_id
+        in: path
+        description: Unique identifier of profile
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nickname:
+                  type: string
+                  description: If provided, the nickname will be updated
+                custom_data:
+                  type: string
+                  description: Optional custom data to set on the user profile
+                attributes:
+                  type: array
+                  description: optional key value attributes
+                  items:
+                    properties:
+                      key:
+                        type: string
+                      value:
+                        type: string
+                    type: object
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"badges\": [],\n  \"id\": \"cf827079-fdca-49b9-a775-f24198496d5e\",\n  \"subscribe_channel\": \"profile.cf827079-fdca-49b9-a775-f24198496d5e\",\n  \"url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/\",\n  \"chat_room_memberships_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/chat-room-memberships/\",\n  \"blocked_profiles_template_url\": \"https://cf-blast.livelikecdn.com/api/v1/profile-blocks/?blocked_profile_id={blocked_profile_id}\",\n  \"client_id\": \"N8mzx8CUQWzTXBkKrKIXtvh4NY3dztltjxncM68c\",\n  \"reward_item_balances_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/reward-item-balances/\",\n  \"reward_item_credit_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/reward-item-credits/\",\n  \"reward_item_debit_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/reward-item-debits/\",\n  \"custom_data\": null,\n  \"reward_item_transfer_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/reward-item-transfers/\",\n  \"chat_room_invitations_url_template\": \"https://cf-blast.livelikecdn.com/api/v1/chat-room-invitations/?client_id={client_id}&invited_profile_id={profile_id}\",\n  \"badges_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/badges/\",\n  \"badge_progress_url\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/badge-progress/\",\n  \"block_profile_url\": \"https://cf-blast.livelikecdn.com/api/v1/profile-blocks/\",\n  \"points\": 0,\n  \"reported_count\": 0,\n  \"created_at\": \"2019-09-30T15:59:44.933696Z\",\n  \"nickname\": \"Swift Bear\",\n   \"attributes\": [\n    {\n      \"key\": \"team_name\",\n      \"value\": \"All Stars\"\n    }\n   ]\n}"
+              schema:
+                type: object
+                properties:
+                  badges:
+                    type: array
+                  id:
+                    type: string
+                    example: cf827079-fdca-49b9-a775-f24198496d5e
+                  subscribe_channel:
+                    type: string
+                    example: profile.cf827079-fdca-49b9-a775-f24198496d5e
+                  url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/
+                  chat_room_memberships_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/chat-room-memberships/
+                  blocked_profiles_template_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/profile-blocks/?blocked_profile_id={blocked_profile_id}
+                  client_id:
+                    type: string
+                    example: N8mzx8CUQWzTXBkKrKIXtvh4NY3dztltjxncM68c
+                  reward_item_balances_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/reward-item-balances/
+                  reward_item_credit_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/reward-item-credits/
+                  reward_item_debit_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/reward-item-debits/
+                  custom_data: {}
+                  reward_item_transfer_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/reward-item-transfers/
+                  chat_room_invitations_url_template:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/chat-room-invitations/?client_id={client_id}&invited_profile_id={profile_id}
+                  badges_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/badges/
+                  badge_progress_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/profiles/cf827079-fdca-49b9-a775-f24198496d5e/badge-progress/
+                  block_profile_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/profile-blocks/
+                  points:
+                    type: integer
+                    example: 0
+                    default: 0
+                  reported_count:
+                    type: integer
+                    example: 0
+                    default: 0
+                  created_at:
+                    type: string
+                    example: '2019-09-30T15:59:44.933696Z'
+                  nickname:
+                    type: string
+                    example: Swift Bear
+                  attributes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                          example: team_name
+                        value:
+                          type: string
+                          example: All Stars
+      deprecated: false
+      tags:
+      - Profiles
+      security:
+      - {}
+    servers:
+    - url: https://cf-blast.livelikecdn.com/api/v1/profiles
+x-refined-from:
+- livelike-engagement-suite-openapi.yml
+- livelike-leaderboard-views-openapi.yml
+- livelike-new-application-openapi.yml
+- livelike-profiles-openapi.yml
+x-readme-fauxas: true
+x-provenance:
+  method: searched
+  source: https://docs.livelike.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://docs.livelike.com/reference/create-an-application.md
+  - https://docs.livelike.com/reference/create-multiplier-1.md
+  - https://docs.livelike.com/reference/create-multiplier.md
+  - https://docs.livelike.com/reference/delete-an-application.md
+  - https://docs.livelike.com/reference/delete-comment-quality-rules.md
+  - https://docs.livelike.com/reference/list-reward-multipliers.md
+  - https://docs.livelike.com/reference/listing-applications-widgets.md
+  - https://docs.livelike.com/reference/retrieve-reward-multiplier-1-1-1-1.md
+  - https://docs.livelike.com/reference/retrieve-reward-multiplier-1-1-1.md
+  - https://docs.livelike.com/reference/retrieve-reward-multiplier-1-1.md
+  - https://docs.livelike.com/reference/retrieve-reward-multiplier-1.md
+  - https://docs.livelike.com/reference/retrieve-reward-multiplier.md
+  - https://docs.livelike.com/reference/update-an-application.md
+  merge:
+    pages: 13
+    deduped: 12
+    conflicts_kept_first: 0

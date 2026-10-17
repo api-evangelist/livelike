@@ -1,0 +1,383 @@
+openapi: 3.2.0
+info:
+  version: 1.1.0
+  title: LiveLike Analytics Dashboards API
+  description: Access the data behind your LiveLike dashboards. Contact your LiveLike account manager to get your API key.
+servers:
+- url: https://metabase.livelikecdn.com
+  description: LiveLike Metabase instance
+security:
+- ApiKeyAuth: []
+tags:
+- name: Dashboards
+  description: A Dashboard groups multiple reports together. Use this if you want to download data from a specific report that lives inside a dashboard.
+  x-readme-tag-description: A Dashboard groups multiple reports together. Use this if you want to download data from a specific report that lives inside a dashboard.
+paths:
+  /api/dashboard/{dashboard_id}:
+    get:
+      tags:
+      - Dashboards
+      summary: Get Dashboard
+      description: Returns the details of a dashboard, including all the reports inside it. You need the `id` (dashcard_id) and `card_id` from each report to download its data via the dashboard download endpoint.
+      operationId: get_dashboard
+      parameters:
+      - in: path
+        name: dashboard_id
+        required: true
+        schema: {}
+        description: Dashboard ID from `GET /api/collection/{id}/items` — look for items where `model` is `"dashboard"`.
+      responses:
+        '200':
+          description: Dashboard metadata with the full Dashcard list.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dashboard'
+              examples:
+                OK:
+                  summary: Dashboard with two cards
+                  value:
+                    id: 343
+                    name: Serie A Overview
+                    description: null
+                    parameters: []
+                    tabs: []
+                    dashcards:
+                    - id: 3535
+                      card_id: 3267
+                      parameter_mappings: []
+                      card:
+                        id: 3267
+                        name: Daily KPIs
+                        description: null
+                        parameters: []
+                        result_metadata: []
+                    - id: 3540
+                      card_id: 3268
+                      parameter_mappings: []
+                      card:
+                        id: 3268
+                        name: Widget Engagement
+                        description: null
+                        parameters: []
+                        result_metadata: []
+        '401':
+          description: Unauthorized — `x-api-key` header is missing or invalid.
+        '403':
+          description: Forbidden — your API key doesn't have access to this Dashboard.
+        '404':
+          description: Dashboard not found.
+  /api/dashboard/{dashboard_id}/dashcard/{dashcard_id}/card/{card_id}/query/{export_format}:
+    post:
+      tags:
+      - Dashboards
+      summary: Download Dashboard Card Data
+      description: Downloads data for a specific report inside a dashboard. Use `GET /api/dashboard/{id}` first to get the `dashcard_id` and `card_id` values you need.
+      operationId: post_dashboard_card_query_export
+      parameters:
+      - in: path
+        name: dashboard_id
+        required: true
+        schema: {}
+        description: Dashboard ID from `GET /api/collection/{id}/items` — look for items where `model` is `"dashboard"`.
+      - in: path
+        name: dashcard_id
+        required: true
+        schema: {}
+        description: Dashcard ID from `GET /api/dashboard/{id}` → `dashcards[].id`. This is the placement ID — not the same as `card_id`.
+      - in: path
+        name: card_id
+        required: true
+        schema: {}
+        description: Card ID from `GET /api/dashboard/{id}` → `dashcards[].card_id`. This is the underlying question ID.
+      - in: path
+        name: export_format
+        required: true
+        schema:
+          enum:
+          - csv
+          - json
+          - xlsx
+        description: The format you want back. `csv` → `text/csv`. `json` → `application/json` (flat array of row objects). `xlsx` → Excel spreadsheet.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryRequestBody'
+            examples:
+              NoFilters:
+                summary: No filters — Card runs with defaults
+                value:
+                  parameters: []
+              WithClientId:
+                summary: Filter by client_id template tag
+                value:
+                  parameters:
+                  - target:
+                    - variable
+                    - - template-tag
+                      - client_id
+                    value: YOUR_CLIENT_ID
+              MultipleFilters:
+                summary: Filter by client_id and date range
+                value:
+                  parameters:
+                  - target:
+                    - variable
+                    - - template-tag
+                      - client_id
+                    value: YOUR_CLIENT_ID
+                  - target:
+                    - variable
+                    - - template-tag
+                      - created_at
+                    value: 2025-01-01~2025-03-31
+      responses:
+        '200':
+          description: Query results in the format you requested.
+          content:
+            text/csv:
+              schema:
+                format: binary
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ExportJsonRow'
+              example:
+              - Date: '2025-03-01'
+                DAU: 8421
+              - Date: '2025-03-02'
+                DAU: 9103
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                format: binary
+        '400':
+          description: Bad Request — the JSON body is malformed or a required filter parameter is missing.
+        '401':
+          description: Unauthorized — `x-api-key` header is missing or invalid.
+        '403':
+          description: Forbidden — your API key doesn't have access to this Dashboard or Card.
+        '404':
+          description: Dashboard, Dashcard, or Card not found. Double-check all three IDs from `GET /api/dashboard/{id}`.
+        '500':
+          description: Query failed — the underlying SQL threw a database error. Make sure all required template tag parameters are present and set to valid values.
+components:
+  schemas:
+    ParameterMapping:
+      type: object
+      description: Links a dashboard filter to a specific report.
+      properties:
+        parameter_id:
+          type: string
+          description: Dashboard filter UUID.
+        card_id:
+          type: integer
+          description: Card this applies to.
+        target:
+          type: array
+          description: Template tag pointer, e.g. `["variable", ["template-tag", "client_id"]]`.
+    QueryRequestBody:
+      type: object
+      description: The request body for download endpoints.
+      required:
+      - parameters
+      properties:
+        parameters:
+          type: array
+          description: Filters to apply. Pass `[]` if the report has no required filters.
+          items:
+            $ref: '#/components/schemas/QueryFilterParameter'
+    ResultMetadataColumn:
+      type: object
+      description: A column in the report's output.
+      properties:
+        name:
+          type: string
+          description: Column name.
+        display_name:
+          type: string
+          description: Column label — this is the key you'll see in JSON downloads.
+        base_type:
+          type: string
+          description: Data type, e.g. `"type/Text"`, `"type/Integer"`, `"type/DateTime"`.
+    QueryFilterParameter:
+      type: object
+      description: A filter value to include when downloading report data.
+      required:
+      - type
+      - target
+      - value
+      properties:
+        type:
+          type: string
+          description: Use `"category"` for text filters. Also `"date/range"` and `"number/="`.
+          example: category
+        target:
+          type: array
+          description: 'Points to the filter: `["variable", ["template-tag", "filter_name"]]` where `filter_name` matches the `name` field in the report''s filters.'
+          example:
+          - variable
+          - - template-tag
+            - client_id
+        value:
+          type: string
+          description: The value to filter by.
+          example: YOUR_CLIENT_ID
+    DashboardTab:
+      type: object
+      description: A tab in a tabbed dashboard.
+      properties:
+        id:
+          type: integer
+          description: Tab ID.
+        name:
+          type: string
+          description: Tab name.
+    TemplateTagParameter:
+      type: object
+      description: A filter that can be applied when downloading a report.
+      properties:
+        name:
+          type: string
+          description: Filter name — use this in the `target` field when downloading.
+        display_name:
+          type: string
+          description: Filter label.
+        type:
+          type: string
+          description: 'Filter type: `"text"`, `"number"`, or `"date"`.'
+        required:
+          type: boolean
+          description: '`true` means you must pass a value for this filter when downloading.'
+        default:
+          description: Default value. If set, the filter is optional.
+    CardMetadata:
+      type: object
+      description: Details about a report — its columns and any filters it requires.
+      properties:
+        id:
+          type: integer
+          description: Report ID.
+        name:
+          type: string
+          description: Report name.
+        description:
+          type:
+          - string
+          - 'null'
+          description: What this report measures.
+        parameters:
+          type: array
+          description: Filters for this report. Empty means no filters are needed.
+          items:
+            $ref: '#/components/schemas/TemplateTagParameter'
+        result_metadata:
+          type: array
+          description: The columns in this report's output.
+          items:
+            $ref: '#/components/schemas/ResultMetadataColumn'
+    Dashboard:
+      type: object
+      description: A dashboard containing multiple reports.
+      properties:
+        id:
+          type: integer
+          description: Dashboard ID.
+        name:
+          type: string
+          description: Dashboard name.
+        description:
+          type:
+          - string
+          - 'null'
+          description: Optional description.
+        parameters:
+          type: array
+          description: Filters that apply across all reports in this dashboard.
+          items:
+            $ref: '#/components/schemas/DashboardParameter'
+        tabs:
+          type: array
+          description: Tabs if the dashboard is tabbed. Empty means it's a single page.
+          items:
+            $ref: '#/components/schemas/DashboardTab'
+        dashcards:
+          type: array
+          description: The reports inside this dashboard.
+          items:
+            $ref: '#/components/schemas/DashboardCard'
+    DashboardCard:
+      type: object
+      description: A report placed inside a dashboard. Has its own `id` (dashcard_id) separate from the report's `card_id` — you need both to download its data.
+      properties:
+        id:
+          type: integer
+          description: Dashcard ID — pass as `dashcard_id` when downloading.
+        card_id:
+          type: integer
+          description: Report ID — pass as `card_id` when downloading.
+        card:
+          allOf:
+          - $ref: '#/components/schemas/CardMetadata'
+          description: Report details.
+        parameter_mappings:
+          type: array
+          description: How dashboard filters connect to this report.
+          items:
+            $ref: '#/components/schemas/ParameterMapping'
+    ExportJsonRow:
+      type: object
+      description: One row of data from a JSON download. Keys match the `display_name` values from the report's columns.
+      additionalProperties: true
+      example:
+        Total Programs: 42
+        Application ID: abc123
+        Created At: '2025-03-15T10:00:00Z'
+    DashboardParameter:
+      type: object
+      description: A filter on the dashboard that applies to all its reports at once.
+      properties:
+        id:
+          type: string
+          description: Filter UUID.
+        name:
+          type: string
+          description: Filter label.
+        slug:
+          type: string
+          description: URL-safe identifier.
+        type:
+          type: string
+          description: Filter type, e.g. `"category"`, `"date/range"`.
+        default:
+          description: Default value.
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Your API key. Contact your LiveLike account manager to get one.
+x-tagGroups:
+- name: API Reference
+  tags:
+  - Collections
+  - Cards
+  - Dashboards
+x-provenance:
+  method: searched
+  source: https://docs.livelike.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://docs.livelike.com/reference/get_card.md
+  - https://docs.livelike.com/reference/get_collection_items.md
+  - https://docs.livelike.com/reference/get_collections.md
+  - https://docs.livelike.com/reference/get_dashboard.md
+  - https://docs.livelike.com/reference/post_card_query_export.md
+  - https://docs.livelike.com/reference/post_dashboard_card_query_export.md
+  merge:
+    pages: 6
+    deduped: 11
+    conflicts_kept_first: 0

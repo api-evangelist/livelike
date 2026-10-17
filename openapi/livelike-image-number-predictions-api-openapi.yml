@@ -1,0 +1,1242 @@
+openapi: 3.2.0
+info:
+  title: engagement-suite Image Number Predictions API
+  version: '1'
+servers:
+- url: https://cf-blast.livelikecdn.com/api/v1
+security:
+- {}
+tags:
+- name: Image Number Predictions
+paths:
+  /image-number-predictions/:
+    post:
+      summary: Create an Image Number Prediction
+      description: ''
+      operationId: create-an-image-number-prediction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - program_id
+              - question
+              properties:
+                program_id:
+                  type: string
+                  description: The id of the program to create the Image Number Prediction for
+                question:
+                  type: string
+                  description: The question or prompt asked by the Image Number Prediction
+                options:
+                  type: array
+                  description: The options of the Image Number Prediction
+                interactive_until:
+                  type: string
+                  description: The UTC time that the widget will stop accepting interactions
+                  format: date
+                playback_time_ms:
+                  type: integer
+                  description: Video playback time in milliseconds
+                  format: int32
+                sponsor_ids:
+                  type: array
+                  description: Links the ```sponsors``` with this Prediction. Note that only valid sponsor_ids will be linked to a Prediction.
+                  items:
+                    type: string
+      responses:
+        '201':
+          description: '201'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"id\": \"c7ab6070-6657-438c-8b7f-aef3cf0eb177\",\n  \"url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-predictions/c7ab6070-6657-438c-8b7f-aef3cf0eb177/\",\n  \"kind\": \"image-number-prediction\",\n  \"program_id\": \"08e63adf-0a8a-4489-b6c7-7806c0847d73\",\n  \"client_id\": \"LT9lUmrzSqXvAL66rSWSGK0weclpFNbHANUTxW9O\",\n  \"created_at\": \"2021-09-22T20:30:19.500567Z\",\n  \"interactive_until\": \"2021-09-23T20:30:19.500567Z\",\n  \"published_at\": \"2021-09-22T20:30:20.407771Z\",\n  \"scheduled_at\": \"2021-09-22T20:30:20.258817Z\",\n  \"follow_up_url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-follow-ups/\",\n  \"follow_ups\": [\n    {\n      \"id\": \"c3908afa-8e99-4a66-bf96-645b9b021f32\",\n      \"url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-follow-ups/c3908afa-8e99-4a66-bf96-645b9b021f32/\",\n      \"program_id\": \"08e63adf-0a8a-4489-b6c7-7806c0847d73\",\n      \"client_id\": \"LT9lUmrzSqXvAL66rSWSGK0weclpFNbHANUTxW9O\",\n      \"image_number_prediction_id\": \"c7ab6070-6657-438c-8b7f-aef3cf0eb177\",\n      \"image_number_prediction_url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-predictions/c7ab6070-6657-438c-8b7f-aef3cf0eb177/\",\n      \"timeout\": \"P0DT00H00M15S\",\n      \"published_at\": \"2021-09-22T20:30:38.221591Z\",\n      \"scheduled_at\": \"2021-09-22T20:30:38.030007Z\",\n      \"created_at\": \"2021-09-22T20:30:19.659011Z\",\n      \"subscribe_channel\": \"program.widget.c7ab6070-6657-438c-8b7f-aef3cf0eb177\",\n      \"kind\": \"image-number-prediction-follow-up\",\n      \"options\": [\n        {\n          \"id\": \"7353e785-c1d3-4c42-a670-b117cd6bb5d0\",\n          \"url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-options/7353e785-c1d3-4c42-a670-b117cd6bb5d0/\",\n          \"description\": \"Seattle Seahawks\",\n          \"correct_number\": null,\n          \"image_url\": \"https://cf-blast-storage.livelikecdn.com/assets/576d3433-2aa1-4a81-8a64-ddb79a609a99.jpg\",\n          \"translations\": {},\n          \"translatable_fields\": [\n            \"description\"\n          ]\n        },\n        {\n          \"id\": \"ea5c9efc-27c1-4b27-a0d7-fdb3c10530c0\",\n          \"url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-options/ea5c9efc-27c1-4b27-a0d7-fdb3c10530c0/\",\n          \"description\": \"Denver Broncos\",\n          \"correct_number\": null,\n          \"image_url\": \"https://cf-blast-storage.livelikecdn.com/assets/be5c91ef-2f11-43d4-917a-7ea64fc7726f.jpg\",\n          \"translations\": {},\n          \"translatable_fields\": [\n            \"description\"\n          ]\n        }\n      ],\n      \"question\": \"What will be the final score for each team?\",\n      \"program_date_time\": null,\n      \"publish_delay\": \"P0DT00H00M00S\",\n      \"interaction_url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-follow-ups/c3908afa-8e99-4a66-bf96-645b9b021f32/interactions/\",\n      \"impression_url\": \"https://blastrt-prod-us-east-1.livelikecdn.com/api/v1/widget-impressions/image-number-prediction-follow-up/c3908afa-8e99-4a66-bf96-645b9b021f32/\",\n      \"interactive_until\": null,\n      \"impression_count\": 0,\n      \"unique_impression_count\": 0,\n      \"engagement_count\": null,\n      \"engagement_percent\": null,\n      \"status\": \"published\",\n      \"created_by\": {\n        \"id\": \"8ee9168e-00ba-4206-a870-6eff6a052cf6\",\n        \"name\": null,\n        \"image_url\": null\n      },\n      \"schedule_url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-follow-ups/c3908afa-8e99-4a66-bf96-645b9b021f32/schedule/\",\n      \"rewards_url\": null,\n      \"translations\": {},\n      \"translatable_fields\": [],\n      \"reactions\": [],\n      \"custom_data\": null,\n      \"claim_url\": \"https://blastrt-prod-us-east-1.livelikecdn.com/api/v1/widget-interaction-claims/image-number-prediction/c7ab6070-6657-438c-8b7f-aef3cf0eb177/claims/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbmNyeXB0ZWQiOiJnQUFBQUFCaFM1SzdsWWEtcnhYNEZ3YXhBUEZoQXRXN1N6aG1oaHVUODNmY3RILTVEYUx6ZWRhSTlSXzNySlFvTEYybzFLYWFNN1ZXN180ckpUdVVfWDNmRURYOUI0UXl1TldrLU1LZnlqaFdNa0hJZ21WdnpWNEVPSDVyNjUxc0M3NmlubzVLdHFVcHpva0xNZzlLbkxiRzUxQ2tRZGpySkktWkpscVRUXzd0dzFRMkdoVUQ0SU1oX084M2NETGNKaFZQenVNQ1FCZjUiLCJpc3MiOiJibGFzdCIsImlhdCI6MTYzMjM0MjYxOX0.DVanGjbuIVJcXrkEKsEibwG9fNmHBVK-ZX0Yv_vOeBk/\",\n      \"sponsors\": [],\n      \"widget_interactions_url_template\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/{profile_id}/widget-interactions/?image_number_prediction_id=c7ab6070-6657-438c-8b7f-aef3cf0eb177\"\n    }\n  ],\n  \"question\": \"What will be the final score for each team?\",\n  \"confirmation_message\": \"Alright! Stay tuned to see the result.\",\n  \"timeout\": \"P0DT00H00M15S\",\n  \"options\": [\n    {\n      \"id\": \"7353e785-c1d3-4c42-a670-b117cd6bb5d0\",\n      \"url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-options/7353e785-c1d3-4c42-a670-b117cd6bb5d0/\",\n      \"description\": \"Seattle Seahawks\",\n      \"correct_number\": null,\n      \"image_url\": \"https://cf-blast-storage.livelikecdn.com/assets/576d3433-2aa1-4a81-8a64-ddb79a609a99.jpg\",\n      \"translations\": {},\n      \"translatable_fields\": [\n        \"description\"\n      ]\n    },\n    {\n      \"id\": \"ea5c9efc-27c1-4b27-a0d7-fdb3c10530c0\",\n      \"url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-options/ea5c9efc-27c1-4b27-a0d7-fdb3c10530c0/\",\n      \"description\": \"Denver Broncos\",\n      \"correct_number\": null,\n      \"image_url\": \"https://cf-blast-storage.livelikecdn.com/assets/be5c91ef-2f11-43d4-917a-7ea64fc7726f.jpg\",\n      \"translations\": {},\n      \"translatable_fields\": [\n        \"description\"\n      ]\n    }\n  ],\n  \"subscribe_channel\": \"program.widget.c7ab6070-6657-438c-8b7f-aef3cf0eb177\",\n  \"program_date_time\": null,\n  \"publish_delay\": \"P0DT00H00M00S\",\n  \"interaction_url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-predictions/c7ab6070-6657-438c-8b7f-aef3cf0eb177/interactions/\",\n  \"impression_url\": \"https://blastrt-prod-us-east-1.livelikecdn.com/api/v1/widget-impressions/image-number-prediction/c7ab6070-6657-438c-8b7f-aef3cf0eb177/\",\n  \"impression_count\": 0,\n  \"interactive_until\":\"2022-01-18T18:53:56.510Z\",\n  \"unique_impression_count\": 0,\n  \"engagement_count\": 0,\n  \"engagement_percent\": \"0.000\",\n  \"status\": \"published\",\n  \"created_by\": {\n    \"id\": \"8ee9168e-00ba-4206-a870-6eff6a052cf6\",\n    \"name\": null,\n    \"image_url\": null\n  },\n  \"schedule_url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-predictions/c7ab6070-6657-438c-8b7f-aef3cf0eb177/schedule/\",\n  \"rewards_url\": null,\n  \"translations\": {},\n  \"translatable_fields\": [\n    \"question\",\n    \"confirmation_message\"\n  ],\n  \"reactions\": [],\n  \"custom_data\": null,\n  \"sponsors\": [],\n  \"playback_time_ms\": null,\n  \"widget_interactions_url_template\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/{profile_id}/widget-interactions/?image_number_prediction_id=c7ab6070-6657-438c-8b7f-aef3cf0eb177\",\n  \"vote_url\": \"https://blastrt-prod-us-east-1.livelikecdn.com/api/v1/widget-interactions/image-number-prediction/c7ab6070-6657-438c-8b7f-aef3cf0eb177/votes/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbmNyeXB0ZWQiOiJnQUFBQUFCaFM1SzdzLWFHUXRDNHN5SnlBb2xMLTgzYzN2ODdsTUNiNFdVWG4wSXVvMVJEUmdYOHBCWmh0SjkwZHkwUzV4OFdyRnpNc1ZpVUFMc0toejlVSllocVA2WXEzZz09IiwiaXNzIjoiYmxhc3QiLCJpYXQiOjE2MzIzNDI3MTV9.dxtu5qEg5T_3sgdsSJoh6URdtWtAGRfTfOS_DA4C-zk/\"\n}\n"
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: c7ab6070-6657-438c-8b7f-aef3cf0eb177
+                  url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/image-number-predictions/c7ab6070-6657-438c-8b7f-aef3cf0eb177/
+                  kind:
+                    type: string
+                    example: image-number-prediction
+                  program_id:
+                    type: string
+                    example: 08e63adf-0a8a-4489-b6c7-7806c0847d73
+                  client_id:
+                    type: string
+                    example: LT9lUmrzSqXvAL66rSWSGK0weclpFNbHANUTxW9O
+                  created_at:
+                    type: string
+                    example: '2021-09-22T20:30:19.500567Z'
+                  interactive_until:
+                    type: string
+                    example: '2022-01-18T18:53:56.510Z'
+                  published_at:
+                    type: string
+                    example: '2021-09-22T20:30:20.407771Z'
+                  scheduled_at:
+                    type: string
+                    example: '2021-09-22T20:30:20.258817Z'
+                  follow_up_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-follow-ups/
+                  follow_ups:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: c3908afa-8e99-4a66-bf96-645b9b021f32
+                        url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-follow-ups/c3908afa-8e99-4a66-bf96-645b9b021f32/
+                        program_id:
+                          type: string
+                          example: 08e63adf-0a8a-4489-b6c7-7806c0847d73
+                        client_id:
+                          type: string
+                          example: LT9lUmrzSqXvAL66rSWSGK0weclpFNbHANUTxW9O
+                        image_number_prediction_id:
+                          type: string
+                          example: c7ab6070-6657-438c-8b7f-aef3cf0eb177
+                        image_number_prediction_url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/image-number-predictions/c7ab6070-6657-438c-8b7f-aef3cf0eb177/
+                        timeout:
+                          type: string
+                          example: P0DT00H00M15S
+                        published_at:
+                          type: string
+                          example: '2021-09-22T20:30:38.221591Z'
+                        scheduled_at:
+                          type: string
+                          example: '2021-09-22T20:30:38.030007Z'
+                        created_at:
+                          type: string
+                          example: '2021-09-22T20:30:19.659011Z'
+                        subscribe_channel:
+                          type: string
+                          example: program.widget.c7ab6070-6657-438c-8b7f-aef3cf0eb177
+                        kind:
+                          type: string
+                          example: image-number-prediction-follow-up
+                        options:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                example: 7353e785-c1d3-4c42-a670-b117cd6bb5d0
+                              url:
+                                type: string
+                                example: https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-options/7353e785-c1d3-4c42-a670-b117cd6bb5d0/
+                              description:
+                                type: string
+                                example: Seattle Seahawks
+                              correct_number: {}
+                              image_url:
+                                type: string
+                                example: https://cf-blast-storage.livelikecdn.com/assets/576d3433-2aa1-4a81-8a64-ddb79a609a99.jpg
+                              translations:
+                                type: object
+                                properties: {}
+                              translatable_fields:
+                                type: array
+                                items:
+                                  type: string
+                                  example: description
+                        question:
+                          type: string
+                          example: What will be the final score for each team?
+                        program_date_time: {}
+                        publish_delay:
+                          type: string
+                          example: P0DT00H00M00S
+                        interaction_url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-follow-ups/c3908afa-8e99-4a66-bf96-645b9b021f32/interactions/
+                        impression_url:
+                          type: string
+                          example: https://blastrt-prod-us-east-1.livelikecdn.com/api/v1/widget-impressions/image-number-prediction-follow-up/c3908afa-8e99-4a66-bf96-645b9b021f32/
+                        interactive_until: {}
+                        impression_count:
+                          type: integer
+                          example: 0
+                          default: 0
+                        unique_impression_count:
+                          type: integer
+                          example: 0
+                          default: 0
+                        engagement_count: {}
+                        engagement_percent: {}
+                        status:
+                          type: string
+                          example: published
+                        created_by:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: 8ee9168e-00ba-4206-a870-6eff6a052cf6
+                            name: {}
+                            image_url: {}
+                        schedule_url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-follow-ups/c3908afa-8e99-4a66-bf96-645b9b021f32/schedule/
+                        rewards_url: {}
+                        translations:
+                          type: object
+                          properties: {}
+                        translatable_fields:
+                          type: array
+                        reactions:
+                          type: array
+                        custom_data: {}
+                        claim_url:
+                          type: string
+                          example: https://blastrt-prod-us-east-1.livelikecdn.com/api/v1/widget-interaction-claims/image-number-prediction/c7ab6070-6657-438c-8b7f-aef3cf0eb177/claims/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbmNyeXB0ZWQiOiJnQUFBQUFCaFM1SzdsWWEtcnhYNEZ3YXhBUEZoQXRXN1N6aG1oaHVUODNmY3RILTVEYUx6ZWRhSTlSXzNySlFvTEYybzFLYWFNN1ZXN180ckpUdVVfWDNmRURYOUI0UXl1TldrLU1LZnlqaFdNa0hJZ21WdnpWNEVPSDVyNjUxc0M3NmlubzVLdHFVcHpva0xNZzlLbkxiRzUxQ2tRZGpySkktWkpscVRUXzd0dzFRMkdoVUQ0SU1oX084M2NETGNKaFZQenVNQ1FCZjUiLCJpc3MiOiJibGFzdCIsImlhdCI6MTYzMjM0MjYxOX0.DVanGjbuIVJcXrkEKsEibwG9fNmHBVK-ZX0Yv_vOeBk/
+                        sponsors:
+                          type: array
+                        widget_interactions_url_template:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/profiles/{profile_id}/widget-interactions/?image_number_prediction_id=c7ab6070-6657-438c-8b7f-aef3cf0eb177
+                  question:
+                    type: string
+                    example: What will be the final score for each team?
+                  confirmation_message:
+                    type: string
+                    example: Alright! Stay tuned to see the result.
+                  timeout:
+                    type: string
+                    example: P0DT00H00M15S
+                  options:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: 7353e785-c1d3-4c42-a670-b117cd6bb5d0
+                        url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-options/7353e785-c1d3-4c42-a670-b117cd6bb5d0/
+                        description:
+                          type: string
+                          example: Seattle Seahawks
+                        correct_number: {}
+                        image_url:
+                          type: string
+                          example: https://cf-blast-storage.livelikecdn.com/assets/576d3433-2aa1-4a81-8a64-ddb79a609a99.jpg
+                        translations:
+                          type: object
+                          properties: {}
+                        translatable_fields:
+                          type: array
+                          items:
+                            type: string
+                            example: description
+                  subscribe_channel:
+                    type: string
+                    example: program.widget.c7ab6070-6657-438c-8b7f-aef3cf0eb177
+                  program_date_time: {}
+                  publish_delay:
+                    type: string
+                    example: P0DT00H00M00S
+                  interaction_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/image-number-predictions/c7ab6070-6657-438c-8b7f-aef3cf0eb177/interactions/
+                  impression_url:
+                    type: string
+                    example: https://blastrt-prod-us-east-1.livelikecdn.com/api/v1/widget-impressions/image-number-prediction/c7ab6070-6657-438c-8b7f-aef3cf0eb177/
+                  impression_count:
+                    type: integer
+                    example: 0
+                    default: 0
+                  unique_impression_count:
+                    type: integer
+                    example: 0
+                    default: 0
+                  engagement_count:
+                    type: integer
+                    example: 0
+                    default: 0
+                  engagement_percent:
+                    type: string
+                    example: '0.000'
+                  status:
+                    type: string
+                    example: published
+                  created_by:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: 8ee9168e-00ba-4206-a870-6eff6a052cf6
+                      name: {}
+                      image_url: {}
+                  schedule_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/image-number-predictions/c7ab6070-6657-438c-8b7f-aef3cf0eb177/schedule/
+                  rewards_url: {}
+                  translations:
+                    type: object
+                    properties: {}
+                  translatable_fields:
+                    type: array
+                    items:
+                      type: string
+                      example: question
+                  reactions:
+                    type: array
+                  custom_data: {}
+                  sponsors:
+                    type: array
+                  playback_time_ms: {}
+                  widget_interactions_url_template:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/profiles/{profile_id}/widget-interactions/?image_number_prediction_id=c7ab6070-6657-438c-8b7f-aef3cf0eb177
+                  vote_url:
+                    type: string
+                    example: https://blastrt-prod-us-east-1.livelikecdn.com/api/v1/widget-interactions/image-number-prediction/c7ab6070-6657-438c-8b7f-aef3cf0eb177/votes/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbmNyeXB0ZWQiOiJnQUFBQUFCaFM1SzdzLWFHUXRDNHN5SnlBb2xMLTgzYzN2ODdsTUNiNFdVWG4wSXVvMVJEUmdYOHBCWmh0SjkwZHkwUzV4OFdyRnpNc1ZpVUFMc0toejlVSllocVA2WXEzZz09IiwiaXNzIjoiYmxhc3QiLCJpYXQiOjE2MzIzNDI3MTV9.dxtu5qEg5T_3sgdsSJoh6URdtWtAGRfTfOS_DA4C-zk/
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Image Number Predictions
+  /image-number-predictions/{image_number_prediction_id}:
+    patch:
+      summary: Update Image Number Prediction
+      description: ''
+      operationId: update-image-number-prediction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - options
+              properties:
+                options:
+                  type: array
+                  description: List of options for this prediction
+                  items:
+                    properties:
+                      image_url:
+                        type: string
+                        description: The URL of the image
+                      description:
+                        type: string
+                        description: The text associated with the prediction option
+                      correct_number:
+                        type: integer
+                        description: The correct number
+                        format: int32
+                    type: object
+                sponsor_ids:
+                  type: array
+                  description: Links the ```sponsors``` with this Prediction. Note that only valid sponsor_ids will be linked to a Prediction.
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"id\": \"bbc832e1-496e-403f-804e-4305e997b646\",\n    \"pubnub_enabled\": true,\n    \"url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-predictions/bbc832e1-496e-403f-804e-4305e997b646/\",\n    \"kind\": \"image-number-prediction\",\n    \"program_id\": \"09d93835-ee52-4757-976c-ea09d6a5798c\",\n    \"client_id\": \"8PqSNDgIVHnXuJuGte1HdvOjOqhCFE1ZCR3qhqaS\",\n    \"created_at\": \"2023-12-01T09:13:25.147848Z\",\n    \"published_at\": null,\n    \"scheduled_at\": null,\n    \"interactive_until\": null,\n    \"follow_up_url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-follow-ups/\",\n    \"follow_ups\": [\n        {\n            \"id\": \"64bdaa5a-cc4e-41d2-9fea-382971668f70\",\n            \"pubnub_enabled\": true,\n            \"url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-follow-ups/64bdaa5a-cc4e-41d2-9fea-382971668f70/\",\n            \"program_id\": \"09d93835-ee52-4757-976c-ea09d6a5798c\",\n            \"client_id\": \"8PqSNDgIVHnXuJuGte1HdvOjOqhCFE1ZCR3qhqaS\",\n            \"image_number_prediction_id\": \"bbc832e1-496e-403f-804e-4305e997b646\",\n            \"image_number_prediction_url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-predictions/bbc832e1-496e-403f-804e-4305e997b646/\",\n            \"timeout\": \"P0DT00H00M30S\",\n            \"published_at\": null,\n            \"scheduled_at\": null,\n            \"interactive_until\": null,\n            \"created_at\": \"2023-12-01T09:13:25.179264Z\",\n            \"subscribe_channel\": \"program.widget.09d93835-ee52-4757-976c-ea09d6a5798c\",\n            \"kind\": \"image-number-prediction-follow-up\",\n            \"options\": [\n                {\n                    \"id\": \"c005e7c1-932e-40de-9e8b-a38bfb4a67bd\",\n                    \"url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-options/c005e7c1-932e-40de-9e8b-a38bfb4a67bd/\",\n                    \"description\": \"test1\",\n                    \"correct_number\": 2,\n                    \"image_url\": \"http://www.google.com/\",\n                    \"reward_item_id\": null,\n                    \"reward_item_amount\": 0,\n                    \"translations\": {},\n                    \"translatable_fields\": [\n                        \"description\"\n                    ],\n                    \"earnable_rewards\": []\n                },\n                {\n                    \"id\": \"2a128ad2-62ed-462a-9c27-fd68e3641b85\",\n                    \"url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-options/2a128ad2-62ed-462a-9c27-fd68e3641b85/\",\n                    \"description\": \"test2\",\n                    \"correct_number\": 3,\n                    \"image_url\": \"http://www.google.com/\",\n                    \"reward_item_id\": null,\n                    \"reward_item_amount\": 0,\n                    \"translations\": {},\n                    \"translatable_fields\": [\n                        \"description\"\n                    ],\n                    \"earnable_rewards\": []\n                }\n            ],\n            \"question\": \"test\",\n            \"required_correct\": \"all\",\n            \"program_date_time\": null,\n            \"publish_delay\": \"P0DT00H00M00S\",\n            \"interaction_url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-follow-ups/64bdaa5a-cc4e-41d2-9fea-382971668f70/interactions/\",\n            \"impression_url\": \"https://blast-prod-us-east-1.livelikeblast.com/api/v1/widget-impressions/image-number-prediction-follow-up/64bdaa5a-cc4e-41d2-9fea-382971668f70/\",\n            \"impression_count\": 0,\n            \"unique_impression_count\": 0,\n            \"engagement_count\": null,\n            \"engagement_percent\": null,\n            \"status\": \"pending\",\n            \"created_by\": {\n                \"id\": \"fccbb60d-c8b0-49fd-958c-87dc8f059bf8\",\n                \"name\": null,\n                \"image_url\": null\n            },\n            \"schedule_url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-follow-ups/64bdaa5a-cc4e-41d2-9fea-382971668f70/schedule/\",\n            \"rewards_url\": null,\n            \"translations\": {},\n            \"translatable_fields\": [],\n            \"reactions\": [],\n            \"custom_data\": null,\n            \"claim_url\": \"https://blast-prod-us-east-1.livelikeblast.com/api/v1/widget-interaction-claims/image-number-prediction/bbc832e1-496e-403f-804e-4305e997b646/claims/\",\n            \"sponsors\": [],\n            \"earnable_rewards\": [],\n            \"widget_interactions_url_template\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/{profile_id}/widget-interactions/?image_number_prediction_id=bbc832e1-496e-403f-804e-4305e997b646\",\n            \"widget_attributes\": [],\n            \"playback_time_ms\": null\n        }\n    ],\n    \"question\": \"test\",\n    \"required_correct\": \"all\",\n    \"confirmation_message\": \"Alright! Stay tuned to see the result.\",\n    \"timeout\": \"P0DT00H00M30S\",\n    \"options\": [\n        {\n            \"id\": \"c005e7c1-932e-40de-9e8b-a38bfb4a67bd\",\n            \"url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-options/c005e7c1-932e-40de-9e8b-a38bfb4a67bd/\",\n            \"description\": \"test1\",\n            \"correct_number\": 2,\n            \"image_url\": \"http://www.google.com/\",\n            \"reward_item_id\": null,\n            \"reward_item_amount\": 0,\n            \"translations\": {},\n            \"translatable_fields\": [\n                \"description\"\n            ],\n            \"earnable_rewards\": []\n        },\n        {\n            \"id\": \"2a128ad2-62ed-462a-9c27-fd68e3641b85\",\n            \"url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-options/2a128ad2-62ed-462a-9c27-fd68e3641b85/\",\n            \"description\": \"test2\",\n            \"correct_number\": 3,\n            \"image_url\": \"http://www.google.com/\",\n            \"reward_item_id\": null,\n            \"reward_item_amount\": 0,\n            \"translations\": {},\n            \"translatable_fields\": [\n                \"description\"\n            ],\n            \"earnable_rewards\": []\n        }\n    ],\n    \"subscribe_channel\": \"program.widget.09d93835-ee52-4757-976c-ea09d6a5798c\",\n    \"program_date_time\": null,\n    \"publish_delay\": \"P0DT00H00M00S\",\n    \"interaction_url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-predictions/bbc832e1-496e-403f-804e-4305e997b646/interactions/\",\n    \"impression_url\": \"https://blast-prod-us-east-1.livelikeblast.com/api/v1/widget-impressions/image-number-prediction/bbc832e1-496e-403f-804e-4305e997b646/\",\n    \"impression_count\": 0,\n    \"unique_impression_count\": 0,\n    \"engagement_count\": 0,\n    \"engagement_percent\": \"0.000\",\n    \"status\": \"pending\",\n    \"created_by\": {\n        \"id\": \"fccbb60d-c8b0-49fd-958c-87dc8f059bf8\",\n        \"name\": null,\n        \"image_url\": null\n    },\n    \"schedule_url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-predictions/bbc832e1-496e-403f-804e-4305e997b646/schedule/\",\n    \"rewards_url\": null,\n    \"translations\": {},\n    \"translatable_fields\": [\n        \"question\",\n        \"confirmation_message\"\n    ],\n    \"reactions\": [],\n    \"custom_data\": null,\n    \"sponsors\": [],\n    \"earnable_rewards\": [\n        {\n            \"reward_item_id\": \"053091d9-84cd-43c7-8c21-ddea5814ba8b\",\n            \"reward_item_name\": \"Tarbooza\",\n            \"reward_action_key\": \"prediction-correct\",\n            \"reward_item_amount\": 10\n        },\n        {\n            \"reward_item_id\": \"f105ba09-ea2c-41fc-9585-3886d023fc78\",\n            \"reward_item_name\": \"Aakash Points\",\n            \"reward_action_key\": \"prediction-correct\",\n            \"reward_item_amount\": 123\n        },\n        {\n            \"reward_item_id\": \"5e1016ef-9cf8-450f-9ad6-5e3996f1cbb0\",\n            \"reward_item_name\": \"LiveLike Points\",\n            \"reward_action_key\": \"prediction-made\",\n            \"reward_item_amount\": 40\n        },\n        {\n            \"reward_item_id\": \"5e1016ef-9cf8-450f-9ad6-5e3996f1cbb0\",\n            \"reward_item_name\": \"LiveLike Points\",\n            \"reward_action_key\": \"prediction-correct\",\n            \"reward_item_amount\": 40\n        },\n        {\n            \"reward_item_id\": \"5e1016ef-9cf8-450f-9ad6-5e3996f1cbb0\",\n            \"reward_item_name\": \"LiveLike Points\",\n            \"reward_action_key\": \"prediction-made\",\n            \"reward_item_amount\": 5\n        }\n    ],\n    \"widget_interactions_url_template\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/{profile_id}/widget-interactions/?image_number_prediction_id=bbc832e1-496e-403f-804e-4305e997b646\",\n    \"vote_url\": \"https://blast-prod-us-east-1.livelikeblast.com/api/v1/widget-interactions/image-number-prediction/bbc832e1-496e-403f-804e-4305e997b646/votes/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbmNyeXB0ZWQiOiJnQUFBQUFCbGFhUWxwdXhxMWdQRW9rbXZMczdodDd2YWFrTkI3ak14UlhvNEUzUnNpOTNYN3o5aGpVUHlsQkZKeVprb2xralhOUmVyMkxwZ0hSZmtwVlp2ZlFLTWFaTGE2QT09IiwiaXNzIjoiYmxhc3QiLCJpYXQiOjE3MDE0MjIxMTd9.fGEMsLfEvraiJpAnCXwQ_6iancVMtVOlmGeCjtO9z2I/\",\n    \"widget_attributes\": [],\n    \"playback_time_ms\": null\n}"
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: bbc832e1-496e-403f-804e-4305e997b646
+                  pubnub_enabled:
+                    type: boolean
+                    example: true
+                    default: true
+                  url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/image-number-predictions/bbc832e1-496e-403f-804e-4305e997b646/
+                  kind:
+                    type: string
+                    example: image-number-prediction
+                  program_id:
+                    type: string
+                    example: 09d93835-ee52-4757-976c-ea09d6a5798c
+                  client_id:
+                    type: string
+                    example: 8PqSNDgIVHnXuJuGte1HdvOjOqhCFE1ZCR3qhqaS
+                  created_at:
+                    type: string
+                    example: '2023-12-01T09:13:25.147848Z'
+                  published_at: {}
+                  scheduled_at: {}
+                  interactive_until: {}
+                  follow_up_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-follow-ups/
+                  follow_ups:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: 64bdaa5a-cc4e-41d2-9fea-382971668f70
+                        pubnub_enabled:
+                          type: boolean
+                          example: true
+                          default: true
+                        url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-follow-ups/64bdaa5a-cc4e-41d2-9fea-382971668f70/
+                        program_id:
+                          type: string
+                          example: 09d93835-ee52-4757-976c-ea09d6a5798c
+                        client_id:
+                          type: string
+                          example: 8PqSNDgIVHnXuJuGte1HdvOjOqhCFE1ZCR3qhqaS
+                        image_number_prediction_id:
+                          type: string
+                          example: bbc832e1-496e-403f-804e-4305e997b646
+                        image_number_prediction_url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/image-number-predictions/bbc832e1-496e-403f-804e-4305e997b646/
+                        timeout:
+                          type: string
+                          example: P0DT00H00M30S
+                        published_at: {}
+                        scheduled_at: {}
+                        interactive_until: {}
+                        created_at:
+                          type: string
+                          example: '2023-12-01T09:13:25.179264Z'
+                        subscribe_channel:
+                          type: string
+                          example: program.widget.09d93835-ee52-4757-976c-ea09d6a5798c
+                        kind:
+                          type: string
+                          example: image-number-prediction-follow-up
+                        options:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                example: c005e7c1-932e-40de-9e8b-a38bfb4a67bd
+                              url:
+                                type: string
+                                example: https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-options/c005e7c1-932e-40de-9e8b-a38bfb4a67bd/
+                              description:
+                                type: string
+                                example: test1
+                              correct_number:
+                                type: integer
+                                example: 2
+                                default: 0
+                              image_url:
+                                type: string
+                                example: http://www.google.com/
+                              reward_item_id: {}
+                              reward_item_amount:
+                                type: integer
+                                example: 0
+                                default: 0
+                              translations:
+                                type: object
+                                properties: {}
+                              translatable_fields:
+                                type: array
+                                items:
+                                  type: string
+                                  example: description
+                              earnable_rewards:
+                                type: array
+                        question:
+                          type: string
+                          example: test
+                        required_correct:
+                          type: string
+                          example: all
+                        program_date_time: {}
+                        publish_delay:
+                          type: string
+                          example: P0DT00H00M00S
+                        interaction_url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-follow-ups/64bdaa5a-cc4e-41d2-9fea-382971668f70/interactions/
+                        impression_url:
+                          type: string
+                          example: https://blast-prod-us-east-1.livelikeblast.com/api/v1/widget-impressions/image-number-prediction-follow-up/64bdaa5a-cc4e-41d2-9fea-382971668f70/
+                        impression_count:
+                          type: integer
+                          example: 0
+                          default: 0
+                        unique_impression_count:
+                          type: integer
+                          example: 0
+                          default: 0
+                        engagement_count: {}
+                        engagement_percent: {}
+                        status:
+                          type: string
+                          example: pending
+                        created_by:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: fccbb60d-c8b0-49fd-958c-87dc8f059bf8
+                            name: {}
+                            image_url: {}
+                        schedule_url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-follow-ups/64bdaa5a-cc4e-41d2-9fea-382971668f70/schedule/
+                        rewards_url: {}
+                        translations:
+                          type: object
+                          properties: {}
+                        translatable_fields:
+                          type: array
+                        reactions:
+                          type: array
+                        custom_data: {}
+                        claim_url:
+                          type: string
+                          example: https://blast-prod-us-east-1.livelikeblast.com/api/v1/widget-interaction-claims/image-number-prediction/bbc832e1-496e-403f-804e-4305e997b646/claims/
+                        sponsors:
+                          type: array
+                        earnable_rewards:
+                          type: array
+                        widget_interactions_url_template:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/profiles/{profile_id}/widget-interactions/?image_number_prediction_id=bbc832e1-496e-403f-804e-4305e997b646
+                        widget_attributes:
+                          type: array
+                        playback_time_ms: {}
+                  question:
+                    type: string
+                    example: test
+                  required_correct:
+                    type: string
+                    example: all
+                  confirmation_message:
+                    type: string
+                    example: Alright! Stay tuned to see the result.
+                  timeout:
+                    type: string
+                    example: P0DT00H00M30S
+                  options:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: c005e7c1-932e-40de-9e8b-a38bfb4a67bd
+                        url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-options/c005e7c1-932e-40de-9e8b-a38bfb4a67bd/
+                        description:
+                          type: string
+                          example: test1
+                        correct_number:
+                          type: integer
+                          example: 2
+                          default: 0
+                        image_url:
+                          type: string
+                          example: http://www.google.com/
+                        reward_item_id: {}
+                        reward_item_amount:
+                          type: integer
+                          example: 0
+                          default: 0
+                        translations:
+                          type: object
+                          properties: {}
+                        translatable_fields:
+                          type: array
+                          items:
+                            type: string
+                            example: description
+                        earnable_rewards:
+                          type: array
+                  subscribe_channel:
+                    type: string
+                    example: program.widget.09d93835-ee52-4757-976c-ea09d6a5798c
+                  program_date_time: {}
+                  publish_delay:
+                    type: string
+                    example: P0DT00H00M00S
+                  interaction_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/image-number-predictions/bbc832e1-496e-403f-804e-4305e997b646/interactions/
+                  impression_url:
+                    type: string
+                    example: https://blast-prod-us-east-1.livelikeblast.com/api/v1/widget-impressions/image-number-prediction/bbc832e1-496e-403f-804e-4305e997b646/
+                  impression_count:
+                    type: integer
+                    example: 0
+                    default: 0
+                  unique_impression_count:
+                    type: integer
+                    example: 0
+                    default: 0
+                  engagement_count:
+                    type: integer
+                    example: 0
+                    default: 0
+                  engagement_percent:
+                    type: string
+                    example: '0.000'
+                  status:
+                    type: string
+                    example: pending
+                  created_by:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: fccbb60d-c8b0-49fd-958c-87dc8f059bf8
+                      name: {}
+                      image_url: {}
+                  schedule_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/image-number-predictions/bbc832e1-496e-403f-804e-4305e997b646/schedule/
+                  rewards_url: {}
+                  translations:
+                    type: object
+                    properties: {}
+                  translatable_fields:
+                    type: array
+                    items:
+                      type: string
+                      example: question
+                  reactions:
+                    type: array
+                  custom_data: {}
+                  sponsors:
+                    type: array
+                  earnable_rewards:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        reward_item_id:
+                          type: string
+                          example: 053091d9-84cd-43c7-8c21-ddea5814ba8b
+                        reward_item_name:
+                          type: string
+                          example: Tarbooza
+                        reward_action_key:
+                          type: string
+                          example: prediction-correct
+                        reward_item_amount:
+                          type: integer
+                          example: 10
+                          default: 0
+                  widget_interactions_url_template:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/profiles/{profile_id}/widget-interactions/?image_number_prediction_id=bbc832e1-496e-403f-804e-4305e997b646
+                  vote_url:
+                    type: string
+                    example: https://blast-prod-us-east-1.livelikeblast.com/api/v1/widget-interactions/image-number-prediction/bbc832e1-496e-403f-804e-4305e997b646/votes/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbmNyeXB0ZWQiOiJnQUFBQUFCbGFhUWxwdXhxMWdQRW9rbXZMczdodDd2YWFrTkI3ak14UlhvNEUzUnNpOTNYN3o5aGpVUHlsQkZKeVprb2xralhOUmVyMkxwZ0hSZmtwVlp2ZlFLTWFaTGE2QT09IiwiaXNzIjoiYmxhc3QiLCJpYXQiOjE3MDE0MjIxMTd9.fGEMsLfEvraiJpAnCXwQ_6iancVMtVOlmGeCjtO9z2I/
+                  widget_attributes:
+                    type: array
+                  playback_time_ms: {}
+      deprecated: false
+      tags:
+      - Image Number Predictions
+  /image-number-predictions/{prediction_id}/:
+    get:
+      summary: Get Image Number Prediction
+      description: ''
+      operationId: get-image-number-prediction
+      parameters:
+      - name: prediction_id
+        in: path
+        description: The ID of the prediction to get
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"id\": \"bbc832e1-496e-403f-804e-4305e997b646\",\n    \"pubnub_enabled\": true,\n    \"url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-predictions/bbc832e1-496e-403f-804e-4305e997b646/\",\n    \"kind\": \"image-number-prediction\",\n    \"program_id\": \"09d93835-ee52-4757-976c-ea09d6a5798c\",\n    \"client_id\": \"8PqSNDgIVHnXuJuGte1HdvOjOqhCFE1ZCR3qhqaS\",\n    \"created_at\": \"2023-12-01T09:13:25.147848Z\",\n    \"published_at\": null,\n    \"scheduled_at\": null,\n    \"interactive_until\": null,\n    \"follow_up_url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-follow-ups/\",\n    \"follow_ups\": [\n        {\n            \"id\": \"08de21ac-1ec8-4f00-a76d-97617dca1a5f\",\n            \"pubnub_enabled\": true,\n            \"url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-follow-ups/08de21ac-1ec8-4f00-a76d-97617dca1a5f/\",\n            \"program_id\": \"09d93835-ee52-4757-976c-ea09d6a5798c\",\n            \"client_id\": \"8PqSNDgIVHnXuJuGte1HdvOjOqhCFE1ZCR3qhqaS\",\n            \"image_number_prediction_id\": \"bbc832e1-496e-403f-804e-4305e997b646\",\n            \"image_number_prediction_url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-predictions/bbc832e1-496e-403f-804e-4305e997b646/\",\n            \"timeout\": \"P0DT00H00M30S\",\n            \"published_at\": null,\n            \"scheduled_at\": null,\n            \"interactive_until\": null,\n            \"created_at\": \"2023-12-01T09:15:59.444956Z\",\n            \"subscribe_channel\": \"program.widget.09d93835-ee52-4757-976c-ea09d6a5798c\",\n            \"kind\": \"image-number-prediction-follow-up\",\n            \"options\": [\n                {\n                    \"id\": \"dc372386-72b1-45e7-9dde-eedbae6fcf4f\",\n                    \"url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-options/dc372386-72b1-45e7-9dde-eedbae6fcf4f/\",\n                    \"description\": \"test1\",\n                    \"correct_number\": 2,\n                    \"image_url\": \"http://www.google.com/\",\n                    \"reward_item_id\": null,\n                    \"reward_item_amount\": 0,\n                    \"translations\": {},\n                    \"translatable_fields\": [\n                        \"description\"\n                    ],\n                    \"earnable_rewards\": []\n                }\n            ],\n            \"question\": \"test\",\n            \"required_correct\": \"all\",\n            \"program_date_time\": null,\n            \"publish_delay\": \"P0DT00H00M00S\",\n            \"interaction_url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-follow-ups/08de21ac-1ec8-4f00-a76d-97617dca1a5f/interactions/\",\n            \"impression_url\": \"https://blast-prod-us-east-1.livelikeblast.com/api/v1/widget-impressions/image-number-prediction-follow-up/08de21ac-1ec8-4f00-a76d-97617dca1a5f/\",\n            \"impression_count\": 0,\n            \"unique_impression_count\": 0,\n            \"engagement_count\": null,\n            \"engagement_percent\": null,\n            \"status\": \"pending\",\n            \"created_by\": {\n                \"id\": \"fccbb60d-c8b0-49fd-958c-87dc8f059bf8\",\n                \"name\": null,\n                \"image_url\": null\n            },\n            \"schedule_url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-follow-ups/08de21ac-1ec8-4f00-a76d-97617dca1a5f/schedule/\",\n            \"rewards_url\": null,\n            \"translations\": {},\n            \"translatable_fields\": [],\n            \"reactions\": [],\n            \"custom_data\": null,\n            \"claim_url\": \"https://blast-prod-us-east-1.livelikeblast.com/api/v1/widget-interaction-claims/image-number-prediction/bbc832e1-496e-403f-804e-4305e997b646/claims/\",\n            \"sponsors\": [],\n            \"earnable_rewards\": [],\n            \"widget_interactions_url_template\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/{profile_id}/widget-interactions/?image_number_prediction_id=bbc832e1-496e-403f-804e-4305e997b646\",\n            \"widget_attributes\": [],\n            \"playback_time_ms\": null\n        },\n        {\n            \"id\": \"64bdaa5a-cc4e-41d2-9fea-382971668f70\",\n            \"pubnub_enabled\": true,\n            \"url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-follow-ups/64bdaa5a-cc4e-41d2-9fea-382971668f70/\",\n            \"program_id\": \"09d93835-ee52-4757-976c-ea09d6a5798c\",\n            \"client_id\": \"8PqSNDgIVHnXuJuGte1HdvOjOqhCFE1ZCR3qhqaS\",\n            \"image_number_prediction_id\": \"bbc832e1-496e-403f-804e-4305e997b646\",\n            \"image_number_prediction_url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-predictions/bbc832e1-496e-403f-804e-4305e997b646/\",\n            \"timeout\": \"P0DT00H00M30S\",\n            \"published_at\": null,\n            \"scheduled_at\": null,\n            \"interactive_until\": null,\n            \"created_at\": \"2023-12-01T09:13:25.179264Z\",\n            \"subscribe_channel\": \"program.widget.09d93835-ee52-4757-976c-ea09d6a5798c\",\n            \"kind\": \"image-number-prediction-follow-up\",\n            \"options\": [\n                {\n                    \"id\": \"dc372386-72b1-45e7-9dde-eedbae6fcf4f\",\n                    \"url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-options/dc372386-72b1-45e7-9dde-eedbae6fcf4f/\",\n                    \"description\": \"test1\",\n                    \"correct_number\": 2,\n                    \"image_url\": \"http://www.google.com/\",\n                    \"reward_item_id\": null,\n                    \"reward_item_amount\": 0,\n                    \"translations\": {},\n                    \"translatable_fields\": [\n                        \"description\"\n                    ],\n                    \"earnable_rewards\": []\n                }\n            ],\n            \"question\": \"test\",\n            \"required_correct\": \"all\",\n            \"program_date_time\": null,\n            \"publish_delay\": \"P0DT00H00M00S\",\n            \"interaction_url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-follow-ups/64bdaa5a-cc4e-41d2-9fea-382971668f70/interactions/\",\n            \"impression_url\": \"https://blast-prod-us-east-1.livelikeblast.com/api/v1/widget-impressions/image-number-prediction-follow-up/64bdaa5a-cc4e-41d2-9fea-382971668f70/\",\n            \"impression_count\": 0,\n            \"unique_impression_count\": 0,\n            \"engagement_count\": null,\n            \"engagement_percent\": null,\n            \"status\": \"pending\",\n            \"created_by\": {\n                \"id\": \"fccbb60d-c8b0-49fd-958c-87dc8f059bf8\",\n                \"name\": null,\n                \"image_url\": null\n            },\n            \"schedule_url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-follow-ups/64bdaa5a-cc4e-41d2-9fea-382971668f70/schedule/\",\n            \"rewards_url\": null,\n            \"translations\": {},\n            \"translatable_fields\": [],\n            \"reactions\": [],\n            \"custom_data\": null,\n            \"claim_url\": \"https://blast-prod-us-east-1.livelikeblast.com/api/v1/widget-interaction-claims/image-number-prediction/bbc832e1-496e-403f-804e-4305e997b646/claims/\",\n            \"sponsors\": [],\n            \"earnable_rewards\": [],\n            \"widget_interactions_url_template\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/{profile_id}/widget-interactions/?image_number_prediction_id=bbc832e1-496e-403f-804e-4305e997b646\",\n            \"widget_attributes\": [],\n            \"playback_time_ms\": null\n        }\n    ],\n    \"question\": \"test\",\n    \"required_correct\": \"all\",\n    \"confirmation_message\": \"Alright! Stay tuned to see the result.\",\n    \"timeout\": \"P0DT00H00M30S\",\n    \"options\": [\n        {\n            \"id\": \"dc372386-72b1-45e7-9dde-eedbae6fcf4f\",\n            \"url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-options/dc372386-72b1-45e7-9dde-eedbae6fcf4f/\",\n            \"description\": \"test1\",\n            \"correct_number\": 2,\n            \"image_url\": \"http://www.google.com/\",\n            \"reward_item_id\": null,\n            \"reward_item_amount\": 0,\n            \"translations\": {},\n            \"translatable_fields\": [\n                \"description\"\n            ],\n            \"earnable_rewards\": []\n        }\n    ],\n    \"subscribe_channel\": \"program.widget.09d93835-ee52-4757-976c-ea09d6a5798c\",\n    \"program_date_time\": null,\n    \"publish_delay\": \"P0DT00H00M00S\",\n    \"interaction_url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-predictions/bbc832e1-496e-403f-804e-4305e997b646/interactions/\",\n    \"impression_url\": \"https://blast-prod-us-east-1.livelikeblast.com/api/v1/widget-impressions/image-number-prediction/bbc832e1-496e-403f-804e-4305e997b646/\",\n    \"impression_count\": 0,\n    \"unique_impression_count\": 0,\n    \"engagement_count\": 0,\n    \"engagement_percent\": \"0.000\",\n    \"status\": \"pending\",\n    \"created_by\": {\n        \"id\": \"fccbb60d-c8b0-49fd-958c-87dc8f059bf8\",\n        \"name\": null,\n        \"image_url\": null\n    },\n    \"schedule_url\": \"https://cf-blast.livelikecdn.com/api/v1/image-number-predictions/bbc832e1-496e-403f-804e-4305e997b646/schedule/\",\n    \"rewards_url\": null,\n    \"translations\": {},\n    \"translatable_fields\": [\n        \"question\",\n        \"confirmation_message\"\n    ],\n    \"reactions\": [],\n    \"custom_data\": null,\n    \"sponsors\": [],\n    \"earnable_rewards\": [\n        {\n            \"reward_item_id\": \"053091d9-84cd-43c7-8c21-ddea5814ba8b\",\n            \"reward_item_name\": \"Tarbooza\",\n            \"reward_action_key\": \"prediction-correct\",\n            \"reward_item_amount\": 10\n        },\n        {\n            \"reward_item_id\": \"f105ba09-ea2c-41fc-9585-3886d023fc78\",\n            \"reward_item_name\": \"Aakash Points\",\n            \"reward_action_key\": \"prediction-correct\",\n            \"reward_item_amount\": 123\n        },\n        {\n            \"reward_item_id\": \"5e1016ef-9cf8-450f-9ad6-5e3996f1cbb0\",\n            \"reward_item_name\": \"LiveLike Points\",\n            \"reward_action_key\": \"prediction-made\",\n            \"reward_item_amount\": 40\n        },\n        {\n            \"reward_item_id\": \"5e1016ef-9cf8-450f-9ad6-5e3996f1cbb0\",\n            \"reward_item_name\": \"LiveLike Points\",\n            \"reward_action_key\": \"prediction-correct\",\n            \"reward_item_amount\": 40\n        },\n        {\n            \"reward_item_id\": \"5e1016ef-9cf8-450f-9ad6-5e3996f1cbb0\",\n            \"reward_item_name\": \"LiveLike Points\",\n            \"reward_action_key\": \"prediction-made\",\n            \"reward_item_amount\": 5\n        }\n    ],\n    \"widget_interactions_url_template\": \"https://cf-blast.livelikecdn.com/api/v1/profiles/{profile_id}/widget-interactions/?image_number_prediction_id=bbc832e1-496e-403f-804e-4305e997b646\",\n    \"vote_url\": \"https://blast-prod-us-east-1.livelikeblast.com/api/v1/widget-interactions/image-number-prediction/bbc832e1-496e-403f-804e-4305e997b646/votes/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbmNyeXB0ZWQiOiJnQUFBQUFCbGFiMTQ1UXNtWmU1aWQtU1V6djB0bjdaZGR3X3NVRTN3SktDRjV1SUlwdzdRVzZvalpPQjNBOThqenpQa3gwcHFkWmJySVJfRVhmOVhuR0NzSlQxOWxhbzJtQT09IiwiaXNzIjoiYmxhc3QiLCJpYXQiOjE3MDE0Mjg2MDB9.7dGI9L0qtP3ggSUeIq573-l7Oc5r79rjLcuo6ET-WcI/\",\n    \"widget_attributes\": [],\n    \"playback_time_ms\": null\n}"
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: bbc832e1-496e-403f-804e-4305e997b646
+                  pubnub_enabled:
+                    type: boolean
+                    example: true
+                    default: true
+                  url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/image-number-predictions/bbc832e1-496e-403f-804e-4305e997b646/
+                  kind:
+                    type: string
+                    example: image-number-prediction
+                  program_id:
+                    type: string
+                    example: 09d93835-ee52-4757-976c-ea09d6a5798c
+                  client_id:
+                    type: string
+                    example: 8PqSNDgIVHnXuJuGte1HdvOjOqhCFE1ZCR3qhqaS
+                  created_at:
+                    type: string
+                    example: '2023-12-01T09:13:25.147848Z'
+                  published_at: {}
+                  scheduled_at: {}
+                  interactive_until: {}
+                  follow_up_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-follow-ups/
+                  follow_ups:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: 08de21ac-1ec8-4f00-a76d-97617dca1a5f
+                        pubnub_enabled:
+                          type: boolean
+                          example: true
+                          default: true
+                        url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-follow-ups/08de21ac-1ec8-4f00-a76d-97617dca1a5f/
+                        program_id:
+                          type: string
+                          example: 09d93835-ee52-4757-976c-ea09d6a5798c
+                        client_id:
+                          type: string
+                          example: 8PqSNDgIVHnXuJuGte1HdvOjOqhCFE1ZCR3qhqaS
+                        image_number_prediction_id:
+                          type: string
+                          example: bbc832e1-496e-403f-804e-4305e997b646
+                        image_number_prediction_url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/image-number-predictions/bbc832e1-496e-403f-804e-4305e997b646/
+                        timeout:
+                          type: string
+                          example: P0DT00H00M30S
+                        published_at: {}
+                        scheduled_at: {}
+                        interactive_until: {}
+                        created_at:
+                          type: string
+                          example: '2023-12-01T09:15:59.444956Z'
+                        subscribe_channel:
+                          type: string
+                          example: program.widget.09d93835-ee52-4757-976c-ea09d6a5798c
+                        kind:
+                          type: string
+                          example: image-number-prediction-follow-up
+                        options:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                example: dc372386-72b1-45e7-9dde-eedbae6fcf4f
+                              url:
+                                type: string
+                                example: https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-options/dc372386-72b1-45e7-9dde-eedbae6fcf4f/
+                              description:
+                                type: string
+                                example: test1
+                              correct_number:
+                                type: integer
+                                example: 2
+                                default: 0
+                              image_url:
+                                type: string
+                                example: http://www.google.com/
+                              reward_item_id: {}
+                              reward_item_amount:
+                                type: integer
+                                example: 0
+                                default: 0
+                              translations:
+                                type: object
+                                properties: {}
+                              translatable_fields:
+                                type: array
+                                items:
+                                  type: string
+                                  example: description
+                              earnable_rewards:
+                                type: array
+                        question:
+                          type: string
+                          example: test
+                        required_correct:
+                          type: string
+                          example: all
+                        program_date_time: {}
+                        publish_delay:
+                          type: string
+                          example: P0DT00H00M00S
+                        interaction_url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-follow-ups/08de21ac-1ec8-4f00-a76d-97617dca1a5f/interactions/
+                        impression_url:
+                          type: string
+                          example: https://blast-prod-us-east-1.livelikeblast.com/api/v1/widget-impressions/image-number-prediction-follow-up/08de21ac-1ec8-4f00-a76d-97617dca1a5f/
+                        impression_count:
+                          type: integer
+                          example: 0
+                          default: 0
+                        unique_impression_count:
+                          type: integer
+                          example: 0
+                          default: 0
+                        engagement_count: {}
+                        engagement_percent: {}
+                        status:
+                          type: string
+                          example: pending
+                        created_by:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: fccbb60d-c8b0-49fd-958c-87dc8f059bf8
+                            name: {}
+                            image_url: {}
+                        schedule_url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-follow-ups/08de21ac-1ec8-4f00-a76d-97617dca1a5f/schedule/
+                        rewards_url: {}
+                        translations:
+                          type: object
+                          properties: {}
+                        translatable_fields:
+                          type: array
+                        reactions:
+                          type: array
+                        custom_data: {}
+                        claim_url:
+                          type: string
+                          example: https://blast-prod-us-east-1.livelikeblast.com/api/v1/widget-interaction-claims/image-number-prediction/bbc832e1-496e-403f-804e-4305e997b646/claims/
+                        sponsors:
+                          type: array
+                        earnable_rewards:
+                          type: array
+                        widget_interactions_url_template:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/profiles/{profile_id}/widget-interactions/?image_number_prediction_id=bbc832e1-496e-403f-804e-4305e997b646
+                        widget_attributes:
+                          type: array
+                        playback_time_ms: {}
+                  question:
+                    type: string
+                    example: test
+                  required_correct:
+                    type: string
+                    example: all
+                  confirmation_message:
+                    type: string
+                    example: Alright! Stay tuned to see the result.
+                  timeout:
+                    type: string
+                    example: P0DT00H00M30S
+                  options:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: dc372386-72b1-45e7-9dde-eedbae6fcf4f
+                        url:
+                          type: string
+                          example: https://cf-blast.livelikecdn.com/api/v1/image-number-prediction-options/dc372386-72b1-45e7-9dde-eedbae6fcf4f/
+                        description:
+                          type: string
+                          example: test1
+                        correct_number:
+                          type: integer
+                          example: 2
+                          default: 0
+                        image_url:
+                          type: string
+                          example: http://www.google.com/
+                        reward_item_id: {}
+                        reward_item_amount:
+                          type: integer
+                          example: 0
+                          default: 0
+                        translations:
+                          type: object
+                          properties: {}
+                        translatable_fields:
+                          type: array
+                          items:
+                            type: string
+                            example: description
+                        earnable_rewards:
+                          type: array
+                  subscribe_channel:
+                    type: string
+                    example: program.widget.09d93835-ee52-4757-976c-ea09d6a5798c
+                  program_date_time: {}
+                  publish_delay:
+                    type: string
+                    example: P0DT00H00M00S
+                  interaction_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/image-number-predictions/bbc832e1-496e-403f-804e-4305e997b646/interactions/
+                  impression_url:
+                    type: string
+                    example: https://blast-prod-us-east-1.livelikeblast.com/api/v1/widget-impressions/image-number-prediction/bbc832e1-496e-403f-804e-4305e997b646/
+                  impression_count:
+                    type: integer
+                    example: 0
+                    default: 0
+                  unique_impression_count:
+                    type: integer
+                    example: 0
+                    default: 0
+                  engagement_count:
+                    type: integer
+                    example: 0
+                    default: 0
+                  engagement_percent:
+                    type: string
+                    example: '0.000'
+                  status:
+                    type: string
+                    example: pending
+                  created_by:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: fccbb60d-c8b0-49fd-958c-87dc8f059bf8
+                      name: {}
+                      image_url: {}
+                  schedule_url:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/image-number-predictions/bbc832e1-496e-403f-804e-4305e997b646/schedule/
+                  rewards_url: {}
+                  translations:
+                    type: object
+                    properties: {}
+                  translatable_fields:
+                    type: array
+                    items:
+                      type: string
+                      example: question
+                  reactions:
+                    type: array
+                  custom_data: {}
+                  sponsors:
+                    type: array
+                  earnable_rewards:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        reward_item_id:
+                          type: string
+                          example: 053091d9-84cd-43c7-8c21-ddea5814ba8b
+                        reward_item_name:
+                          type: string
+                          example: Tarbooza
+                        reward_action_key:
+                          type: string
+                          example: prediction-correct
+                        reward_item_amount:
+                          type: integer
+                          example: 10
+                          default: 0
+                  widget_interactions_url_template:
+                    type: string
+                    example: https://cf-blast.livelikecdn.com/api/v1/profiles/{profile_id}/widget-interactions/?image_number_prediction_id=bbc832e1-496e-403f-804e-4305e997b646
+                  vote_url:
+                    type: string
+                    example: https://blast-prod-us-east-1.livelikeblast.com/api/v1/widget-interactions/image-number-prediction/bbc832e1-496e-403f-804e-4305e997b646/votes/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbmNyeXB0ZWQiOiJnQUFBQUFCbGFiMTQ1UXNtWmU1aWQtU1V6djB0bjdaZGR3X3NVRTN3SktDRjV1SUlwdzdRVzZvalpPQjNBOThqenpQa3gwcHFkWmJySVJfRVhmOVhuR0NzSlQxOWxhbzJtQT09IiwiaXNzIjoiYmxhc3QiLCJpYXQiOjE3MDE0Mjg2MDB9.7dGI9L0qtP3ggSUeIq573-l7Oc5r79rjLcuo6ET-WcI/
+                  widget_attributes:
+                    type: array
+                  playback_time_ms: {}
+      deprecated: false
+      tags:
+      - Image Number Predictions
+x-readme-fauxas: true
+x-provenance:
+  method: searched
+  source: https://docs.livelike.com/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://docs.livelike.com/reference/add-bulk-chat-memberships.md
+  - https://docs.livelike.com/reference/add-members-to-group.md
+  - https://docs.livelike.com/reference/add-quest-badges.md
+  - https://docs.livelike.com/reference/award-a-badge-to-a-user.md
+  - https://docs.livelike.com/reference/batch-invoke-reward-action.md
+  - https://docs.livelike.com/reference/claim-user-quest-badges.md
+  - https://docs.livelike.com/reference/claim-user-quest-rewards.md
+  - https://docs.livelike.com/reference/create-a-base-role.md
+  - https://docs.livelike.com/reference/create-a-cheer-meter.md
+  - https://docs.livelike.com/reference/create-a-comment-board.md
+  - https://docs.livelike.com/reference/create-a-comment.md
+  - https://docs.livelike.com/reference/create-a-flair-assignment.md
+  - https://docs.livelike.com/reference/create-a-flair-scope.md
+  - https://docs.livelike.com/reference/create-a-flair.md
+  - https://docs.livelike.com/reference/create-a-group.md
+  - https://docs.livelike.com/reference/create-a-pin-message.md
+  - https://docs.livelike.com/reference/create-a-pinned-comment.md
+  - https://docs.livelike.com/reference/create-a-profile-block.md
+  - https://docs.livelike.com/reference/create-a-profile-relationship.md
+  - https://docs.livelike.com/reference/create-a-program-ban.md
+  - https://docs.livelike.com/reference/create-a-redemption-key.md
+  - https://docs.livelike.com/reference/create-a-registered-link.md
+  - https://docs.livelike.com/reference/create-a-relationship-type.md
+  - https://docs.livelike.com/reference/create-a-rich-post.md
+  - https://docs.livelike.com/reference/create-a-social-embed.md
+  - https://docs.livelike.com/reference/create-a-sticker.md
+  - https://docs.livelike.com/reference/create-a-text-quiz.md
+  - https://docs.livelike.com/reference/create-a-user-reaction.md
+  - https://docs.livelike.com/reference/create-a-user-tier.md
+  - https://docs.livelike.com/reference/create-a-video-alert.md
+  - https://docs.livelike.com/reference/create-an-access-rule-for-muteglobally-mute.md
+  - https://docs.livelike.com/reference/create-an-alert.md
+  - https://docs.livelike.com/reference/create-an-image-number-prediction.md
+  - https://docs.livelike.com/reference/create-an-image-quiz.md
+  - https://docs.livelike.com/reference/create-an-image-slider.md
+  - https://docs.livelike.com/reference/create-badge-1.md
+  - https://docs.livelike.com/reference/create-comment-report.md
+  - https://docs.livelike.com/reference/create-comments-ban.md
+  - https://docs.livelike.com/reference/create-image-number-prediction-follow-up.md
+  - https://docs.livelike.com/reference/create-image-number-prediction-option.md
+  - https://docs.livelike.com/reference/create-image-poll.md
+  - https://docs.livelike.com/reference/create-image-prediction-follow-up.md
+  - https://docs.livelike.com/reference/create-image-prediction-option.md
+  - https://docs.livelike.com/reference/create-poll-vote.md
+  - https://docs.livelike.com/reference/create-profile-by-custom-id.md
+  - https://docs.livelike.com/reference/create-quality-rules.md
+  - https://docs.livelike.com/reference/create-quest-rewards.md
+  - https://docs.livelike.com/reference/create-quests.md
+  - https://docs.livelike.com/reference/create-reaction-emoji.md
+  - https://docs.livelike.com/reference/create-reward-item.md
+  - https://docs.livelike.com/reference/create-reward-table-entry.md
+  - https://docs.livelike.com/reference/create-reward-table.md
+  - https://docs.livelike.com/reference/create-role-assignments.md
+  - https://docs.livelike.com/reference/create-role-grant-assignment.md
+  - https://docs.livelike.com/reference/create-roles.md
+  - https://docs.livelike.com/reference/create-task.md
+  - https://docs.livelike.com/reference/create-text-poll.md
+  - https://docs.livelike.com/reference/create-text-prediction-follow-up.md
+  - https://docs.livelike.com/reference/create-text-prediction-option.md
+  - https://docs.livelike.com/reference/create-tier-benefit.md
+  - https://docs.livelike.com/reference/create-tier-group.md
+  - https://docs.livelike.com/reference/create-tier.md
+  - https://docs.livelike.com/reference/create-user-profile.md
+  - https://docs.livelike.com/reference/create-user-quest.md
+  - https://docs.livelike.com/reference/creating-reward-actions.md
+  - https://docs.livelike.com/reference/credit-reward-item.md
+  - https://docs.livelike.com/reference/debit-reward-item.md
+  - https://docs.livelike.com/reference/delete-a-base-role.md
+  - https://docs.livelike.com/reference/delete-a-comment.md
+  - https://docs.livelike.com/reference/delete-a-flair-assignment.md
+  - https://docs.livelike.com/reference/delete-a-flair.md
+  - https://docs.livelike.com/reference/delete-a-program-ban.md
+  - https://docs.livelike.com/reference/delete-a-redemption-key.md
+  - https://docs.livelike.com/reference/delete-a-registered-link.md
+  - https://docs.livelike.com/reference/delete-a-role.md
+  - https://docs.livelike.com/reference/delete-a-tier-group.md
+  - https://docs.livelike.com/reference/delete-a-user-reaction.md
+  - https://docs.livelike.com/reference/delete-a-video-alert.md
+  - https://docs.livelike.com/reference/delete-bulk-chat-memberships.md
+  - https://docs.livelike.com/reference/delete-comment-board-by-custom-id.md
+  - https://docs.livelike.com/reference/delete-comment-board.md
+  - https://docs.livelike.com/reference/delete-comments-ban.md
+  - https://docs.livelike.com/reference/delete-profile-group.md
+  - https://docs.livelike.com/reference/delete-quest.md
+  - https://docs.livelike.com/reference/delete-reaction-emoji.md
+  - https://docs.livelike.com/reference/delete-reward-table-entry.md
+  - https://docs.livelike.com/reference/delete-reward-table.md
+  - https://docs.livelike.com/reference/delete-role-assignment.md
+  - https://docs.livelike.com/reference/delete-role-grant-unassignment.md
+  - https://docs.livelike.com/reference/delete-task.md
+  - https://docs.livelike.com/reference/delete-tier-benefit.md
+  - https://docs.livelike.com/reference/delete-tier.md
+  - https://docs.livelike.com/reference/delete-userquest.md
+  - https://docs.livelike.com/reference/delete-widget.md
+  - https://docs.livelike.com/reference/dismiss-all-reports-for-a-reported-comment.md
+  - https://docs.livelike.com/reference/flair-assignment-detail.md
+  - https://docs.livelike.com/reference/flair-detail-1.md
+  - https://docs.livelike.com/reference/flair-detail.md
+  - https://docs.livelike.com/reference/get-a-badge.md
+  - https://docs.livelike.com/reference/get-a-redemption-key.md
+  - https://docs.livelike.com/reference/get-a-rich-post.md
+  - https://docs.livelike.com/reference/get-a-social-embed.md
+  - https://docs.livelike.com/reference/get-a-text-ask-widget.md
+  - https://docs.livelike.com/reference/get-a-text-poll.md
+  - https://docs.livelike.com/reference/get-a-text-quiz.md
+  - https://docs.livelike.com/reference/get-a-video-alert.md
+  - https://docs.livelike.com/reference/get-an-alert-1.md
+  - https://docs.livelike.com/reference/get-an-asset-1.md
+  - https://docs.livelike.com/reference/get-an-asset.md
+  - https://docs.livelike.com/reference/get-an-emoji-slider.md
+  - https://docs.livelike.com/reference/get-an-image-poll.md
+  - https://docs.livelike.com/reference/get-an-image-quiz.md
+  - https://docs.livelike.com/reference/get-blocked-profile-ids.md
+  - https://docs.livelike.com/reference/get-blocked-profiles.md
+  - https://docs.livelike.com/reference/get-chatroom-message-count.md
+  - https://docs.livelike.com/reference/get-chatroom-messages.md
+  - https://docs.livelike.com/reference/get-comment-board-by-custom_id.md
+  - https://docs.livelike.com/reference/get-comment-counts.md
+  - https://docs.livelike.com/reference/get-image-number-prediction.md
+  - https://docs.livelike.com/reference/get-leaderboard-by-custom-id.md
+  - https://docs.livelike.com/reference/get-list-of-base-roles.md
+  - https://docs.livelike.com/reference/get-list-of-comment-board-bans.md
+  - https://docs.livelike.com/reference/get-list-of-comment-reports.md
+  - https://docs.livelike.com/reference/get-list-of-earned-badges.md
+  - https://docs.livelike.com/reference/get-list-of-quest-rewards.md
+  - https://docs.livelike.com/reference/get-list-of-resources.md
+  - https://docs.livelike.com/reference/get-pinned-message-info.md
+  - https://docs.livelike.com/reference/get-profile-by-custom-id.md
+  - https://docs.livelike.com/reference/get-profile-group-detail.md
+  - https://docs.livelike.com/reference/get-profile-group-members.md
+  - https://docs.livelike.com/reference/get-program-bans.md
+  - https://docs.livelike.com/reference/get-program-by-custom-id.md
+  - https://docs.livelike.com/reference/get-quest-badges.md
+  - https://docs.livelike.com/reference/get-quests.md
+  - https://docs.livelike.com/reference/get-reaction-space-by-target-group-id.md
+  - https://docs.livelike.com/reference/get-reported-chat-messages.md
+  - https://docs.livelike.com/reference/get-reward-item-balance.md
+  - https://docs.livelike.com/reference/get-reward-table-entry.md
+  - https://docs.livelike.com/reference/get-reward-table.md
+  - https://docs.livelike.com/reference/get-role-templates.md
+  - https://docs.livelike.com/reference/get-roles.md
+  - https://docs.livelike.com/reference/get-task.md
+  - https://docs.livelike.com/reference/get-the-list-of-comment-boards.md
+  - https://docs.livelike.com/reference/get-user-quest-rewards.md
+  - https://docs.livelike.com/reference/get-user-reaction-count-per-space.md
+  - https://docs.livelike.com/reference/get-user-reaction-count.md
+  - https://docs.livelike.com/reference/get-users-badges.md
+  - https://docs.livelike.com/reference/get_reaction-space-by-target-group-id-client-id-target-group-id-1.md
+  - https://docs.livelike.com/reference/invoking-custom-actions.md
+  - https://docs.livelike.com/reference/list-assets.md
+  - https://docs.livelike.com/reference/list-available-badges.md
+  - https://docs.livelike.com/reference/list-badge-progress.md
+  - https://docs.livelike.com/reference/list-comments-by-author.md
+  - https://docs.livelike.com/reference/list-comments.md
+  - https://docs.livelike.com/reference/list-flair-assignments.md
+  - https://docs.livelike.com/reference/list-flairs-1.md
+  - https://docs.livelike.com/reference/list-flairs.md
+  - https://docs.livelike.com/reference/list-invoked-reward-actions.md
+  - https://docs.livelike.com/reference/list-permissions.md
+  - https://docs.livelike.com/reference/list-pinned-comments.md
+  - https://docs.livelike.com/reference/list-profile-relationships.md
+  - https://docs.livelike.com/reference/list-profiles-who-have-earned-a-specific-badge.md
+  - https://docs.livelike.com/reference/list-program-sponsors.md
+  - https://docs.livelike.com/reference/list-quests.md
+  - https://docs.livelike.com/reference/list-reaction-spaces.md
+  - https://docs.livelike.com/reference/list-redemption-keys.md
+  - https://docs.livelike.com/reference/list-registered-links.md
+  - https://docs.livelike.com/reference/list-relationship-types.md
+  - https://docs.livelike.com/reference/list-replies-to-profiles-comments.md
+  - https://docs.livelike.com/reference/list-reward-actions.md
+  - https://docs.livelike.com/reference/list-reward-item-balances.md
+  - https://docs.livelike.com/reference/list-reward-item-transfers.md
+  - https://docs.livelike.com/reference/list-reward-items.md
+  - https://docs.livelike.com/reference/list-reward-tables.md
+  - https://docs.livelike.com/reference/list-reward-transactions.md
+  - https://docs.livelike.com/reference/list-rich-posts-1-1.md
+  - https://docs.livelike.com/reference/list-rich-posts-1.md
+  - https://docs.livelike.com/reference/list-rich-posts.md
+  - https://docs.livelike.com/reference/list-role-assignments.md
+  - https://docs.livelike.com/reference/list-tasks.md
+  - https://docs.livelike.com/reference/list-tier-benefits.md
+  - https://docs.livelike.com/reference/list-tier-groups.md
+  - https://docs.livelike.com/reference/list-tier-transactions.md
+  - https://docs.livelike.com/reference/list-tier.md
+  - https://docs.livelike.com/reference/list-user-quests.md
+  - https://docs.livelike.com/reference/list-user-reactions.md
+  - https://docs.livelike.com/reference/list-user-tiers.md
+  - https://docs.livelike.com/reference/list-widget-reports.md
+  - https://docs.livelike.com/reference/moderate-a-widget-report.md
+  - https://docs.livelike.com/reference/patch-update-a-base-role.md
+  - https://docs.livelike.com/reference/patch-update-a-role-copy.md
+  - https://docs.livelike.com/reference/patch_reaction-space-by-target-group-id-client-id-target-group-id-1-1.md
+  - https://docs.livelike.com/reference/prizeout-user-session.md
+  - https://docs.livelike.com/reference/profile-permissions-check.md
+  - https://docs.livelike.com/reference/publish-widget.md
+  - https://docs.livelike.com/reference/put-update-a-base-role.md
+  - https://docs.livelike.com/reference/remove-a-chatroom-access-rule.md
+  - https://docs.livelike.com/reference/remove-a-quest-reward.md
+  - https://docs.livelike.com/reference/remove-badge-from-quest.md
+  - https://docs.livelike.com/reference/remove-members-from-group.md
+  - https://docs.livelike.com/reference/report-a-widget.md
+  - https://docs.livelike.com/reference/retrieve-a-tier.md
+  - https://docs.livelike.com/reference/retrieve-reward-item.md
+  - https://docs.livelike.com/reference/retrieve-tier-benefit.md
+  - https://docs.livelike.com/reference/revoke-earned-badge.md
+  - https://docs.livelike.com/reference/reward-item-transfers.md
+  - https://docs.livelike.com/reference/role-grant-detail.md
+  - https://docs.livelike.com/reference/role-grants-list.md
+  - https://docs.livelike.com/reference/send-a-widget-chat-message.md
+  - https://docs.livelike.com/reference/send-chat-message.md
+  - https://docs.livelike.com/reference/unassignment-by-natural-key.md
+  - https://docs.livelike.com/reference/unblock-profile-by-profile-custom-id.md
+  - https://docs.livelike.com/reference/unblock-profile.md
+  - https://docs.livelike.com/reference/unpin-a-pinned-comment.md
+  - https://docs.livelike.com/reference/unpin-message.md
+  - https://docs.livelike.com/reference/update-a-comment-board.md
+  - https://docs.livelike.com/reference/update-a-comment.md
+  - https://docs.livelike.com/reference/update-a-flair-1.md
+  - https://docs.livelike.com/reference/update-a-flair-assignment.md
+  - https://docs.livelike.com/reference/update-a-flair.md
+  - https://docs.livelike.com/reference/update-a-redemption-key-by-code.md
+  - https://docs.livelike.com/reference/update-a-redemption-key.md
+  - https://docs.livelike.com/reference/update-a-role.md
+  - https://docs.livelike.com/reference/update-a-video-alert.md
+  - https://docs.livelike.com/reference/update-comment-board-by-custom-id.md
+  - https://docs.livelike.com/reference/update-comment-quality-rules.md
+  - https://docs.livelike.com/reference/update-image-number-prediction-option.md
+  - https://docs.livelike.com/reference/update-image-number-prediction.md
+  - https://docs.livelike.com/reference/update-image-prediction-option.md
+  - https://docs.livelike.com/reference/update-profile-group.md
+  - https://docs.livelike.com/reference/update-reaction-emoji.md
+  - https://docs.livelike.com/reference/update-text-prediction-option.md
+  - https://docs.livelike.com/reference/update-tier-benefit.md
+  - https://docs.livelike.com/reference/update-tier-group.md
+  - https://docs.livelike.com/reference/update-tier.md
+  - https://docs.livelike.com/reference/update-user-quest-task-progress.md
+  - https://docs.livelike.com/reference/update-user-quest.md
+  merge:
+    pages: 237
+    deduped: 0
+    conflicts_kept_first: 0
