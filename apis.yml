@@ -250,6 +250,8 @@ apis:
   humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
   baseURL: https://cf-blast.livelikecdn.com/api/v1/
   tags:
+  - Application
+  tags_raw:
   - Applications
   properties:
   - type: OpenAPI
@@ -562,6 +564,8 @@ apis:
   humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
   baseURL: https://cf-blast.livelikecdn.com/api/v1/
   tags:
+  - Collection
+  tags_raw:
   - Collections
   properties:
   - type: OpenAPI
@@ -1433,6 +1437,8 @@ apis:
   humanURL: https://docs.livelike.com/reference/getting-started-with-your-api
   baseURL: https://cf-blast.livelikecdn.com/api/v1/
   tags:
+  - Membership
+  tags_raw:
   - Memberships
   properties:
   - type: OpenAPI
