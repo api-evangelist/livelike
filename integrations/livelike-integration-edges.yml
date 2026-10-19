@@ -7,6 +7,7 @@ source:
 - https://monid.ai/tools/livelike
 checked:
 - https://composio.dev/toolkits/livelike
+- https://marketplace.brightcove.com/llms.txt
 - https://monid.ai/tools/livelike
 - https://n8n.io/integrations/livelike/
 - https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-livelike-cloud
@@ -44,4 +45,21 @@ edges:
       - livelike-source
   detected_by: sweep-cdp.py
   first_seen: '2026-10-14'
+- partner_name: Brightcove (own)
+  partner: brightcove
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.brightcove.com/partners/livelike-interactive-timeline
+  mirror_of: brightcove/integrations/brightcove-integration-edges.yml
+  apps:
+  - LiveLike Interactive Timeline
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Media Solutions
 templates: []
